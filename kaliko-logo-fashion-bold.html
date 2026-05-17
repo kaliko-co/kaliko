@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kaliko — Logo Directions</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Internal design exploration page — logo directions for Kaliko.">
+  <link rel="canonical" href="https://kaliko.co/kaliko-logo-fashion-bold.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20fill%3D%27%23F7F5F0%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2722%27%20font-family%3D%27Georgia%2Cserif%27%20font-size%3D%2722%27%20font-style%3D%27italic%27%20text-anchor%3D%27middle%27%20fill%3D%27%23614C3E%27%3EK%3C/text%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Kaliko">
+  <meta property="og:title" content="Kaliko — Logo Directions">
+  <meta property="og:description" content="Internal design exploration page — logo directions for Kaliko.">
+  <meta property="og:url" content="https://kaliko.co/kaliko-logo-fashion-bold.html">
+  <meta property="og:image" content="https://kaliko.co/images/hero-slideshow-1.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kaliko — Logo Directions">
+  <meta name="twitter:description" content="Internal design exploration page — logo directions for Kaliko.">
+  <meta name="twitter:image" content="https://kaliko.co/images/hero-slideshow-1.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,900;1,9..144,500;1,9..144,700;1,9..144,900&family=Anton&family=Unbounded:wght@700;800;900&family=Syne:wght@700;800&family=Space+Mono:wght@700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: #FAF7F2;
+    color: #1A1816;
+    -webkit-font-smoothing: antialiased;
+    padding: 5rem 3rem 7rem;
+  }
+  .wrap { max-width: 1220px; margin: 0 auto; }
+
+  .intro { margin-bottom: 4rem; max-width: 600px; }
+  .intro h1 {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 2.6rem;
+    margin-bottom: 1.2rem;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .intro p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #6A6460;
+  }
+  .intro p + p { margin-top: 1rem; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 5rem;
+  }
+  .cell {
+    background: #fff;
+    border: 1px solid #EAE3D8;
+    aspect-ratio: 3 / 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 2rem;
+  }
+  .cell--current {
+    background: #1A1816;
+    color: #FAF7F2;
+  }
+  .cell--pick {
+    background: #BF6E68;
+    color: #FAF7F2;
+    border: none;
+  }
+  .cell-label {
+    position: absolute;
+    top: 1rem;
+    left: 1.2rem;
+    font-size: 0.55rem;
+    letter-spacing: 0.18em;
+    text-transform: lowercase;
+    color: #9A9490;
+  }
+  .cell--current .cell-label { color: rgba(250,247,242,0.55); }
+  .cell--pick .cell-label { color: rgba(250,247,242,0.75); }
+  .cell-note {
+    position: absolute;
+    bottom: 1rem;
+    left: 1.2rem;
+    right: 1.2rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.04em;
+    color: #9A9490;
+    line-height: 1.55;
+  }
+  .cell--current .cell-note { color: rgba(250,247,242,0.6); }
+  .cell--pick .cell-note { color: rgba(250,247,242,0.85); }
+
+  .stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 0.88;
+  }
+  .stack span { display: block; }
+
+  .horiz {
+    display: flex;
+    align-items: baseline;
+    line-height: 1;
+  }
+
+  /* 1. Current */
+  .mark-current {
+    font-family: 'Arial Black', sans-serif;
+    font-weight: 900;
+    font-size: 4rem;
+    letter-spacing: -0.02em;
+  }
+
+  /* 2. Fraunces 900 italic — RECOMMENDED */
+  .mark-fraunces-ital {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 5rem;
+    letter-spacing: -0.04em;
+  }
+
+  /* 3. Anton condensed all-caps stacked */
+  .mark-anton {
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: 5.4rem;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    line-height: 0.82;
+  }
+
+  /* 4. Unbounded Black stacked */
+  .mark-unbounded {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 900;
+    font-size: 3.4rem;
+    letter-spacing: -0.04em;
+    text-transform: lowercase;
+    line-height: 0.9;
+  }
+
+  /* 5. Syne horizontal wordmark */
+  .mark-syne {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 2.6rem;
+    letter-spacing: -0.045em;
+  }
+
+  /* 6. Space Mono horizontal all-caps */
+  .mark-mono {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 1.7rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  /* Recommendation block */
+  .rec {
+    background: #1A1816;
+    color: #FAF7F2;
+    padding: 4rem 3.5rem;
+    margin-bottom: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .rec-big {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 8rem;
+    letter-spacing: -0.05em;
+    line-height: 0.82;
+  }
+  .rec-big span { display: block; }
+  .rec-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: lowercase;
+    color: rgba(250,247,242,0.4);
+    margin-bottom: 1.4rem;
+  }
+  .rec h2 {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+  .rec p {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: rgba(250,247,242,0.75);
+  }
+  .rec p + p { margin-top: 1rem; }
+
+  /* Weight / style range */
+  .variants {
+    background: #fff;
+    border: 1px solid #EAE3D8;
+    padding: 3.5rem 2.5rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+  }
+  .variant-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .variant-item .stack {
+    font-family: 'Fraunces', serif;
+    font-size: 3rem;
+    letter-spacing: -0.03em;
+  }
+  .variant-caption {
+    font-size: 0.55rem;
+    letter-spacing: 0.18em;
+    text-transform: lowercase;
+    color: #9A9490;
+  }
+
+  /* Applications */
+  .apps-section { margin-top: 5rem; }
+  .section-heading {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-bottom: 2.5rem;
+    letter-spacing: -0.01em;
+  }
+  .apps-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .app {
+    background: #fff;
+    border: 1px solid #EAE3D8;
+    position: relative;
+    min-height: 320px;
+    overflow: hidden;
+  }
+  .app-label {
+    position: absolute;
+    top: 1rem;
+    left: 1.2rem;
+    font-size: 0.55rem;
+    letter-spacing: 0.18em;
+    text-transform: lowercase;
+    color: #9A9490;
+    z-index: 2;
+  }
+
+  /* Hang tag */
+  .app-tag {
+    background: #F3EDE1;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .app-tag .stack {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 4.5rem;
+    letter-spacing: -0.04em;
+    color: #1A1816;
+    margin-bottom: 1.5rem;
+  }
+  .tag-details {
+    text-align: center;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: lowercase;
+    color: #6A6460;
+    line-height: 1.9;
+  }
+
+  /* Instagram grid */
+  .app-ig {
+    background: #fff;
+    padding: 2.5rem 2rem 2rem;
+  }
+  .ig-head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .ig-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #BF6E68;
+    color: #FAF7F2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 0.95rem;
+    letter-spacing: -0.04em;
+    line-height: 0.88;
+  }
+  .ig-avatar .stack { gap: 0; }
+  .ig-handle {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .ig-bio {
+    font-size: 0.62rem;
+    color: #6A6460;
+    line-height: 1.6;
+  }
+  .ig-tiles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    margin-top: 1.2rem;
+  }
+  .ig-tile {
+    aspect-ratio: 1;
+  }
+  .ig-tile:nth-child(1) { background: #BF6E68; }
+  .ig-tile:nth-child(2) { background: #3A5470; }
+  .ig-tile:nth-child(3) { background: #C6A24E; }
+  .ig-tile:nth-child(4) { background: #7B5E82; }
+  .ig-tile:nth-child(5) { background: #1A1816; color: #FAF7F2; display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-style: italic; font-weight: 900; font-size: 0.9rem; letter-spacing: -0.03em; line-height: 0.88; }
+  .ig-tile:nth-child(6) { background: #7A5235; }
+
+  /* T-shirt mock */
+  .app-tee {
+    background: #EAE3D8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem;
+  }
+  .tee-shape {
+    background: #1A1816;
+    width: 260px;
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    position: relative;
+  }
+  .tee-shape .stack {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 3.6rem;
+    letter-spacing: -0.04em;
+    color: #BF6E68;
+  }
+
+  /* Event invite */
+  .app-invite {
+    background: #3A5470;
+    color: #FAF7F2;
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 320px;
+  }
+  .app-invite .stack {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 2.6rem;
+    letter-spacing: -0.03em;
+    align-items: flex-start;
+  }
+  .invite-sub {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: lowercase;
+    color: rgba(250,247,242,0.6);
+    margin-top: 0.8rem;
+  }
+  .invite-body {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    max-width: 280px;
+  }
+  .invite-meta {
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: lowercase;
+    color: rgba(250,247,242,0.7);
+    line-height: 1.8;
+  }
+
+  /* Scale */
+  .scale-strip {
+    background: #fff;
+    border: 1px solid #EAE3D8;
+    padding: 3rem 2.5rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .scale-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .scale-item .stack {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+  }
+  .scale-caption {
+    font-size: 0.55rem;
+    letter-spacing: 0.18em;
+    text-transform: lowercase;
+    color: #9A9490;
+  }
+
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .apps-grid { grid-template-columns: 1fr; }
+    .rec { grid-template-columns: 1fr; gap: 2rem; }
+    .rec-big { font-size: 5.5rem; }
+  }
+  @media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; }
+    .scale-strip, .variants { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <section class="intro">
+    <h1>Bold, fashion-forward, confident.</h1>
+    <p>Different brief this time. For the buyer who plays with fashion, knows what they like, wants personality not polish. Berlin fashion scene energy — Martine Rose, Ottolinger, Bode, Paloma Wool adjacent. Hip without trying, grown-up without being safe.</p>
+    <p>Five directions below, plus the current mark on dark for reference. Mix of stacked and horizontal since the stacked format is only one way to play this.</p>
+  </section>
+
+  <div class="grid">
+
+    <div class="cell cell--current">
+      <span class="cell-label">01 · current</span>
+      <div class="stack mark-current">
+        <span>ka</span><span>li</span><span>ko</span>
+      </div>
+      <p class="cell-note">Heavy geometric sans. Reference only.</p>
+    </div>
+
+    <div class="cell cell--pick">
+      <span class="cell-label">02 · fraunces italic, black · pick</span>
+      <div class="stack mark-fraunces-ital">
+        <span>ka</span><span>li</span><span>ko</span>
+      </div>
+      <p class="cell-note">Fraunces at weight 900, italic. Editorial swagger, fashion-magazine energy, serif with real bite. Curvy, confident, contemporary.</p>
+    </div>
+
+    <div class="cell">
+      <span class="cell-label">03 · anton, all caps stacked</span>
+      <div class="stack mark-anton">
+        <span>KA</span><span>LI</span><span>KO</span>
+      </div>
+      <p class="cell-note">Condensed ultra-tall sans. Fashion-week staple — Balenciaga, Vetements lineage. Confident, graphic, runway-adjacent.</p>
+    </div>
+
+    <div class="cell">
+      <span class="cell-label">04 · unbounded, black</span>
+      <div class="stack mark-unbounded">
+        <span>ka</span><span>li</span><span>ko</span>
+      </div>
+      <p class="cell-note">Geometric display with attitude. Design-studio-cool, current, slightly futuristic. Personality in every curve.</p>
+    </div>
+
+    <div class="cell">
+      <span class="cell-label">05 · syne, horizontal wordmark</span>
+      <div class="horiz mark-syne">
+        <span>kaliko</span>
+      </div>
+      <p class="cell-note">Wide contemporary display sans. Graphic, flat, confident. Drops the stack — reads as a design studio or indie label wordmark.</p>
+    </div>
+
+    <div class="cell">
+      <span class="cell-label">06 · space mono, horizontal</span>
+      <div class="horiz mark-mono">
+        <span>KALIKO</span>
+      </div>
+      <p class="cell-note">Bold monospace, all caps, wide tracking. Berlin creative-studio hip. Technical, deliberate, slightly zine.</p>
+    </div>
+
+  </div>
+
+  <section class="rec">
+    <div class="rec-big">
+      <span>ka</span><span>li</span><span>ko</span>
+    </div>
+    <div>
+      <p class="rec-label">recommendation</p>
+      <h2>Option 02 — Fraunces, italic, weight 900.</h2>
+      <p>Fraunces at its heaviest italic is one of the most fashion-current serifs on the internet right now. You see this letterform across indie fashion labels, magazine covers, album art, gallery brands. It's bold without being heavy-handed, serif-warm without being soft, editorial without being precious. The italic gives it movement and attitude.</p>
+      <p>Kept stacked, the silhouette still reads as your mark — the shape is familiar — but the voice goes from industrial to fashion-editorial. Against a madder-red or indigo-blue background, on a hang tag, a t-shirt, an event invite, it holds up. It has personality. It's confident about its own beauty. That's the brief.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-heading">Fraunces italic — weight and style range</h2>
+    <div class="variants">
+      <div class="variant-item">
+        <div class="stack" style="font-style: italic; font-weight: 500;">
+          <span>ka</span><span>li</span><span>ko</span>
+        </div>
+        <span class="variant-caption">500 italic</span>
+      </div>
+      <div class="variant-item">
+        <div class="stack" style="font-style: italic; font-weight: 700;">
+          <span>ka</span><span>li</span><span>ko</span>
+        </div>
+        <span class="variant-caption">700 italic</span>
+      </div>
+      <div class="variant-item">
+        <div class="stack" style="font-style: italic; font-weight: 900;">
+          <span>ka</span><span>li</span><span>ko</span>
+        </div>
+        <span class="variant-caption">900 italic · pick</span>
+      </div>
+      <div class="variant-item">
+        <div class="stack" style="font-weight: 900;">
+          <span>ka</span><span>li</span><span>ko</span>
+        </div>
+        <span class="variant-caption">900 roman</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="scale-strip-wrap">
+    <h2 class="section-heading">Option 02 at every size</h2>
+    <div class="scale-strip">
+      <div class="scale-item">
+        <div class="stack" style="font-size:7rem;">
+          <span>ka</span><span>li</span><span>ko</span>
+        </div>
+        <span class="scale-caption">display</span>
+      </div>
+      <div class="scale-item">
+        <div class="stack" style="font-size:3.8rem;">
+          <span>ka</span><span>li</span><span>ko</span>
+        </div>
+        <span class="scale-caption">large</span>
+      </div>
+      <div class="scale-item">
+        <div class="stack" style="font-size:2rem;">
+          <span>ka</span><span>li</span><span>ko</span>
+        </div>
+        <span class="scale-caption">medium</span>
+      </div>
+      <div class="scale-item">
+        <div class="stack" style="font-size:1.2rem;">
+          <span>ka</span><span>li</span><span>ko</span>
+        </div>
+        <span class="scale-caption">header</span>
+      </div>
+      <div class="scale-item">
+        <div class="stack" style="font-size:0.8rem;">
+          <span>ka</span><span>li</span><span>ko</span>
+        </div>
+        <span class="scale-caption">footer</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="apps-section">
+    <h2 class="section-heading">In context</h2>
+    <div class="apps-grid">
+
+      <div class="app app-tag">
+        <span class="app-label">hang tag</span>
+        <div class="stack">
+          <span>ka</span><span>li</span><span>ko</span>
+        </div>
+        <div class="tag-details">
+          plant dyed in berlin<br>
+          100% organic cotton<br>
+          madder root · walnut hull
+        </div>
+      </div>
+
+      <div class="app app-ig">
+        <span class="app-label">instagram</span>
+        <div class="ig-head">
+          <div class="ig-avatar">
+            <div class="stack"><span>ka</span><span>li</span><span>ko</span></div>
+          </div>
+          <div>
+            <div class="ig-handle">kaliko.studio</div>
+            <div class="ig-bio">plant dye · brand activations · berlin</div>
+          </div>
+        </div>
+        <div class="ig-tiles">
+          <div class="ig-tile"></div>
+          <div class="ig-tile"></div>
+          <div class="ig-tile"></div>
+          <div class="ig-tile"></div>
+          <div class="ig-tile">
+            <div class="stack"><span>ka</span><span>li</span><span>ko</span></div>
+          </div>
+          <div class="ig-tile"></div>
+        </div>
+      </div>
+
+      <div class="app app-tee">
+        <span class="app-label">tee print</span>
+        <div class="tee-shape">
+          <div class="stack">
+            <span>ka</span><span>li</span><span>ko</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="app app-invite">
+        <span class="app-label" style="color: rgba(250,247,242,0.55);">event invite</span>
+        <div>
+          <div class="stack">
+            <span>ka</span><span>li</span><span>ko</span>
+          </div>
+          <div class="invite-sub">×  converse · berlin</div>
+        </div>
+        <div class="invite-body">A cold-dye activation for the legendary rubber.</div>
+        <div class="invite-meta">
+          friday · 06 June · 19:00<br>
+          mitte · rsvp by the 3rd
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

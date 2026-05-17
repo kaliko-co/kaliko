@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaliko — Natural dye studio, Berlin</title>
+  <meta name="description" content="Kaliko is the Berlin natural dye studio of Ania Grzeszek. Plant-dyed textile art, commissions for galleries and interiors, collaborations with fashion brands, and activations for teams.">
+  <link rel="canonical" href="https://kaliko.co/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20fill%3D%27%23F7F5F0%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2722%27%20font-family%3D%27Georgia%2Cserif%27%20font-size%3D%2722%27%20font-style%3D%27italic%27%20text-anchor%3D%27middle%27%20fill%3D%27%23614C3E%27%3EK%3C/text%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Kaliko">
+  <meta property="og:title" content="Kaliko — Natural dye studio, Berlin">
+  <meta property="og:description" content="Kaliko is the Berlin natural dye studio of Ania Grzeszek. Plant-dyed textile art, commissions for galleries and interiors, collaborations with fashion brands, and activations for teams.">
+  <meta property="og:url" content="https://kaliko.co/">
+  <meta property="og:image" content="https://kaliko.co/images/hero-slideshow-1.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kaliko — Natural dye studio, Berlin">
+  <meta name="twitter:description" content="Kaliko is the Berlin natural dye studio of Ania Grzeszek. Plant-dyed textile art, commissions for galleries and interiors, collaborations with fashion brands, and activations for teams.">
+  <meta name="twitter:image" content="https://kaliko.co/images/hero-slideshow-1.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Mono', ui-monospace, monospace;
+      background: #F7F5F0;
+      color: #0F0D0A;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    :root {
+      --serif: 'Fraunces', Georgia, serif;
+      --mono:  'DM Mono', ui-monospace, monospace;
+      --bg:    #F7F5F0;
+      --ink:   #3A332D;
+      --line:  rgba(58,51,45,0.14);
+      --muted: rgba(58,51,45,0.58);
+      --indigo:#2B3A52;
+    }
+
+    /* Typography baseline — type as image */
+    .display {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: -0.035em;
+      line-height: 0.86;
+    }
+    .label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .label--ink { color: var(--ink); }
+    .link-line {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 4px;
+      display: inline-block;
+    }
+    .head-link {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      border-bottom: 1px solid currentColor;
+      padding: 0 0.3em 10px;
+      display: inline-block;
+      transition: opacity 0.2s;
+    }
+    .head-link::after { content: '→'; margin-left: 0.9em; }
+    .head-link:hover { opacity: 0.6; }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 50;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 1.4rem 1.8rem;
+      mix-blend-mode: difference;
+      /* Source color tuned so cream bg (#F7F5F0) inverts to walnut (#3A332D) */
+      color: #BDC2C3;
+    }
+    .nav a { color: currentColor; }
+    .nav__links { display: flex; gap: 2rem; justify-self: start; }
+    .nav__links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .nav__logo {
+      font-family: var(--serif);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 1.7rem;
+      letter-spacing: -0.04em;
+    }
+    .nav__cta {
+      justify-self: end;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .nav__cta::after { content: ' →'; }
+    .nav__menu {
+      display: none;
+      justify-self: start;
+      background: none; border: 0; padding: 0;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: currentColor;
+      cursor: pointer;
+    }
+
+    /* ── MOBILE OVERLAY MENU ────────────────────────── */
+    .menu-overlay {
+      position: fixed; inset: 0;
+      z-index: 100;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .menu-overlay.is-open { opacity: 1; pointer-events: auto; }
+    .menu-overlay__links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+      padding: 0 1.5rem;
+    }
+    .menu-overlay__links a {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(2.4rem, 11vw, 4.5rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+    }
+    .menu-overlay__links a em { font-weight: 900; font-style: italic; }
+
+    /* ── HERO — full-bleed, type on image ───────────── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 680px;
+      overflow: hidden;
+    }
+    .hero__img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.45) 100%);
+    }
+    .hero__label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1.6rem;
+    }
+    .hero__type {
+      position: absolute;
+      left: 1.8rem; right: 1.8rem;
+      bottom: 4rem;
+      color: #fff;
+    }
+    .hero__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(3.4rem, 11.5vw, 12rem);
+      line-height: 0.85;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.8rem;
+    }
+    .hero__title span { display: block; }
+    .hero__title em { font-weight: 900; font-style: italic; color: #B0584F; }
+    .hero__row {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .hero__lede {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      max-width: 340px;
+    }
+    .hero__cta {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #fff;
+      border-bottom: 1px solid #fff;
+      padding-bottom: 4px;
+    }
+    .hero__cta::after { content: ' →'; }
+
+    /* ── MARQUEE — scrolling client strip ───────────── */
+    .marquee {
+      background: var(--ink);
+      padding: 1.8rem 0;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+    .marquee__track {
+      display: flex;
+      gap: 4.5rem;
+      align-items: center;
+      animation: scroll 38s linear infinite;
+      width: max-content;
+    }
+    .marquee__item {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .marquee__item img {
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.85;
+    }
+    .marquee__text {
+      color: #fff; opacity: 0.85;
+      font-family: var(--serif); font-style: italic; font-weight: 400;
+      font-size: 1.4rem; letter-spacing: -0.01em; line-height: 1;
+      white-space: nowrap;
+    }
+    @keyframes scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── WORK — edge-to-edge contact-sheet grid ─────── */
+    .work {
+      padding: 0;
+    }
+    .work__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      padding: 4rem 1.8rem 2.5rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .work__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+    }
+    .work__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .frame {
+      position: relative;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .frame:nth-child(4n) { border-right: none; }
+    .frame--wide {
+      grid-column: span 2;
+      aspect-ratio: 8/5;
+    }
+    .frame--tall {
+      grid-row: span 2;
+      aspect-ratio: 4/10;
+    }
+    .frame img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+    .frame:hover img { transform: scale(1.02); }
+    .frame__caption {
+      position: absolute;
+      bottom: 1rem; left: 1rem;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #fff;
+      mix-blend-mode: difference;
+    }
+    .frame__num {
+      position: absolute;
+      top: 1rem; left: 1rem;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: #fff;
+      mix-blend-mode: difference;
+    }
+
+    /* ── SERVICES — typographic list, not cards ────── */
+    .services {
+      padding: 6rem 0 4rem;
+    }
+    .services__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      padding: 0 1.8rem 2rem;
+    }
+    .services__label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .s-item {
+      display: grid;
+      grid-template-columns: 60px 1fr auto;
+      align-items: baseline;
+      gap: 2rem;
+      padding: 2.4rem 1.8rem;
+      border-top: 1px solid var(--line);
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+    .s-item:last-child { border-bottom: 1px solid var(--line); }
+    /* Per-service hover color — the three foundational dyes */
+    .s-item--madder:hover { background: #B0584F; color: #fff; }
+    .s-item--indigo:hover { background: #3A5470; color: #fff; }
+    .s-item--walnut:hover { background: var(--ink); color: #fff; }
+    .s-item__num {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      align-self: center;
+    }
+    .s-item--madder:hover .s-item__num,
+    .s-item--indigo:hover .s-item__num,
+    .s-item--walnut:hover .s-item__num { color: rgba(255,255,255,0.65); }
+    .s-item__body { display: flex; flex-direction: column; gap: 0.4rem; }
+    .s-item__name {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(2.8rem, 7vw, 6rem);
+      line-height: 0.9;
+      letter-spacing: -0.035em;
+    }
+    /* Service names pre-saturated in each item's dye color */
+    .s-item--indigo .s-item__name { color: #3A5470; }
+    .s-item--madder .s-item__name { color: #B0584F; }
+    .s-item--walnut .s-item__name { color: #614C3E; }
+    .s-item--indigo:hover .s-item__name,
+    .s-item--madder:hover .s-item__name,
+    .s-item--walnut:hover .s-item__name { color: #fff; }
+    .s-item__for {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .s-item--madder:hover .s-item__for,
+    .s-item--indigo:hover .s-item__for,
+    .s-item--walnut:hover .s-item__for { color: rgba(255,255,255,0.65); }
+    .s-item__arrow {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 2rem;
+      align-self: center;
+      transition: transform 0.3s;
+    }
+    .s-item:hover .s-item__arrow { transform: translateX(8px); }
+
+    /* ── MANIFESTO — oversized pull quote ───────────── */
+    .manifesto {
+      padding: 6rem 1.8rem;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .manifesto__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 2rem;
+    }
+    .manifesto__eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .manifesto__text {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(2rem, 5vw, 4.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      max-width: 1000px;
+    }
+    .manifesto__text em { font-weight: 900; color: #3A5470; }
+    .manifesto__more {
+      display: inline-block;
+      margin-top: 2.4rem;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 2px;
+    }
+
+    /* ── ABOUT — asymmetric, big portrait ───────────── */
+    .about {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .about__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      padding: 4rem 1.8rem 2.5rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .about__grid {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      min-height: 90vh;
+    }
+    .about__img {
+      overflow: hidden;
+      position: relative;
+    }
+    .about__img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .about__body {
+      padding: 4rem 3rem 4rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .about__label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+    .about__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(2rem, 4.2vw, 3.6rem);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      margin-bottom: 2.4rem;
+    }
+    .about__title em { font-weight: 900; color: #C6A24E; }
+    .about__meta {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.4rem 3rem;
+      max-width: 500px;
+      padding-top: 2rem;
+      border-top: 1px solid var(--line);
+    }
+    .about__meta dt {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .about__meta dd {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.2rem;
+    }
+
+    /* ── LIBRARY — tighter, two parts ──────────────── */
+    .library {
+      padding: 5rem 1.8rem 4rem;
+      border-top: 1px solid var(--line);
+    }
+    .library__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 3rem;
+    }
+    .library__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(2rem, 4.5vw, 3.6rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+    .library__link {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 4px;
+    }
+    .library__link::after { content: ' →'; }
+    .posts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .post__img {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    .post__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .post:hover .post__img img { transform: scale(1.03); }
+    .post__meta {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .post__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.3rem;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+    }
+
+    .library__divider {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin: 4rem 0 2.5rem;
+    }
+    .library__divider span:first-child,
+    .library__divider span:last-child {
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+    .library__divider-text {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .books {
+      display: flex;
+      flex-direction: column;
+    }
+    .book {
+      display: grid;
+      grid-template-columns: 56px 32px auto 1fr auto;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 0.9rem 0;
+      border-top: 1px solid var(--line);
+    }
+    .book__desc {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0;
+    }
+    .books .book:last-child { border-bottom: 1px solid var(--line); }
+    .book__img {
+      width: 56px; height: 56px;
+      overflow: hidden;
+    }
+    .book__img img { width: 100%; height: 100%; object-fit: cover; }
+    .book__tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .book__name {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.1rem;
+      line-height: 1.2;
+    }
+    .book__link {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .book:hover .book__link { color: var(--ink); }
+    .book__link::after { content: ' ↗'; }
+
+    /* ── INQUIRY — indigo block, big type, email only ── */
+    .inquire {
+      background: var(--indigo);
+      color: #fff;
+      padding: 4rem 1.8rem 5rem;
+      min-height: 45vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.8rem;
+    }
+    .inquire__eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+    .inquire__lede {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+      line-height: 1.5;
+      color: rgba(255,255,255,0.8);
+      max-width: 520px;
+    }
+    .inquire__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+    }
+    .inquire__title em { font-weight: 900; color: var(--bg); }
+    .inquire__email {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      border-bottom: 1px solid rgba(255,255,255,0.5);
+      padding-bottom: 6px;
+      align-self: flex-start;
+      transition: border-color 0.2s;
+    }
+    .inquire__email:hover { border-color: #fff; }
+    .inquire__meta {
+      margin-top: auto;
+      padding-top: 4rem;
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ── FOOTER — tiny ─────────────────────────────── */
+    .footer {
+      background: var(--ink);
+      color: var(--bg);
+      padding: 1.2rem 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .footer a { opacity: 0.65; margin-right: 1.5rem; }
+    .footer a:hover { opacity: 1; }
+
+    /* ── RESPONSIVE ────────────────────────────────── */
+    @media (max-width: 860px) {
+      .nav__links { display: none; }
+      .nav__menu { display: block; }
+      .hero__title { font-size: clamp(3rem, 13vw, 7rem); }
+      .work__grid { grid-template-columns: repeat(2, 1fr); }
+      .frame:nth-child(4n) { border-right: 1px solid var(--line); }
+      .frame:nth-child(2n) { border-right: none; }
+      .frame--wide { grid-column: span 2; }
+      .frame--tall { grid-row: span 1; aspect-ratio: 4/5; }
+      .s-item { grid-template-columns: 30px 1fr; padding: 1.8rem 1.5rem; }
+      .s-item__arrow { display: none; }
+      .about { grid-template-columns: 1fr; }
+      .about__img { min-height: 60vh; }
+      .about__body { padding: 3rem 1.5rem; }
+      .posts, .books { grid-template-columns: 1fr; gap: 2.5rem; }
+      .library__head { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+      .inquire { padding: 5rem 1.5rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV — walnut by default, white while over hero image -->
+  <header class="nav" id="nav">
+    <nav class="nav__links">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="services.html">Services</a>
+      <a href="practice.html">Practice</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Library</a>
+    </nav>
+    <button class="nav__menu" id="navToggle" aria-label="Open menu" aria-controls="menuOverlay" aria-expanded="false">Menu</button>
+    <a href="#" class="nav__logo">kaliko</a>
+    <a href="mailto:hello@kaliko.co" class="nav__cta">Inquire</a>
+  </header>
+
+  <!-- MOBILE MENU OVERLAY -->
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+    <nav class="menu-overlay__links">
+      <a href="portfolio.html"><em>Portfolio</em></a>
+      <a href="services.html"><em>Services</em></a>
+      <a href="practice.html"><em>Practice</em></a>
+      <a href="about.html"><em>About</em></a>
+      <a href="blog.html"><em>Library</em></a>
+    </nav>
+  </div>
+
+  <!-- HERO — full-bleed image + oversized type on it -->
+  <section class="hero">
+    <img src="images/naturaldyes-1.jpg" alt="Plant-dyed textiles in natural earthy tones" class="hero__img">
+    <div class="hero__overlay"></div>
+    <div class="hero__type">
+      <h1 class="hero__title">
+        <span>Dyed by hand</span>
+        <span><em>With plants.</em></span>
+        <span>In Berlin</span>
+      </h1>
+      <div class="hero__row">
+        <p class="hero__lede">Installations, capsules and one-off pieces for fashion brands, interior designers and artists.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE — actual client logos, scrolling -->
+  <div class="marquee">
+    <div class="marquee__track">
+      <span class="marquee__item"><img src="images/logo-adidas.svg" alt="Adidas" style="height: 28px;"></span>
+      <span class="marquee__item"><img src="images/logo-converse.svg" alt="Converse" style="height: 30px;"></span>
+      <span class="marquee__item"><img src="images/logo-highsnobiety.svg" alt="Highsnobiety" style="height: 15px;"></span>
+      <span class="marquee__item"><img src="images/logo-terrex.svg" alt="adidas Terrex" style="height: 22px;"></span>
+      <span class="marquee__item"><img src="images/logo-zalando.svg" alt="Zalando" style="height: 16px;"></span>
+      <span class="marquee__item"><img src="images/logo-nb.svg" alt="New Balance" style="height: 22px;"></span>
+      <span class="marquee__item"><img src="images/logo-molliemakes.png" alt="Mollie Makes" style="height: 34px;"></span>
+      <span class="marquee__item"><img src="images/logo-eucerin.svg" alt="Eucerin" style="height: 18px;"></span>
+      <span class="marquee__item"><img src="images/logo-ard.svg" alt="ARD" style="height: 18px;"></span>
+      <span class="marquee__item"><img src="images/logo-adidas.svg" alt="Adidas" style="height: 28px;"></span>
+      <span class="marquee__item"><img src="images/logo-converse.svg" alt="Converse" style="height: 30px;"></span>
+      <span class="marquee__item"><img src="images/logo-highsnobiety.svg" alt="Highsnobiety" style="height: 15px;"></span>
+      <span class="marquee__item"><img src="images/logo-terrex.svg" alt="adidas Terrex" style="height: 22px;"></span>
+      <span class="marquee__item"><img src="images/logo-zalando.svg" alt="Zalando" style="height: 16px;"></span>
+      <span class="marquee__item"><img src="images/logo-nb.svg" alt="New Balance" style="height: 22px;"></span>
+      <span class="marquee__item"><img src="images/logo-molliemakes.png" alt="Mollie Makes" style="height: 34px;"></span>
+      <span class="marquee__item"><img src="images/logo-eucerin.svg" alt="Eucerin" style="height: 18px;"></span>
+      <span class="marquee__item"><img src="images/logo-ard.svg" alt="ARD" style="height: 18px;"></span>
+    </div>
+  </div>
+
+  <!-- WORK — edge-to-edge, mixed aspect, numbered captions -->
+  <section id="work" class="work">
+    <div class="work__head">
+      <h2 class="work__title"><em>Selected work.</em></h2>
+      <a href="portfolio.html" class="head-link">See portfolio</a>
+    </div>
+    <div class="work__grid">
+
+      <a class="frame frame--wide" href="portfolio/highsnobiety.html">
+        <img src="images/portfolio/highsnobiety.jpg" alt="Hand-dyed Highsnobiety hoodie">
+        <span class="frame__num">01</span>
+        <span class="frame__caption">Brand collab · Highsnobiety</span>
+      </a>
+
+      <a class="frame" href="portfolio/melisa-minca.html">
+        <img src="images/portfolio/bless2.JPG" alt="Hand-dyed textile sample for Melisa Minca">
+        <span class="frame__num">02</span>
+        <span class="frame__caption">Fashion · Melisa Minca</span>
+      </a>
+
+      <a class="frame" href="portfolio/wall-art.html">
+        <img src="images/portfolio/wallhanging-commision.jpg" alt="Plant-dyed wall hanging commission">
+        <span class="frame__num">03</span>
+        <span class="frame__caption">Private commission · Wall art</span>
+      </a>
+
+      <a class="frame" href="portfolio/earth-day.html">
+        <img src="images/portfolio/earth-day1.JPG" alt="Earth Day patchwork installation detail">
+        <span class="frame__num">04</span>
+        <span class="frame__caption">Installation · Earth Day</span>
+      </a>
+
+      <a class="frame frame--wide" href="portfolio/converse.html">
+        <img src="images/portfolio/converse2.jpg" alt="Hand-dyed Converse sneakers" style="object-position: center 80%;">
+        <span class="frame__num">05</span>
+        <span class="frame__caption">Brand activation · Converse</span>
+      </a>
+
+      <a class="frame" href="portfolio/sampling.html">
+        <img src="images/portfolio/sampling3.JPG" alt="Plant dye sampling on fabric">
+        <span class="frame__num">06</span>
+        <span class="frame__caption">Sampling process · Swatches</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- SERVICES — typographic list, huge names, hover inverts -->
+  <section id="services" class="services">
+    <div class="services__head">
+      <p class="services__label">Services</p>
+      <a href="services.html" class="head-link">Services details</a>
+    </div>
+
+    <a class="s-item s-item--indigo" href="#inquire">
+      <span class="s-item__num">01</span>
+      <div class="s-item__body">
+        <h3 class="s-item__name"><em>Commissions.</em></h3>
+        <span class="s-item__for">For galleries, interiors &amp; artists</span>
+      </div>
+      <span class="s-item__arrow">↗</span>
+    </a>
+
+    <a class="s-item s-item--madder" href="#inquire">
+      <span class="s-item__num">02</span>
+      <div class="s-item__body">
+        <h3 class="s-item__name"><em>Activations.</em></h3>
+        <span class="s-item__for">For brands &amp; agencies</span>
+      </div>
+      <span class="s-item__arrow">↗</span>
+    </a>
+
+    <a class="s-item s-item--walnut" href="#inquire">
+      <span class="s-item__num">03</span>
+      <div class="s-item__body">
+        <h3 class="s-item__name"><em>Collaborations.</em></h3>
+        <span class="s-item__for">For fashion &amp; independent designers</span>
+      </div>
+      <span class="s-item__arrow">↗</span>
+    </a>
+  </section>
+
+  <!-- MANIFESTO — oversized italic pull quote -->
+  <section id="practice" class="manifesto">
+    <div class="manifesto__head">
+      <p class="manifesto__eyebrow">On the practice</p>
+      <a href="practice.html" class="head-link">About the process</a>
+    </div>
+    <p class="manifesto__text">Natural dyeing is slow and often unpredictable. Working with living material means <em>honoring that slow pace</em> and making space for color that shifts, breathes, and refuses to be standardized.</p>
+  </section>
+
+  <!-- ABOUT — asymmetric 5/7 with metadata grid -->
+  <section id="about" class="about">
+    <div class="about__head">
+      <p class="about__label">About · Ania Grzeszek</p>
+      <a href="about.html" class="head-link">More about Kaliko</a>
+    </div>
+    <div class="about__grid">
+      <div class="about__img">
+        <img src="images/collab-ania.jpg" alt="Ania Grzeszek">
+      </div>
+      <div class="about__body">
+        <h2 class="about__title">Architect by training.<br><em>Natural dyer by practice.</em></h2>
+        <dl class="about__meta">
+          <dt>Based in</dt><dd>Berlin</dd>
+          <dt>Practice since</dt><dd>2016</dd>
+          <dt>Medium</dt><dd>Textiles<br>Plant-based dyeing<br>Weaving</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIBRARY — tighter, field notes + books funnel -->
+  <section id="library" class="library">
+    <div class="library__head">
+      <h2 class="library__title"><em>Field notes</em><br>from the dye studio.</h2>
+      <a href="blog.html" class="head-link">All posts</a>
+    </div>
+    <div class="posts">
+
+      <a href="blog/16-colors-3-plant-dyes.html" class="post">
+        <div class="post__img"><img src="images/gallery-about.png" alt="Natural dye color swatches showing 16 shades from three plant dyes"></div>
+        <p class="post__meta">Guide · 8 min</p>
+        <h3 class="post__title">16 colors with just 3 plant dyes</h3>
+      </a>
+
+      <a href="blog/upcycling-clothes-with-natural-dyes.html" class="post">
+        <div class="post__img"><img src="images/blog/upcycling-1-banner.jpg" alt="Second-hand clothes being upcycled with natural plant dyes"></div>
+        <p class="post__meta">Tutorial · 9 min</p>
+        <h3 class="post__title">Upcycling clothes with natural dyes</h3>
+      </a>
+
+      <a href="blog/how-to-dye-with-plants.html" class="post">
+        <div class="post__img"><img src="images/blog/how-to-dye-1-banner.jpg" alt="Fabric being dyed in a plant dye bath"></div>
+        <p class="post__meta">Tutorial · 10 min</p>
+        <h3 class="post__title">How to dye fabric with plants</h3>
+      </a>
+
+    </div>
+
+    <div class="library__divider">
+      <span></span>
+      <span class="library__divider-text">Want to take it further?</span>
+      <span></span>
+    </div>
+
+    <div class="books">
+      <a href="https://payhip.com/b/JQK1R" class="book" target="_blank" rel="noopener">
+        <div class="book__img"><img src="images/from-site/guide_460x@2x.jpg.webp" alt="Pocket Guide to Natural Dyeing ebook cover"></div>
+        <p class="book__tag">Ebook 01</p>
+        <h3 class="book__name">A Pocket Intro to Natural Dyeing</h3>
+        <p class="book__desc">Fibers, dyes, and the logic of color from plants.</p>
+        <span class="book__link">View</span>
+      </a>
+      <a href="https://payhip.com/b/S4DQ7" class="book" target="_blank" rel="noopener">
+        <div class="book__img"><img src="images/from-site/mordants_460x@2x.jpg.webp" alt="Mordants for Natural Dyes ebook cover"></div>
+        <p class="book__tag">Ebook 02</p>
+        <h3 class="book__name">The Mordant Book</h3>
+        <p class="book__desc">How mordants work, and how to get consistent results.</p>
+        <span class="book__link">View</span>
+      </a>
+      <a href="https://payhip.com/b/37rFn" class="book" target="_blank" rel="noopener">
+        <div class="book__img"><img src="images/from-site/kit_460x@2x.jpg.webp" alt="Dye Garden Manual ebook cover"></div>
+        <p class="book__tag">Ebook 03</p>
+        <h3 class="book__name">The Dye Garden Manual</h3>
+        <p class="book__desc">Which plants to grow, and how to use them.</p>
+        <span class="book__link">View</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- INQUIRY — massive type, indigo block, email only -->
+  <section id="inquire" class="inquire">
+    <h2 class="inquire__title">Let's <em>make</em><br>something together.</h2>
+    <p class="inquire__lede">Capsules for fashion, installations for interiors, palettes for brands, workshops for teams.</p>
+    <a href="mailto:hello@kaliko.co" class="inquire__email">hello@kaliko.co →</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div>
+      <a href="imprint.html">Imprint</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="https://www.instagram.com/kaliko_co/">Instagram</a>
+      <a href="https://kaliko.substack.com/">Substack</a>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var toggle = document.getElementById('navToggle');
+      var overlay = document.getElementById('menuOverlay');
+      if (!toggle || !overlay) return;
+      function open() {
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        toggle.textContent = 'Close';
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        toggle.textContent = 'Menu';
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+      toggle.addEventListener('click', function() {
+        overlay.classList.contains('is-open') ? close() : open();
+      });
+      overlay.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', close);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('is-open')) close();
+      });
+    })();
+  </script>
+
+</body>
+</html>

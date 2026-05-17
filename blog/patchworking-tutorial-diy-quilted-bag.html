@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patchworking Tutorial: DIY Quilted Bag — Kaliko</title>
+  <meta name="description" content="Learn how to turn plant-dyed fabric offcuts into a beautiful zero-waste patchwork bag. Step-by-step sewing tutorial from Kaliko.">
+  <link rel="canonical" href="https://kaliko.co/blog/patchworking-tutorial-diy-quilted-bag.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20fill%3D%27%23F7F5F0%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2722%27%20font-family%3D%27Georgia%2Cserif%27%20font-size%3D%2722%27%20font-style%3D%27italic%27%20text-anchor%3D%27middle%27%20fill%3D%27%23614C3E%27%3EK%3C/text%3E%3C/svg%3E">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Kaliko">
+  <meta property="og:title" content="Patchworking Tutorial: DIY Quilted Bag — Kaliko">
+  <meta property="og:description" content="Learn how to turn plant-dyed fabric offcuts into a beautiful zero-waste patchwork bag. Step-by-step sewing tutorial from Kaliko.">
+  <meta property="og:url" content="https://kaliko.co/blog/patchworking-tutorial-diy-quilted-bag.html">
+  <meta property="og:image" content="https://kaliko.co/images/hero-slideshow-1.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Patchworking Tutorial: DIY Quilted Bag — Kaliko">
+  <meta name="twitter:description" content="Learn how to turn plant-dyed fabric offcuts into a beautiful zero-waste patchwork bag. Step-by-step sewing tutorial from Kaliko.">
+  <meta name="twitter:image" content="https://kaliko.co/images/hero-slideshow-1.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Mono', ui-monospace, monospace;
+      background: #F7F5F0;
+      color: #0F0D0A;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    :root {
+      --serif: 'Fraunces', Georgia, serif;
+      --mono:  'DM Mono', ui-monospace, monospace;
+      --bg:    #F7F5F0;
+      --ink:   #3A332D;
+      --line:  rgba(58,51,45,0.14);
+      --muted: rgba(58,51,45,0.58);
+      --indigo:#2B3A52;
+      --madder:#B0584F;
+      --walnut:#614C3E;
+    }
+
+    .label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .link-line {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 4px;
+      display: inline-block;
+    }
+
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 50;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 1.4rem 1.8rem;
+      mix-blend-mode: difference;
+      color: #BDC2C3;
+    }
+    .nav a { color: currentColor; }
+    .nav__links { display: flex; gap: 2rem; justify-self: start; }
+    .nav__links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .nav__logo {
+      font-family: var(--serif);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 1.7rem;
+      letter-spacing: -0.04em;
+    }
+    .nav__cta {
+      justify-self: end;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .nav__cta::after { content: ' \2192'; }
+    .nav__menu {
+      display: none;
+      justify-self: start;
+      background: none; border: 0; padding: 0;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: currentColor;
+      cursor: pointer;
+    }
+
+    .menu-overlay {
+      position: fixed; inset: 0; z-index: 100;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .menu-overlay.is-open { opacity: 1; pointer-events: auto; }
+    .menu-overlay__links {
+      display: flex; flex-direction: column; gap: 1rem;
+      text-align: center; padding: 0 1.5rem;
+    }
+    .menu-overlay__links a {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(2.4rem, 11vw, 4.5rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+    }
+    .menu-overlay__links a em { font-weight: 900; font-style: italic; }
+
+    .post-hero {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 7.5rem 1.8rem 2rem;
+    }
+    .post-hero__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+    .post-hero__eyebrow em {
+      font-style: normal;
+      color: var(--walnut);
+    }
+    .post-hero__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 1.2rem;
+    }
+    .post-hero__title em {
+      font-weight: 900;
+      font-style: italic;
+      color: var(--walnut);
+    }
+
+    .post-lead {
+      max-width: 960px;
+      margin: 2rem auto 0;
+      padding: 0 1.8rem;
+    }
+    .post-lead__frame {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .post-lead__frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .article {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 3.5rem 1.8rem 2rem;
+    }
+    .article p {
+      margin-bottom: 1.3rem;
+      color: var(--ink);
+      line-height: 1.75;
+      font-size: 14.5px;
+    }
+    .article h2 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.6rem;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin: 2.6rem 0 0.9rem;
+    }
+    .article h2 em { font-weight: 300; font-style: italic; color: var(--walnut); }
+    .article h3 {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--walnut);
+      margin: 2rem 0 0.8rem;
+    }
+    .article ul {
+      list-style: disc;
+      padding-left: 1.3rem;
+      margin-bottom: 1.3rem;
+      color: var(--ink);
+    }
+    .article ul ul {
+      list-style: circle;
+      margin-top: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+    .article ul li {
+      margin-bottom: 0.7rem;
+      line-height: 1.75;
+      font-size: 14.5px;
+    }
+    .article em { font-style: italic; }
+    .article strong { font-weight: 500; color: var(--ink); }
+    .article__img {
+      width: 100%;
+      margin: 1.8rem 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .article__img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .article__pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin: 1.8rem 0;
+    }
+    .article__pair .article__img { margin: 0; }
+    .article a {
+      border-bottom: 1px solid var(--muted);
+      color: var(--ink);
+      transition: border-color 0.2s;
+    }
+    .article a:hover { border-color: var(--ink); }
+
+    .post-nav {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.8rem;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .related {
+      padding: 4rem 1.8rem 3rem;
+      border-top: 1px solid var(--line);
+    }
+    .related__heading {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.6rem;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 2.4rem;
+    }
+    .posts {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+    .post__img {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    .post__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .post:hover .post__img img { transform: scale(1.03); }
+    .post__meta {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .post__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.3rem;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+    }
+
+    .footer {
+      background: var(--ink);
+      color: var(--bg);
+      padding: 1.2rem 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-top: 1px solid rgba(247,245,240,0.1);
+    }
+    .footer a { opacity: 0.65; margin-right: 1.5rem; }
+    .footer a:hover { opacity: 1; }
+
+    @media (max-width: 860px) {
+      .nav__links { display: none; }
+      .nav__menu { display: block; }
+      .posts { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 540px) {
+      .posts { grid-template-columns: 1fr; }
+      .article__pair { grid-template-columns: 1fr; }
+    }
+
+    /* EBOOKS UPSELL — matches index.html */
+    .library__divider { display: flex; align-items: center; gap: 1.5rem; margin: 2rem 0 2.5rem; padding: 0 1.8rem; }
+    .library__divider span:first-child, .library__divider span:last-child { flex: 1; height: 1px; background: var(--line); }
+    .library__divider-text { font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: var(--muted); white-space: nowrap; }
+    .books { display: flex; flex-direction: column; padding: 0 1.8rem 4rem; }
+    .book { display: grid; grid-template-columns: 56px 32px auto 1fr auto; align-items: center; gap: 1.2rem; padding: 0.9rem 0; border-top: 1px solid var(--line); }
+    .book__desc { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0; }
+    .books .book:last-child { border-bottom: 1px solid var(--line); }
+    .book__img { width: 56px; height: 56px; overflow: hidden; }
+    .book__img img { width: 100%; height: 100%; object-fit: cover; }
+    .book__tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+    .book__name { font-family: var(--serif); font-weight: 300; font-style: italic; font-size: 1.1rem; line-height: 1.2; }
+    .book__link { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; }
+    .book:hover .book__link { color: var(--ink); }
+    .book__link::after { content: ' ↗'; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Patchworking Tutorial: DIY Quilted Bag",
+    "description": "Learn how to turn plant-dyed fabric offcuts into a beautiful zero-waste patchwork bag. Step-by-step sewing tutorial from Kaliko.",
+    "url": "https://kaliko.co/blog/patchworking-tutorial-diy-quilted-bag.html",
+    "publisher": {
+      "@type": "Person",
+      "name": "Ania Grzeszek",
+      "url": "https://kaliko.co"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <nav class="nav__links">
+      <a href="../portfolio.html">Portfolio</a>
+      <a href="../services.html">Services</a>
+      <a href="../practice.html">Practice</a>
+      <a href="../about.html">About</a>
+      <a href="../blog.html">Library</a>
+    </nav>
+    <button class="nav__menu" id="navToggle" aria-label="Open menu" aria-controls="menuOverlay" aria-expanded="false">Menu</button>
+    <a href="../index.html" class="nav__logo">kaliko</a>
+    <a href="mailto:hello@kaliko.co" class="nav__cta">Inquire</a>
+  </header>
+
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+    <nav class="menu-overlay__links">
+      <a href="../portfolio.html"><em>Portfolio</em></a>
+      <a href="../services.html"><em>Services</em></a>
+      <a href="../practice.html"><em>Practice</em></a>
+      <a href="../about.html"><em>About</em></a>
+      <a href="../blog.html"><em>Library</em></a>
+    </nav>
+  </div>
+
+  <header class="post-hero">
+    <div class="post-hero__eyebrow"><em>◆</em>Tutorial · Sewing</div>
+    <h1 class="post-hero__title">Patchworking tutorial: a DIY <em>quilted bag</em>.</h1>
+  </header>
+
+  <figure class="post-lead">
+    <div class="post-lead__frame">
+      <img src="../images/blog/patchwork-1-banner.png" alt="Patchworking tutorial - DIY quilted bag">
+    </div>
+  </figure>
+
+  <article class="article">
+
+          <p>I work with big pieces of fabric for project bags, but in the process, I get a lot of offcuts. These pieces are too small on their own, but still very beautiful, dyed with colors I extract from plants. Plant-dyed colors are perfect for that &mdash; they complement each other perfectly and can make up endless combinations.</p>
+
+          <h2><em>What you need</em></h2>
+          <p>Start with fabric scraps in four to five complementary colors with good contrast. Avoid mixing lightweight and heavyweight fabrics. You'll need a sewing machine, iron, rotary cutter, scissors, ruler, and cutting mat. Create a paper pattern of your target size before beginning.</p>
+
+          <div class="article__img"><img src="../images/blog/patchwork-2.jpg" alt="Gathering plant-dyed fabric scraps for patchwork"></div>
+
+          <h2><em>Trim the scraps</em></h2>
+          <p>Unless you start with super neat offcuts, you will need to trim them. I always make sure both sides of the piece are parallel to each other. This makes planning and sewing easier. Orthogonal patterns are recommended for beginners over diagonal approaches.</p>
+
+          <div class="article__img"><img src="../images/blog/patchwork-3.jpg" alt="Trimming scraps with parallel edges"></div>
+
+          <h2><em>Arrange the patches</em></h2>
+          <p>Build small blocks incrementally, adding one piece at a time. When putting the blocks together, try to make sure no scraps of the same color lie next to each other. Never position more than three fabric edges together when working with heavyweight canvas, as this creates excessive bulk. Leave several centimeters around your pattern for seam allowance.</p>
+
+          <div class="article__img"><img src="../images/blog/patchwork-4.jpg" alt="Arranging patches by color and size"></div>
+
+          <h2><em>Plan the sewing sequence</em></h2>
+          <p>Roughly cut scraps with scissors, allowing extra length. Map out which pieces connect and in what order they'll be sewn together.</p>
+
+          <div class="article__img"><img src="../images/blog/patchwork-5.jpg" alt="Planning the sewing sequence"></div>
+
+          <h2><em>Start with the smallest block</em></h2>
+          <p>Begin with the smallest pieces, placing right sides together along the edges that will become seams.</p>
+
+          <div class="article__img"><img src="../images/blog/patchwork-6.jpg" alt="Starting with the smallest block"></div>
+
+          <h2><em>Sew the pieces together</em></h2>
+          <p>Sew around 0.5cm from the edge (0.25 inch). You don't have to backstitch your seams &mdash; they will be held by the consecutive seams.</p>
+
+          <div class="article__img"><img src="../images/blog/patchwork-7.jpg" alt="Sewing patches together"></div>
+
+          <h2><em>Press the seams</em></h2>
+          <p>Press seams flat and open after each stitching round. This crucial step prevents pattern distortion and maintains proper alignment for subsequent patches.</p>
+
+          <div class="article__img"><img src="../images/blog/patchwork-8.jpg" alt="Pressing seams flat"></div>
+
+          <h2><em>Keep the pieces straight</em></h2>
+          <p>Trim sewn sections to maintain straight edges after adding each scrap.</p>
+
+          <div class="article__img"><img src="../images/blog/patchwork-9.jpg" alt="Trimming sewn sections straight"></div>
+
+          <h2><em>Always add one patch at a time</em></h2>
+          <p>Place the new piece underneath, keeping previous seams facing upward to ensure they remain flat during stitching.</p>
+
+          <div class="article__img"><img src="../images/blog/patchwork-10.jpg" alt="Adding one patch at a time"></div>
+
+          <h2><em>Keep extending the blocks</em></h2>
+          <p>Continue adding pieces sequentially. Iron after each stitching round and trim before adding the next patch.</p>
+
+          <div class="article__img"><img src="../images/blog/patchwork-11.jpg" alt="Extending the blocks with more patches"></div>
+
+          <h2><em>Many seams later</em></h2>
+          <p>Complete all main blocks before connecting them together.</p>
+
+          <div class="article__img"><img src="../images/blog/patchwork-12.jpg" alt="All main blocks complete"></div>
+
+          <h2><em>Connect the main blocks</em></h2>
+          <p>Join blocks in the predetermined sequence: top middle and right corner first, then bottom block, finally the left block.</p>
+
+          <div class="article__img"><img src="../images/blog/patchwork-13.jpg" alt="Connecting the main blocks"></div>
+
+          <h2><em>Finishing the patchwork</em></h2>
+          <p>Press all seams flat one final time. They should lay smoothly without creating bulk on the front side.</p>
+
+          <div class="article__img"><img src="../images/blog/patchwork-14.jpg" alt="Finishing the patchwork"></div>
+
+          <h2><em>Troubleshooting</em></h2>
+          <p>If the piece is too narrow when checked against the pattern, add additional scraps in colors not yet used to extend it appropriately.</p>
+
+          <div class="article__img"><img src="../images/blog/patchwork-15.jpg" alt="Troubleshooting a narrow piece"></div>
+
+          <h2><em>Cut to the pattern</em></h2>
+          <p>Use tracing paper to position the pattern, placing seams away from edges before cutting to final dimensions.</p>
+
+          <div class="article__img"><img src="../images/blog/patchwork-16.jpg" alt="Cutting patchwork to pattern"></div>
+
+          <h2><em>And done</em></h2>
+          <p>Create a matching piece for the opposite side using the same color palette. Choose complementary fabric for the bag bottom and drawstring tunnel.</p>
+
+          <div class="article__img"><img src="../images/blog/patchwork-17.jpg" alt="Completed patchwork panel"></div>
+
+          <h2><em>The finished bag</em></h2>
+          <p>It is not only zero-waste but also vegan, and 100% natural. Materials include organic cotton canvas dyed with plants, unbleached linen lining, organic hemp webbing handles, organic cotton thread, and flax string drawstrings. An extension strap enables crossbody carrying.</p>
+
+          <div class="article__img"><img src="../images/blog/patchwork-18.jpg" alt="Finished patchwork project bag"></div>
+
+          <div class="article__img"><img src="../images/blog/patchwork-19-animation.gif" alt="Stop-motion animation of the patchwork bag"></div>
+
+  </article>
+
+  <nav class="post-nav">
+    <a href="../blog.html" class="link-line">&#8592; Back to all articles</a>
+    <a href="../blog/how-to-weave-on-a-cardboard-loom.html" class="link-line">Next article &#8594;</a>
+  </nav>
+
+  <section class="related">
+    <h2 class="related__heading">More from the field notes.</h2>
+    <ul class="posts">
+      <li class="post">
+        <a href="../blog/upcycling-clothes-with-natural-dyes.html">
+          <div class="post__img"><img src="../images/blog/upcycling-1-banner.jpg" alt="Upcycling clothes with natural dyes"></div>
+          <p class="post__meta">Tutorial · Natural dyeing</p>
+          <h3 class="post__title">Upcycling clothes with natural dyes</h3>
+        </a>
+      </li>
+
+      <li class="post">
+        <a href="../blog/bundle-dyeing-old-clothes.html">
+          <div class="post__img"><img src="../images/blog/bundle-dyeing-1-banner.jpg" alt="Bundle-dyeing old clothes"></div>
+          <p class="post__meta">Tutorial · Natural dyeing</p>
+          <h3 class="post__title">Bundle-dyeing old clothes</h3>
+        </a>
+      </li>
+
+      <li class="post">
+        <a href="../blog/how-to-weave-a-rag-rug-on-a-frame-loom.html">
+          <div class="post__img"><img src="../images/blog/rag-rug-1-banner.png" alt="How to weave a rag rug on a frame loom"></div>
+          <p class="post__meta">Tutorial · Weaving</p>
+          <h3 class="post__title">How to weave a rag rug on a frame loom</h3>
+        </a>
+      </li>
+        
+      <li class="post">
+        <a href="../blog/tips-for-natural-dyeing-clothes-with-plants.html">
+          <div class="post__img"><img src="../images/blog/tips-1-banner.png" alt="Tips for Natural Dyeing Clothes with Plants"></div>
+          <p class="post__meta">Reference · Natural dyeing</p>
+          <h3 class="post__title">Tips for Natural Dyeing Clothes with Plants</h3>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+
+  <!-- EBOOKS UPSELL -->
+  <div class="library__divider">
+    <span></span>
+    <span class="library__divider-text">Want to take it further?</span>
+    <span></span>
+  </div>
+  <div class="books">
+    <a href="https://payhip.com/b/JQK1R" class="book" target="_blank" rel="noopener">
+      <div class="book__img"><img src="../images/from-site/guide_460x@2x.jpg.webp" alt=""></div>
+      <p class="book__tag">Ebook 01</p>
+      <h3 class="book__name">A Pocket Intro to Natural Dyeing</h3>
+      <p class="book__desc">Fibers, dyes, and the logic of color from plants.</p>
+      <span class="book__link">View</span>
+    </a>
+    <a href="https://payhip.com/b/S4DQ7" class="book" target="_blank" rel="noopener">
+      <div class="book__img"><img src="../images/from-site/mordants_460x@2x.jpg.webp" alt=""></div>
+      <p class="book__tag">Ebook 02</p>
+      <h3 class="book__name">The Mordant Book</h3>
+      <p class="book__desc">How mordants work, and how to get consistent results.</p>
+      <span class="book__link">View</span>
+    </a>
+    <a href="https://payhip.com/b/37rFn" class="book" target="_blank" rel="noopener">
+      <div class="book__img"><img src="../images/from-site/kit_460x@2x.jpg.webp" alt=""></div>
+      <p class="book__tag">Ebook 03</p>
+      <h3 class="book__name">The Dye Garden Manual</h3>
+      <p class="book__desc">Which plants to grow, and how to use them.</p>
+      <span class="book__link">View</span>
+    </a>
+  </div>
+
+  <footer class="footer">
+    <div>
+      <a href="../portfolio.html">Portfolio</a>
+      <a href="../services.html">Services</a>
+      <a href="../practice.html">Practice</a>
+      <a href="../blog.html">Library</a>
+      <a href="../about.html">About</a>
+    </div>
+    <div>
+      <a href="https://www.instagram.com/kaliko_co/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://kaliko.substack.com/" target="_blank" rel="noopener">Substack</a>
+      <a href="../imprint.html">Imprint</a>
+      <a href="../privacy.html">Privacy</a>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var toggle = document.getElementById('navToggle');
+      var overlay = document.getElementById('menuOverlay');
+      if (!toggle || !overlay) return;
+      function open() {
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        toggle.textContent = 'Close';
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        toggle.textContent = 'Menu';
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+      toggle.addEventListener('click', function() {
+        overlay.classList.contains('is-open') ? close() : open();
+      });
+      overlay.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', close);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('is-open')) close();
+      });
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Block draft and experimental files
+Disallow: /index copy.html
+Disallow: /index-portfolio-style.html
+Disallow: /kaliko-logo-fashion-bold.html
+
+Sitemap: https://kaliko.co/sitemap.xml

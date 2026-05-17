@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Main pages -->
+  <url><loc>https://kaliko.co/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://kaliko.co/portfolio.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://kaliko.co/services.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://kaliko.co/practice.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://kaliko.co/about.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <!-- Portfolio projects -->
+  <url><loc>https://kaliko.co/portfolio/highsnobiety.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kaliko.co/portfolio/melisa-minca.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kaliko.co/portfolio/wall-art.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kaliko.co/portfolio/earth-day.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kaliko.co/portfolio/converse.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kaliko.co/portfolio/sampling.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kaliko.co/portfolio/adidas.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kaliko.co/portfolio/hm.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kaliko.co/portfolio/mollie-makes.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kaliko.co/portfolio/team-day.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kaliko.co/portfolio/upcycled-shirts.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kaliko.co/portfolio/greenlab.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kaliko.co/portfolio/clothes-clinic.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+
+  <!-- Blog posts -->
+  <url><loc>https://kaliko.co/blog/16-colors-3-plant-dyes.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog/5-tips-for-dyeing-pink-with-avocado.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog/bundle-dyeing-old-clothes.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog/bundle-dyeing-silk-scarf.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog/dyeing-with-beetroot.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog/dyeing-with-indigo-and-fresh-woad.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog/eco-printing-with-leaves.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog/how-to-dye-with-plants.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog/how-to-print-with-plants-onto-fabric.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog/how-to-warp-a-frame-loom.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog/how-to-weave-a-rag-rug-on-a-frame-loom.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog/how-to-weave-a-scarf-on-a-frame-loom.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog/how-to-weave-on-a-cardboard-loom.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog/list-of-natural-mordants.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog/my-local-dye-plants.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog/oak-leaves-dyeing-tutorial.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog/patchworking-tutorial-diy-quilted-bag.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog/plant-dye-modifiers.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog/plant-dyeing-directory.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog/printing-with-plant-dyes.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog/simple-patterns-on-a-frame-loom.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog/tips-for-natural-dyeing-clothes-with-plants.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog/turning-natural-dye-into-pigment.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kaliko.co/blog/upcycling-clothes-with-natural-dyes.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+
+</urlset>

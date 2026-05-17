@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaliko — Natural dye studio, Berlin</title>
+  <meta name="description" content="Kaliko is the Berlin natural dye studio of Ania Grzeszek. Plant-dyed textile art, commissions for galleries and interiors, collaborations with fashion brands, and activations for teams.">
+  <link rel="canonical" href="https://kaliko.co/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20fill%3D%27%23F7F5F0%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2722%27%20font-family%3D%27Georgia%2Cserif%27%20font-size%3D%2722%27%20font-style%3D%27italic%27%20text-anchor%3D%27middle%27%20fill%3D%27%23614C3E%27%3EK%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Mono', ui-monospace, monospace;
+      background: #F7F5F0;
+      color: #0F0D0A;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    :root {
+      --serif: 'Fraunces', Georgia, serif;
+      --mono:  'DM Mono', ui-monospace, monospace;
+      --bg:    #F7F5F0;
+      --ink:   #3A332D;
+      --line:  rgba(58,51,45,0.14);
+      --muted: rgba(58,51,45,0.58);
+      --indigo:#2B3A52;
+      --madder:#B0584F;
+      --walnut:#614C3E;
+      --weld:  #C6A24E;
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+      padding: 1.4rem 1.8rem; mix-blend-mode: difference; color: #BDC2C3;
+    }
+    .nav a { color: currentColor; }
+    .nav__links { display: flex; gap: 2rem; justify-self: start; }
+    .nav__links a { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .nav__logo { font-family: var(--serif); font-weight: 900; font-style: italic; font-size: 1.7rem; letter-spacing: -0.04em; }
+    .nav__cta { justify-self: end; font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .nav__cta::after { content: ' \2192'; }
+    .nav__menu { display: none; justify-self: start; background: none; border: 0; padding: 0; font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: currentColor; cursor: pointer; }
+
+    /* MOBILE OVERLAY */
+    .menu-overlay { position: fixed; inset: 0; z-index: 100; background: var(--bg); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; }
+    .menu-overlay.is-open { opacity: 1; pointer-events: auto; }
+    .menu-overlay__links { display: flex; flex-direction: column; gap: 1rem; text-align: center; padding: 0 1.5rem; }
+    .menu-overlay__links a { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: clamp(2.4rem, 11vw, 4.5rem); line-height: 1; letter-spacing: -0.03em; color: var(--ink); }
+    .menu-overlay__links a em { font-weight: 900; font-style: italic; }
+
+    /* PAGE HERO */
+    .page-hero {
+      padding: 9rem 1.8rem 3rem;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      gap: 2rem;
+    }
+    .page-hero__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(3.2rem, 9vw, 8rem);
+      line-height: 0.88;
+      letter-spacing: -0.04em;
+    }
+    .page-hero__title em { font-weight: 900; font-style: italic; color: var(--madder); }
+    .page-hero__title span { display: block; }
+    .page-hero__right { display: flex; flex-direction: column; align-items: flex-end; gap: 1.2rem; }
+    .page-hero__lede { font-family: var(--mono); font-size: 12px; color: var(--muted); line-height: 1.8; max-width: 340px; text-align: right; }
+    .page-hero__cta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; border-bottom: 1px solid var(--ink); padding-bottom: 3px; }
+    .page-hero__cta::after { content: ' \2192'; }
+
+    /* MARQUEE */
+    .marquee { background: var(--ink); padding: 1.8rem 0; overflow: hidden; }
+    .marquee__track { display: flex; gap: 4.5rem; align-items: center; animation: scroll 38s linear infinite; width: max-content; }
+    .marquee__item { display: flex; align-items: center; flex-shrink: 0; }
+    .marquee__item img { width: auto; filter: brightness(0) invert(1); opacity: 0.85; }
+    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* SECTION HEADER */
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 3rem 1.8rem 1.5rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .section-head__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+    .head-link {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 3px;
+      display: inline-block;
+    }
+    .head-link::after { content: ' \2192'; }
+    .head-link:hover { opacity: 0.6; }
+
+    /* WORK GRID */
+    .grid-wrap { padding: 1.5rem 1.8rem; }
+    .port-grid {
+      --gap-x: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.6rem var(--gap-x);
+    }
+    .port-grid .tile { display: block; }
+    .port-grid .tile--wide { grid-column: span 2; }
+    .port-grid .frame { position: relative; overflow: hidden; background: rgba(58,51,45,0.05); display: block; }
+    .port-grid .frame::before { content: ''; display: block; padding-top: 125%; }
+    .port-grid .tile--wide .frame::before { padding-top: calc((100% - var(--gap-x)) * 5 / 8); }
+    .port-grid .frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .port-grid .tile:hover .frame img { transform: scale(1.03); }
+    .frame__num { position: absolute; top: 1rem; left: 1rem; font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: #fff; mix-blend-mode: difference; opacity: 0.9; }
+    .tile__caption { display: block; margin-top: 5px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); }
+    .tile__caption em { font-style: normal; color: var(--muted); }
+
+    /* SERVICES */
+    .services { border-top: 1px solid var(--line); }
+    .s-item { display: grid; grid-template-columns: 60px 1fr auto; align-items: baseline; gap: 2rem; padding: 2.4rem 1.8rem; border-bottom: 1px solid var(--line); transition: background 0.3s; cursor: pointer; }
+    .s-item--madder:hover { background: var(--madder); color: #fff; }
+    .s-item--indigo:hover { background: #3A5470; color: #fff; }
+    .s-item--walnut:hover { background: var(--ink); color: #fff; }
+    .s-item__num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--muted); }
+    .s-item--madder:hover .s-item__num, .s-item--indigo:hover .s-item__num, .s-item--walnut:hover .s-item__num { color: rgba(255,255,255,0.55); }
+    .s-item__body { display: flex; flex-direction: column; gap: 0.3rem; }
+    .s-item__name { font-family: var(--serif); font-weight: 300; font-style: italic; font-size: clamp(2.4rem, 6vw, 5rem); line-height: 0.92; letter-spacing: -0.035em; }
+    .s-item--indigo .s-item__name { color: #3A5470; }
+    .s-item--madder .s-item__name { color: var(--madder); }
+    .s-item--walnut .s-item__name { color: var(--walnut); }
+    .s-item--indigo:hover .s-item__name, .s-item--madder:hover .s-item__name, .s-item--walnut:hover .s-item__name { color: #fff; }
+    .s-item__for { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .s-item--madder:hover .s-item__for, .s-item--indigo:hover .s-item__for, .s-item--walnut:hover .s-item__for { color: rgba(255,255,255,0.6); }
+    .s-item__arrow { font-family: var(--serif); font-style: italic; font-size: 1.8rem; transition: transform 0.3s; }
+    .s-item:hover .s-item__arrow { transform: translateX(8px); }
+
+    /* MANIFESTO */
+    .manifesto { padding: 4rem 1.8rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: auto 1fr; gap: 3rem; align-items: start; }
+    .manifesto__label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); padding-top: 0.4rem; white-space: nowrap; }
+    .manifesto__text { font-family: var(--serif); font-weight: 300; font-style: italic; font-size: clamp(1.6rem, 3.8vw, 3.2rem); line-height: 1.08; letter-spacing: -0.025em; }
+    .manifesto__text em { font-weight: 900; color: #3A5470; }
+    .manifesto__more { display: inline-block; margin-top: 1.6rem; font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
+    .manifesto__more::after { content: ' \2192'; }
+
+    /* ABOUT */
+    .about { border-bottom: 1px solid var(--line); }
+    .about__grid { display: grid; grid-template-columns: 5fr 7fr; }
+    .about__img { overflow: hidden; min-height: 480px; border-right: 1px solid var(--line); }
+    .about__img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .about__body { padding: 3.5rem 2.8rem; display: flex; flex-direction: column; justify-content: center; }
+    .about__eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.4rem; }
+    .about__title { font-family: var(--serif); font-weight: 300; font-style: italic; font-size: clamp(1.8rem, 3.5vw, 3rem); line-height: 1.04; letter-spacing: -0.03em; margin-bottom: 2rem; }
+    .about__title em { font-weight: 900; color: var(--weld); }
+    .about__meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem 2.5rem; padding-top: 1.8rem; border-top: 1px solid var(--line); max-width: 420px; }
+    .about__meta dt { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+    .about__meta dd { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 1.1rem; }
+    .about__link { display: inline-block; margin-top: 2rem; font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; border-bottom: 1px solid var(--ink); padding-bottom: 3px; }
+    .about__link::after { content: ' \2192'; }
+
+    /* LIBRARY */
+    .library { padding: 3rem 1.8rem 4rem; border-top: 1px solid var(--line); }
+    .library__head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2rem; }
+    .library__title { font-family: var(--serif); font-weight: 300; font-style: italic; font-size: clamp(1.6rem, 3.5vw, 2.8rem); line-height: 0.95; letter-spacing: -0.03em; }
+
+    /* 4 posts per row */
+    .posts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem 1.5rem; }
+    .post__img { aspect-ratio: 4/3; overflow: hidden; margin-bottom: 6px; }
+    .post__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .post:hover .post__img img { transform: scale(1.03); }
+    .post__meta { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+    .post__title { font-family: var(--serif); font-weight: 300; font-style: italic; font-size: 1.15rem; line-height: 1.15; letter-spacing: -0.015em; }
+
+    /* EBOOKS — upsell strip, shown at bottom of each blog post card AND as standalone section */
+    .ebooks-strip {
+      padding: 3rem 1.8rem 4rem;
+      border-top: 1px solid var(--line);
+      background: rgba(58,51,45,0.03);
+    }
+    .ebooks-strip__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2rem;
+    }
+    .ebooks-strip__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+    .ebooks-strip__sub {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .ebooks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem 1.5rem;
+    }
+    .ebook-card {
+      display: block;
+    }
+    .ebook-card__img {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: rgba(58,51,45,0.06);
+      margin-bottom: 8px;
+    }
+    .ebook-card__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .ebook-card:hover .ebook-card__img img { transform: scale(1.03); }
+    .ebook-card__tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+    .ebook-card__name { font-family: var(--serif); font-weight: 300; font-style: italic; font-size: 1.2rem; line-height: 1.2; letter-spacing: -0.015em; margin-bottom: 4px; }
+    .ebook-card__cta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--muted); padding-bottom: 2px; display: inline-block; transition: color 0.2s, border-color 0.2s; }
+    .ebook-card:hover .ebook-card__cta { color: var(--ink); border-color: var(--ink); }
+    .ebook-card__cta::after { content: ' \2197'; }
+
+    /* INQUIRE */
+    .inquire { background: var(--indigo); color: #fff; padding: 3rem 1.8rem 4rem; display: flex; flex-direction: column; gap: 2rem; }
+    .inquire__eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+    .inquire__title { font-family: var(--serif); font-weight: 300; font-style: italic; font-size: clamp(2rem, 5vw, 4rem); line-height: 0.9; letter-spacing: -0.04em; }
+    .inquire__title em { font-weight: 900; color: var(--bg); }
+    .inquire__lede { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 1.15rem; line-height: 1.5; color: rgba(255,255,255,0.7); max-width: 480px; }
+    .inquire__email { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: clamp(1.3rem, 2.5vw, 1.8rem); border-bottom: 1px solid rgba(255,255,255,0.5); padding-bottom: 6px; align-self: flex-start; }
+    .inquire__email:hover { border-color: #fff; }
+
+    /* FOOTER */
+    .footer { background: var(--ink); color: var(--bg); padding: 1.2rem 1.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; }
+    .footer a { opacity: 0.65; margin-right: 1.5rem; }
+    .footer a:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .nav__links { display: none; }
+      .nav__menu { display: block; }
+      .page-hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 2.5rem; }
+      .page-hero__right { align-items: flex-start; }
+      .page-hero__lede { text-align: left; }
+      .port-grid { --gap-x: 1rem; grid-template-columns: repeat(2, 1fr); }
+      .port-grid .tile--wide { grid-column: span 2; }
+      .s-item { grid-template-columns: 30px 1fr; padding: 1.8rem 1.5rem; }
+      .s-item__arrow { display: none; }
+      .manifesto { grid-template-columns: 1fr; gap: 0.8rem; }
+      .about__grid { grid-template-columns: 1fr; }
+      .about__img { min-height: 60vw; border-right: none; border-bottom: 1px solid var(--line); }
+      .about__body { padding: 2.5rem 1.5rem; }
+      .posts { grid-template-columns: repeat(2, 1fr); gap: 1.2rem 1rem; }
+      .ebooks-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <nav class="nav__links">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="services.html">Services</a>
+      <a href="practice.html">Practice</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Library</a>
+    </nav>
+    <button class="nav__menu" id="navToggle" aria-label="Open menu" aria-controls="menuOverlay" aria-expanded="false">Menu</button>
+    <a href="index.html" class="nav__logo">kaliko</a>
+    <a href="mailto:hello@kaliko.co" class="nav__cta">Inquire</a>
+  </header>
+
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+    <nav class="menu-overlay__links">
+      <a href="portfolio.html"><em>Portfolio</em></a>
+      <a href="services.html"><em>Services</em></a>
+      <a href="practice.html"><em>Practice</em></a>
+      <a href="about.html"><em>About</em></a>
+      <a href="blog.html"><em>Library</em></a>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <h1 class="page-hero__title">
+      <span>Dyed by hand</span>
+      <span><em>With plants.</em></span>
+      <span>In Berlin</span>
+    </h1>
+    <div class="page-hero__right">
+      <p class="page-hero__lede">Installations, capsules and one-off pieces for fashion brands, interior designers and artists.</p>
+      <a href="portfolio.html" class="page-hero__cta">See portfolio</a>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee">
+    <div class="marquee__track">
+      <span class="marquee__item"><img src="images/logo-adidas.svg" alt="Adidas" style="height: 28px;"></span>
+      <span class="marquee__item"><img src="images/logo-converse.svg" alt="Converse" style="height: 30px;"></span>
+      <span class="marquee__item"><img src="images/logo-highsnobiety.svg" alt="Highsnobiety" style="height: 15px;"></span>
+      <span class="marquee__item"><img src="images/logo-terrex.svg" alt="adidas Terrex" style="height: 22px;"></span>
+      <span class="marquee__item"><img src="images/logo-zalando.svg" alt="Zalando" style="height: 16px;"></span>
+      <span class="marquee__item"><img src="images/logo-nb.svg" alt="New Balance" style="height: 22px;"></span>
+      <span class="marquee__item"><img src="images/logo-molliemakes.png" alt="Mollie Makes" style="height: 34px;"></span>
+      <span class="marquee__item"><img src="images/logo-eucerin.svg" alt="Eucerin" style="height: 18px;"></span>
+      <span class="marquee__item"><img src="images/logo-ard.svg" alt="ARD" style="height: 18px;"></span>
+      <span class="marquee__item"><img src="images/logo-adidas.svg" alt="Adidas" style="height: 28px;"></span>
+      <span class="marquee__item"><img src="images/logo-converse.svg" alt="Converse" style="height: 30px;"></span>
+      <span class="marquee__item"><img src="images/logo-highsnobiety.svg" alt="Highsnobiety" style="height: 15px;"></span>
+      <span class="marquee__item"><img src="images/logo-terrex.svg" alt="adidas Terrex" style="height: 22px;"></span>
+      <span class="marquee__item"><img src="images/logo-zalando.svg" alt="Zalando" style="height: 16px;"></span>
+      <span class="marquee__item"><img src="images/logo-nb.svg" alt="New Balance" style="height: 22px;"></span>
+      <span class="marquee__item"><img src="images/logo-molliemakes.png" alt="Mollie Makes" style="height: 34px;"></span>
+      <span class="marquee__item"><img src="images/logo-eucerin.svg" alt="Eucerin" style="height: 18px;"></span>
+      <span class="marquee__item"><img src="images/logo-ard.svg" alt="ARD" style="height: 18px;"></span>
+    </div>
+  </div>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="section-head">
+      <h2 class="section-head__title"><em>Selected work.</em></h2>
+      <a href="portfolio.html" class="head-link">See all</a>
+    </div>
+    <div class="grid-wrap">
+      <div class="port-grid">
+        <a class="tile tile--wide" href="portfolio/highsnobiety.html">
+          <div class="frame"><img src="images/portfolio/highsnobiety.jpg" alt="Hand-dyed Highsnobiety hoodie"><span class="frame__num">01</span></div>
+          <span class="tile__caption">Brand collab · <em>Highsnobiety</em></span>
+        </a>
+        <a class="tile" href="portfolio/melisa-minca.html">
+          <div class="frame"><img src="images/portfolio/bless2.JPG" alt="Hand-dyed textile sample for Melisa Minca"><span class="frame__num">02</span></div>
+          <span class="tile__caption">Fashion · <em>Melisa Minca</em></span>
+        </a>
+        <a class="tile" href="portfolio/wall-art.html">
+          <div class="frame"><img src="images/portfolio/wallhanging-commision.jpg" alt="Plant-dyed wall hanging commission"><span class="frame__num">03</span></div>
+          <span class="tile__caption">Private commission · <em>Wall art</em></span>
+        </a>
+        <a class="tile" href="portfolio/earth-day.html">
+          <div class="frame"><img src="images/portfolio/earth-day1.JPG" alt="Earth Day patchwork installation detail"><span class="frame__num">04</span></div>
+          <span class="tile__caption">Installation · <em>Earth Day</em></span>
+        </a>
+        <a class="tile tile--wide" href="portfolio/converse.html">
+          <div class="frame"><img src="images/portfolio/converse2.jpg" alt="Hand-dyed Converse sneakers" style="object-position: center 80%;"><span class="frame__num">05</span></div>
+          <span class="tile__caption">Brand activation · <em>Converse</em></span>
+        </a>
+        <a class="tile" href="portfolio/sampling.html">
+          <div class="frame"><img src="images/portfolio/sampling3.JPG" alt="Plant dye sampling on fabric"><span class="frame__num">06</span></div>
+          <span class="tile__caption">Sampling process · <em>Swatches</em></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-head">
+      <h2 class="section-head__title"><em>Services.</em></h2>
+      <a href="services.html" class="head-link">Details</a>
+    </div>
+    <div class="services">
+      <a class="s-item s-item--indigo" href="#inquire">
+        <span class="s-item__num">01</span>
+        <div class="s-item__body">
+          <h3 class="s-item__name"><em>Commissions.</em></h3>
+          <span class="s-item__for">For galleries, interiors &amp; artists</span>
+        </div>
+        <span class="s-item__arrow">&#x2197;</span>
+      </a>
+      <a class="s-item s-item--madder" href="#inquire">
+        <span class="s-item__num">02</span>
+        <div class="s-item__body">
+          <h3 class="s-item__name"><em>Activations.</em></h3>
+          <span class="s-item__for">For brands &amp; agencies</span>
+        </div>
+        <span class="s-item__arrow">&#x2197;</span>
+      </a>
+      <a class="s-item s-item--walnut" href="#inquire">
+        <span class="s-item__num">03</span>
+        <div class="s-item__body">
+          <h3 class="s-item__name"><em>Collaborations.</em></h3>
+          <span class="s-item__for">For fashion &amp; independent designers</span>
+        </div>
+        <span class="s-item__arrow">&#x2197;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <section id="practice" class="manifesto">
+    <p class="manifesto__label">On the practice</p>
+    <div class="manifesto__body">
+      <p class="manifesto__text">Natural dyeing is slow and often unpredictable. Working with living material means <em>honoring that slow pace</em> and making space for color that shifts, breathes, and refuses to be standardized.</p>
+      <a href="practice.html" class="manifesto__more">About the process</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <div class="section-head">
+      <h2 class="section-head__title"><em>About.</em></h2>
+      <a href="about.html" class="head-link">More about Kaliko</a>
+    </div>
+    <div class="about__grid">
+      <div class="about__img">
+        <img src="images/collab-ania.jpg" alt="Ania Grzeszek">
+      </div>
+      <div class="about__body">
+        <p class="about__eyebrow">Ania Grzeszek · Berlin</p>
+        <h2 class="about__title">Architect by training.<br><em>Natural dyer by practice.</em></h2>
+        <dl class="about__meta">
+          <dt>Based in</dt><dd>Berlin</dd>
+          <dt>Practice since</dt><dd>2016</dd>
+          <dt>Medium</dt><dd>Textiles, plant-based dyeing, weaving</dd>
+        </dl>
+        <a href="about.html" class="about__link">Read more</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIBRARY — 4 posts per row -->
+  <section id="library" class="library">
+    <div class="library__head">
+      <h2 class="library__title"><em>Field notes</em><br>from the dye studio.</h2>
+      <a href="blog.html" class="head-link">All posts</a>
+    </div>
+    <div class="posts">
+      <a href="blog/16-colors-3-plant-dyes.html" class="post">
+        <div class="post__img"><img src="images/gallery-about.png" alt=""></div>
+        <p class="post__meta">Guide · 8 min</p>
+        <h3 class="post__title">16 colors with just 3 plant dyes</h3>
+      </a>
+      <a href="blog/upcycling-clothes-with-natural-dyes.html" class="post">
+        <div class="post__img"><img src="images/blog/upcycling-1-banner.jpg" alt=""></div>
+        <p class="post__meta">Tutorial · 9 min</p>
+        <h3 class="post__title">Upcycling clothes with natural dyes</h3>
+      </a>
+      <a href="blog/how-to-dye-with-plants.html" class="post">
+        <div class="post__img"><img src="images/blog/how-to-dye-1-banner.jpg" alt=""></div>
+        <p class="post__meta">Tutorial · 10 min</p>
+        <h3 class="post__title">How to dye fabric with plants</h3>
+      </a>
+      <a href="blog/dyeing-with-indigo-and-fresh-woad.html" class="post">
+        <div class="post__img"><img src="images/blog/how-to-dye-1-banner.jpg" alt=""></div>
+        <p class="post__meta">Tutorial · 7 min</p>
+        <h3 class="post__title">Dyeing with indigo and fresh woad</h3>
+      </a>
+    </div>
+  </section>
+
+  <!-- EBOOKS UPSELL -->
+  <section class="ebooks-strip">
+    <div class="ebooks-strip__head">
+      <h2 class="ebooks-strip__title"><em>Take it further.</em></h2>
+      <span class="ebooks-strip__sub">Guides from the studio</span>
+    </div>
+    <div class="ebooks-grid">
+      <a href="https://kaliko.gumroad.com/" class="ebook-card" target="_blank" rel="noopener">
+        <div class="ebook-card__img"><img src="images/from-site/guide_460x@2x.jpg.webp" alt="A Pocket Intro to Natural Dyeing"></div>
+        <p class="ebook-card__tag">Ebook 01</p>
+        <h3 class="ebook-card__name">A Pocket Intro to Natural Dyeing</h3>
+        <span class="ebook-card__cta">Get it on Gumroad</span>
+      </a>
+      <a href="https://kaliko.gumroad.com/" class="ebook-card" target="_blank" rel="noopener">
+        <div class="ebook-card__img"><img src="images/from-site/mordants_460x@2x.jpg.webp" alt="The Mordant Book"></div>
+        <p class="ebook-card__tag">Ebook 02</p>
+        <h3 class="ebook-card__name">The Mordant Book</h3>
+        <span class="ebook-card__cta">Get it on Gumroad</span>
+      </a>
+      <a href="https://kaliko.gumroad.com/" class="ebook-card" target="_blank" rel="noopener">
+        <div class="ebook-card__img"><img src="images/from-site/kit_460x@2x.jpg.webp" alt="The Dye Garden Manual"></div>
+        <p class="ebook-card__tag">Ebook 03</p>
+        <h3 class="ebook-card__name">The Dye Garden Manual</h3>
+        <span class="ebook-card__cta">Get it on Gumroad</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- INQUIRE -->
+  <section id="inquire" class="inquire">
+    <p class="inquire__eyebrow">Start a project</p>
+    <h2 class="inquire__title">Let's <em>make</em><br>something together.</h2>
+    <p class="inquire__lede">Capsules for fashion, installations for interiors, palettes for brands, workshops for teams.</p>
+    <a href="mailto:hello@kaliko.co" class="inquire__email">hello@kaliko.co &#x2192;</a>
+  </section>
+
+  <footer class="footer">
+    <div>
+      <a href="imprint.html">Imprint</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="https://www.instagram.com/kaliko_co/">Instagram</a>
+      <a href="https://kaliko.substack.com/">Substack</a>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var toggle = document.getElementById('navToggle');
+      var overlay = document.getElementById('menuOverlay');
+      if (!toggle || !overlay) return;
+      function open() {
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        toggle.textContent = 'Close';
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        toggle.textContent = 'Menu';
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+      toggle.addEventListener('click', function() {
+        overlay.classList.contains('is-open') ? close() : open();
+      });
+      overlay.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', close);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('is-open')) close();
+      });
+    })();
+  </script>
+
+</body>
+</html>

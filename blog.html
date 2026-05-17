@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library — Kaliko</title>
+  <meta name="description" content="Field notes from the Kaliko dye studio — tutorials, process notes, and ebooks on natural dyeing, mordants, weaving, and dye gardens.">
+  <link rel="canonical" href="https://kaliko.co/blog.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20fill%3D%27%23F7F5F0%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2722%27%20font-family%3D%27Georgia%2Cserif%27%20font-size%3D%2722%27%20font-style%3D%27italic%27%20text-anchor%3D%27middle%27%20fill%3D%27%23614C3E%27%3EK%3C/text%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Kaliko">
+  <meta property="og:title" content="Library — Kaliko">
+  <meta property="og:description" content="Field notes from the Kaliko dye studio — tutorials, process notes, and ebooks on natural dyeing, mordants, weaving, and dye gardens.">
+  <meta property="og:url" content="https://kaliko.co/blog.html">
+  <meta property="og:image" content="https://kaliko.co/images/gallery-blog.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Library — Kaliko">
+  <meta name="twitter:description" content="Field notes from the Kaliko dye studio — tutorials, process notes, and ebooks on natural dyeing, mordants, weaving, and dye gardens.">
+  <meta name="twitter:image" content="https://kaliko.co/images/gallery-blog.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,900&family=DM+Mono:wght@400;500&family=Caveat:wght@500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Mono', ui-monospace, monospace;
+      background: #F7F5F0;
+      color: #0F0D0A;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+    button { font-family: inherit; }
+
+    :root {
+      --serif:  'Fraunces', Georgia, serif;
+      --mono:   'DM Mono', ui-monospace, monospace;
+      --hand:   'Caveat', cursive;
+      --bg:     #F7F5F0;
+      --ink:    #3A332D;
+      --line:   rgba(58,51,45,0.14);
+      --muted:  rgba(58,51,45,0.58);
+      --indigo: #2B3A52;
+      --madder: #B0584F;
+      --weld:   #C6A24E;
+      --walnut: #614C3E;
+      --onion:  #C17B42;
+    }
+
+    .label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .link-line {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 4px;
+      display: inline-block;
+    }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 50;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 1.4rem 1.8rem;
+      mix-blend-mode: difference;
+      color: #BDC2C3;
+    }
+    .nav a { color: currentColor; }
+    .nav__links { display: flex; gap: 2rem; justify-self: start; }
+    .nav__links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .nav__logo {
+      font-family: var(--serif);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 1.7rem;
+      letter-spacing: -0.04em;
+    }
+    .nav__cta {
+      justify-self: end;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .nav__cta::after { content: ' \2192'; }
+    .nav__menu {
+      display: none;
+      justify-self: start;
+      background: none; border: 0; padding: 0;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: currentColor;
+      cursor: pointer;
+    }
+
+    /* ── MOBILE OVERLAY ──────────────────────────────── */
+    .menu-overlay {
+      position: fixed; inset: 0; z-index: 100;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .menu-overlay.is-open { opacity: 1; pointer-events: auto; }
+    .menu-overlay__links {
+      display: flex; flex-direction: column; gap: 1rem;
+      text-align: center; padding: 0 1.5rem;
+    }
+    .menu-overlay__links a {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(2.4rem, 11vw, 4.5rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+    }
+    .menu-overlay__links a em { font-weight: 900; font-style: italic; }
+
+    /* ── PAGE HEADER ──────────────────────────────────── */
+    .page-header {
+      padding: 10rem 1.8rem 4rem;
+      max-width: 1100px;
+    }
+    .page-header .label { margin-bottom: 1.6rem; display: block; }
+    .page-header__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      line-height: 0.9;
+      letter-spacing: -0.035em;
+      color: var(--ink);
+      margin-bottom: 1.8rem;
+    }
+    .page-header__title em {
+      font-weight: 900;
+      font-style: italic;
+      color: var(--onion);
+    }
+    .page-header__sub {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0;
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* ── LIBRARY TOP — featured + ebooks in two cols ──── */
+    .library-top {
+      margin: 5rem 1.8rem 4rem;
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .library-top__label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    /* FEATURED (left col) */
+    .featured {
+      display: block;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .featured__img {
+      aspect-ratio: 3/2;
+      overflow: hidden;
+      margin-bottom: 0;
+    }
+    .featured__img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .featured:hover .featured__img img { transform: scale(1.02); }
+    .featured::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(232,227,218,0.96) 0%, rgba(232,227,218,0.72) 34%, rgba(232,227,218,0) 62%);
+      pointer-events: none;
+    }
+    .featured__body {
+      position: absolute;
+      left: 2.2rem;
+      right: 2.2rem;
+      bottom: 2rem;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      max-width: 620px;
+    }
+    .featured__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+    }
+    .featured__excerpt {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+    .featured .link-line {
+      align-self: flex-start;
+      margin-top: 0.2rem;
+      color: var(--ink);
+    }
+
+    /* ── FILTER BAR ───────────────────────────────────── */
+    .filter-bar {
+      padding: 1.2rem 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin: 0 0 4rem;
+      background: var(--bg);
+    }
+    .filter-bar__label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-right: 0.8rem;
+    }
+    .filter-chip {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.45rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      cursor: pointer;
+      background: transparent;
+      transition: all 0.2s ease;
+    }
+    .filter-chip:hover {
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+    .filter-chip.is-active {
+      background: var(--ink);
+      color: var(--bg);
+      border-color: var(--ink);
+    }
+    .filter-chip__count {
+      opacity: 0.5;
+      margin-left: 0.3em;
+      font-size: 9px;
+    }
+    .filter-chip.is-active .filter-chip__count { opacity: 0.7; }
+
+    /* ── POST GRID ────────────────────────────────────── */
+    .posts-section { padding: 0 1.8rem 5rem; }
+    .posts {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3rem 2rem;
+    }
+    .post.is-hidden { display: none; }
+    .post__img {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      background: rgba(58,51,45,0.04);
+    }
+    .post__img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .post:hover .post__img img { transform: scale(1.03); }
+    .post__meta {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .post__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.35rem;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+    }
+
+    /* ── DIVIDER ──────────────────────────────────────── */
+    .library__divider {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 2rem 1.8rem;
+    }
+    .library__divider::before,
+    .library__divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+    .library__divider span {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* EBOOKS (right col) — quiet vertical list, matched to photo height */
+    .books-section {
+      padding: 0;
+      margin: 0;
+      background: transparent;
+      border: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .books {
+      display: grid;
+      grid-template-rows: repeat(3, minmax(0, 1fr));
+      aspect-ratio: 1 / 1;
+      background: rgba(97,76,62,0.055);
+      padding: 1.4rem 1.6rem;
+      border: 1px solid var(--line);
+    }
+    .book {
+      display: grid;
+      grid-template-columns: 28% 1fr;
+      gap: 1.4rem;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      transition: none;
+      min-width: 0;
+      min-height: 0;
+      overflow: hidden;
+    }
+    .book:first-child { padding-top: 0; }
+    .book:last-child { border-bottom: 0; padding-bottom: 0; }
+    .book:hover { transform: none; box-shadow: none; }
+    .book__img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: rgba(58,51,45,0.05);
+    }
+    .book__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .book:hover .book__img img { transform: scale(1.03); }
+    .book__body {
+      padding: 0.2rem 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .book__name {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.35rem;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+    }
+    .book__desc {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .book__link {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: transparent;
+      padding: 0;
+      margin-top: 0.5rem;
+      align-self: flex-start;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 3px;
+      transition: opacity 0.2s;
+    }
+    .book:hover .book__link { opacity: 0.6; }
+    .book__link::after { content: ' \2192'; }
+
+    /* ── NEWSLETTER STRIP ─────────────────────────────── */
+    .newsletter {
+      background: var(--ink);
+      color: var(--bg);
+      padding: 3rem 1.8rem 3rem;
+    }
+    .newsletter__inner { max-width: 640px; }
+    .newsletter .label {
+      color: rgba(247,245,240,0.55);
+      margin-bottom: 1.4rem;
+      display: block;
+    }
+    .newsletter__heading {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(2.2rem, 6vw, 3.6rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--bg);
+      margin-bottom: 1.4rem;
+    }
+    .newsletter__heading em { font-weight: 900; font-style: italic; color: var(--bg); }
+    .newsletter__desc {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: rgba(247,245,240,0.72);
+      line-height: 1.75;
+      letter-spacing: 0;
+      margin-bottom: 2rem;
+    }
+    .newsletter__annot {
+      font-family: var(--hand);
+      font-size: 1.4rem;
+      color: rgba(247,245,240,0.75);
+      margin-top: 1.4rem;
+      transform: rotate(-1.5deg);
+      display: inline-block;
+    }
+    .newsletter .link-line { color: var(--bg); }
+
+    /* ── FOOTER ───────────────────────────────────────── */
+    .footer {
+      background: var(--ink);
+      color: var(--bg);
+      padding: 1.2rem 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-top: 1px solid rgba(247,245,240,0.1);
+    }
+    .footer a { opacity: 0.65; margin-right: 1.5rem; }
+    .footer a:hover { opacity: 1; }
+
+    /* ── RESPONSIVE ───────────────────────────────────── */
+    @media (max-width: 960px) {
+      .posts { grid-template-columns: repeat(2, 1fr); }
+      .library-top {
+        grid-template-columns: 1fr;
+        gap: 2.4rem;
+        margin: 3rem 1.4rem 3rem;
+      }
+      .featured__body {
+        left: 1.4rem;
+        right: 1.4rem;
+        bottom: 1.4rem;
+        gap: 0.7rem;
+      }
+      .books {
+        aspect-ratio: auto;
+        grid-template-rows: auto auto auto;
+        padding: 0.2rem 1.2rem;
+      }
+      .book {
+        grid-template-columns: 30% 1fr;
+        gap: 1.2rem;
+        min-height: auto;
+        align-items: center;
+        padding: 1.1rem 0;
+      }
+      .book__img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+      }
+      .book__name { font-size: 1.25rem; }
+      .book__desc { font-size: 11.5px; line-height: 1.6; }
+    }
+    @media (max-width: 860px) {
+      .nav__links { display: none; }
+      .nav__menu { display: block; }
+      .featured__img { aspect-ratio: 4/3; }
+      .filter-bar {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        scrollbar-width: none;
+        padding: 0.9rem 1.4rem;
+        gap: 0.4rem;
+        margin: 0 0 3rem;
+      }
+      .filter-bar::-webkit-scrollbar { display: none; }
+      .filter-bar__label { display: none; }
+      .filter-chip {
+        flex-shrink: 0;
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        padding: 0.4rem 0.85rem;
+      }
+      .filter-chip__count { font-size: 8.5px; }
+    }
+    @media (max-width: 540px) {
+      .posts { grid-template-columns: 1fr; }
+      .library-top {
+        margin: 2rem 1.2rem 2.5rem;
+        gap: 2rem;
+      }
+      .featured__img { aspect-ratio: 3/4; }
+      .featured__body {
+        left: 1.1rem;
+        right: 1.1rem;
+        bottom: 1.1rem;
+        gap: 0.6rem;
+      }
+      .featured__title { font-size: clamp(1.6rem, 6vw, 2rem); }
+      .featured__excerpt { font-size: 11.5px; line-height: 1.65; }
+      .books { padding: 0.2rem 0.9rem; }
+      .book {
+        grid-template-columns: 34% 1fr;
+        gap: 1rem;
+        padding: 1rem 0;
+      }
+      .book__img { width: 100%; }
+      .book__name { font-size: 1.15rem; }
+      .book__desc { font-size: 11px; line-height: 1.55; }
+      .book__link { font-size: 11.5px; margin-top: 0.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1 style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">Library — field notes from the Kaliko dye studio</h1>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <nav class="nav__links">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="services.html">Services</a>
+      <a href="practice.html">Practice</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Library</a>
+    </nav>
+    <button class="nav__menu" id="navToggle" aria-label="Open menu" aria-controls="menuOverlay" aria-expanded="false">Menu</button>
+    <a href="index.html" class="nav__logo">kaliko</a>
+    <a href="mailto:hello@kaliko.co" class="nav__cta">Inquire</a>
+  </header>
+
+  <!-- MOBILE OVERLAY -->
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+    <nav class="menu-overlay__links">
+      <a href="portfolio.html"><em>Portfolio</em></a>
+      <a href="services.html"><em>Services</em></a>
+      <a href="practice.html"><em>Practice</em></a>
+      <a href="about.html"><em>About</em></a>
+      <a href="blog.html"><em>Library</em></a>
+    </nav>
+  </div>
+
+  <!-- LIBRARY TOP: featured left, ebooks right -->
+  <section class="library-top">
+
+    <!-- FEATURED (left) -->
+    <div>
+      <p class="library-top__label">Featured read</p>
+      <a href="blog/16-colors-3-plant-dyes.html" class="featured" aria-label="Featured post: Sixteen colors from three plant dyes">
+        <div class="featured__img">
+          <img src="images/blog/3dyes-1-banner.jpg" alt="Sixteen colors from three plant dyes">
+        </div>
+        <div class="featured__body">
+          <h2 class="featured__title">Sixteen colors from three plant dyes.</h2>
+          <p class="featured__excerpt">One workshop table, three dye plants, sixteen distinct shades. How chamomile, hollyhock and madder, shifted by mordant, pH and overdye, can carry a full palette on their own.</p>
+          <span class="link-line">Read article &#8594;</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- EBOOKS (right) -->
+    <div class="books-section">
+      <p class="library-top__label">Ebooks</p>
+      <div class="books">
+
+        <a href="https://payhip.com/b/JQK1R" target="_blank" rel="noopener" class="book">
+          <div class="book__img"><img src="images/from-site/guide_460x@2x.jpg.webp" alt="A Pocket Intro to Natural Dyeing"></div>
+          <div class="book__body">
+            <span class="book__name">A Pocket Intro to Natural Dyeing</span>
+            <span class="book__desc">Everything you need to start dyeing with plants &mdash; mordants, dye baths, fibers, first mistakes.</span>
+            <span class="book__link">Buy</span>
+          </div>
+        </a>
+
+        <a href="https://payhip.com/b/S4DQ7" target="_blank" rel="noopener" class="book">
+          <div class="book__img"><img src="images/from-site/mordants_460x@2x.jpg.webp" alt="The Mordant Book"></div>
+          <div class="book__body">
+            <span class="book__name">The Mordant Book</span>
+            <span class="book__desc">A plain-language guide to mordants &mdash; alum, iron, tannin, acetate, what they do and when.</span>
+            <span class="book__link">Buy</span>
+          </div>
+        </a>
+
+        <a href="https://payhip.com/b/37rFn" target="_blank" rel="noopener" class="book">
+          <div class="book__img"><img src="images/from-site/kit_460x@2x.jpg.webp" alt="The Dye Garden Manual"></div>
+          <div class="book__body">
+            <span class="book__name">The Dye Garden Manual</span>
+            <span class="book__desc">Grow your own dye plants &mdash; planting, harvesting, seasonal color from a temperate climate.</span>
+            <span class="book__link">Buy</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar" role="toolbar" aria-label="Filter posts">
+    <span class="filter-bar__label">Filter</span>
+    <button class="filter-chip is-active" data-filter="all" type="button">All<span class="filter-chip__count">23</span></button>
+    <button class="filter-chip" data-filter="tutorials" type="button">Tutorials<span class="filter-chip__count">08</span></button>
+    <button class="filter-chip" data-filter="plants" type="button">Plants<span class="filter-chip__count">05</span></button>
+    <button class="filter-chip" data-filter="mordants" type="button">Mordants<span class="filter-chip__count">05</span></button>
+    <button class="filter-chip" data-filter="natural-dyeing" type="button">Natural dyeing<span class="filter-chip__count">04</span></button>
+    <button class="filter-chip" data-filter="weaving" type="button">Weaving<span class="filter-chip__count">05</span></button>
+  </div>
+
+  <!-- POST FEED -->
+  <section class="posts-section">
+    <ul class="posts" id="posts">
+
+      <li class="post" data-tags="tutorials">
+        <a href="blog/how-to-dye-with-plants.html">
+          <div class="post__img"><img src="images/blog/c07a75b9-a3ca-40cc-8f4e-6aee2ec84a68_3024x3024_d2aaff27-994f-497b-9ca7-8386daa0593b_1024x1024.webp" alt="A beginner's guide to plant dyeing"></div>
+          <p class="post__meta">Beginner guide &middot; 10 min</p>
+          <h3 class="post__title">How to dye with plants.</h3>
+        </a>
+      </li>
+
+      <li class="post" data-tags="tutorials">
+        <a href="blog/bundle-dyeing-silk-scarf.html">
+          <div class="post__img"><img src="images/blog/bundle-scarf-1-banner.png" alt="Silk scarf bundle-dyed with flowers"></div>
+          <p class="post__meta">Tutorial &middot; 6 min</p>
+          <h3 class="post__title">Bundle-dyeing a silk scarf with flowers.</h3>
+        </a>
+      </li>
+
+      <li class="post" data-tags="plants">
+        <a href="blog/my-local-dye-plants.html">
+          <div class="post__img"><img src="images/blog/local-dye-plants-1-banner.png" alt="Local dye plants in Berlin"></div>
+          <p class="post__meta">Plant portrait &middot; 7 min</p>
+          <h3 class="post__title">My local dye plants in Berlin.</h3>
+        </a>
+      </li>
+
+      <li class="post" data-tags="mordants">
+        <a href="blog/list-of-natural-mordants.html">
+          <div class="post__img"><img src="images/blog/IMG20230107113858_1024x1024.jpg" alt="List of natural mordants"></div>
+          <p class="post__meta">Reference &middot; 10 min</p>
+          <h3 class="post__title">A list of natural mordants.</h3>
+        </a>
+      </li>
+
+      <li class="post" data-tags="tutorials">
+        <a href="blog/eco-printing-with-leaves.html">
+          <div class="post__img"><img src="images/blog/IMG20230115125808_1024x1024.jpg" alt="Eco-printing with leaves"></div>
+          <p class="post__meta">Tutorial &middot; 8 min</p>
+          <h3 class="post__title">Eco-printing with leaves.</h3>
+        </a>
+      </li>
+
+      <li class="post" data-tags="plants">
+        <a href="blog/dyeing-with-indigo-and-fresh-woad.html">
+          <div class="post__img"><img src="images/blog/indigo-woad-1-banner.png" alt="Dyeing with indigo and fresh woad"></div>
+          <p class="post__meta">Plant portrait &middot; 8 min</p>
+          <h3 class="post__title">Dyeing with indigo and fresh woad.</h3>
+        </a>
+      </li>
+
+      <li class="post" data-tags="tutorials">
+        <a href="blog/upcycling-clothes-with-natural-dyes.html">
+          <div class="post__img"><img src="images/blog/IMG_20230205_142446_1024x1024.jpg" alt="Upcycling a cotton sweatshirt with iron acetate and tannins"></div>
+          <p class="post__meta">Tutorial &middot; 9 min</p>
+          <h3 class="post__title">Upcycling clothes with natural dyes.</h3>
+        </a>
+      </li>
+
+      <li class="post" data-tags="tutorials">
+        <a href="blog/bundle-dyeing-old-clothes.html">
+          <div class="post__img"><img src="images/blog/a532fa3a-b688-424b-acfd-a4977b96ac68_836x1254_6b47fcc4-9833-4207-8290-c7a24c61fd38_1024x1024.jpg" alt="Turtleneck bundle-dyed with rose petals"></div>
+          <p class="post__meta">Tutorial &middot; 6 min</p>
+          <h3 class="post__title">Bundle-dyeing old clothes without a vat.</h3>
+        </a>
+      </li>
+
+      <li class="post" data-tags="natural-dyeing">
+        <a href="blog/16-colors-3-plant-dyes.html">
+          <div class="post__img"><img src="images/blog/3dyes-1-banner.jpg" alt="Sixteen colors from three plant dyes"></div>
+          <p class="post__meta">Natural dyeing &middot; 8 min</p>
+          <h3 class="post__title">Sixteen colors from three plant dyes.</h3>
+        </a>
+      </li>
+
+      <li class="post" data-tags="tutorials">
+        <a href="blog/printing-with-plant-dyes.html">
+          <div class="post__img"><img src="images/blog/f62753c5-eee6-46d7-a913-f4df0a017e3f_2804x3505_37c97555-893e-4fd8-8aa8-19fd9600eff7_1024x1024.jpg" alt="Iron-mordant block printing on bedsheets"></div>
+          <p class="post__meta">Tutorial &middot; 7 min</p>
+          <h3 class="post__title">Printing with plant dyes.</h3>
+        </a>
+      </li>
+
+      <li class="post" data-tags="plants">
+        <a href="blog/dyeing-with-beetroot.html">
+          <div class="post__img"><img src="images/blog/0b5185e6-ad7a-4a6f-94e7-d22cc2bdbf4f_2579x3224_124409a4-730c-4ac3-9f41-ce9883aad88a_1024x1024.jpg" alt="Why beetroot isn't a real dye"></div>
+          <p class="post__meta">Myth-busting &middot; 5 min</p>
+          <h3 class="post__title">Dyeing with beetroot &mdash; and why you shouldn't.</h3>
+        </a>
+      </li>
+
+      <li class="post" data-tags="mordants">
+        <a href="blog/plant-dye-modifiers.html">
+          <div class="post__img"><img src="images/blog/plant-dye-modifiers-1-banner.jpg" alt="Modifying plant dyes with iron, water and vinegar"></div>
+          <p class="post__meta">Reference &middot; 8 min</p>
+          <h3 class="post__title">Plant dye modifiers &mdash; iron, water, vinegar.</h3>
+        </a>
+      </li>
+
+      <li class="post" data-tags="plants tutorials">
+        <a href="blog/oak-leaves-dyeing-tutorial.html">
+          <div class="post__img"><img src="images/blog/0b373700-6ab9-4c42-afa9-c3876d1f4721_2987x3734_f9fbfc84-b443-4e5b-897a-add5bbbebc74_1024x1024.webp" alt="Dyeing with oak leaves"></div>
+          <p class="post__meta">Plant portrait &middot; 7 min</p>
+          <h3 class="post__title">Oak leaves, iron and autumn greys.</h3>
+        </a>
+      </li>
+
+      <li class="post" data-tags="tutorials">
+        <a href="blog/patchworking-tutorial-diy-quilted-bag.html">
+          <div class="post__img"><img src="images/blog/patchwork-1-banner.png" alt="Patchworked quilted bag from offcuts"></div>
+          <p class="post__meta">Tutorial &middot; 7 min</p>
+          <h3 class="post__title">Patchworking &mdash; a DIY quilted bag.</h3>
+        </a>
+      </li>
+
+      <li class="post" data-tags="tutorials">
+        <a href="blog/tips-for-natural-dyeing-clothes-with-plants.html">
+          <div class="post__img"><img src="images/blog/tips-1-banner.png" alt="Tips for natural-dyeing garments"></div>
+          <p class="post__meta">Practical notes &middot; 8 min</p>
+          <h3 class="post__title">Tips for natural-dyeing clothes with plants.</h3>
+        </a>
+      </li>
+
+      <li class="post" data-tags="mordants">
+        <a href="blog/turning-natural-dye-into-pigment.html">
+          <div class="post__img"><img src="images/blog/IMG_20230122_132144_1024x1024.jpg" alt="Turning spent dye baths into lake pigments"></div>
+          <p class="post__meta">Deep dive &middot; 9 min</p>
+          <h3 class="post__title">Turning natural dye into pigment.</h3>
+        </a>
+      </li>
+
+      <li class="post" data-tags="mordants">
+        <a href="blog/plant-dyeing-directory.html">
+          <div class="post__img"><img src="images/blog/plant-dyeing-directory-1-banner.png" alt="Directory of plant dyeing methods"></div>
+          <p class="post__meta">Reference &middot; 9 min</p>
+          <h3 class="post__title">Plant dyeing directory &mdash; acid, mordants, soy.</h3>
+        </a>
+      </li>
+
+      <li class="post" data-tags="plants">
+        <a href="blog/5-tips-for-dyeing-pink-with-avocado.html">
+          <div class="post__img"><img src="images/blog/avocado-pink-1-banner.png" alt="Dyeing pink with avocado stones"></div>
+          <p class="post__meta">Plant portrait &middot; 6 min</p>
+          <h3 class="post__title">Five tips for dyeing pink with avocado.</h3>
+        </a>
+      </li>
+
+      <li class="post" data-tags="tutorials">
+        <a href="blog/how-to-print-with-plants-onto-fabric.html">
+          <div class="post__img"><img src="images/blog/plant-print-1-banner.png" alt="Printing with plants onto fabric"></div>
+          <p class="post__meta">Tutorial &middot; 6 min</p>
+          <h3 class="post__title">How to print with plants onto fabric.</h3>
+        </a>
+      </li>
+
+      <li class="post" data-tags="weaving">
+        <a href="blog/how-to-warp-a-frame-loom.html">
+          <div class="post__img"><img src="images/blog/warp-frame-loom-1-banner.png" alt="How to warp a frame loom"></div>
+          <p class="post__meta">Weaving &middot; 8 min</p>
+          <h3 class="post__title">How to warp a frame loom with a heddle bar.</h3>
+        </a>
+      </li>
+
+      <li class="post" data-tags="weaving">
+        <a href="blog/how-to-weave-a-scarf-on-a-frame-loom.html">
+          <div class="post__img"><img src="images/blog/weave-scarf-1-banner.jpg" alt="Weaving a scarf on a frame loom"></div>
+          <p class="post__meta">Weaving &middot; 12 min</p>
+          <h3 class="post__title">How to weave a scarf on a frame loom.</h3>
+        </a>
+      </li>
+
+      <li class="post" data-tags="weaving">
+        <a href="blog/how-to-weave-a-rag-rug-on-a-frame-loom.html">
+          <div class="post__img"><img src="images/blog/rag-rug-1-banner.png" alt="Weaving a rag rug on a frame loom"></div>
+          <p class="post__meta">Weaving &middot; 10 min</p>
+          <h3 class="post__title">How to weave a rag rug on a frame loom.</h3>
+        </a>
+      </li>
+
+      <li class="post" data-tags="weaving">
+        <a href="blog/simple-patterns-on-a-frame-loom.html">
+          <div class="post__img"><img src="images/blog/frame-loom-patterns.png" alt="Simple weaving patterns"></div>
+          <p class="post__meta">Weaving &middot; 11 min</p>
+          <h3 class="post__title">Simple patterns on a frame loom.</h3>
+        </a>
+      </li>
+
+      <li class="post" data-tags="weaving">
+        <a href="blog/how-to-weave-on-a-cardboard-loom.html">
+          <div class="post__img"><img src="images/blog/cardboard-loom-1-banner.jpg" alt="Weaving on a DIY cardboard loom"></div>
+          <p class="post__meta">Weaving &middot; 9 min</p>
+          <h3 class="post__title">How to weave on a simple cardboard loom.</h3>
+        </a>
+      </li>
+
+    </ul>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter" id="inquire">
+    <div class="newsletter__inner">
+      <span class="label">Stay close</span>
+      <h2 class="newsletter__heading">More writing,<br>straight to your <em>inbox.</em></h2>
+      <p class="newsletter__desc">Sign up for occasional plant portraits, dye experiments and studio notes. Sent when there's something worth sharing.</p>
+      <a href="https://kaliko.substack.com/" target="_blank" rel="noopener" class="link-line">Subscribe on Substack &#8594;</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div>
+      <a href="imprint.html">Imprint</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="https://www.instagram.com/kaliko_co/">Instagram</a>
+      <a href="https://kaliko.substack.com/">Substack</a>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    (function() {
+      var toggle = document.getElementById('navToggle');
+      var overlay = document.getElementById('menuOverlay');
+      if (!toggle || !overlay) return;
+      function open() {
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        toggle.textContent = 'Close';
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        toggle.textContent = 'Menu';
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+      toggle.addEventListener('click', function() {
+        overlay.classList.contains('is-open') ? close() : open();
+      });
+      overlay.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', close);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('is-open')) close();
+      });
+    })();
+
+    // Post filter
+    (function() {
+      var chips = document.querySelectorAll('.filter-chip');
+      var posts = document.querySelectorAll('.post');
+      chips.forEach(function(chip) {
+        chip.addEventListener('click', function() {
+          var filter = chip.getAttribute('data-filter');
+          chips.forEach(function(c) { c.classList.remove('is-active'); });
+          chip.classList.add('is-active');
+          posts.forEach(function(p) {
+            var tags = (p.getAttribute('data-tags') || '').split(' ');
+            var show = filter === 'all' || tags.indexOf(filter) !== -1;
+            p.classList.toggle('is-hidden', !show);
+          });
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>

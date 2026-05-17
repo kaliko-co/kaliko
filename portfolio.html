@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — Kaliko, Berlin</title>
+  <meta name="description" content="Selected natural dye projects — brand collaborations, private commissions, installations, editorials and workshops since 2016.">
+  <link rel="canonical" href="https://kaliko.co/portfolio.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20fill%3D%27%23F7F5F0%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2722%27%20font-family%3D%27Georgia%2Cserif%27%20font-size%3D%2722%27%20font-style%3D%27italic%27%20text-anchor%3D%27middle%27%20fill%3D%27%23614C3E%27%3EK%3C/text%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Kaliko">
+  <meta property="og:title" content="Portfolio — Kaliko, Berlin">
+  <meta property="og:description" content="Selected natural dye projects — brand collaborations, private commissions, installations, editorials and workshops since 2016.">
+  <meta property="og:url" content="https://kaliko.co/portfolio.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Mono', ui-monospace, monospace;
+      background: #F7F5F0;
+      color: #0F0D0A;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    :root {
+      --serif: 'Fraunces', Georgia, serif;
+      --mono:  'DM Mono', ui-monospace, monospace;
+      --bg:    #F7F5F0;
+      --ink:   #3A332D;
+      --line:  rgba(58,51,45,0.14);
+      --muted: rgba(58,51,45,0.58);
+      --indigo:#2B3A52;
+      --madder:#B0584F;
+      --walnut:#614C3E;
+      --weld:  #C6A24E;
+    }
+
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+      padding: 1.4rem 1.8rem; mix-blend-mode: difference; color: #BDC2C3;
+    }
+    .nav a { color: currentColor; }
+    .nav__links { display: flex; gap: 2rem; justify-self: start; }
+    .nav__links a { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .nav__logo { font-family: var(--serif); font-weight: 900; font-style: italic; font-size: 1.7rem; letter-spacing: -0.04em; }
+    .nav__cta { justify-self: end; font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .nav__cta::after { content: ' \2192'; }
+    .nav__menu { display: none; justify-self: start; background: none; border: 0; padding: 0; font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: currentColor; cursor: pointer; }
+
+    .menu-overlay { position: fixed; inset: 0; z-index: 100; background: var(--bg); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; }
+    .menu-overlay.is-open { opacity: 1; pointer-events: auto; }
+    .menu-overlay__links { display: flex; flex-direction: column; gap: 1rem; text-align: center; padding: 0 1.5rem; }
+    .menu-overlay__links a { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: clamp(2.4rem, 11vw, 4.5rem); line-height: 1; letter-spacing: -0.03em; color: var(--ink); }
+    .menu-overlay__links a em { font-weight: 900; font-style: italic; }
+
+    .page-hero {
+      padding: 9rem 1.8rem 1.5rem;
+    }
+    .page-hero__lede {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 420px;
+    }
+
+    .grid-wrap { padding: 1.5rem 1.8rem 6rem; }
+    .port-grid {
+      --gap-x: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.6rem var(--gap-x);
+    }
+    .port-grid .tile { display: block; }
+    .port-grid .tile--wide { grid-column: span 2; }
+    .port-grid .frame {
+      position: relative;
+      overflow: hidden;
+      background: rgba(58,51,45,0.05);
+      display: block;
+    }
+    /* Aspect via padding-top — resolves to element's own width */
+    .port-grid .frame::before {
+      content: '';
+      display: block;
+      padding-top: 125%; /* 4:5 normal tile */
+    }
+    /* Wide tile spans 2 cols; its own width = 2 * col + gap, so
+       target height = col * 1.25 = (own_width - gap) * 5/8 */
+    .port-grid .tile--wide .frame::before {
+      padding-top: calc((100% - var(--gap-x)) * 5 / 8);
+    }
+    .port-grid .frame img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease, filter 0.3s ease;
+    }
+    .port-grid .tile:hover .frame img { transform: scale(1.03); }
+    .frame__num {
+      position: absolute; top: 1rem; left: 1rem;
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+      color: #fff; mix-blend-mode: difference; opacity: 0.9;
+    }
+    .tile__caption {
+      display: block;
+      margin-top: 1px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .tile__caption em {
+      font-style: normal;
+      color: var(--muted);
+    }
+
+    .inquire {
+      background: var(--indigo); color: #fff; padding: 3rem 1.8rem 4rem;
+      display: flex; flex-direction: column; gap: 2rem;
+    }
+    .inquire__eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+    .inquire__title { font-family: var(--serif); font-weight: 300; font-style: italic; font-size: clamp(2rem, 5vw, 4rem); line-height: 0.9; letter-spacing: -0.04em; }
+    .inquire__title em { font-weight: 900; color: var(--bg); }
+    .inquire__email { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: clamp(1.3rem, 2.5vw, 1.8rem); border-bottom: 1px solid rgba(255,255,255,0.5); padding-bottom: 6px; align-self: flex-start; }
+    .inquire__email:hover { border-color: #fff; }
+
+    .footer { background: var(--ink); color: var(--bg); padding: 1.2rem 1.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; }
+    .footer a { opacity: 0.65; margin-right: 1.5rem; }
+    .footer a:hover { opacity: 1; }
+
+    @media (max-width: 860px) {
+      .nav__links { display: none; }
+      .nav__menu { display: block; }
+      .page-hero { padding-top: 6.5rem; }
+      .port-grid {
+        --cols: 2;
+        --gap-x: 1rem;
+        --gap-y: 1rem;
+      }
+      .port-grid .tile--wide { grid-column: span 2; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <nav class="nav__links">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="services.html">Services</a>
+      <a href="practice.html">Practice</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Library</a>
+    </nav>
+    <button class="nav__menu" id="navToggle" aria-label="Open menu" aria-controls="menuOverlay" aria-expanded="false">Menu</button>
+    <a href="index.html" class="nav__logo">kaliko</a>
+    <a href="mailto:hello@kaliko.co" class="nav__cta">Inquire</a>
+  </header>
+
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+    <nav class="menu-overlay__links">
+      <a href="portfolio.html"><em>Portfolio</em></a>
+      <a href="services.html"><em>Services</em></a>
+      <a href="practice.html"><em>Practice</em></a>
+      <a href="about.html"><em>About</em></a>
+      <a href="blog.html"><em>Library</em></a>
+    </nav>
+  </div>
+
+  <section class="page-hero">
+    <h1 class="page-hero__title" style="font-family:var(--serif);font-weight:900;font-style:italic;font-size:clamp(2rem,4vw,3rem);letter-spacing:-0.04em;color:var(--ink);margin-bottom:0.6rem;">Portfolio</h1>
+    <p class="page-hero__lede">Selected projects — brand collaborations, private commissions, installations, editorials and workshops.</p>
+  </section>
+
+  <div class="grid-wrap">
+    <div class="port-grid">
+
+      <a class="tile tile--wide" href="portfolio/highsnobiety.html">
+        <div class="frame">
+          <img src="images/portfolio/highsnobiety.jpg" alt="Hand-dyed Highsnobiety hoodie">
+          <span class="frame__num">01</span>
+        </div>
+        <span class="tile__caption">Brand commission · Highsnobiety</span>
+      </a>
+
+      <a class="tile" href="portfolio/melisa-minca.html">
+        <div class="frame">
+          <img src="images/portfolio/bless2.JPG" alt="Hand-dyed textile sample for Melisa Minca">
+          <span class="frame__num">02</span>
+        </div>
+        <span class="tile__caption">Fashion collaboration · Melisa Minca</span>
+      </a>
+
+      <a class="tile" href="portfolio/wall-art.html">
+        <div class="frame">
+          <img src="images/portfolio/wallhanging-commision.jpg" alt="Plant-dyed wall hanging commission">
+          <span class="frame__num">03</span>
+        </div>
+        <span class="tile__caption">Private commission · Wall art</span>
+      </a>
+
+      <a class="tile" href="portfolio/earth-day.html">
+        <div class="frame">
+          <img src="images/portfolio/earth-day1.JPG" alt="Earth Day patchwork installation detail">
+          <span class="frame__num">04</span>
+        </div>
+        <span class="tile__caption">Installation · Earth Day</span>
+      </a>
+
+      <a class="tile tile--wide" href="portfolio/converse.html">
+        <div class="frame">
+          <img src="images/portfolio/converse2.jpg" alt="Hand-dyed Converse sneakers" style="object-position: center 80%;">
+          <span class="frame__num">05</span>
+        </div>
+        <span class="tile__caption">Brand commission · Converse</span>
+      </a>
+
+      <a class="tile" href="portfolio/sampling.html">
+        <div class="frame">
+          <img src="images/portfolio/sampling3.JPG" alt="Plant dye sampling on fabric">
+          <span class="frame__num">06</span>
+        </div>
+        <span class="tile__caption">Color research · Swatches</span>
+      </a>
+
+      <a class="tile" href="portfolio/adidas.html">
+        <div class="frame">
+          <img src="images/portfolio/adidas2.JPG" alt="Plant-dyed Adidas samples">
+          <span class="frame__num">07</span>
+        </div>
+        <span class="tile__caption">Brand activation · Adidas</span>
+      </a>
+
+      <a class="tile" href="portfolio/hm.html">
+        <div class="frame">
+          <img src="images/portfolio/hm.jpg" alt="Hand-dyed H&amp;M capsule">
+          <span class="frame__num">08</span>
+        </div>
+        <span class="tile__caption">Sponsored project · H&amp;M</span>
+      </a>
+
+      <a class="tile tile--wide" href="portfolio/mollie-makes.html">
+        <div class="frame">
+          <img src="images/portfolio/Molliemakes-Tablelinens2.jpg" alt="Hand-dyed linen placemats for Mollie Makes">
+          <span class="frame__num">09</span>
+        </div>
+        <span class="tile__caption">Editorial · Mollie Makes</span>
+      </a>
+
+      <a class="tile" href="portfolio/clothes-clinic.html">
+        <div class="frame">
+          <img src="images/portfolio/clothesclinic.JPG" alt="Clothes Clinic repair and overdye">
+          <span class="frame__num">10</span>
+        </div>
+        <span class="tile__caption">Public art event · Clothes Clinic</span>
+      </a>
+
+      <a class="tile" href="portfolio/greenlab.html">
+        <div class="frame">
+          <img src="images/portfolio/greenlab2.jpg" alt="GreenLab textile installation">
+          <span class="frame__num">11</span>
+        </div>
+        <span class="tile__caption">Brand activation · GreenLab</span>
+      </a>
+
+      <a class="tile" href="portfolio/upcycled-shirts.html">
+        <div class="frame">
+          <img src="images/portfolio/upcycled-shirt1.JPG" alt="Upcycled plant-dyed shirts">
+          <span class="frame__num">12</span>
+        </div>
+        <span class="tile__caption">Private commission · Upcycled shirts</span>
+      </a>
+
+      <a class="tile" href="portfolio/team-day.html">
+        <div class="frame">
+          <img src="images/portfolio/team-building1.JPG" alt="Team-day dyeing activation">
+          <span class="frame__num">13</span>
+        </div>
+        <span class="tile__caption">Workshop · Team day</span>
+      </a>
+
+    </div>
+  </div>
+
+  <section class="inquire">
+    <p class="inquire__eyebrow">Start a project</p>
+    <h2 class="inquire__title">Have a brief? <em>Let's talk.</em></h2>
+    <a href="mailto:hello@kaliko.co" class="inquire__email">hello@kaliko.co</a>
+  </section>
+
+  <footer class="footer">
+    <div>
+      <a href="imprint.html">Imprint</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="https://www.instagram.com/kaliko_co/">Instagram</a>
+      <a href="https://kaliko.substack.com/">Substack</a>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var toggle = document.getElementById('navToggle');
+      var overlay = document.getElementById('menuOverlay');
+      if (!toggle || !overlay) return;
+      function open() {
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        toggle.textContent = 'Close';
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        toggle.textContent = 'Menu';
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+      toggle.addEventListener('click', function() {
+        overlay.classList.contains('is-open') ? close() : open();
+      });
+      overlay.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', close);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('is-open')) close();
+      });
+    })();
+  </script>
+
+</body>
+</html>

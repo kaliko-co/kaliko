@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Weave a Rag Rug on a Frame Loom — Kaliko</title>
+  <meta name="description" content="Weave a natural linen rag rug on a frame loom using fabric strips. A step-by-step tutorial with edge-control and finishing tips.">
+  <link rel="canonical" href="https://kaliko.co/blog/how-to-weave-a-rag-rug-on-a-frame-loom.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20fill%3D%27%23F7F5F0%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2722%27%20font-family%3D%27Georgia%2Cserif%27%20font-size%3D%2722%27%20font-style%3D%27italic%27%20text-anchor%3D%27middle%27%20fill%3D%27%23614C3E%27%3EK%3C/text%3E%3C/svg%3E">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Kaliko">
+  <meta property="og:title" content="How to Weave a Rag Rug on a Frame Loom — Kaliko">
+  <meta property="og:description" content="Weave a natural linen rag rug on a frame loom using fabric strips. A step-by-step tutorial with edge-control and finishing tips.">
+  <meta property="og:url" content="https://kaliko.co/blog/how-to-weave-a-rag-rug-on-a-frame-loom.html">
+  <meta property="og:image" content="https://kaliko.co/images/hero-slideshow-1.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Weave a Rag Rug on a Frame Loom — Kaliko">
+  <meta name="twitter:description" content="Weave a natural linen rag rug on a frame loom using fabric strips. A step-by-step tutorial with edge-control and finishing tips.">
+  <meta name="twitter:image" content="https://kaliko.co/images/hero-slideshow-1.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Mono', ui-monospace, monospace;
+      background: #F7F5F0;
+      color: #0F0D0A;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    :root {
+      --serif: 'Fraunces', Georgia, serif;
+      --mono:  'DM Mono', ui-monospace, monospace;
+      --bg:    #F7F5F0;
+      --ink:   #3A332D;
+      --line:  rgba(58,51,45,0.14);
+      --muted: rgba(58,51,45,0.58);
+      --indigo:#2B3A52;
+      --madder:#B0584F;
+      --walnut:#614C3E;
+    }
+
+    .label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .link-line {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 4px;
+      display: inline-block;
+    }
+
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 50;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 1.4rem 1.8rem;
+      mix-blend-mode: difference;
+      color: #BDC2C3;
+    }
+    .nav a { color: currentColor; }
+    .nav__links { display: flex; gap: 2rem; justify-self: start; }
+    .nav__links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .nav__logo {
+      font-family: var(--serif);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 1.7rem;
+      letter-spacing: -0.04em;
+    }
+    .nav__cta {
+      justify-self: end;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .nav__cta::after { content: ' \2192'; }
+    .nav__menu {
+      display: none;
+      justify-self: start;
+      background: none; border: 0; padding: 0;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: currentColor;
+      cursor: pointer;
+    }
+
+    .menu-overlay {
+      position: fixed; inset: 0; z-index: 100;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .menu-overlay.is-open { opacity: 1; pointer-events: auto; }
+    .menu-overlay__links {
+      display: flex; flex-direction: column; gap: 1rem;
+      text-align: center; padding: 0 1.5rem;
+    }
+    .menu-overlay__links a {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(2.4rem, 11vw, 4.5rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+    }
+    .menu-overlay__links a em { font-weight: 900; font-style: italic; }
+
+    .post-hero {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 7.5rem 1.8rem 2rem;
+    }
+    .post-hero__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+    .post-hero__eyebrow em {
+      font-style: normal;
+      color: var(--walnut);
+    }
+    .post-hero__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 1.2rem;
+    }
+    .post-hero__title em {
+      font-weight: 900;
+      font-style: italic;
+      color: var(--walnut);
+    }
+
+    .post-lead {
+      max-width: 960px;
+      margin: 2rem auto 0;
+      padding: 0 1.8rem;
+    }
+    .post-lead__frame {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .post-lead__frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .article {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 3.5rem 1.8rem 2rem;
+    }
+    .article p {
+      margin-bottom: 1.3rem;
+      color: var(--ink);
+      line-height: 1.75;
+      font-size: 14.5px;
+    }
+    .article h2 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.6rem;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin: 2.6rem 0 0.9rem;
+    }
+    .article h2 em { font-weight: 300; font-style: italic; color: var(--walnut); }
+    .article h3 {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--walnut);
+      margin: 2rem 0 0.8rem;
+    }
+    .article ul {
+      list-style: disc;
+      padding-left: 1.3rem;
+      margin-bottom: 1.3rem;
+      color: var(--ink);
+    }
+    .article ul ul {
+      list-style: circle;
+      margin-top: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+    .article ul li {
+      margin-bottom: 0.7rem;
+      line-height: 1.75;
+      font-size: 14.5px;
+    }
+    .article em { font-style: italic; }
+    .article strong { font-weight: 500; color: var(--ink); }
+    .article__img {
+      width: 100%;
+      margin: 1.8rem 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .article__img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .article__pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin: 1.8rem 0;
+    }
+    .article__pair .article__img { margin: 0; }
+    .article a {
+      border-bottom: 1px solid var(--muted);
+      color: var(--ink);
+      transition: border-color 0.2s;
+    }
+    .article a:hover { border-color: var(--ink); }
+
+    .post-nav {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.8rem;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .related {
+      padding: 4rem 1.8rem 3rem;
+      border-top: 1px solid var(--line);
+    }
+    .related__heading {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.6rem;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 2.4rem;
+    }
+    .posts {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+    .post__img {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    .post__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .post:hover .post__img img { transform: scale(1.03); }
+    .post__meta {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .post__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.3rem;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+    }
+
+    .footer {
+      background: var(--ink);
+      color: var(--bg);
+      padding: 1.2rem 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-top: 1px solid rgba(247,245,240,0.1);
+    }
+    .footer a { opacity: 0.65; margin-right: 1.5rem; }
+    .footer a:hover { opacity: 1; }
+
+    @media (max-width: 860px) {
+      .nav__links { display: none; }
+      .nav__menu { display: block; }
+      .posts { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 540px) {
+      .posts { grid-template-columns: 1fr; }
+      .article__pair { grid-template-columns: 1fr; }
+    }
+
+    /* EBOOKS UPSELL — matches index.html */
+    .library__divider { display: flex; align-items: center; gap: 1.5rem; margin: 2rem 0 2.5rem; padding: 0 1.8rem; }
+    .library__divider span:first-child, .library__divider span:last-child { flex: 1; height: 1px; background: var(--line); }
+    .library__divider-text { font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: var(--muted); white-space: nowrap; }
+    .books { display: flex; flex-direction: column; padding: 0 1.8rem 4rem; }
+    .book { display: grid; grid-template-columns: 56px 32px auto 1fr auto; align-items: center; gap: 1.2rem; padding: 0.9rem 0; border-top: 1px solid var(--line); }
+    .book__desc { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0; }
+    .books .book:last-child { border-bottom: 1px solid var(--line); }
+    .book__img { width: 56px; height: 56px; overflow: hidden; }
+    .book__img img { width: 100%; height: 100%; object-fit: cover; }
+    .book__tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+    .book__name { font-family: var(--serif); font-weight: 300; font-style: italic; font-size: 1.1rem; line-height: 1.2; }
+    .book__link { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; }
+    .book:hover .book__link { color: var(--ink); }
+    .book__link::after { content: ' ↗'; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "How to Weave a Rag Rug on a Frame Loom",
+    "description": "Weave a natural linen rag rug on a frame loom using fabric strips. A step-by-step tutorial with edge-control and finishing tips.",
+    "url": "https://kaliko.co/blog/how-to-weave-a-rag-rug-on-a-frame-loom.html",
+    "publisher": {
+      "@type": "Person",
+      "name": "Ania Grzeszek",
+      "url": "https://kaliko.co"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <nav class="nav__links">
+      <a href="../portfolio.html">Portfolio</a>
+      <a href="../services.html">Services</a>
+      <a href="../practice.html">Practice</a>
+      <a href="../about.html">About</a>
+      <a href="../blog.html">Library</a>
+    </nav>
+    <button class="nav__menu" id="navToggle" aria-label="Open menu" aria-controls="menuOverlay" aria-expanded="false">Menu</button>
+    <a href="../index.html" class="nav__logo">kaliko</a>
+    <a href="mailto:hello@kaliko.co" class="nav__cta">Inquire</a>
+  </header>
+
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+    <nav class="menu-overlay__links">
+      <a href="../portfolio.html"><em>Portfolio</em></a>
+      <a href="../services.html"><em>Services</em></a>
+      <a href="../practice.html"><em>Practice</em></a>
+      <a href="../about.html"><em>About</em></a>
+      <a href="../blog.html"><em>Library</em></a>
+    </nav>
+  </div>
+
+  <header class="post-hero">
+    <div class="post-hero__eyebrow"><em>◆</em>Tutorial · Weaving</div>
+    <h1 class="post-hero__title">A linen <em>rag rug</em> on a frame loom.</h1>
+  </header>
+
+  <figure class="post-lead">
+    <div class="post-lead__frame">
+      <img src="../images/blog/rag-rug-1-banner.png" alt="Handwoven linen rag rug dyed with alder cones">
+    </div>
+  </figure>
+
+  <article class="article">
+
+    <p>This project had been on my list for a long time. But, as with all projects meant to be personal, it tended to slip slowly down the to-do list. Now the time has come, and I finally got to make this rug for my bathroom. It's meant to sit next to the bathtub and soak the water off wet feet. But it does more than that. It has a lovely texture &mdash; made of natural linen, it gently massages the feet, and it gives a minimalistic, handcrafted look to the interior.</p>
+
+    <p>For this project I used a large wooden frame loom with a detachable warping bar &mdash; the detachable bar is the feature that allows warping for projects longer than the loom itself. If you want to learn how to warp your loom for a rug or a long scarf, there's a separate tutorial on that.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/rag-rug-2.jpg" alt="Handwoven linen rag rug on a frame loom">
+    </div>
+
+    <h2>What you <em>need</em></h2>
+
+    <p>For this project you will need a loom with detachable warp bars, strong cotton or linen warp thread, a few pieces of cardboard for warping, and, of course, leftover fabric strips. I had some old and stained natural linen in my stash. I dyed the fabric with alder cones and iron for a darker shade and cut it lengthwise into 0.7&ndash;1.5 cm wide strips.</p>
+
+    <p>I warped my loom with one thread per notch, which means I only use half of the grooves on the heddle bar. Before you start a big project like that, make samples with different setts and different fabric widths to see which combination you like best.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/rag-rug-3.jpg" alt="Linen fabric strips for weaving a rag rug">
+    </div>
+
+    <h2>Secure the <em>base</em></h2>
+
+    <p>Start by putting a wide piece of cardboard between the alternating warp threads. It will prevent the weaving from sliding down. Next, weave a few passes with the same thread you used for warp to secure the base of your weaving. Once you're done, knot both ends together and start weaving with fabric.</p>
+
+    <p>At this point, don't worry about connecting the strips. Start weaving: over, under, over, etc. single warp threads. I use a heddle bar to speed up the process and create an opening between alternating warp threads.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/rag-rug-4.jpg" alt="Securing the base of a rag rug weaving">
+    </div>
+
+    <h2>Connecting <em>fabric strips</em></h2>
+
+    <p>Once your fabric is too short to make another pass, it's time to connect it to the next strip. Put the ends together with the ends facing the same direction, and fold the tip. Make a small cut, creating small eyelets in both strips.</p>
+
+    <p>This is how they should look when opened. Now, put the new strip to the one you've been weaving with. Both ends should go in opposite directions; the eyelets should match, laying on top of each other. The new strip goes under the previous strip.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/rag-rug-5.jpg" alt="Connecting fabric strips with eyelets">
+    </div>
+
+    <h2>Making a continuous <em>fabric thread</em></h2>
+
+    <p>Now take the other end of the new strip of fabric and place it on top of the eyelet. Push it through the opening and pull it through. Keep pulling until the two strips connect. There should be no bulky knot forming, just a seamless continuation. This way you can keep adding to the fabric thread without having any loose end to take care of later.</p>
+
+    <p>The best thing about rag rugs is that there is almost no finishing needed; once you are done weaving, it's ready to be taken off the loom and used.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/rag-rug-6.jpg" alt="Making a continuous fabric thread for a rag rug">
+    </div>
+
+    <h2>Keep an eye on <em>the edges</em></h2>
+
+    <p>As you keep weaving, the warp threads might start to pull into the center. To avoid that, try these two tricks: first, leave enough fabric on the side. Try leaving more than you think is needed. It will most likely start pulling in anyway.</p>
+
+    <p>You can also control the position of the warp threads using a pen or closed scissors. I kept pushing the warp ends outward as I went, making sure the spacing stayed even.</p>
+
+    <p>Remember to beat the fabric down properly. The rug needs to be beaten down well if you don't want it to turn out flimsy. For a solid structure, use a fork or a comb to beat it down and make the rug stiff.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/rag-rug-7.jpg" alt="Keeping the edges straight on a rag rug">
+    </div>
+
+    <h2>Weave the next <em>sections</em></h2>
+
+    <p>Once you've woven the first section, the weaving shouldn't slip down anymore. Remove the cardboard and wind that first section onto the lower bar by unscrewing the top and the bottom. Screw them back tight once you unwind enough warp.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/rag-rug-8.jpg" alt="Winding the first section onto the bottom bar">
+    </div>
+
+    <h2>Weave on</h2>
+
+    <p>Keep weaving, remembering to leave enough fabric on the sides and to control the warp spacing. I mark my progress with a piece of red yarn attached to the most outward warp and measure the distance until I have enough rug woven. For this project I wanted a 1 m long rug.</p>
+
+    <p>Once you're done, as at the very beginning, add a few passes of cotton thread at the top and knot both ends together.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/rag-rug-9.jpg" alt="Weaving on and marking progress">
+    </div>
+
+    <h2>Cutting it <em>off the loom</em></h2>
+
+    <p>Almost done. Start cutting the warp threads in small groups of two and make an overhand knot to keep the rug from unraveling. If you don't want the fringe, you can weave it in later or sew some fabric tape around the edges. I chose fringe.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/rag-rug-10.jpg" alt="Cutting the rag rug off the loom">
+    </div>
+
+    <h2>Unwind the <em>rug</em></h2>
+
+    <p>My favorite part &mdash; unwinding the project from the warp beam. Now we get to see the results of the hard work. Just unscrew the bottom bar from the loom and unwrap the rug.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/rag-rug-11.jpg" alt="Unwinding the finished rag rug from the loom">
+    </div>
+
+    <h2>Finishing the <em>other end</em></h2>
+
+    <p>As in the previous step, keep cutting the warp threads in groups of two and making an overhand knot. When you're done, there are just two ends to weave in on each side of the rug &mdash; the ones we knotted together when securing the weaving with a few horizontal passes of thread. That's it. Your rug is done.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/rag-rug-12.jpg" alt="Finished handwoven linen rag rug">
+    </div>
+
+    <h2>Handwoven linen rag rug, dyed with <em>alder cones</em></h2>
+
+    <p>This is the end result. It fits perfectly next to my bathtub, and because it's made of natural linen, it absorbs moisture beautifully and dries fast.</p>
+
+  </article>
+
+  <nav class="post-nav">
+    <a href="../blog.html" class="link-line">&#8592; Back to all articles</a>
+    <a href="../blog/16-colors-3-plant-dyes.html" class="link-line">Next article &#8594;</a>
+  </nav>
+
+  <section class="related">
+    <h2 class="related__heading">More from the field notes.</h2>
+    <ul class="posts">
+      <li class="post">
+        <a href="../blog/how-to-warp-a-frame-loom.html">
+          <div class="post__img"><img src="../images/blog/warp-frame-loom-1-banner.png" alt="How to warp a frame loom"></div>
+          <p class="post__meta">Tutorial · Weaving</p>
+          <h3 class="post__title">How to warp a frame loom</h3>
+        </a>
+      </li>
+
+      <li class="post">
+        <a href="../blog/how-to-weave-a-scarf-on-a-frame-loom.html">
+          <div class="post__img"><img src="../images/blog/weave-scarf-1-banner.jpg" alt="How to weave a scarf"></div>
+          <p class="post__meta">Tutorial · Weaving</p>
+          <h3 class="post__title">How to weave a scarf</h3>
+        </a>
+      </li>
+
+      <li class="post">
+        <a href="../blog/simple-patterns-on-a-frame-loom.html">
+          <div class="post__img"><img src="../images/blog/frame-loom-1-banner.png" alt="Simple patterns on a frame loom"></div>
+          <p class="post__meta">Tutorial · Weaving</p>
+          <h3 class="post__title">Simple patterns on a frame loom</h3>
+        </a>
+      </li>
+        
+      <li class="post">
+        <a href="../blog/my-local-dye-plants.html">
+          <div class="post__img"><img src="../images/blog/local-dye-plants-1-banner.png" alt="My Local Dye Plants"></div>
+          <p class="post__meta">Reference · Plants</p>
+          <h3 class="post__title">My Local Dye Plants</h3>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+
+  <!-- EBOOKS UPSELL -->
+  <div class="library__divider">
+    <span></span>
+    <span class="library__divider-text">Want to take it further?</span>
+    <span></span>
+  </div>
+  <div class="books">
+    <a href="https://payhip.com/b/JQK1R" class="book" target="_blank" rel="noopener">
+      <div class="book__img"><img src="../images/from-site/guide_460x@2x.jpg.webp" alt=""></div>
+      <p class="book__tag">Ebook 01</p>
+      <h3 class="book__name">A Pocket Intro to Natural Dyeing</h3>
+      <p class="book__desc">Fibers, dyes, and the logic of color from plants.</p>
+      <span class="book__link">View</span>
+    </a>
+    <a href="https://payhip.com/b/S4DQ7" class="book" target="_blank" rel="noopener">
+      <div class="book__img"><img src="../images/from-site/mordants_460x@2x.jpg.webp" alt=""></div>
+      <p class="book__tag">Ebook 02</p>
+      <h3 class="book__name">The Mordant Book</h3>
+      <p class="book__desc">How mordants work, and how to get consistent results.</p>
+      <span class="book__link">View</span>
+    </a>
+    <a href="https://payhip.com/b/37rFn" class="book" target="_blank" rel="noopener">
+      <div class="book__img"><img src="../images/from-site/kit_460x@2x.jpg.webp" alt=""></div>
+      <p class="book__tag">Ebook 03</p>
+      <h3 class="book__name">The Dye Garden Manual</h3>
+      <p class="book__desc">Which plants to grow, and how to use them.</p>
+      <span class="book__link">View</span>
+    </a>
+  </div>
+
+  <footer class="footer">
+    <div>
+      <a href="../portfolio.html">Portfolio</a>
+      <a href="../services.html">Services</a>
+      <a href="../practice.html">Practice</a>
+      <a href="../blog.html">Library</a>
+      <a href="../about.html">About</a>
+    </div>
+    <div>
+      <a href="https://www.instagram.com/kaliko_co/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://kaliko.substack.com/" target="_blank" rel="noopener">Substack</a>
+      <a href="../imprint.html">Imprint</a>
+      <a href="../privacy.html">Privacy</a>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var toggle = document.getElementById('navToggle');
+      var overlay = document.getElementById('menuOverlay');
+      if (!toggle || !overlay) return;
+      function open() {
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        toggle.textContent = 'Close';
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        toggle.textContent = 'Menu';
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+      toggle.addEventListener('click', function() {
+        overlay.classList.contains('is-open') ? close() : open();
+      });
+      overlay.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', close);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('is-open')) close();
+      });
+    })();
+  </script>
+
+</body>
+</html>

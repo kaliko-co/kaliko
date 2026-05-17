@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Patterns on a Frame Loom — Kaliko</title>
+  <meta name="description" content="How to weave twill, chevron, and diamond patterns on a frame loom. Step-by-step weaving sequences for houndstooth and simple patterns.">
+  <link rel="canonical" href="https://kaliko.co/blog/simple-patterns-on-a-frame-loom.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20fill%3D%27%23F7F5F0%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2722%27%20font-family%3D%27Georgia%2Cserif%27%20font-size%3D%2722%27%20font-style%3D%27italic%27%20text-anchor%3D%27middle%27%20fill%3D%27%23614C3E%27%3EK%3C/text%3E%3C/svg%3E">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Kaliko">
+  <meta property="og:title" content="Simple Patterns on a Frame Loom — Kaliko">
+  <meta property="og:description" content="How to weave twill, chevron, and diamond patterns on a frame loom. Step-by-step weaving sequences for houndstooth and simple patterns.">
+  <meta property="og:url" content="https://kaliko.co/blog/simple-patterns-on-a-frame-loom.html">
+  <meta property="og:image" content="https://kaliko.co/images/hero-slideshow-1.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Simple Patterns on a Frame Loom — Kaliko">
+  <meta name="twitter:description" content="How to weave twill, chevron, and diamond patterns on a frame loom. Step-by-step weaving sequences for houndstooth and simple patterns.">
+  <meta name="twitter:image" content="https://kaliko.co/images/hero-slideshow-1.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Mono', ui-monospace, monospace;
+      background: #F7F5F0;
+      color: #0F0D0A;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    :root {
+      --serif: 'Fraunces', Georgia, serif;
+      --mono:  'DM Mono', ui-monospace, monospace;
+      --bg:    #F7F5F0;
+      --ink:   #3A332D;
+      --line:  rgba(58,51,45,0.14);
+      --muted: rgba(58,51,45,0.58);
+      --indigo:#2B3A52;
+      --madder:#B0584F;
+      --walnut:#614C3E;
+    }
+
+    .label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .link-line {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 4px;
+      display: inline-block;
+    }
+
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 50;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 1.4rem 1.8rem;
+      mix-blend-mode: difference;
+      color: #BDC2C3;
+    }
+    .nav a { color: currentColor; }
+    .nav__links { display: flex; gap: 2rem; justify-self: start; }
+    .nav__links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .nav__logo {
+      font-family: var(--serif);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 1.7rem;
+      letter-spacing: -0.04em;
+    }
+    .nav__cta {
+      justify-self: end;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .nav__cta::after { content: ' \2192'; }
+    .nav__menu {
+      display: none;
+      justify-self: start;
+      background: none; border: 0; padding: 0;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: currentColor;
+      cursor: pointer;
+    }
+
+    .menu-overlay {
+      position: fixed; inset: 0; z-index: 100;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .menu-overlay.is-open { opacity: 1; pointer-events: auto; }
+    .menu-overlay__links {
+      display: flex; flex-direction: column; gap: 1rem;
+      text-align: center; padding: 0 1.5rem;
+    }
+    .menu-overlay__links a {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(2.4rem, 11vw, 4.5rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+    }
+    .menu-overlay__links a em { font-weight: 900; font-style: italic; }
+
+    .post-hero {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 7.5rem 1.8rem 2rem;
+    }
+    .post-hero__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+    .post-hero__eyebrow em {
+      font-style: normal;
+      color: var(--walnut);
+    }
+    .post-hero__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 1.2rem;
+    }
+    .post-hero__title em {
+      font-weight: 900;
+      font-style: italic;
+      color: var(--walnut);
+    }
+
+    .post-lead {
+      max-width: 960px;
+      margin: 2rem auto 0;
+      padding: 0 1.8rem;
+    }
+    .post-lead__frame {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .post-lead__frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .article {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 3.5rem 1.8rem 2rem;
+    }
+    .article p {
+      margin-bottom: 1.3rem;
+      color: var(--ink);
+      line-height: 1.75;
+      font-size: 14.5px;
+    }
+    .article h2 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.6rem;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin: 2.6rem 0 0.9rem;
+    }
+    .article h2 em { font-weight: 300; font-style: italic; color: var(--walnut); }
+    .article h3 {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--walnut);
+      margin: 2rem 0 0.8rem;
+    }
+    .article ul {
+      list-style: disc;
+      padding-left: 1.3rem;
+      margin-bottom: 1.3rem;
+      color: var(--ink);
+    }
+    .article ul ul {
+      list-style: circle;
+      margin-top: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+    .article ul li {
+      margin-bottom: 0.7rem;
+      line-height: 1.75;
+      font-size: 14.5px;
+    }
+    .article em { font-style: italic; }
+    .article strong { font-weight: 500; color: var(--ink); }
+    .article__img {
+      width: 100%;
+      margin: 1.8rem 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .article__img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .article__pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin: 1.8rem 0;
+    }
+    .article__pair .article__img { margin: 0; }
+    .article a {
+      border-bottom: 1px solid var(--muted);
+      color: var(--ink);
+      transition: border-color 0.2s;
+    }
+    .article a:hover { border-color: var(--ink); }
+
+    .post-nav {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.8rem;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .related {
+      padding: 4rem 1.8rem 3rem;
+      border-top: 1px solid var(--line);
+    }
+    .related__heading {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.6rem;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 2.4rem;
+    }
+    .posts {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+    .post__img {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    .post__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .post:hover .post__img img { transform: scale(1.03); }
+    .post__meta {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .post__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.3rem;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+    }
+
+    .footer {
+      background: var(--ink);
+      color: var(--bg);
+      padding: 1.2rem 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-top: 1px solid rgba(247,245,240,0.1);
+    }
+    .footer a { opacity: 0.65; margin-right: 1.5rem; }
+    .footer a:hover { opacity: 1; }
+
+    @media (max-width: 860px) {
+      .nav__links { display: none; }
+      .nav__menu { display: block; }
+      .posts { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 540px) {
+      .posts { grid-template-columns: 1fr; }
+      .article__pair { grid-template-columns: 1fr; }
+    }
+
+    /* EBOOKS UPSELL — matches index.html */
+    .library__divider { display: flex; align-items: center; gap: 1.5rem; margin: 2rem 0 2.5rem; padding: 0 1.8rem; }
+    .library__divider span:first-child, .library__divider span:last-child { flex: 1; height: 1px; background: var(--line); }
+    .library__divider-text { font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: var(--muted); white-space: nowrap; }
+    .books { display: flex; flex-direction: column; padding: 0 1.8rem 4rem; }
+    .book { display: grid; grid-template-columns: 56px 32px auto 1fr auto; align-items: center; gap: 1.2rem; padding: 0.9rem 0; border-top: 1px solid var(--line); }
+    .book__desc { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0; }
+    .books .book:last-child { border-bottom: 1px solid var(--line); }
+    .book__img { width: 56px; height: 56px; overflow: hidden; }
+    .book__img img { width: 100%; height: 100%; object-fit: cover; }
+    .book__tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+    .book__name { font-family: var(--serif); font-weight: 300; font-style: italic; font-size: 1.1rem; line-height: 1.2; }
+    .book__link { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; }
+    .book:hover .book__link { color: var(--ink); }
+    .book__link::after { content: ' ↗'; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Simple Patterns on a Frame Loom",
+    "description": "How to weave twill, chevron, and diamond patterns on a frame loom. Step-by-step weaving sequences for houndstooth and simple patterns.",
+    "url": "https://kaliko.co/blog/simple-patterns-on-a-frame-loom.html",
+    "publisher": {
+      "@type": "Person",
+      "name": "Ania Grzeszek",
+      "url": "https://kaliko.co"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <nav class="nav__links">
+      <a href="../portfolio.html">Portfolio</a>
+      <a href="../services.html">Services</a>
+      <a href="../practice.html">Practice</a>
+      <a href="../about.html">About</a>
+      <a href="../blog.html">Library</a>
+    </nav>
+    <button class="nav__menu" id="navToggle" aria-label="Open menu" aria-controls="menuOverlay" aria-expanded="false">Menu</button>
+    <a href="../index.html" class="nav__logo">kaliko</a>
+    <a href="mailto:hello@kaliko.co" class="nav__cta">Inquire</a>
+  </header>
+
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+    <nav class="menu-overlay__links">
+      <a href="../portfolio.html"><em>Portfolio</em></a>
+      <a href="../services.html"><em>Services</em></a>
+      <a href="../practice.html"><em>Practice</em></a>
+      <a href="../about.html"><em>About</em></a>
+      <a href="../blog.html"><em>Library</em></a>
+    </nav>
+  </div>
+
+  <header class="post-hero">
+    <div class="post-hero__eyebrow"><em>◆</em>Tutorial · Weaving</div>
+    <h1 class="post-hero__title">Simple patterns: <em>twill, chevron, diamond</em>.</h1>
+  </header>
+
+  <figure class="post-lead">
+    <div class="post-lead__frame">
+      <img src="../images/blog/frame-loom-1-banner.png" alt="Simple patterns on a frame loom">
+    </div>
+  </figure>
+
+  <article class="article">
+
+    <p>If you are a weaver who works on a frame loom, you might have come across floor-loom weaving patterns that look equally interesting and intimidating. Floor-loom weavers have to know how to read weaving patterns to set up their looms properly: thread all the ends in the right sequence through the heddles and tie the treadles to the shafts accordingly.</p>
+
+    <p>But the patterns come in handy for frame-loom weavers too, if you know how to decipher them. Luckily, there is no lengthy setup needed when weaving simple patterns on a frame loom &mdash; just some focus and a strict sequence.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/frame-loom-2.jpg" alt="Weaving patterns on a frame loom">
+    </div>
+
+    <h2>How to read <em>weaving patterns</em></h2>
+
+    <p>Every pattern draft consists of four areas: the threading (bottom left), the treadling sequence (right), the treadle tie-up (bottom right), and the big weaving pattern area that shows what the pattern will look like woven. In a weaving pattern, every vertical row of boxes corresponds to a single warp thread, and every horizontal row of boxes corresponds to a single weft thread. A solid box means a weft thread shows over a warp thread; a blank box means a warp thread is visible, with a weft thread going under.</p>
+
+    <h2>Deciding on the number of <em>ends</em> (warp threads)</h2>
+
+    <p>To warp your frame loom properly, have a look at the threading sequence of the pattern (the box on the bottom left) and look for the pattern repeat. For houndstooth, it's 4. Multiply your warp by the number of ends in the pattern repeat. You can also add extra ends on each side for stability. I prepared a warp of 20 (5&times;4) plus an extra 2 ends on each side, for 24 ends total.</p>
+
+    <h2>Writing down <em>the sequence</em></h2>
+
+    <p>The same applies to the treadling sequence. Look for the pattern repeat to know how many passes create a full block. For houndstooth it's 8 passes: 4 white threads plus 4 black threads. That means you will pass the weft 8 times before you repeat this sequence over and over to create the pattern.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/frame-loom-3.jpg" alt="Warping sequence for houndstooth on a frame loom">
+    </div>
+
+    <h2>Warping a frame loom for <em>houndstooth</em></h2>
+
+    <p>As you can see in the pattern draft, the houndstooth pattern is made with two colors of yarn. First, prepare the warp. I am using black and white wool for both warp and weft. Make sure to use rather chunky yarn for this pattern &mdash; it looks best when it's dense.</p>
+
+    <p>I add two extra white warp threads at the beginning, then start warping: 4 black threads, 4 white threads, 4 black threads, and so on. When I'm done, I add 2 more white threads at the end. These two threads at the beginning and at the end are there for support. I will only weave plain weave there, always starting my houndstooth pattern sequence from thread number 3.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/frame-loom-4.jpg" alt="Warping a frame loom for houndstooth">
+    </div>
+
+    <h2>Houndstooth weaving <em>sequence</em></h2>
+
+    <p>To write down the weaving sequence, use a single weaving pattern block, corresponding to the pattern repeats of the threading and treadling. Start at the lower left-hand side &mdash; this is the first crossing of the warp and weft &mdash; and work your way through all the warp ends in the sequence. This is pass number 1 (OVER 2, UNDER 2, OVER 2, UNDER 2, etc.). Go to the row on top of it and write down the sequence, again starting on the left-hand side (UNDER 1, OVER 2, UNDER 2, OVER 2, etc.). Work your way through all 4 passes.</p>
+
+    <p>This is the correct weaving sequence for houndstooth:</p>
+    <ul>
+      <li>OVER 2, UNDER 2, OVER 2, UNDER 2&hellip;</li>
+      <li>UNDER 1, OVER 2, UNDER 2, OVER 2&hellip;</li>
+      <li>UNDER 2, OVER 2, UNDER 2, OVER 2&hellip;</li>
+      <li>OVER 1, UNDER 2, OVER 2, UNDER 2&hellip;</li>
+    </ul>
+
+    <p>Weave steps 1&ndash;4 using the first color. Then repeat steps 1&ndash;4 using the second color. Your first block is finished. Repeat the full pattern sequence until the sample is woven.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/frame-loom-5.jpg" alt="Houndstooth weaving sequence on a frame loom">
+    </div>
+
+    <h2>Weaving the <em>first pick</em> of weft</h2>
+
+    <p>Start by tying your weft to the first warp thread on the left, then go under the second thread to anchor your weft and start your weaving sequence. As mentioned, I start at warp thread number 3, going over 2 threads, under 2 threads, over 2 threads, and I finish before the last two warp ends &mdash; these are again woven in plain weave.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/frame-loom-6.jpg" alt="Weaving the first pick of weft on a frame loom">
+    </div>
+
+    <h2>Working from left to right with a <em>shed stick</em></h2>
+
+    <p>Because my sequence is written down counting from left to right, that's how I count the warp ends too. It might get confusing to go from left to right and then from right to left, so I stick to counting from the left. I use an extra stick to help me count and work as a heddle. I skip the first two warp threads and start counting from thread number 3 again, going under 1 thread, over 2 threads, under 2 threads, etc. I skip the last 2 threads again and open the shed (opening in the warp) by turning the stick. Now, just like before, I weave tabby (plain weave) on the last 2 threads, pass the weft through the shed, and weave tabby on the first two threads to anchor the weft. The first pass is complete.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/frame-loom-7.jpg" alt="Using a shed stick on a frame loom">
+    </div>
+
+    <h2>Finishing the <em>first block</em></h2>
+
+    <p>The full block is 4 passes of white yarn. For the third pass, I skip the side threads and start counting from thread number 3 again, going under 2 threads, over 2 threads, under 2 threads, etc. For the final pass I use a shuttle stick as a heddle, and counting from left to right I go over 1 thread, under 2 threads, over 2 threads, under 2 threads, etc., and pass the yarn through the opening. The first block is now finished and it's time to change the yarn.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/frame-loom-8.jpg" alt="Finishing the first block of houndstooth pattern">
+    </div>
+
+    <h2>Repeating the sequence in <em>black</em></h2>
+
+    <p>The houndstooth pattern is made by alternating between two yarn colors. Both warp and weft are woven in a 4-thread block. After finishing the first block of white weft, use the second color and simply repeat steps 1&ndash;4. You will see the pattern slowly emerging.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/frame-loom-9.jpg" alt="Repeating the houndstooth sequence in black yarn">
+    </div>
+
+    <h2>Working the <em>pattern</em></h2>
+
+    <p>After 4 passes of black yarn, change the color back to white and repeat the full sequence: steps 1&ndash;4 in white, steps 1&ndash;4 in black, etc. You can see a very distinctive pattern building up by now. Continue until you're happy with the size of your weaving.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/frame-loom-10.jpg" alt="Houndstooth pattern building up on a frame loom">
+    </div>
+
+    <h2>Uses — wall hangings, patches, samples</h2>
+
+    <p>You can use this technique to make patterned wall hangings on your frame loom, either as a pattern itself or integrated into a broader design.</p>
+
+    <p>You can also make small patches or patterned coasters, or any other small projects. Sampling patterns on a frame loom can also be a good idea for floor-loom weavers: you can quickly test how yarns work together without the long set-up of a floor loom.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/frame-loom-11.jpg" alt="Frame loom weaving samples and wall hangings">
+    </div>
+
+    <h2>Straight twill <em>sequence</em></h2>
+
+    <p>The twill pattern is a very simple yet beautiful pattern consisting of visual diagonal lines formed in the weaving. The sequence developed from the twill pattern draft (left to right):</p>
+    <ul>
+      <li>OVER 2, UNDER 2, OVER 2, UNDER 2&hellip;</li>
+      <li>UNDER 1, OVER 2, UNDER 2, OVER 2&hellip;</li>
+      <li>UNDER 2, OVER 2, UNDER 2, OVER 2&hellip;</li>
+      <li>OVER 1, UNDER 2, OVER 2, UNDER 2&hellip;</li>
+    </ul>
+
+    <p>Repeat the pattern sequence. The houndstooth pattern is basically a twill pattern with two alternating colors.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/frame-loom-12.jpg" alt="Twill weaving pattern">
+    </div>
+
+    <h2>Reverse twill <em>(chevron)</em> sequence</h2>
+
+    <p>This pattern is also called the chevron pattern &mdash; a very elegant yet simple one. The sequence starts just like straight twill and reverses after the first 4 steps (left to right):</p>
+    <ul>
+      <li>OVER 2, UNDER 2, OVER 2, UNDER 2&hellip;</li>
+      <li>UNDER 1, OVER 2, UNDER 2, OVER 2&hellip;</li>
+      <li>UNDER 2, OVER 2, UNDER 2, OVER 2&hellip;</li>
+      <li>OVER 1, UNDER 2, OVER 2, UNDER 2&hellip;</li>
+      <li>Repeat step 3</li>
+      <li>Repeat step 2</li>
+    </ul>
+
+    <p>Repeat the full pattern sequence.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/frame-loom-13.jpg" alt="Chevron weaving pattern">
+    </div>
+
+    <h2>Diamond twill <em>sequence</em></h2>
+
+    <p>Here's another variation of twill, making up a lovely diamond pattern. The pattern repeat for the threading is 6 ends. That means for this one you have to prepare a warp multiplied by 6 ends. A single pattern block here consists of 6 warp threads and 6 weft passes. The sequence (left to right):</p>
+    <ul>
+      <li>UNDER 1, OVER 3, UNDER 3, OVER 3&hellip;</li>
+      <li>OVER 2, UNDER 1, OVER 2, UNDER 1&hellip;</li>
+      <li>OVER 1, UNDER 3, OVER 3, UNDER 3&hellip;</li>
+      <li>UNDER 2, OVER 1, UNDER 2, OVER 1&hellip;</li>
+      <li>Repeat step 3</li>
+      <li>Repeat step 2</li>
+    </ul>
+
+    <p>Repeat the full pattern sequence.</p>
+
+    <div class="article__img">
+      <img src="../images/blog/frame-loom-14.jpg" alt="Diamond weaving pattern">
+    </div>
+
+  </article>
+
+  <nav class="post-nav">
+    <a href="../blog.html" class="link-line">&#8592; Back to all articles</a>
+    <a href="../blog/how-to-weave-a-scarf-on-a-frame-loom.html" class="link-line">Next article &#8594;</a>
+  </nav>
+
+  <section class="related">
+    <h2 class="related__heading">More from the field notes.</h2>
+    <ul class="posts">
+      <li class="post">
+        <a href="../blog/how-to-warp-a-frame-loom.html">
+          <div class="post__img"><img src="../images/blog/warp-frame-loom-1-banner.png" alt="How to warp a frame loom"></div>
+          <p class="post__meta">Tutorial · Weaving</p>
+          <h3 class="post__title">How to warp a frame loom</h3>
+        </a>
+      </li>
+
+      <li class="post">
+        <a href="../blog/how-to-weave-on-a-cardboard-loom.html">
+          <div class="post__img"><img src="../images/blog/cardboard-loom-1-banner.jpg" alt="DIY cardboard loom"></div>
+          <p class="post__meta">Tutorial · Weaving</p>
+          <h3 class="post__title">DIY cardboard loom</h3>
+        </a>
+      </li>
+
+      <li class="post">
+        <a href="../blog/how-to-weave-a-scarf-on-a-frame-loom.html">
+          <div class="post__img"><img src="../images/blog/weave-scarf-1-banner.jpg" alt="How to weave a scarf"></div>
+          <p class="post__meta">Tutorial · Weaving</p>
+          <h3 class="post__title">How to weave a scarf</h3>
+        </a>
+      </li>
+        
+      <li class="post">
+        <a href="../blog/5-tips-for-dyeing-pink-with-avocado.html">
+          <div class="post__img"><img src="../images/blog/avocado-pink-1-banner.png" alt="5 tips for dyeing pink with avocado"></div>
+          <p class="post__meta">Plants &middot; 6 min</p>
+          <h3 class="post__title">5 tips for dyeing pink with avocado</h3>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+
+  <!-- EBOOKS UPSELL -->
+  <div class="library__divider">
+    <span></span>
+    <span class="library__divider-text">Want to take it further?</span>
+    <span></span>
+  </div>
+  <div class="books">
+    <a href="https://payhip.com/b/JQK1R" class="book" target="_blank" rel="noopener">
+      <div class="book__img"><img src="../images/from-site/guide_460x@2x.jpg.webp" alt=""></div>
+      <p class="book__tag">Ebook 01</p>
+      <h3 class="book__name">A Pocket Intro to Natural Dyeing</h3>
+      <p class="book__desc">Fibers, dyes, and the logic of color from plants.</p>
+      <span class="book__link">View</span>
+    </a>
+    <a href="https://payhip.com/b/S4DQ7" class="book" target="_blank" rel="noopener">
+      <div class="book__img"><img src="../images/from-site/mordants_460x@2x.jpg.webp" alt=""></div>
+      <p class="book__tag">Ebook 02</p>
+      <h3 class="book__name">The Mordant Book</h3>
+      <p class="book__desc">How mordants work, and how to get consistent results.</p>
+      <span class="book__link">View</span>
+    </a>
+    <a href="https://payhip.com/b/37rFn" class="book" target="_blank" rel="noopener">
+      <div class="book__img"><img src="../images/from-site/kit_460x@2x.jpg.webp" alt=""></div>
+      <p class="book__tag">Ebook 03</p>
+      <h3 class="book__name">The Dye Garden Manual</h3>
+      <p class="book__desc">Which plants to grow, and how to use them.</p>
+      <span class="book__link">View</span>
+    </a>
+  </div>
+
+  <footer class="footer">
+    <div>
+      <a href="../portfolio.html">Portfolio</a>
+      <a href="../services.html">Services</a>
+      <a href="../practice.html">Practice</a>
+      <a href="../blog.html">Library</a>
+      <a href="../about.html">About</a>
+    </div>
+    <div>
+      <a href="https://www.instagram.com/kaliko_co/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://kaliko.substack.com/" target="_blank" rel="noopener">Substack</a>
+      <a href="../imprint.html">Imprint</a>
+      <a href="../privacy.html">Privacy</a>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var toggle = document.getElementById('navToggle');
+      var overlay = document.getElementById('menuOverlay');
+      if (!toggle || !overlay) return;
+      function open() {
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        toggle.textContent = 'Close';
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        toggle.textContent = 'Menu';
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+      toggle.addEventListener('click', function() {
+        overlay.classList.contains('is-open') ? close() : open();
+      });
+      overlay.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', close);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('is-open')) close();
+      });
+    })();
+  </script>
+
+</body>
+</html>

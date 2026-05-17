@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to dye with plants — Kaliko</title>
+  <meta name="description" content="A beginner's guide to plant dyeing in five steps — scour, mordant, rinse, dye, rinse. With natural dye plant recommendations and a simple first project.">
+  <link rel="canonical" href="https://kaliko.co/blog/how-to-dye-with-plants.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20fill%3D%27%23F7F5F0%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2722%27%20font-family%3D%27Georgia%2Cserif%27%20font-size%3D%2722%27%20font-style%3D%27italic%27%20text-anchor%3D%27middle%27%20fill%3D%27%23614C3E%27%3EK%3C/text%3E%3C/svg%3E">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Kaliko">
+  <meta property="og:title" content="How to dye with plants — Kaliko">
+  <meta property="og:description" content="A beginner's guide to plant dyeing in five steps — scour, mordant, rinse, dye, rinse. With natural dye plant recommendations and a simple first project.">
+  <meta property="og:url" content="https://kaliko.co/blog/how-to-dye-with-plants.html">
+  <meta property="og:image" content="https://kaliko.co/images/hero-slideshow-1.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to dye with plants — Kaliko">
+  <meta name="twitter:description" content="A beginner's guide to plant dyeing in five steps — scour, mordant, rinse, dye, rinse. With natural dye plant recommendations and a simple first project.">
+  <meta name="twitter:image" content="https://kaliko.co/images/hero-slideshow-1.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Mono', ui-monospace, monospace;
+      background: #F7F5F0;
+      color: #0F0D0A;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    :root {
+      --serif: 'Fraunces', Georgia, serif;
+      --mono:  'DM Mono', ui-monospace, monospace;
+      --bg:    #F7F5F0;
+      --ink:   #3A332D;
+      --line:  rgba(58,51,45,0.14);
+      --muted: rgba(58,51,45,0.58);
+      --indigo:#2B3A52;
+      --madder:#B0584F;
+      --walnut:#614C3E;
+    }
+
+    .label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .link-line {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 4px;
+      display: inline-block;
+    }
+
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 50;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 1.4rem 1.8rem;
+      mix-blend-mode: difference;
+      color: #BDC2C3;
+    }
+    .nav a { color: currentColor; }
+    .nav__links { display: flex; gap: 2rem; justify-self: start; }
+    .nav__links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .nav__logo {
+      font-family: var(--serif);
+      font-weight: 900;
+      font-style: italic;
+      font-size: 1.7rem;
+      letter-spacing: -0.04em;
+    }
+    .nav__cta {
+      justify-self: end;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .nav__cta::after { content: ' \2192'; }
+    .nav__menu {
+      display: none;
+      justify-self: start;
+      background: none; border: 0; padding: 0;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: currentColor;
+      cursor: pointer;
+    }
+
+    .menu-overlay {
+      position: fixed; inset: 0; z-index: 100;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .menu-overlay.is-open { opacity: 1; pointer-events: auto; }
+    .menu-overlay__links {
+      display: flex; flex-direction: column; gap: 1rem;
+      text-align: center; padding: 0 1.5rem;
+    }
+    .menu-overlay__links a {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(2.4rem, 11vw, 4.5rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+    }
+    .menu-overlay__links a em { font-weight: 900; font-style: italic; }
+
+    .post-hero {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 7.5rem 1.8rem 2rem;
+    }
+    .post-hero__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+    .post-hero__eyebrow em {
+      font-style: normal;
+      color: var(--walnut);
+    }
+    .post-hero__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 1.2rem;
+    }
+    .post-hero__title em {
+      font-weight: 900;
+      font-style: italic;
+      color: var(--walnut);
+    }
+
+    .post-lead {
+      max-width: 960px;
+      margin: 2rem auto 0;
+      padding: 0 1.8rem;
+    }
+    .post-lead__frame {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .post-lead__frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .article {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 3.5rem 1.8rem 2rem;
+    }
+    .article p {
+      margin-bottom: 1.3rem;
+      color: var(--ink);
+      line-height: 1.75;
+      font-size: 14.5px;
+    }
+    .article h2 {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.6rem;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin: 2.6rem 0 0.9rem;
+    }
+    .article h2 em { font-weight: 300; font-style: italic; color: var(--walnut); }
+    .article h3 {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--walnut);
+      margin: 2rem 0 0.8rem;
+    }
+    .article ul {
+      list-style: disc;
+      padding-left: 1.3rem;
+      margin-bottom: 1.3rem;
+      color: var(--ink);
+    }
+    .article ul ul {
+      list-style: circle;
+      margin-top: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+    .article ul li {
+      margin-bottom: 0.7rem;
+      line-height: 1.75;
+      font-size: 14.5px;
+    }
+    .article em { font-style: italic; }
+    .article strong { font-weight: 500; color: var(--ink); }
+    .article__img {
+      width: 100%;
+      margin: 1.8rem 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .article__img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .article__pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin: 1.8rem 0;
+    }
+    .article__pair .article__img { margin: 0; }
+    .article a {
+      border-bottom: 1px solid var(--muted);
+      color: var(--ink);
+      transition: border-color 0.2s;
+    }
+    .article a:hover { border-color: var(--ink); }
+
+    .post-nav {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.8rem;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .related {
+      padding: 4rem 1.8rem 3rem;
+      border-top: 1px solid var(--line);
+    }
+    .related__heading {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.6rem;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 2.4rem;
+    }
+    .posts {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+    .post__img {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    .post__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .post:hover .post__img img { transform: scale(1.03); }
+    .post__meta {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .post__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.3rem;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+    }
+
+    .footer {
+      background: var(--ink);
+      color: var(--bg);
+      padding: 1.2rem 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-top: 1px solid rgba(247,245,240,0.1);
+    }
+    .footer a { opacity: 0.65; margin-right: 1.5rem; }
+    .footer a:hover { opacity: 1; }
+
+    @media (max-width: 860px) {
+      .nav__links { display: none; }
+      .nav__menu { display: block; }
+      .posts { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 540px) {
+      .posts { grid-template-columns: 1fr; }
+      .article__pair { grid-template-columns: 1fr; }
+    }
+
+    /* EBOOKS UPSELL — matches index.html */
+    .library__divider { display: flex; align-items: center; gap: 1.5rem; margin: 2rem 0 2.5rem; padding: 0 1.8rem; }
+    .library__divider span:first-child, .library__divider span:last-child { flex: 1; height: 1px; background: var(--line); }
+    .library__divider-text { font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: var(--muted); white-space: nowrap; }
+    .books { display: flex; flex-direction: column; padding: 0 1.8rem 4rem; }
+    .book { display: grid; grid-template-columns: 56px 32px auto 1fr auto; align-items: center; gap: 1.2rem; padding: 0.9rem 0; border-top: 1px solid var(--line); }
+    .book__desc { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0; }
+    .books .book:last-child { border-bottom: 1px solid var(--line); }
+    .book__img { width: 56px; height: 56px; overflow: hidden; }
+    .book__img img { width: 100%; height: 100%; object-fit: cover; }
+    .book__tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+    .book__name { font-family: var(--serif); font-weight: 300; font-style: italic; font-size: 1.1rem; line-height: 1.2; }
+    .book__link { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; }
+    .book:hover .book__link { color: var(--ink); }
+    .book__link::after { content: ' ↗'; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "How to dye with plants",
+    "description": "A beginner's guide to plant dyeing in five steps — scour, mordant, rinse, dye, rinse. With natural dye plant recommendations and a simple first project.",
+    "url": "https://kaliko.co/blog/how-to-dye-with-plants.html",
+    "publisher": {
+      "@type": "Person",
+      "name": "Ania Grzeszek",
+      "url": "https://kaliko.co"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <nav class="nav__links">
+      <a href="../portfolio.html">Portfolio</a>
+      <a href="../services.html">Services</a>
+      <a href="../practice.html">Practice</a>
+      <a href="../about.html">About</a>
+      <a href="../blog.html">Library</a>
+    </nav>
+    <button class="nav__menu" id="navToggle" aria-label="Open menu" aria-controls="menuOverlay" aria-expanded="false">Menu</button>
+    <a href="../index.html" class="nav__logo">kaliko</a>
+    <a href="mailto:hello@kaliko.co" class="nav__cta">Inquire</a>
+  </header>
+
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+    <nav class="menu-overlay__links">
+      <a href="../portfolio.html"><em>Portfolio</em></a>
+      <a href="../services.html"><em>Services</em></a>
+      <a href="../practice.html"><em>Practice</em></a>
+      <a href="../about.html"><em>About</em></a>
+      <a href="../blog.html"><em>Library</em></a>
+    </nav>
+  </div>
+
+  <header class="post-hero">
+    <div class="post-hero__eyebrow"><em>◆</em>Natural dyeing &middot; Guide</div>
+    <h1 class="post-hero__title">How to dye with <em>plants.</em></h1>
+  </header>
+
+  <figure class="post-lead">
+    <div class="post-lead__frame">
+      <img src="../images/blog/how-to-dye-1-banner.jpg" alt="How to dye with plants">
+    </div>
+  </figure>
+
+  <article class="article">
+
+    <p><em>Plant dyeing took the internet by storm a few years ago, and there are now countless plant dyers sharing inspiration online. There's just one problem &mdash; it's not always as easy and straightforward as it seems.</em></p>
+
+    <h2>Basic <em>recipe</em></h2>
+
+    <p>When I first started my adventure with natural dyes in 2015, I fell into the same trap. It took me years to realize that, like any other craft, natural dyeing has to be practiced to be mastered. It's not only that there's so much misinformation and frankly fake tutorials to be found. Another problem, which I am guilty of myself, was misinterpreting the information found online and drawing the wrong conclusions. It took me years to realize that some of the beliefs I'd picked up about natural dyeing were simply wrong.</p>
+
+    <p>But this beautiful craft keeps on giving. I'm still dyeing passionately ten years in, and I keep learning new things all the time. This is a post where I share some of the most basic concepts in plant dyeing. Please take this as a foundation you can build upon, not as a final recipe.</p>
+
+    <h2>Your plant dye tutorial in five steps</h2>
+
+    <p>SCOUR &mdash; MORDANT &mdash; RINSE &mdash; DYE &mdash; RINSE.</p>
+
+    <p>And now onto explaining what it all means.</p>
+
+    <h2>Fibers you can <em>dye</em></h2>
+
+    <p>Plant dyes work on natural fibers. Natural fibers are fabrics and yarns made with natural materials, for example wool, cotton, linen, and silk. Synthetic fibers, on the other hand, don't take up natural dyes well, or at all.</p>
+
+    <p><strong><em>General rule: only natural fibers can be dyed. Fibers coming from animals (silk, wool) take up the colors better than fibers coming from plants (cotton, linen, hemp).</em></strong></p>
+
+    <h2>Natural dyes you can <em>use</em></h2>
+
+    <p>The sky is the limit&hellip; well, almost. Not all dyes are equal. If you stick to traditional dyes used for centuries, you can't really go wrong. How to find them? In old books. And by old books, I really mean old books. Surprisingly many (utterly beautiful) new books share very questionable dye sources. It can be deceiving when you're first starting out. So to begin with, here's a short list of a few traditional natural dyes:</p>
+
+    <p>weld, madder, indigo, woad, logwood, fustic, osage, oak galls.</p>
+
+    <p>I personally like experimenting and testing new plants. I collect them in my local park (always research toxicity first) and test their qualities. If a plant wasn't used traditionally, there's a very good chance it's not super lightfast, but it's still lovely to collaborate with nature this way. Here's a short list of some of the locally foraged (or kitchen) dyes I like using, even though they're not all equally stable:</p>
+
+    <p>marigolds, goldenrod, black hollyhock, chamomile, acorns, walnuts, cow parsley, tansy, avocado stones, onion skins, and tea.</p>
+
+    <p>Remember that dye quality is a spectrum. Dyes can't be divided into just two categories (good vs. bad). Experimentation is the key to finding what you feel comfortable with. That said, there's a group of plants that show such poor lightfastness that I personally find dyeing with them a waste of resources (unless it's just for fun, to entertain yourself or your kids). These plants fade faster than I find acceptable, no matter what you do: beetroot, berries, red cabbage, black beans, turmeric.</p>
+
+    <p><strong><em>General rule: things you can eat usually don't dye well. Just eat them instead. For super-stable colors, turn to traditional literature (basic colors: yellow &mdash; weld, red &mdash; madder, blue &mdash; indigo).</em></strong></p>
+
+    <h2>Preparing the <em>fibers</em></h2>
+
+    <p>Before you apply the dye, you have to prepare the fibers. The process goes like this: scour (wash), mordant, rinse.</p>
+
+    <p>The first thing I always do is scour the fibers. There are natural substances, as well as additives from the milling process, that protect the fibers. But they also prevent the mordant and dye from bonding with the cloth or yarn. Each kind of fiber calls for a different recipe and I won't list them all here. For cotton, I throw it in my washing machine at 90&deg;C with a spoon of baking soda. For wool, I cook it in a dye pot for an hour at 60&deg;C with wool detergent (cool down slowly to prevent felting).</p>
+
+    <p>The second step is mordanting. A mordant is always a metal salt. There are many metals you can use: aluminum, iron, copper, chrome, and so on. I work with aluminum and iron. There are some alternatives to mordants, like tannins or soy milk. These substances are not mordants, though. They might improve color uptake or lightfastness in some cases, but do not create a chemical bond between the fiber and the dye. The bond they create is mechanical, which means it can be broken by rubbing or washing.</p>
+
+    <p>There are different kinds of aluminum salts available, each calling for a different recipe and suitable for different fibers. I personally use aluminum formate. It's a great mordant, as it works on all kinds of natural fibers and is applied cold. Prepare the solution (100g aluminum formate for 5L water in a lidded bucket), place the fibers in, and let them soak for about 24 hours. Take out, squeeze the excess back into the bucket, and rinse the fibers. Remember to always use gloves when working with mordants. Wear a face mask too, if you're working with fine powders like aluminum acetate. Aluminum formate can be stored in a lidded bucket until it's used up.</p>
+
+    <p><strong><em>General rule: scour your fibers by cooking them for an hour (temperature and substances according to the fiber type), then mordant the fibers with a metal salt of your choice (for example, 24 hours in a cold solution of aluminum formate). Always rinse thoroughly after mordanting. Wear gloves.</em></strong></p>
+
+    <h2>Extracting and applying the <em>dye</em></h2>
+
+    <p>In order to extract the dye from plants, you have to dissolve the dye in water. There are different temperatures and extraction times for different plants, and it's difficult to give a one-recipe-fits-all. Experimentation is, again, the key. For harder dyestuff, like acorn, I cook them at 100&deg;C for at least a few hours and let them cool down overnight. For soft flowers, like marigolds, I keep the temperature under a simmer for a maximum of one hour. Try things out, take notes, and eventually you'll develop a special kind of sensitivity.</p>
+
+    <p>After the dye is extracted, I strain the dye bath through a piece of muslin cloth to get rid of all plant matter. Next, I put the mordanted and wetted fibers into the dye. When you put your fibers in the ready dye bath, heat it up once more and let it simmer for at least an hour. Stir the fibers every 10 to 15 minutes to avoid splotches. You can even cool down the fibers in the pot overnight, though they might dye unevenly if not stirred regularly. Take out your fabric, rinse it thoroughly under cold water, and let it dry.</p>
+
+    <p><strong><em>General rule: cook the plant in water to dissolve the dye (temperature and extraction time depend on the plant), strain the dye, place the fibers in the dye bath, and cook again to let the dye bond with the mordant. Rinse.</em></strong></p>
+
+    <h2>Exceptions to the rule</h2>
+
+    <p>At this point I'd like to give you one more tip: there is no one right way to do it. That doesn't mean there's no wrong way, though. The process should always match the intention. You decide what your intention is, then adjust the process to your needs. The process described above is what serves me in my art practice. It's not necessarily what I'd choose if I were, for example, running plant dyeing classes with children.</p>
+
+    <h2>Exercise</h2>
+
+    <p><strong>Here's a small exercise for anyone who always wanted to try natural dyeing but never found the courage or time. It only takes an hour, and it's easy.</strong></p>
+
+    <ul>
+      <li>Prepare three big glass jars and a small amount of natural white wool divided into three mini skeins (around 10g each).</li>
+      <li>Try to collect some red or yellow onion peels, three avocado stones, and some freshly ground coffee beans (alternative: black tea).</li>
+      <li>Cover onion peels with water in a small saucepan and bring it to a boil. Cook for an hour. Strain the skins and pour the liquid into a jar and let it cool. Cut avocado stones into smaller pieces, cover with water in a small saucepan, and let simmer until the stones are soft, usually around an hour or two. Dispose of the stones and cool the liquid in the second jar. Brew fresh coffee using coffee filters to separate the grounds and pour the liquid into the third jar. Add enough cold water to fill the jar.</li>
+      <li>Now wet the wool under cold water and place one mini skein in each of the jars. Put all three jars on your kitchen windowsill. It's best if they get some direct sun during the day, but it's not a must. Wait for two days&hellip;</li>
+      <li>&hellip;then take out your fibers, rinse them under cold water, and hang them up to dry. Done.</li>
+    </ul>
+
+    <p>I hope you enjoy your first dyeing project. From now on you can start experimenting with more demanding dyestuffs, fibers, and techniques.</p>
+
+  </article>
+
+  <nav class="post-nav">
+    <a href="../blog.html" class="link-line">&#8592; Back to all articles</a>
+    <a href="../blog/list-of-natural-mordants.html" class="link-line">Next article &#8594;</a>
+  </nav>
+
+  <section class="related">
+    <h2 class="related__heading">More from the field notes.</h2>
+    <ul class="posts">
+      <li class="post">
+        <a href="../blog/list-of-natural-mordants.html">
+          <div class="post__img"><img src="../images/blog/mordants-1-banner.jpg" alt="List of natural mordants"></div>
+          <p class="post__meta">Reference &middot; 10 min</p>
+          <h3 class="post__title">List of natural mordants</h3>
+        </a>
+      </li>
+
+      <li class="post">
+        <a href="../blog/plant-dyeing-directory.html">
+          <div class="post__img"><img src="../images/blog/plant-dyeing-directory-1-banner.png" alt="Plant dyeing directory"></div>
+          <p class="post__meta">Reference &middot; 8 min</p>
+          <h3 class="post__title">Plant dyeing directory</h3>
+        </a>
+      </li>
+
+      <li class="post">
+        <a href="../blog/tips-for-natural-dyeing-clothes-with-plants.html">
+          <div class="post__img"><img src="../images/blog/tips-1-banner.png" alt="Tips for natural dyeing clothes"></div>
+          <p class="post__meta">Natural dyeing &middot; 7 min</p>
+          <h3 class="post__title">Tips for natural dyeing clothes</h3>
+        </a>
+      </li>
+        
+      <li class="post">
+        <a href="../blog/how-to-weave-a-rag-rug-on-a-frame-loom.html">
+          <div class="post__img"><img src="../images/blog/rag-rug-1-banner.png" alt="How to Weave a Rag Rug on a Frame Loom"></div>
+          <p class="post__meta">Tutorial · Weaving</p>
+          <h3 class="post__title">How to Weave a Rag Rug on a Frame Loom</h3>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+
+  <!-- EBOOKS UPSELL -->
+  <div class="library__divider">
+    <span></span>
+    <span class="library__divider-text">Want to take it further?</span>
+    <span></span>
+  </div>
+  <div class="books">
+    <a href="https://payhip.com/b/JQK1R" class="book" target="_blank" rel="noopener">
+      <div class="book__img"><img src="../images/from-site/guide_460x@2x.jpg.webp" alt=""></div>
+      <p class="book__tag">Ebook 01</p>
+      <h3 class="book__name">A Pocket Intro to Natural Dyeing</h3>
+      <p class="book__desc">Fibers, dyes, and the logic of color from plants.</p>
+      <span class="book__link">View</span>
+    </a>
+    <a href="https://payhip.com/b/S4DQ7" class="book" target="_blank" rel="noopener">
+      <div class="book__img"><img src="../images/from-site/mordants_460x@2x.jpg.webp" alt=""></div>
+      <p class="book__tag">Ebook 02</p>
+      <h3 class="book__name">The Mordant Book</h3>
+      <p class="book__desc">How mordants work, and how to get consistent results.</p>
+      <span class="book__link">View</span>
+    </a>
+    <a href="https://payhip.com/b/37rFn" class="book" target="_blank" rel="noopener">
+      <div class="book__img"><img src="../images/from-site/kit_460x@2x.jpg.webp" alt=""></div>
+      <p class="book__tag">Ebook 03</p>
+      <h3 class="book__name">The Dye Garden Manual</h3>
+      <p class="book__desc">Which plants to grow, and how to use them.</p>
+      <span class="book__link">View</span>
+    </a>
+  </div>
+
+  <footer class="footer">
+    <div>
+      <a href="../portfolio.html">Portfolio</a>
+      <a href="../services.html">Services</a>
+      <a href="../practice.html">Practice</a>
+      <a href="../blog.html">Library</a>
+      <a href="../about.html">About</a>
+    </div>
+    <div>
+      <a href="https://www.instagram.com/kaliko_co/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://kaliko.substack.com/" target="_blank" rel="noopener">Substack</a>
+      <a href="../imprint.html">Imprint</a>
+      <a href="../privacy.html">Privacy</a>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var toggle = document.getElementById('navToggle');
+      var overlay = document.getElementById('menuOverlay');
+      if (!toggle || !overlay) return;
+      function open() {
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        toggle.textContent = 'Close';
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        toggle.textContent = 'Menu';
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+      toggle.addEventListener('click', function() {
+        overlay.classList.contains('is-open') ? close() : open();
+      });
+      overlay.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', close);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('is-open')) close();
+      });
+    })();
+  </script>
+
+</body>
+</html>

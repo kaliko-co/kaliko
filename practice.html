@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Natural Dyeing Practice — Kaliko, Berlin</title>
+  <meta name="description" content="A working guide to the Kaliko practice — plant dyes, mordants, the full process from raw fiber to finished dyed cloth, and the studio's approach to low-waste making.">
+  <link rel="canonical" href="https://kaliko.co/practice.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20fill%3D%27%23F7F5F0%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2722%27%20font-family%3D%27Georgia%2Cserif%27%20font-size%3D%2722%27%20font-style%3D%27italic%27%20text-anchor%3D%27middle%27%20fill%3D%27%23614C3E%27%3EK%3C/text%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Kaliko">
+  <meta property="og:title" content="Natural Dyeing Practice — Kaliko, Berlin">
+  <meta property="og:description" content="A working guide to the Kaliko practice — plant dyes, mordants, the full process from raw fiber to finished dyed cloth, and the studio's approach to low-waste making.">
+  <meta property="og:url" content="https://kaliko.co/practice.html">
+  <meta property="og:image" content="https://kaliko.co/images/from-site/2921_COURSE_Ania_Grzeszek_CRA_042_1024x1024.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Natural Dyeing Practice — Kaliko, Berlin">
+  <meta name="twitter:description" content="A working guide to the Kaliko practice — plant dyes, mordants, the full process from raw fiber to finished dyed cloth, and the studio's approach to low-waste making.">
+  <meta name="twitter:image" content="https://kaliko.co/images/from-site/2921_COURSE_Ania_Grzeszek_CRA_042_1024x1024.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,900&family=Caveat:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Mono', ui-monospace, monospace;
+      background: #F7F5F0;
+      color: #0F0D0A;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    :root {
+      --serif:  'Fraunces', Georgia, serif;
+      --mono:   'DM Mono', ui-monospace, monospace;
+      --hand:   'Caveat', cursive;
+      --bg:     #F7F5F0;
+      --ink:    #3A332D;
+      --line:   rgba(58,51,45,0.14);
+      --muted:  rgba(58,51,45,0.58);
+      --indigo: #2B3A52;
+      --madder: #B0584F;
+      --weld:   #C6A24E;
+      --walnut: #614C3E;
+      --onion:  #C17B42;
+      --moss:   #7A8C4A;
+      --violet: #7B5B8A;
+    }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 50;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 1.4rem 1.8rem;
+      mix-blend-mode: difference;
+      color: #BDC2C3;
+    }
+    .nav a { color: currentColor; }
+    .nav__links { display: flex; gap: 2rem; justify-self: start; }
+    .nav__links a { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .nav__logo { font-family: var(--serif); font-weight: 900; font-style: italic; font-size: 1.7rem; letter-spacing: -0.04em; }
+    .nav__cta { justify-self: end; font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .nav__cta::after { content: ' →'; }
+    .nav__menu { display: none; justify-self: start; background: none; border: 0; padding: 0; font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: currentColor; cursor: pointer; }
+
+    .menu-overlay { position: fixed; inset: 0; z-index: 100; background: var(--bg); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; }
+    .menu-overlay.is-open { opacity: 1; pointer-events: auto; }
+    .menu-overlay__links { display: flex; flex-direction: column; gap: 1rem; text-align: center; padding: 0 1.5rem; }
+    .menu-overlay__links a { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: clamp(2.4rem, 11vw, 4.5rem); line-height: 1; letter-spacing: -0.03em; color: var(--ink); }
+    .menu-overlay__links a em { font-weight: 900; font-style: italic; }
+
+    /* ── HERO ────────────────────────────────────────── */
+    .ed-hero {
+      padding: 7.5rem 1.8rem 3rem;
+    }
+    .ed-hero__eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+    .ed-hero__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(2.6rem, 7vw, 5.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      max-width: 1100px;
+    }
+    .ed-hero__title em { font-weight: 900; color: var(--madder); font-style: italic; }
+    .ed-hero__lede {
+      margin-top: 2rem;
+      max-width: 720px;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--ink);
+      line-height: 1.85;
+    }
+    .ed-hero__lede a {
+      color: var(--ink);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 1px;
+      transition: border-color 0.2s;
+    }
+    .ed-hero__lede a:hover { border-color: var(--ink); }
+    .ed-hero__pull {
+      margin-top: 2.5rem;
+      padding-left: 1.2rem;
+      border-left: 2px solid var(--madder);
+      max-width: 640px;
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.1rem;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    /* ── SECTION HEADS (compact, inline) ─────────────── */
+    .sec-head {
+      padding: 3.2rem 1.8rem 1.2rem;
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--line);
+    }
+    .sec-head__eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+    .sec-head__title {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.35rem;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+
+    /* ── PALETTE ─────────────────────────────────────── */
+    .palette__intro {
+      padding: 0 1.8rem 1.8rem;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--ink);
+      line-height: 1.85;
+      max-width: 820px;
+    }
+    .palette__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+    }
+    .palette__card {
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .palette__card:nth-child(3n) { border-right: none; }
+    .palette__swatch {
+      width: 56px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      position: relative;
+    }
+    .palette__swatch::after {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      background-image:
+        radial-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
+        radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 7px 7px, 11px 11px;
+      background-position: 0 0, 3px 3px;
+      mix-blend-mode: overlay;
+    }
+    .palette--red      .palette__swatch { background: var(--madder); }
+    .palette--blue     .palette__swatch { background: var(--indigo); }
+    .palette--yellow   .palette__swatch { background: var(--weld); }
+    .palette--orange   .palette__swatch { background: var(--onion); }
+    .palette--brown    .palette__swatch { background: var(--walnut); }
+    .palette--green    .palette__swatch { background: var(--moss); }
+    .palette--modifier .palette__swatch { background: conic-gradient(var(--madder), var(--indigo), var(--weld), var(--walnut), var(--onion), var(--madder)); }
+    .palette--purple .palette__swatch { background: var(--violet); }
+    .palette__family {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0.65;
+      margin-top: -0.2rem;
+    }
+    .palette__name {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-top: 0.3rem;
+    }
+    .palette__sources {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .palette__body {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: var(--ink);
+      line-height: 1.75;
+    }
+
+    /* ── PROCESS STEPS ───────────────────────────────── */
+    .process-step {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 2.5rem;
+      padding: 2rem 1.8rem;
+      border-top: 1px solid var(--line);
+      align-items: start;
+    }
+    .process-step:last-of-type { border-bottom: 1px solid var(--line); }
+    .process-step__content { display: flex; flex-direction: column; gap: 0.7rem; order: 2; }
+    .process-step__img { order: 1; }
+    .process-step__head {
+      display: flex;
+      align-items: baseline;
+      gap: 0.8rem;
+    }
+    .process-step__num {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+    }
+    .process-step__title {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 1.2rem;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .process-step__body {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--ink);
+      line-height: 1.8;
+      max-width: 680px;
+    }
+    .process-step__timing {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .process-step__timing strong { color: var(--ink); font-weight: 500; margin-right: 0.4rem; }
+    .process-step__img {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+    }
+    .process-step__img img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ── SUSTAINABILITY ──────────────────────────────── */
+    .sust {
+      padding: 0.5rem 1.8rem 3rem;
+    }
+    .sust__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem 2.5rem;
+      max-width: 1200px;
+    }
+    .sust__item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--line);
+    }
+    .sust__item-title {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 1.2rem;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .sust__item-body {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--ink);
+      line-height: 1.8;
+    }
+
+    /* ── FAQ ─────────────────────────────────────────── */
+    .faq__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+    }
+    .faq__card {
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .faq__card:nth-child(3n) { border-right: none; }
+    .faq__card:last-child { border-right: none; }
+    .faq__q {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .faq__a {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: var(--ink);
+      line-height: 1.85;
+    }
+    .faq__a + .faq__a { margin-top: 0.6rem; }
+    .faq__a a {
+      color: var(--ink);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 1px;
+      transition: border-color 0.2s;
+    }
+    .faq__a a:hover { border-color: var(--ink); }
+
+    /* ── TRACKS (two-track CTA) ──────────────────────── */
+    .tracks {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--line);
+    }
+    .track {
+      padding: 3.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      justify-content: space-between;
+      min-height: 280px;
+    }
+    .track + .track { border-left: 1px solid rgba(247,245,240,0.18); }
+    .track--learn,
+    .track--work  { background: var(--madder); color: var(--bg); }
+    .track__eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(247,245,240,0.6);
+    }
+    .track__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+      line-height: 1;
+      letter-spacing: -0.035em;
+      color: var(--bg);
+    }
+    .track__title em { font-weight: 900; font-style: italic; color: var(--bg); }
+    .track__body {
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.8;
+      color: rgba(247,245,240,0.78);
+      max-width: 440px;
+    }
+    .track__links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .track__link {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(247,245,240,0.45);
+      padding-bottom: 4px;
+      align-self: flex-start;
+      transition: opacity 0.2s;
+      color: var(--bg);
+    }
+    .track__link::after { content: ' →'; }
+    .track__link:hover { opacity: 0.7; }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    .footer { background: var(--ink); color: var(--bg); padding: 1.2rem 1.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; border-top: 1px solid rgba(247,245,240,0.08); }
+    .footer a { opacity: 0.65; margin-right: 1.5rem; }
+    .footer a:hover { opacity: 1; }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 1080px) {
+      .palette__grid { grid-template-columns: repeat(2, 1fr); }
+      .palette__card:nth-child(3n) { border-right: 1px solid var(--line); }
+      .palette__card:nth-child(2n) { border-right: none; }
+      .faq__grid { grid-template-columns: repeat(2, 1fr); }
+      .faq__card:nth-child(3n) { border-right: 1px solid var(--line); }
+      .faq__card:nth-child(2n) { border-right: none; }
+      .faq__card:last-child { border-right: none; }
+    }
+    @media (max-width: 860px) {
+      .nav__links { display: none; }
+      .nav__menu { display: block; }
+      .ed-hero { padding-top: 6.5rem; }
+      .palette__grid { grid-template-columns: 1fr; }
+      .palette__card, .palette__card:nth-child(3n), .palette__card:nth-child(2n) { border-right: none; }
+      .process-step { grid-template-columns: 1fr; }
+      .process-step__img { display: none; }
+      .faq__grid { grid-template-columns: 1fr; }
+      .faq__card, .faq__card:nth-child(3n), .faq__card:nth-child(2n) { border-right: none; }
+      .sust__grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .tracks { grid-template-columns: 1fr; }
+      .track + .track { border-left: none; border-top: 1px solid var(--line); }
+      .track { padding: 3rem 1.8rem; min-height: auto; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What exactly is natural dyeing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Natural dyeing is the practice of coloring cloth and yarn with dyes from plants, insects and minerals — no synthetic or petrochemical dye at any stage. Done properly, the colors are biodegradable, non-toxic and lightfast. The process is slower and more variable than industrial dyeing, which is part of the appeal and part of the limit."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What fibers can be dyed?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, but cotton and other cellulose fibers (linen, hemp, ramie) need more preparation than wool or silk. Cellulose fibers need a tannin step before mordanting to accept plant color well. Done properly, cotton dyes as deeply and as permanently as any animal fiber."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are natural dyes lightfast and washable?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Well-mordanted natural dyes hold up to washing and wear. Not every dye plant is equal — madder, indigo, weld, cochineal and walnut are all documented as lightfast and wash-fast across centuries of use. Colors will shift slowly with age, but that is a patina, not a fade. Care with cool water, pH-neutral soap and shade-drying extends the life of the color considerably."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a mordant, and why?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A mordant is a metal compound that binds plant color to fiber. Without it, most plant dyes don't form a chemical bond with the fiber and eventually wash out. Aluminum makes colors more vibrant; iron makes them more muted. Choosing a mordant is already a color choice, and the same dye will read very differently depending on which one is used."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can natural dyes match brand colors?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not exactly, and not reliably. Every dye bath is a little different, and plant dye is better suited to developing a palette through sampling than to hitting a single fixed reference. For commission work, I start with a direction and refine through dye tests on your fabric rather than matching a Pantone swatch. Brands working with natural dye get something richer than a flat match — a palette with depth and variation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is natural dyeing truly sustainable?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, by almost every measure — biodegradable dyes, non-toxic effluent, no petrochemicals, short supply chains when plants are grown locally. The caveats are real: dyeing still uses water, and scaling plant-dye to fast-fashion volumes would not be cleaner than what already exists. At studio scale and small-batch production, the gap between natural and synthetic dyeing is substantial."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you work with fashion brands?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Kaliko takes on commissions, capsule collections, brand activations and sample work for fashion, textile and interior brands, designers and artists. Visit the services page for details on what each type of engagement looks like, or email hello@kaliko.co to open a conversation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I start dyeing at home?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Begin with onion skins or avocado pits — both bond to fiber without a mordant and use kitchen scraps. From there, a basic alum mordant opens up most other dye plants. The Kaliko library has free tutorials, plant portraits and natural-dye references. For a more structured start, the full beginner's guide is available as a downloadable ebook."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to naturally dye fabric, from raw fiber to finished cloth",
+    "description": "The full natural dyeing process in five steps: scouring, mordanting, extraction, dyeing and finishing.",
+    "totalTime": "P3D",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Scouring",
+        "text": "Natural color only bonds properly with natural fiber, and only after the cloth has been stripped of the oils, waxes and finishes it arrives with. Every fiber calls for a different scouring process."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Mordanting",
+        "text": "A mordant is a metal compound that helps the dye form a lasting bond with the fiber. I work primarily with aluminum and iron compounds, using cold mordanting processes. Aluminum makes colors more vibrant; iron makes them more muted. Different fibers call for different mordanting recipes and compounds."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Extraction",
+        "text": "The dye has to come out of the plant before it can go into the cloth. Different dye sources call for different extraction methods: most plants are simmered at high temperature, while others need to soak for days. The harder and more dense the plant material, the more time and heat it typically requires. The bath is strained, and what remains is a liquid holding the dye in solution."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Dyeing",
+        "text": "Mordanted cloth enters the dye bath. Different processes give different results depending on the effect you want to achieve: immersion dyeing for even, all-over color; bundle dyeing for surface marks made by plant material pressed against cloth; tie dye for resist patterns; or painting directly on the cloth for drawn marks. The longer the cloth stays in the dye, the deeper the color builds."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Finishing",
+        "text": "Once dyed, cloth is rinsed to remove any unbonded dye and dried in shade. Because the fiber was mordanted before dyeing, the color forms a chemical bond with the fiber during the dyeing process and does not need to be fixed afterwards. If the cloth needs washing, use cool or lukewarm water, a pH-neutral soap, and wash by hand."
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <nav class="nav__links">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="services.html">Services</a>
+      <a href="practice.html">Practice</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Library</a>
+    </nav>
+    <button class="nav__menu" id="navToggle" aria-label="Open menu" aria-controls="menuOverlay" aria-expanded="false">Menu</button>
+    <a href="index.html" class="nav__logo">kaliko</a>
+    <a href="mailto:hello@kaliko.co" class="nav__cta">Inquire</a>
+  </header>
+
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+    <nav class="menu-overlay__links">
+      <a href="portfolio.html"><em>Portfolio</em></a>
+      <a href="services.html"><em>Services</em></a>
+      <a href="practice.html"><em>Practice</em></a>
+      <a href="about.html"><em>About</em></a>
+      <a href="blog.html"><em>Library</em></a>
+    </nav>
+  </div>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="ed-hero">
+      <h1 class="ed-hero__title">Natural dyeing <em>in practice.</em></h1>
+      <p class="ed-hero__lede">Natural dyeing is a radical craft in an industry built on speed. It means working at the pace of the plants, slowly and often unpredictably.</p>
+    </section>
+
+    <!-- PALETTE -->
+    <section id="palette">
+      <div class="sec-head">
+        <p class="sec-head__eyebrow">The palette</p>
+        <h2 class="sec-head__title">Where color comes from.</h2>
+      </div>
+
+      <p class="palette__intro">Natural color comes from roots, bark, wood, stems, leaves, flowers, berries, hulls, husks, pits, cones, galls, lichens, insects and minerals. These sources can be grouped into the following six color families.</p>
+
+            <div class="palette__grid">
+
+        <article class="palette__card palette--red">
+          <div class="palette__swatch" aria-hidden="true"></div>
+          <h3 class="palette__name">Reds &amp; Russets.</h3>
+          <p class="palette__family">Naphthoquinone + anthraquinone dyes</p>
+          <p class="palette__sources">Madder · henna · lac</p>
+          <p class="palette__body">The oldest reds in the textile record. Madder root gives a spectrum from brick to deep rose depending on mordant and pH; henna pulls toward warm, reddish-browns and terracotta. Lac is secreted by the insect Kerria lacca. Historically the dominant red across South and Southeast Asia, it shares the anthraquinone chemistry of madder but gives a warmer, deeper tone. These dyes bond tenaciously; many survive centuries in museum textiles.</p>
+        </article>
+
+        <article class="palette__card palette--yellow">
+          <div class="palette__swatch" aria-hidden="true"></div>
+          <h3 class="palette__name">Yellows.</h3>
+          <p class="palette__family">Flavonoid + carotenoid dyes</p>
+          <p class="palette__sources">Weld · onion skins · marigold · dyer's chamomile</p>
+          <p class="palette__body">Yellow is the most abundant color in the natural world, and in the dye palette it is also the most reliable when mordanted well. Weld, cultivated across Europe since antiquity, gives the clearest and most lightfast yellow in the family. Onion skins, saved from the kitchen, mordant easily and give excellent results. Carotenoid yellows like marigold are vivid when fresh but fade faster, beautiful for work that is not meant to last forever.</p>
+        </article>
+
+        <article class="palette__card palette--blue">
+          <div class="palette__swatch" aria-hidden="true"></div>
+          <h3 class="palette__name">Blues.</h3>
+          <p class="palette__family">Indigotin</p>
+          <p class="palette__sources">Indigo · woad</p>
+          <p class="palette__body">The exception in natural dyeing: blue does not come from a dye bath but from a reduction vat. In the vat, indigotin becomes temporarily soluble and turns yellow. It enters the fiber and re-oxidizes back to blue when exposed to air. This molecule surfaces in plants on every inhabited continent: in tropical indigofera, in European woad, in Japanese persicaria. Indigotin evolved independently across unrelated plant families.</p>
+        </article>
+
+        <article class="palette__card palette--purple">
+          <div class="palette__swatch" aria-hidden="true"></div>
+          <h3 class="palette__name">Purples &amp; Pinks.</h3>
+          <p class="palette__family">Anthocyanins + hematoxylin + carminic acid</p>
+          <p class="palette__sources">Elderberry · hollyhock · logwood · cochineal</p>
+          <p class="palette__body">Anthocyanin purples from berries and flowers shift visibly with pH: acid pulls them pink, alkali pushes them blue-grey. They are also among the least lightfast dyes in the palette. Logwood and cochineal are a different matter. Logwood gives a range from violet to near-black depending on mordant; cochineal, one of the most lightfast dyes known, yields exceptional crimsons and pinks.</p>
+        </article>
+
+        <article class="palette__card palette--brown">
+          <div class="palette__swatch" aria-hidden="true"></div>
+          <h3 class="palette__name">Browns &amp; Beiges.</h3>
+          <p class="palette__family">Tannins + juglone</p>
+          <p class="palette__sources">Oak gall · pomegranate · walnut · black tea · sumac</p>
+          <p class="palette__body">Tannins are everywhere, in bark, seed cases, leaves, fruit skin. They bond to cellulose without a metal mordant. Iron deepens the color considerably, while also shifting it toward greys, from soft to near-black. Walnut sits slightly apart: its main colorant is juglone rather than a tannin, a compound which also doesn't require a mordant and dyes in the same register.</p>
+        </article>
+
+        <article class="palette__card palette--green">
+          <div class="palette__swatch" aria-hidden="true"></div>
+          <h3 class="palette__name">Greens.</h3>
+          <p class="palette__family">Overdye + iron modifier</p>
+          <p class="palette__sources">Weld + indigo · onion + iron · weld + iron</p>
+          <p class="palette__body">Green is the color of almost every plant, and yet one of the hardest colors to achieve on fibers. Chlorophyll can be extracted but breaks down within days. The only lasting greens must be made by layering yellow over blue or by shifting a yellow with an iron modifier. Weld over indigo gives a clear spring green; chamomile or marigold over indigo goes more olive. Iron on yellow gives khaki through to dark moss.</p>
+        </article>
+
+      </div>
+      </section>
+
+    <!-- PROCESS -->
+    <section id="process">
+      <div class="sec-head">
+        <p class="sec-head__eyebrow">The process</p>
+        <h2 class="sec-head__title">From raw fiber to finished dyed cloth.</h2>
+      </div>
+      <p class="palette__intro">Natural dyeing usually follows five steps. The care and attention put into each one affects how the finished color looks and how long it lasts.</p>
+
+      <div class="process-step">
+        <div class="process-step__content">
+          <div class="process-step__head">
+            <span class="process-step__num">01</span>
+            <h3 class="process-step__title">Scouring.</h3>
+          </div>
+          <p class="process-step__body">Natural colors can only be applied to natural fibers, such as cotton, linen, silk and wool. Synthetic fibers like polyester or nylon will not take up natural dyes.</p>
+          <p class="process-step__body" style="margin-top: 0.8rem;">Before dyeing can begin, all natural fibers have to be scoured: stripped of all protective substances, natural or added. These substances might block the intake of color, which is why it is important to clean the fibers before dyeing.</p>
+          <p class="process-step__body" style="margin-top: 0.8rem;">Each type of fiber calls for a different scouring method. Careless scouring can cause felting or loss of luster.</p>
+          <p class="process-step__timing"><strong>Time</strong>2 – 4 hours, depending on fiber</p>
+        </div>
+        <div class="process-step__img"><img src="images/from-site/2921_COURSE_Ania_Grzeszek_CRA_029_1024x1024.jpg" alt="Scouring fibers before natural dyeing"></div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-step__content">
+          <div class="process-step__head">
+            <span class="process-step__num">02</span>
+            <h3 class="process-step__title">Mordanting.</h3>
+          </div>
+          <p class="process-step__body">A mordant is a metal compound that allows dyes to form a chemical bond with fibers. It is applied to fibers after scouring and before dyeing.</p>
+          <p class="process-step__body" style="margin-top: 0.8rem;">There are different compounds that can be used as mordants. At Kaliko, I mostly work with aluminum and iron compounds, using cold mordanting processes. Aluminum makes colors more vibrant; iron makes them more muted. Just like scouring, the mordanting method depends on the type of fiber.</p>
+          <p class="process-step__body" style="margin-top: 0.8rem;">Not all natural dyeing processes require a mordant, but most do.</p>
+          <p class="process-step__timing"><strong>Time</strong>Overnight soak, typically</p>
+        </div>
+        <div class="process-step__img"><img src="images/from-site/2921_COURSE_Ania_Grzeszek_CRA_024_1024x1024.jpg" alt="Mordanting fibers with alum"></div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-step__content">
+          <div class="process-step__head">
+            <span class="process-step__num">03</span>
+            <h3 class="process-step__title">Extraction.</h3>
+          </div>
+          <p class="process-step__body">Natural dyes have to be extracted in order to make a dye bath. Extraction time and temperature vary depending on the source material: most plants are simmered at high temperature, while others need to soak for days. The harder and more dense the plant material, the more time and heat it typically requires. Once the dye is dissolved in water, mordanted fibers can be placed in the dye bath to absorb the color.</p>
+          <p class="process-step__body" style="margin-top: 0.8rem;">Not every plant can be used as a source of color. The quality of the dye is a spectrum, and experience plays the biggest role in the choice of dye plant. For lasting color, a dyer has to work with carefully selected, reliable dye sources.</p>
+          <p class="process-step__timing"><strong>Time</strong>1 hour – several days</p>
+        </div>
+        <div class="process-step__img"><img src="images/from-site/2921_COURSE_Ania_Grzeszek_CRA_08_1024x1024.jpg" alt="Extracting natural dye from plant material"></div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-step__content">
+          <div class="process-step__head">
+            <span class="process-step__num">04</span>
+            <h3 class="process-step__title">Dyeing.</h3>
+          </div>
+          <p class="process-step__body">Just like extracting, dyeing also requires heat and/or time for a successful and lasting color intake. A dyer can also use natural substances to modify the final color, for example by changing the pH of the bath. For the most uniform color, fibers have to be regularly stirred and manually moved in the dye bath.</p>
+          <p class="process-step__body" style="margin-top: 0.8rem;">There are different dyeing processes, each giving different results: immersion dyeing for even, all-over color; bundle dyeing for surface marks; tie dye for resist patterns; and painting directly on the cloth. Some techniques omit dissolving the dye in water entirely, using hot steam instead. Other methods allow extracting and dyeing at the same time, in one bath. The choice of process depends on the effect you want to achieve.</p>
+          <p class="process-step__timing"><strong>Time</strong>45 min – 2 hours in bath</p>
+        </div>
+        <div class="process-step__img"><img src="images/from-site/2921_COURSE_Ania_Grzeszek_CRA_042_1024x1024.jpg" alt="Dyeing cloth in a natural dye bath"></div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-step__content">
+          <div class="process-step__head">
+            <span class="process-step__num">05</span>
+            <h3 class="process-step__title">Finishing.</h3>
+          </div>
+          <p class="process-step__body">Properly mordanted and dyed fibers are lightfast and wash-fast. Because the color forms a chemical bond with the fiber during the dyeing process, it does not need to be fixed afterwards. Natural dyed pieces will not fade considerably in regular use, though natural colors still require some care.</p>
+          <p class="process-step__body" style="margin-top: 0.8rem;">Hand-wash in cool or lukewarm water using a natural, pH-neutral soap such as wool wash. Air dry in the shade and store away from direct sunlight.</p>
+          <p class="process-step__body" style="margin-top: 0.8rem;">Natural dyes are living colors and will change slightly over time, developing a patina. This is part of the natural maturing of the color.</p>
+          <p class="process-step__timing"><strong>Care</strong>Cool water · pH-neutral soap · dry in shade</p>
+        </div>
+        <div class="process-step__img"><img src="images/from-site/2921_COURSE_Ania_Grzeszek_CRA_034_1024x1024.jpg" alt="Finished naturally dyed cloth"></div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="sec-head">
+        <p class="sec-head__eyebrow">Frequently asked</p>
+        <h2 class="sec-head__title">Questions worth answering.</h2>
+      </div>
+      <p class="palette__intro">A crash course in the most common questions and misconceptions about natural dyeing.</p>
+
+      <div class="faq__grid">
+
+        <article class="faq__card">
+          <h3 class="faq__q">What exactly is natural dyeing?</h3>
+          <p class="faq__a">Natural dyeing is the practice of coloring cloth and yarn with dyes from plants, insects and minerals. Done properly, the colors are biodegradable, non-toxic and lightfast. The process is slower and more variable than industrial dyeing, which is part of the appeal and part of the limit.</p>
+        </article>
+
+        <article class="faq__card">
+          <h3 class="faq__q">What fibers can be dyed?</h3>
+          <p class="faq__a">Natural fibers only: cotton, linen, hemp, silk, wool and other plant or animal-based fibers. Synthetic fibers will not take up natural dyes. Cellulose fibers like cotton and linen call for different mordanting recipes than animal fibers like wool or silk, but done properly they dye just as permanently. One thing worth knowing: if the fabric is natural but the stitching thread is polyester, the thread will stay undyed.</p>
+        </article>
+
+        <article class="faq__card">
+          <h3 class="faq__q">Are natural dyes lightfast and washable?</h3>
+          <p class="faq__a">Well-mordanted natural dyes hold up to washing and wear. Not every dye plant is equal: madder, indigo, weld, cochineal and walnut are all documented as lightfast and wash-fast across centuries of use. Colors will shift slowly with age, which is a patina, not a fade. Handwashing with cool water, pH-neutral soap and shade-drying extends the life of the color considerably.</p>
+        </article>
+
+        <article class="faq__card">
+          <h3 class="faq__q">What is a mordant, and why?</h3>
+          <p class="faq__a">A mordant is a metal salt that binds plant color to fiber. Without it, most plant dyes don't form a chemical bond with fibers and eventually fade or wash out. Aluminum keeps colors clear and vivid; iron makes them more muted. Choosing a mordant is already a color choice, and the same dye will read very differently depending on which one is used.</p>
+        </article>
+
+        <article class="faq__card">
+          <h3 class="faq__q">Can natural dyes match brand colors?</h3>
+          <p class="faq__a">Not exactly, and not reliably. Every dye bath is a little different, and plant dye is better suited to developing a palette through sampling than to hitting a single fixed reference. For commission work, I start with a direction and refine through dye tests on your fabric rather than matching a Pantone swatch. Brands working with natural dye get something richer: a palette with depth and variation.</p>
+        </article>
+
+        <article class="faq__card">
+          <h3 class="faq__q">Do natural dye results repeat exactly?</h3>
+          <p class="faq__a">No. The same dye produces a different shade on every fiber, and fabric construction adds another variable on top of that. The plant itself may vary with soil, season, and growing conditions. Natural dyeing works with living material, and living material does not repeat exactly. Each batch carries something of the conditions it was made in.</p>
+        </article>
+
+        <article class="faq__card">
+          <h3 class="faq__q">Is natural dyeing truly sustainable?</h3>
+          <p class="faq__a">Yes, by almost every measure. Biodegradable dyes, non-toxic effluent, no petrochemicals, short supply chains when plants are grown locally. Natural dyeing still uses water, and scaling plant-dye to fast-fashion volumes would not be cleaner than what already exists. At small-batch scale, the gap between natural and synthetic dyeing is substantial.</p>
+        </article>
+
+        <article class="faq__card">
+          <h3 class="faq__q">Do you work with fashion brands?</h3>
+          <p class="faq__a">Yes. Kaliko takes on commissions, capsule collections, brand activations and sample work for fashion, textile and interior brands, designers and artists. See <a href="services.html">services</a> for details on what each type of engagement looks like, or email <a href="mailto:hello@kaliko.co">hello@kaliko.co</a> to open a conversation.</p>
+        </article>
+
+        <article class="faq__card">
+          <h3 class="faq__q">How do I start dyeing at home?</h3>
+          <p class="faq__a">Begin with onion skins or avocado pits. Both bond to fiber quite well without a mordant. From there, a basic aluminum mordant opens up most other dye plants. The <a href="blog.html">library</a> has free tutorials, plant portraits and natural-dye references. For a more structured start, the full beginner's guide is available as a downloadable ebook.</p>
+        </article>
+
+        <article class="faq__card">
+          <h3 class="faq__q">Can plant dyes be made permanent?</h3>
+          <p class="faq__a">No. Even with the most careful mordanting, you cannot make an unstable dye last. Color longevity is a spectrum: some plants are documented as lightfast across centuries of use, others fade within weeks. Some plants, like beetroot, do not dye at all in the technical sense — they stain, and will always wash out. Choose the plant based on what you need the color to do.</p>
+        </article>
+
+        <article class="faq__card">
+          <h3 class="faq__q">Can vinegar or salt fix dye?</h3>
+          <p class="faq__a">No, though both are widely recommended in beginner tutorials. Vinegar can help with dye uptake on protein fibers by adjusting the pH of the bath, but it does not fix color permanently. Salt is used in synthetic reactive dyeing but has no mordanting effect with natural dyes. Colors dyed without a proper mordant will fade or wash out over time.</p>
+        </article>
+
+        <article class="faq__card">
+          <h3 class="faq__q">Are natural dyes safe to use?</h3>
+          <p class="faq__a">Yes. Natural dyes are non-toxic, biodegradable and free from petrochemicals. Most wastewater from a natural dye bath can safely go down the drain. A few sensible precautions: work in a well-ventilated space, wear gloves, and use dedicated pots and tools kept separately from anything used for food.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- TRACKS -->
+    <section class="tracks">
+      <div class="track track--learn">
+        <p class="track__eyebrow">For home dyers</p>
+        <h2 class="track__title">Learn the <em>craft.</em></h2>
+        <p class="track__body">Free tutorials, plant portraits and natural-dye references in the library. Downloadable ebooks for a structured beginner's guide and deeper reference material.</p>
+        <div class="track__links">
+          <a href="blog.html" class="track__link">Visit the library</a>
+          <a href="https://payhip.com/b/JQK1R" target="_blank" rel="noopener" class="track__link">Browse ebooks</a>
+        </div>
+      </div>
+      <div class="track track--work">
+        <p class="track__eyebrow">For fashion brands and designers</p>
+        <h2 class="track__title">Commission the <em>studio.</em></h2>
+        <p class="track__body">Small-batch hand-dyed fabric, capsule collections, brand activations and sample work for fashion, interior design and art projects — from a Berlin studio, with plant-based color only.</p>
+        <div class="track__links">
+          <a href="services.html" class="track__link">See services</a>
+          <a href="mailto:hello@kaliko.co" class="track__link">Email the studio</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div>
+      <a href="imprint.html">Imprint</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="https://www.instagram.com/kaliko_co/">Instagram</a>
+      <a href="https://kaliko.substack.com/">Substack</a>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var toggle = document.getElementById('navToggle');
+      var overlay = document.getElementById('menuOverlay');
+      if (!toggle || !overlay) return;
+      function open() {
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        toggle.textContent = 'Close';
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        toggle.textContent = 'Menu';
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+      toggle.addEventListener('click', function() {
+        overlay.classList.contains('is-open') ? close() : open();
+      });
+      overlay.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', close);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('is-open')) close();
+      });
+    })();
+  </script>
+</body>
+</html>

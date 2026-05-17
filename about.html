@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Kaliko, Berlin</title>
+  <meta name="description" content="About Ania Grzeszek and the Kaliko natural dye studio — background, methods, and the beliefs behind the practice.">
+  <link rel="canonical" href="https://kaliko.co/about.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20fill%3D%27%23F7F5F0%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2722%27%20font-family%3D%27Georgia%2Cserif%27%20font-size%3D%2722%27%20font-style%3D%27italic%27%20text-anchor%3D%27middle%27%20fill%3D%27%23614C3E%27%3EK%3C/text%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Kaliko">
+  <meta property="og:title" content="About — Kaliko, Berlin">
+  <meta property="og:description" content="About Ania Grzeszek and the Kaliko natural dye studio — background, methods, and the beliefs behind the practice.">
+  <meta property="og:url" content="https://kaliko.co/about.html">
+  <meta property="og:image" content="https://kaliko.co/images/about-1.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About — Kaliko, Berlin">
+  <meta name="twitter:description" content="About Ania Grzeszek and the Kaliko natural dye studio — background, methods, and the beliefs behind the practice.">
+  <meta name="twitter:image" content="https://kaliko.co/images/about-1.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,900&family=Caveat:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Mono', ui-monospace, monospace;
+      background: #F7F5F0;
+      color: #0F0D0A;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    :root {
+      --serif: 'Fraunces', Georgia, serif;
+      --mono:  'DM Mono', ui-monospace, monospace;
+      --hand:  'Caveat', cursive;
+      --bg:    #F7F5F0;
+      --ink:   #3A332D;
+      --line:  rgba(58,51,45,0.14);
+      --muted: rgba(58,51,45,0.58);
+      --indigo:#2B3A52;
+      --madder:#B0584F;
+      --weld:  #C6A24E;
+      --walnut:#614C3E;
+    }
+
+    .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 1.4rem 1.8rem; mix-blend-mode: difference; color: #BDC2C3; }
+    .nav a { color: currentColor; }
+    .nav__links { display: flex; gap: 2rem; justify-self: start; }
+    .nav__links a { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .nav__logo { font-family: var(--serif); font-weight: 900; font-style: italic; font-size: 1.7rem; letter-spacing: -0.04em; }
+    .nav__cta { justify-self: end; font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .nav__cta::after { content: ' →'; }
+    .nav__menu { display: none; justify-self: start; background: none; border: 0; padding: 0; font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: currentColor; cursor: pointer; }
+
+    .menu-overlay { position: fixed; inset: 0; z-index: 100; background: var(--bg); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; }
+    .menu-overlay.is-open { opacity: 1; pointer-events: auto; }
+    .menu-overlay__links { display: flex; flex-direction: column; gap: 1rem; text-align: center; padding: 0 1.5rem; }
+    .menu-overlay__links a { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: clamp(2.4rem, 11vw, 4.5rem); line-height: 1; letter-spacing: -0.03em; color: var(--ink); }
+    .menu-overlay__links a em { font-weight: 900; font-style: italic; }
+
+    /* ── PORTRAIT HERO ───────────────────────────────── */
+    .portrait {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      min-height: 100vh;
+    }
+    .portrait__img {
+      position: relative;
+      overflow: hidden;
+    }
+    .portrait__img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .portrait__stamp {
+      position: absolute;
+      top: 6.5rem;
+      left: 1.8rem;
+      font-family: var(--hand);
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      color: var(--bg);
+      line-height: 1;
+      transform: rotate(-4deg);
+      text-shadow: 0 1px 14px rgba(0,0,0,0.25);
+      pointer-events: none;
+    }
+    .portrait__stamp small {
+      display: block;
+      font-size: 0.5em;
+      letter-spacing: 0.05em;
+      opacity: 0.85;
+      margin-top: 0.3rem;
+      transform: rotate(2deg);
+    }
+    .portrait__body {
+      padding: 7rem 3.2rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .portrait__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(2.4rem, 5.2vw, 4.6rem);
+      line-height: 0.95;
+      letter-spacing: -0.035em;
+      color: var(--ink);
+    }
+    .portrait__title em { font-weight: 900; font-style: italic; color: var(--weld); }
+    .portrait__bio { display: flex; flex-direction: column; gap: 1rem; color: var(--ink); line-height: 1.75; font-family: var(--mono); font-size: 13px; max-width: 560px; }
+    .portrait__meta {
+      display: grid;
+      grid-template-columns: auto 1fr auto 1fr;
+      gap: 0.8rem 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+      max-width: 560px;
+    }
+    .portrait__meta dt {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .portrait__meta dd { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 1.05rem; color: var(--ink); }
+    .portrait__link { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; border-bottom: 1px solid var(--ink); padding-bottom: 4px; display: inline-block; align-self: flex-start; }
+    .portrait__link::after { content: ' ↗'; }
+
+    /* ── STUDIO STRIP ────────────────────────────────── */
+    .studio-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .studio-strip__img {
+      aspect-ratio: 1;
+      overflow: hidden;
+    }
+    .studio-strip__img + .studio-strip__img { border-left: 1px solid var(--line); }
+    .studio-strip__img img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ── HISTORY ─────────────────────────────────────── */
+    .history {
+      padding: 7rem 1.8rem 2rem;
+      max-width: 1280px;
+    }
+    .history__eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2.8rem;
+    }
+    .history__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .history__col-title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1.6rem, 2.6vw, 2rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1.6rem;
+    }
+    .history__col-title em { font-weight: 900; font-style: italic; color: var(--weld); }
+    .history__col:nth-child(2) .history__col-title em { color: var(--weld); }
+    .history__body {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.75;
+    }
+    .history__body em {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.05em;
+    }
+
+    /* method column (right side) — data-sheet feel */
+    .method {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+    .method__intro {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+      line-height: 1.35;
+      color: var(--ink);
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid var(--line);
+      max-width: 520px;
+    }
+    .method__intro em { font-weight: 900; font-style: italic; color: var(--weld); }
+    .method__label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+    .method__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .method__list li {
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--ink);
+      padding-left: 1.3rem;
+      position: relative;
+    }
+    .method__list li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+    }
+    .method__list li em {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.05em;
+    }
+
+    @media (max-width: 860px) {
+      .history__grid { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    /* ── BELIEFS ─────────────────────────────────────── */
+    .beliefs {
+      padding: 5rem 1.8rem 5rem;
+    }
+    .beliefs__eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+    .beliefs__lede {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 2.4rem;
+      max-width: 780px;
+    }
+    .beliefs__list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 1200px;
+    }
+    .belief {
+      padding: 2.4rem 0;
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .belief:last-child { border-bottom: 1px solid var(--line); }
+    .belief__num {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .belief__head { }
+    .belief__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      line-height: 1;
+      letter-spacing: -0.035em;
+      color: var(--ink);
+    }
+    .belief__text {
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--ink);
+      max-width: 520px;
+      padding-top: 0.8rem;
+    }
+
+    /* ── ANNOTATION ──────────────────────────────────── */
+    .anno {
+      padding: 0 1.8rem 5rem;
+      max-width: 1100px;
+    }
+    .anno__text {
+      font-family: var(--hand);
+      font-size: clamp(1.4rem, 2.8vw, 2rem);
+      color: var(--muted);
+      line-height: 1.3;
+    }
+
+    /* ── INQUIRE ─────────────────────────────────────── */
+    .inquire {
+      background: var(--indigo);
+      color: #fff;
+      padding: 6rem 1.8rem 5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .inquire__eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
+    .inquire__title { font-family: var(--serif); font-weight: 300; font-style: italic; font-size: clamp(2.8rem, 8vw, 7rem); line-height: 0.9; letter-spacing: -0.04em; }
+    .inquire__title em { font-weight: 900; color: var(--bg); }
+    .inquire__email { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: clamp(1.5rem, 3vw, 2.4rem); border-bottom: 1px solid rgba(255,255,255,0.5); padding-bottom: 6px; align-self: flex-start; transition: border-color 0.2s; }
+    .inquire__email:hover { border-color: #fff; }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    .footer { background: var(--ink); color: var(--bg); padding: 1.2rem 1.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; }
+    .footer a { opacity: 0.65; margin-right: 1.5rem; }
+    .footer a:hover { opacity: 1; }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 860px) {
+      .nav__links { display: none; }
+      .nav__menu { display: block; }
+      .portrait { grid-template-columns: 1fr; min-height: auto; }
+      .portrait__img { min-height: 70vw; }
+      .portrait__stamp { top: 4.5rem; font-size: 2.4rem; }
+      .portrait__body { padding: 3rem 1.5rem; }
+      .portrait__meta { grid-template-columns: auto 1fr; }
+      .studio-strip { grid-template-columns: 1fr; }
+      .studio-strip__img + .studio-strip__img { border-left: none; border-top: 1px solid var(--line); }
+      .belief { grid-template-columns: 1fr; gap: 1rem; }
+      .belief__text { padding-top: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <nav class="nav__links">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="services.html">Services</a>
+      <a href="practice.html">Practice</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Library</a>
+    </nav>
+    <button class="nav__menu" id="navToggle" aria-label="Open menu" aria-controls="menuOverlay" aria-expanded="false">Menu</button>
+    <a href="index.html" class="nav__logo">kaliko</a>
+    <a href="mailto:hello@kaliko.co" class="nav__cta">Inquire</a>
+  </header>
+
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+    <nav class="menu-overlay__links">
+      <a href="portfolio.html"><em>Portfolio</em></a>
+      <a href="services.html"><em>Services</em></a>
+      <a href="practice.html"><em>Practice</em></a>
+      <a href="about.html"><em>About</em></a>
+      <a href="blog.html"><em>Library</em></a>
+    </nav>
+  </div>
+
+  <main>
+
+    <!-- PORTRAIT HERO -->
+    <section class="portrait">
+      <div class="portrait__img">
+        <img src="images/collab-ania.jpg" alt="Ania Grzeszek in her Berlin studio">
+        <span class="portrait__stamp">Hi,<br>I'm Ania.<small>— founder, Kaliko</small></span>
+      </div>
+      <div class="portrait__body">
+        <p class="label">About · Ania Grzeszek</p>
+        <h1 class="portrait__title">Architect by training.<br><em>Natural dyer by practice.</em></h1>
+        <div class="portrait__bio">
+          <p>I spent five years working as an architect before starting Kaliko in 2016 as a side project. Within a year, I had left architecture for textiles. Both are slow work built around decisions about material and form.</p>
+          <p>Kaliko grew from a small line of hand-dyed goods into a studio practice: commissions for fashion brands, installations for galleries, and one-off pieces for interiors. Always with natural fibers, plant-based color, and in small batches.</p>
+          <p style="margin-top: 2rem;">Alongside Kaliko I make art, with textiles as my primary medium.</p>
+        </div>
+        <a href="https://www.aniagrzeszek.com" target="_blank" rel="noopener" class="portrait__link">Personal art practice</a>
+      </div>
+    </section>
+
+    <!-- STUDIO STRIP -->
+    <section class="studio-strip">
+      <div class="studio-strip__img"><img src="images/from-site/IMG_5690_1024x1024.jpg" alt="Kaliko studio — dye pots"></div>
+      <div class="studio-strip__img"><img src="images/from-site/IMG_5086_1024x1024.jpg" alt="Kaliko studio — hands at work"></div>
+      <div class="studio-strip__img"><img src="images/from-site/kaliko_montipots_berlin_002-2_1024x1024.jpg" alt="Kaliko dye pots in the Berlin studio"></div>
+    </section>
+
+    <!-- HISTORY -->
+    <section class="history">
+      <p class="history__eyebrow">a brief history of kaliko</p>
+      <div class="history__grid">
+        <div class="history__col">
+          <div class="history__body">
+            <p>Kaliko started in 2016 in my kitchen in Berlin. I was testing plants from the park near my flat, making a first set of hand-dyed pieces, and sharing the process online while I taught myself the craft through experiments (and a lot of reading).</p>
+            <p>People who found me online began writing with commissions, and from there came the first wholesale orders. That&#39;s when I decided to commit to Kaliko and grow it into a proper brand with a developing line of products.</p>
+            <p>In 2018 I moved into my first studio in Neukölln and began offering workshops alongside the product work. Around the same time I started working with other brands, running workshops for their teams, creating brand activations, collaborating on art pieces, and developing samples.</p>
+            <p>In 2019 I upgraded to a bigger space in Wedding: a dedicated studio with a full dye kitchen. By 2020 Kaliko reached its busiest stretch, with products, wholesale, workshops, and brand work all running at full capacity.</p>
+            <p>By 2023, running a product business was leaving less and less room for the kind of work I wanted to do. I decided to wind down the product side and focus on commissions and project work instead. It turned out it&#39;s not easy to stop the running train. The transition took over two years. By the end of 2025, Kaliko finally stopped offering products, wholesale orders, and regular public workshops.</p>
+            <p>Today, Kaliko focuses on commissions and collaborations with brands, designers, and artists I genuinely want to work with. The values that made me start Kaliko are still the ones driving the work: staying creative, making space to experiment, and educating people about the things that matter to me along the way.</p>
+          </div>
+        </div>
+        <div class="history__col">
+          <div class="method">
+            <p class="method__intro">I set up Kaliko as a reflection of what I wanted to see more of in the world. Four focus areas have been at the core of the work since the start:</p>
+
+            <div class="method__block">
+              <p class="method__label">Empowering textile lovers</p>
+              <ul class="method__list">
+                <li>Years of workshops teaching traditional cloth-making techniques</li>
+                <li>Curated line of craft supplies and DIY kits (part of now-retired product range)</li>
+                <li>A public library of tutorials, plant portraits and natural-dye references for anyone who wants to learn</li>
+              </ul>
+            </div>
+
+            <div class="method__block">
+              <p class="method__label">Taking care of the planet</p>
+              <ul class="method__list">
+                <li>Certified natural fibers only — materials good for the planet and the people who wear them</li>
+                <li>Plant-based, non-toxic color instead of petrochemical dye</li>
+                <li>Steady advocacy for healthier alternatives to the conventional textile industry</li>
+              </ul>
+            </div>
+
+            <div class="method__block">
+              <p class="method__label">Working locally</p>
+              <ul class="method__list">
+                <li>All materials sourced from EU-based small businesses</li>
+                <li>During the product years, every Kaliko piece was finished by local female freelancers</li>
+                <li>The whole practice rooted in the local economy</li>
+              </ul>
+            </div>
+
+            <div class="method__block">
+              <p class="method__label">Reuse & reduce</p>
+              <ul class="method__list">
+                <li>Textile offcuts reused for art projects</li>
+                <li>100% bio-degradable packaging for anything that ships</li>
+                <li>Environmental footprint deliberately kept minimal</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BELIEFS -->
+    <section class="beliefs">
+      <p class="beliefs__eyebrow">What the studio stands for</p>
+      <div class="beliefs__list">
+        <div class="belief">
+          <div class="belief__head">
+            <p class="belief__num">01 —</p>
+            <h3 class="belief__title">Shared <em>knowledge.</em></h3>
+          </div>
+          <p class="belief__text">Understanding where things come from, what they're made of, who makes them, and what it takes to produce them changes how people relate to what they buy. Learning the craft is what turns awareness into a choice.</p>
+        </div>
+        <div class="belief">
+          <div class="belief__head">
+            <p class="belief__num">02 —</p>
+            <h3 class="belief__title"><em>Natural</em> material.</h3>
+          </div>
+          <p class="belief__text">Care shows up in the material. Natural fibers and plant-based color are a way of looking after the land they come from, the people who grow and finish them, and the ones who wear them.</p>
+        </div>
+        <div class="belief">
+          <div class="belief__head">
+            <p class="belief__num">03 —</p>
+            <h3 class="belief__title"><em>Regional</em> economy.</h3>
+          </div>
+          <p class="belief__text">Working close to home keeps the carbon footprint modest, builds a supply chain based on personal relationships, and supports textile businesses finding their feet locally again. Proximity matters.</p>
+        </div>
+        <div class="belief">
+          <div class="belief__head">
+            <p class="belief__num">04 —</p>
+            <h3 class="belief__title">Doing <em>no harm.</em></h3>
+          </div>
+          <p class="belief__text">Every production has an impact. The studio's interest is in mapping where those impacts land and testing the least harmful solutions. Kaliko is an ongoing case study in how far a considered practice can go even on a small scale.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div>
+      <a href="imprint.html">Imprint</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="https://www.instagram.com/kaliko_co/">Instagram</a>
+      <a href="https://kaliko.substack.com/">Substack</a>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var toggle = document.getElementById('navToggle');
+      var overlay = document.getElementById('menuOverlay');
+      if (!toggle || !overlay) return;
+      function open() {
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        toggle.textContent = 'Close';
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        toggle.textContent = 'Menu';
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+      toggle.addEventListener('click', function() {
+        overlay.classList.contains('is-open') ? close() : open();
+      });
+      overlay.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', close);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('is-open')) close();
+      });
+    })();
+  </script>
+</body>
+</html>

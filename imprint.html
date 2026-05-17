@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impressum — Kaliko, Berlin</title>
+  <meta name="description" content="Impressum / Legal notice for Kaliko — Anna Grzeszek, Berlin.">
+  <link rel="canonical" href="https://kaliko.co/imprint.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20fill%3D%27%23F7F5F0%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2722%27%20font-family%3D%27Georgia%2Cserif%27%20font-size%3D%2722%27%20font-style%3D%27italic%27%20text-anchor%3D%27middle%27%20fill%3D%27%23614C3E%27%3EK%3C/text%3E%3C/svg%3E">
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Mono', ui-monospace, monospace;
+      background: #F7F5F0;
+      color: #0F0D0A;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    :root {
+      --serif: 'Fraunces', Georgia, serif;
+      --mono:  'DM Mono', ui-monospace, monospace;
+      --bg:    #F7F5F0;
+      --ink:   #3A332D;
+      --line:  rgba(58,51,45,0.14);
+      --muted: rgba(58,51,45,0.58);
+    }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 1.4rem 1.8rem; mix-blend-mode: difference; color: #BDC2C3; }
+    .nav a { color: currentColor; }
+    .nav__links { display: flex; gap: 2rem; justify-self: start; }
+    .nav__links a { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .nav__logo { font-family: var(--serif); font-weight: 900; font-style: italic; font-size: 1.7rem; letter-spacing: -0.04em; }
+    .nav__cta { justify-self: end; font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .nav__cta::after { content: ' →'; }
+    .nav__menu { display: none; justify-self: start; background: none; border: 0; padding: 0; font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: currentColor; cursor: pointer; }
+
+    .menu-overlay { position: fixed; inset: 0; z-index: 100; background: var(--bg); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; }
+    .menu-overlay.is-open { opacity: 1; pointer-events: auto; }
+    .menu-overlay__links { display: flex; flex-direction: column; gap: 1rem; text-align: center; padding: 0 1.5rem; }
+    .menu-overlay__links a { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: clamp(2.4rem, 11vw, 4.5rem); line-height: 1; letter-spacing: -0.03em; color: var(--ink); }
+    .menu-overlay__links a em { font-weight: 900; font-style: italic; }
+
+    /* ── LEGAL CONTENT ───────────────────────────────── */
+    .legal {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 9rem 1.8rem 6rem;
+      color: var(--ink);
+    }
+    .legal__eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+    .legal__title {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(3.2rem, 8vw, 5.6rem);
+      line-height: 0.95;
+      letter-spacing: -0.035em;
+      margin-bottom: 3.5rem;
+    }
+    .legal__title em { font-weight: 900; font-style: italic; }
+    .legal__section { margin-bottom: 2.5rem; }
+    .legal__section h2 {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+    }
+    .legal__section p {
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.7;
+      margin-bottom: 0.6rem;
+    }
+    .legal__section p:last-child { margin-bottom: 0; }
+    .legal__section a {
+      border-bottom: 1px solid var(--line);
+      transition: border-color 0.2s;
+      word-break: break-word;
+    }
+    .legal__section a:hover { border-color: var(--ink); }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    .footer { background: var(--ink); color: var(--bg); padding: 1.2rem 1.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; }
+    .footer a { opacity: 0.65; margin-right: 1.5rem; }
+    .footer a:hover { opacity: 1; }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 860px) {
+      .nav__links { display: none; }
+      .nav__menu { display: block; }
+      .legal { padding: 7rem 1.5rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <nav class="nav__links">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="services.html">Services</a>
+      <a href="practice.html">Practice</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Library</a>
+    </nav>
+    <button class="nav__menu" id="navToggle" aria-label="Open menu" aria-controls="menuOverlay" aria-expanded="false">Menu</button>
+    <a href="index.html" class="nav__logo">kaliko</a>
+    <a href="mailto:hello@kaliko.co" class="nav__cta">Inquire</a>
+  </header>
+
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+    <nav class="menu-overlay__links">
+      <a href="portfolio.html"><em>Portfolio</em></a>
+      <a href="services.html"><em>Services</em></a>
+      <a href="practice.html"><em>Practice</em></a>
+      <a href="about.html"><em>About</em></a>
+      <a href="blog.html"><em>Library</em></a>
+    </nav>
+  </div>
+
+  <main>
+    <section class="legal">
+      <p class="legal__eyebrow">Legal notice</p>
+      <h1 class="legal__title"><em>Impressum</em></h1>
+
+      <div class="legal__section">
+        <h2>Angaben gemäß § 5 TMG</h2>
+        <p>Anna Grzeszek<br>
+        Chodowieckistraße 15<br>
+        10405 Berlin<br>
+        Deutschland</p>
+      </div>
+
+      <div class="legal__section">
+        <h2>Kontakt</h2>
+        <p>Tel.: <a href="tel:+4915771578059">+49 1577 1578059</a><br>
+        E-Mail: <a href="mailto:hello@kaliko.co">hello@kaliko.co</a></p>
+      </div>
+
+      <div class="legal__section">
+        <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+        <p>Anna Grzeszek<br>
+        Chodowieckistraße 15<br>
+        10405 Berlin</p>
+      </div>
+
+      <div class="legal__section">
+        <h2>EU-Streitschlichtung</h2>
+        <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a>.</p>
+      </div>
+
+      <div class="legal__section">
+        <h2>Verbraucherstreitbeilegung</h2>
+        <p>Ich bin nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <a href="imprint.html">Imprint</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="https://www.instagram.com/kaliko_co/">Instagram</a>
+      <a href="https://kaliko.substack.com/">Substack</a>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var toggle = document.getElementById('navToggle');
+      var overlay = document.getElementById('menuOverlay');
+      if (!toggle || !overlay) return;
+      function open() {
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        toggle.textContent = 'Close';
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        toggle.textContent = 'Menu';
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+      toggle.addEventListener('click', function() {
+        overlay.classList.contains('is-open') ? close() : open();
+      });
+      overlay.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', close);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('is-open')) close();
+      });
+    })();
+  </script>
+</body>
+</html>
