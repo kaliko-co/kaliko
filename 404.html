@@ -50,7 +50,30 @@
         return;
       }
 
-      // 6. Old top-level pages without extension
+      // 6. Shopify pages: /pages/about, /pages/contact etc.
+      var shopifyPageMatch = clean.match(/^\/pages\/([^/]+)$/);
+      if (shopifyPageMatch) {
+        var spMap = {
+          'about': '/about.html',
+          'contact': '/about.html',
+          'services': '/services.html',
+          'practice': '/practice.html',
+          'portfolio': '/portfolio.html',
+          'blog': '/blog.html'
+        };
+        var dest = spMap[shopifyPageMatch[1]];
+        if (dest) { window.location.replace(dest); return; }
+        window.location.replace('/about.html');
+        return;
+      }
+
+      // 7. Shopify collections → portfolio
+      if (clean === '/collections' || clean.match(/^\/collections/)) {
+        window.location.replace('/portfolio.html');
+        return;
+      }
+
+      // 8. Old top-level pages without extension
       var pageMap = {
         '/about':    '/about.html',
         '/services': '/services.html',
