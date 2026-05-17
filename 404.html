@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page not found – Kaliko</title>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    // Redirect engine — catches old CMS URLs and sends to new paths
+    (function () {
+      var path = window.location.pathname;
+
+      // Normalise: strip trailing slash
+      var clean = path.replace(/\/$/, '');
+
+      // --------------------------------------------------
+      // 1. Squarespace / generic blog: /blog/slug  →  /blog/slug.html
+      //    (GitHub Pages usually handles this, but catches edge cases)
+      var blogMatch = clean.match(/^\/blog\/([^/]+)$/);
+      if (blogMatch) {
+        window.location.replace('/blog/' + blogMatch[1] + '.html');
+        return;
+      }
+
+      // 2. If old site used /journal/ instead of /blog/
+      var journalMatch = clean.match(/^\/journal\/([^/]+)$/);
+      if (journalMatch) {
+        window.location.replace('/blog/' + journalMatch[1] + '.html');
+        return;
+      }
+
+      // 3. Shopify format: /blogs/journal/slug  or  /blogs/news/slug
+      var shopifyMatch = clean.match(/^\/blogs\/[^/]+\/([^/]+)$/);
+      if (shopifyMatch) {
+        window.location.replace('/blog/' + shopifyMatch[1] + '.html');
+        return;
+      }
+
+      // 4. Old portfolio paths: /work/slug  →  /portfolio/slug.html
+      var workMatch = clean.match(/^\/work\/([^/]+)$/);
+      if (workMatch) {
+        window.location.replace('/portfolio/' + workMatch[1] + '.html');
+        return;
+      }
+
+      // 5. Portfolio without .html: /portfolio/slug  →  /portfolio/slug.html
+      var portfolioMatch = clean.match(/^\/portfolio\/([^/]+)$/);
+      if (portfolioMatch) {
+        window.location.replace('/portfolio/' + portfolioMatch[1] + '.html');
+        return;
+      }
+
+      // 6. Old top-level pages without extension
+      var pageMap = {
+        '/about':    '/about.html',
+        '/services': '/services.html',
+        '/practice': '/practice.html',
+        '/portfolio':'/portfolio.html',
+        '/blog':     '/blog.html',
+        '/contact':  '/about.html'
+      };
+      if (pageMap[clean]) {
+        window.location.replace(pageMap[clean]);
+        return;
+      }
+
+      // No match — show the 404 page below
+    })();
+  </script>
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="nav__logo" href="/">Kaliko</a>
+      <ul class="nav__links">
+        <li><a href="/portfolio.html">Portfolio</a></li>
+        <li><a href="/services.html">Services</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container" style="padding-top:8rem;padding-bottom:8rem;text-align:center;">
+    <p style="font-family:var(--serif);font-size:clamp(4rem,12vw,9rem);font-weight:900;font-style:italic;line-height:1;letter-spacing:-0.04em;color:var(--ink);margin:0;">404</p>
+    <p style="font-size:1.15rem;color:var(--ink-light);margin:1.5rem 0 2.5rem;">This page has moved or doesn't exist.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="/" style="display:inline-block;padding:0.75rem 2rem;background:var(--ink);color:#fff;text-decoration:none;font-size:0.9rem;letter-spacing:0.06em;text-transform:uppercase;">Go home</a>
+      <a href="/blog.html" style="display:inline-block;padding:0.75rem 2rem;border:1px solid var(--ink);color:var(--ink);text-decoration:none;font-size:0.9rem;letter-spacing:0.06em;text-transform:uppercase;">Read the blog</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <p class="footer__copy">&copy; <script>document.write(new Date().getFullYear())</script> Kaliko</p>
+    </div>
+  </footer>
+
+</body>
+</html>
