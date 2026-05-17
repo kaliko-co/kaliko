@@ -29,10 +29,31 @@
         return;
       }
 
-      // 3. Shopify format: /blogs/journal/slug  or  /blogs/news/slug
+      // 3. Shopify blog: /blogs/articles/slug (with slug rename map)
       var shopifyMatch = clean.match(/^\/blogs\/[^/]+\/([^/]+)$/);
       if (shopifyMatch) {
-        window.location.replace('/blog/' + shopifyMatch[1] + '.html');
+        var oldSlug = shopifyMatch[1];
+        var slugMap = {
+          'extended-color-palette-with-just-3-plant-dyes': '16-colors-3-plant-dyes',
+          'my-local-dye-plants-to-color-fabric-and-yarn':  'my-local-dye-plants',
+          '5-tips-for-dyeing-pink-with-avocado-pits-and-skins': '5-tips-for-dyeing-pink-with-avocado',
+          'bundle-dyeing-old-clothes-with-plants': 'bundle-dyeing-old-clothes',
+          'bundle-dyeing-a-silk-scarf': 'bundle-dyeing-silk-scarf',
+          'dyeing-with-indigo-and-fresh-woad-leaves': 'dyeing-with-indigo-and-fresh-woad',
+          'how-to-eco-print-with-leaves': 'eco-printing-with-leaves',
+          'how-to-dye-with-plants-natural-dyeing-for-beginners': 'how-to-dye-with-plants',
+          'how-to-print-with-plants-onto-fabric-eco-printing': 'how-to-print-with-plants-onto-fabric',
+          'turning-natural-dye-into-pigment-paint': 'turning-natural-dye-into-pigment',
+          'upcycling-clothes-with-natural-dyes-over-dyeing': 'upcycling-clothes-with-natural-dyes'
+        };
+        var newSlug = slugMap[oldSlug] || oldSlug;
+        window.location.replace('/blog/' + newSlug + '.html');
+        return;
+      }
+
+      // /blogs/articles index → /blog.html
+      if (clean === '/blogs/articles' || clean === '/blogs') {
+        window.location.replace('/blog.html');
         return;
       }
 
@@ -58,8 +79,12 @@
           'contact': '/about.html',
           'services': '/services.html',
           'practice': '/practice.html',
+          'teaching': '/practice.html',
+          'natural-dyes': '/services.html',
           'portfolio': '/portfolio.html',
-          'blog': '/blog.html'
+          'blog': '/blog.html',
+          'workshop': '/practice.html',
+          'workshops': '/practice.html'
         };
         var dest = spMap[shopifyPageMatch[1]];
         if (dest) { window.location.replace(dest); return; }
