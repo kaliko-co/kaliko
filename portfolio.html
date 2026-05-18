@@ -144,9 +144,9 @@
       .nav__menu { display: block; }
       .page-hero { padding-top: 6.5rem; }
       .port-grid {
-        --cols: 2;
+        grid-template-columns: repeat(2, 1fr);
         --gap-x: 1rem;
-        --gap-y: 1rem;
+        gap: 0.6rem 1rem;
       }
       .port-grid .tile--wide { grid-column: span 2; }
     }

@@ -180,6 +180,8 @@
       .project-body { grid-template-columns: 1fr; gap: 1.5rem; padding: 3rem 1.8rem; }
       .gallery { grid-template-columns: 1fr; gap: 1rem; }
       .gallery .tile--wide { grid-column: span 1; }
+      /* reset explicit nth-child column/row placements so images stack naturally */
+      .gallery .tile:nth-child(n) { grid-column: auto; grid-row: auto; }
     }
   </style>
   <link rel="shortcut icon" href="/favicon.ico">
