@@ -731,6 +731,9 @@
       .frame:nth-child(2n) { border-right: none; }
       .frame--wide { grid-column: span 2; }
       .frame--tall { grid-row: span 1; aspect-ratio: 4/5; }
+      /* Fix 2: put frame 4 & 6 side by side, Converse wide below */
+      .work__grid .frame:nth-child(5) { order: 6; }
+      .work__grid .frame:nth-child(6) { order: 5; }
       .s-item { grid-template-columns: 30px 1fr; padding: 1.8rem 1.5rem; }
       .s-item__arrow { display: none; }
       .about { grid-template-columns: 1fr; }
@@ -739,6 +742,25 @@
       .posts, .books { grid-template-columns: 1fr; gap: 2.5rem; }
       .library__head { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
       .inquire { padding: 5rem 1.5rem 3rem; }
+      /* Fix 1: marquee — slightly smaller and faster on mobile */
+      .marquee { padding: 1.4rem 0; }
+      .marquee__track { animation-duration: 30s; gap: 3.5rem; }
+      .marquee__item { transform: scale(0.8); }
+      /* Fix 3: section labels → Fraunces italic on mobile */
+      .services__label,
+      .manifesto__eyebrow,
+      .about__label {
+        font-family: var(--serif);
+        font-style: italic;
+        font-weight: 900;
+        font-size: clamp(1.4rem, 5vw, 2rem);
+        letter-spacing: -0.02em;
+        text-transform: none;
+        color: var(--ink);
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 1.2rem;
+      }
     }
   </style>
   <link rel="shortcut icon" href="/favicon.ico">
@@ -870,7 +892,7 @@
       <a href="services.html" class="head-link">Services details</a>
     </div>
 
-    <a class="s-item s-item--indigo" href="#inquire">
+    <a class="s-item s-item--indigo" href="services.html#commissions">
       <span class="s-item__num">01</span>
       <div class="s-item__body">
         <h3 class="s-item__name"><em>Commissions.</em></h3>
@@ -879,7 +901,7 @@
       <span class="s-item__arrow">↗</span>
     </a>
 
-    <a class="s-item s-item--madder" href="#inquire">
+    <a class="s-item s-item--madder" href="services.html#activations">
       <span class="s-item__num">02</span>
       <div class="s-item__body">
         <h3 class="s-item__name"><em>Activations.</em></h3>
@@ -888,7 +910,7 @@
       <span class="s-item__arrow">↗</span>
     </a>
 
-    <a class="s-item s-item--walnut" href="#inquire">
+    <a class="s-item s-item--walnut" href="services.html#collaborations">
       <span class="s-item__num">03</span>
       <div class="s-item__body">
         <h3 class="s-item__name"><em>Collaborations.</em></h3>
