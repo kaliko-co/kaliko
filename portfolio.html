@@ -157,8 +157,9 @@
       .port-grid .tile--wide + .tile { grid-column: span 2; }
       /* last tile sits alone on its row → 100% */
       .port-grid .tile:last-child { grid-column: span 6; }
-      /* landscape aspect ratio for wide tiles on mobile */
-      .port-grid .tile--wide .frame::before { padding-top: 62.5%; }
+      /* landscape aspect ratio for wide tiles on mobile — 60% makes both tiles equal height:
+         equal_ratio = 1.25 × (2 cols + 1 gap) / (4 cols + 3 gaps) ≈ 60% */
+      .port-grid .tile--wide .frame::before { padding-top: 60%; }
     }
   </style>
   <link rel="shortcut icon" href="/favicon.ico">
