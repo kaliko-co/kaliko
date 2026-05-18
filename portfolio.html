@@ -150,12 +150,12 @@
       }
       .port-grid .tile { break-inside: avoid; margin-bottom: 0.5rem; }
       .port-grid .tile--wide { grid-column: unset; }
-      /* natural photo ratio: remove the forced padding-top aspect trick */
+      /* natural photo ratio */
       .port-grid .frame::before,
-      .port-grid .tile--wide .frame::before { padding-top: 0; }
-      .port-grid .frame { position: static; }
-      .port-grid .frame img { position: static; width: 100%; height: auto; }
-      .port-grid .tile__caption { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .port-grid .tile--wide .frame::before { display: none; }
+      .port-grid .frame { position: static; overflow: visible; }
+      .port-grid .frame img { position: static; width: 100%; height: auto; display: block; }
+      .port-grid .tile__caption { white-space: normal; overflow: visible; text-overflow: unset; }
     }
   </style>
   <link rel="shortcut icon" href="/favicon.ico">
