@@ -145,14 +145,20 @@
       .page-hero { padding-top: 5rem; }
       .port-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(6, 1fr);
         --gap-x: 0.5rem;
         gap: 0.5rem;
       }
-      .port-grid .tile { min-width: 0; }
-      /* All thumbnails are portrait → portrait + portrait = 50% + 50%
-         Wide tiles lose their span on mobile — equal sizing throughout */
-      .port-grid .tile--wide { grid-column: span 1; }
+      /* portrait + portrait → 50% + 50% (span 3 each) */
+      .port-grid .tile { min-width: 0; grid-column: span 3; }
+      /* horizontal (hero) tile → 66% */
+      .port-grid .tile--wide { grid-column: span 4; }
+      /* portrait tile paired with a horizontal → 33% */
+      .port-grid .tile--wide + .tile { grid-column: span 2; }
+      /* last tile sits alone on its row → 100% */
+      .port-grid .tile:last-child { grid-column: span 6; }
+      /* landscape aspect ratio for wide tiles on mobile */
+      .port-grid .tile--wide .frame::before { padding-top: 62.5%; }
     }
   </style>
   <link rel="shortcut icon" href="/favicon.ico">
@@ -197,7 +203,7 @@
 
       <a class="tile tile--wide" href="portfolio/highsnobiety.html">
         <div class="frame">
-          <img src="images/portfolio/highsnobiety.webp" alt="Hand-dyed Highsnobiety hoodie" loading="lazy">
+          <img src="images/portfolio/high_snobiety2.webp" alt="Hand-dyed Highsnobiety hoodie" loading="lazy">
           <span class="frame__num">01</span>
         </div>
         <span class="tile__caption">Brand commission · Highsnobiety</span>
@@ -261,7 +267,7 @@
 
       <a class="tile tile--wide" href="portfolio/mollie-makes.html">
         <div class="frame">
-          <img src="images/portfolio/Molliemakes-Tablelinens2.webp" alt="Hand-dyed linen placemats for Mollie Makes" loading="lazy">
+          <img src="images/portfolio/Molliemakes-Tablelinens.webp" alt="Hand-dyed linen placemats for Mollie Makes" loading="lazy">
           <span class="frame__num">09</span>
         </div>
         <span class="tile__caption">Editorial · Mollie Makes</span>
