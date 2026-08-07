@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 
 # Block draft and experimental files
+Disallow: /n-7c4e2a/
 Disallow: /index copy.html
 Disallow: /index-portfolio-style.html
 Disallow: /kaliko-logo-fashion-bold.html

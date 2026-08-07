@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>Nourish</title>
+  <meta name="description" content="A private food and nutrient notebook.">
+  <meta name="theme-color" content="#F7F5F0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#16140F" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Nourish">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,300;1,9..144,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<header class="top">
+  <h1 class="display" id="greeting">Today</h1>
+  <div class="date">
+    <div class="label" id="dateLabel"></div>
+    <div class="small muted" id="loggedLabel"></div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ─── TODAY ─────────────────────────────────────────────────────────── -->
+  <section class="view active" id="view-today" aria-labelledby="greeting">
+    <div class="wrap">
+      <div id="todayBanners"></div>
+
+      <div class="card">
+        <span class="label">What have you eaten?</span>
+        <textarea class="log" id="logInput" enterkeyhint="done"
+          placeholder="a big plate of baked potatoes baked in olive oil and 100g feta, one leek sautéed in some olive oil and 50ml sweet cream"></textarea>
+        <div class="row between" style="margin-top:.7rem">
+          <span class="small faint" id="parseHint">Write it however you'd say it.</span>
+          <button class="btn primary" id="readBtn">read this</button>
+        </div>
+      </div>
+
+      <div id="todayItems"></div>
+      <div id="todayTotals"></div>
+      <div id="todayCheckin"></div>
+    </div>
+  </section>
+
+  <!-- ─── MISSING ───────────────────────────────────────────────────────── -->
+  <section class="view" id="view-missing" aria-labelledby="missingTitle">
+    <div class="wrap">
+      <h2 class="sr" id="missingTitle">What you're missing</h2>
+      <div id="missingBody"></div>
+    </div>
+  </section>
+
+  <!-- ─── WEEK ──────────────────────────────────────────────────────────── -->
+  <section class="view" id="view-week" aria-labelledby="weekTitle">
+    <div class="wrap">
+      <h2 class="sr" id="weekTitle">Your weeks</h2>
+      <div id="weekBody"></div>
+    </div>
+  </section>
+
+  <!-- ─── YOU ───────────────────────────────────────────────────────────── -->
+  <section class="view" id="view-you" aria-labelledby="youTitle">
+    <div class="wrap">
+      <h2 class="sr" id="youTitle">You</h2>
+      <div id="youBody"></div>
+    </div>
+  </section>
+
+</main>
+
+<nav class="tabs" role="tablist">
+  <button data-view="today" aria-current="true"><i class="glyph">◍</i>today</button>
+  <button data-view="missing"><i class="glyph">◑</i>missing</button>
+  <button data-view="week"><i class="glyph">▤</i>week</button>
+  <button data-view="you"><i class="glyph">◇</i>you</button>
+</nav>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<dialog id="askDialog">
+  <h3 id="askTitle">One question</h3>
+  <p class="small muted" id="askBody"></p>
+  <div class="chips" id="askOptions" style="margin-top:.8rem"></div>
+  <div class="d-actions">
+    <button class="btn small ghost" id="askSkip">skip</button>
+  </div>
+</dialog>
+
+<dialog id="bloodDialog">
+  <h3 id="bloodTitle">Add a result</h3>
+  <p class="small muted" id="bloodAbout"></p>
+  <div class="field-row" style="margin-top:.8rem">
+    <label class="field"><span class="label">value</span>
+      <input class="text" type="number" step="any" inputmode="decimal" id="bloodValue"></label>
+    <label class="field"><span class="label">units</span>
+      <select class="text" id="bloodUnit"></select></label>
+  </div>
+  <label class="field"><span class="label">date of the test</span>
+    <input class="text" type="date" id="bloodDate"></label>
+  <details>
+    <summary class="small muted" style="cursor:pointer">my report gives a reference range</summary>
+    <div class="field-row" style="margin-top:.6rem">
+      <label class="field"><span class="label">range low</span>
+        <input class="text" type="number" step="any" inputmode="decimal" id="bloodLow"></label>
+      <label class="field"><span class="label">range high</span>
+        <input class="text" type="number" step="any" inputmode="decimal" id="bloodHigh"></label>
+    </div>
+    <p class="small faint">If you enter these, they're used instead of the published
+      cutoffs — labs genuinely differ, and yours knows its own assay.</p>
+  </details>
+  <div class="d-actions">
+    <button class="btn small ghost" id="bloodCancel">cancel</button>
+    <button class="btn small primary" id="bloodSave">save</button>
+  </div>
+</dialog>
+
+<dialog id="teachDialog">
+  <h3>Teach me this</h3>
+  <p class="small muted" id="teachWhat"></p>
+  <label class="field" style="margin-top:.7rem">
+    <span class="label">Is it one of these?</span>
+    <input class="text" id="teachSearch" placeholder="search foods…" autocomplete="off">
+  </label>
+  <div class="chips" id="teachResults"></div>
+  <p class="small faint" style="margin-top:.8rem">
+    If it's nothing like these, skip it — the item is left out of today's totals
+    rather than guessed at.
+  </p>
+  <div class="d-actions">
+    <button class="btn small ghost" id="teachSkip">leave it out</button>
+  </div>
+</dialog>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
