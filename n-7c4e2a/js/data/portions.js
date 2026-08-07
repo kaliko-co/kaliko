@@ -78,6 +78,7 @@ export const ALIASES = {
   'brazil nuts': 'brazil_nuts', 'brazil nut': 'brazil_nuts', 'paranusse': 'brazil_nuts',
   'peanuts': 'peanuts', 'erdnusse': 'peanuts', 'orzeszki ziemne': 'peanuts',
   'peanut butter': 'peanut_butter', 'erdnussbutter': 'peanut_butter',
+  'maslo orzechowe': 'peanut_butter', 'masło orzechowe': 'peanut_butter',
   'almond butter': 'almond_butter', 'mandelmus': 'almond_butter',
   'tahini': 'tahini', 'tahin': 'tahini', 'sesame paste': 'tahini',
   'sunflower seeds': 'sunflower_seeds', 'sonnenblumenkerne': 'sunflower_seeds',
@@ -327,6 +328,22 @@ export const AMBIGUOUS = {
       { id: 'sour_cream', label: 'sour cream / śmietana' },
     ],
   },
+  // "sweet cream" and śmietanka rule out soured cream but not the fat content,
+  // and 18% vs 30% is 130 kcal per 100 g — worth one question.
+  'sweet cream': {
+    question: 'How rich is the cream?',
+    options: [
+      { id: 'cream', label: 'whipping cream (30%)' },
+      { id: 'cream_single', label: 'single / cooking cream (18%)' },
+    ],
+  },
+  smietanka: {
+    question: 'Jaka śmietanka?',
+    options: [
+      { id: 'cream', label: 'kremówka 30%' },
+      { id: 'cream_single', label: 'śmietanka 18%' },
+    ],
+  },
   milk: {
     question: 'Which milk?',
     options: [
@@ -426,13 +443,12 @@ export const UNIT_WORDS = {
   tablet: ['tablet', 'tablets', 'pill', 'pills', 'tabletka'],
   capsule: ['capsule', 'capsules', 'kapsel', 'kapsulka'],
   drop: ['drop', 'drops', 'tropfen', 'kropla'],
-  small: ['small'],
-  large: ['large', 'big'],
-  half: ['half'],
   pint: ['pint', 'pints'],
   rasher: ['rasher', 'rashers'],
-  cherry: ['cherry'],
 };
+// Deliberately NOT units: small, big, large, half. They're size words, and
+// listing them here made readUnit swallow them before readSize could see them,
+// so "a big plate of" silently lost its "big".
 
 // Used when a food has no weight for a unit that was named anyway.
 // "a bowl of pumpkin seeds" is unusual but shouldn't crash.
@@ -450,11 +466,13 @@ export const UNIT_FALLBACK = {
 // Size words scale whatever portion the parser landed on.
 export const SIZE_MODIFIERS = {
   tiny: 0.4, mini: 0.5, 'very small': 0.5, small: 0.7, smallish: 0.8,
-  little: 0.7, kleine: 0.7, kleiner: 0.7, maly: 0.7, mała: 0.7, male: 0.7,
-  medium: 1, normal: 1, regular: 1, average: 1, mittlere: 1, sredni: 1, średni: 1,
+  little: 0.7, kleine: 0.7, kleiner: 0.7, kleines: 0.7, maly: 0.7, mała: 0.7,
+  male: 0.7, mala: 0.7,
+  medium: 1, normal: 1, regular: 1, average: 1, mittlere: 1, mittlerer: 1,
+  sredni: 1, średni: 1, srednia: 1,
   decent: 1.2, good: 1.2, generous: 1.35, big: 1.4, large: 1.4, grosse: 1.4,
-  große: 1.4, duza: 1.4, duży: 1.4, duze: 1.4, huge: 1.8, massive: 1.8,
-  enormous: 1.8, 'very big': 1.8, 'very large': 1.8,
+  große: 1.4, grosser: 1.4, grosses: 1.4, duza: 1.4, duży: 1.4, duze: 1.4,
+  duzy: 1.4, huge: 1.8, massive: 1.8, enormous: 1.8, 'very big': 1.8, 'very large': 1.8,
   heaped: 1.5, heaping: 1.5, rounded: 1.3, level: 1, flat: 1,
   half: 0.5, quarter: 0.25,
 };
@@ -502,6 +520,13 @@ export const STOPWORDS = new Set([
   'diced', 'grated', 'crumbled', 'warm', 'cold', 'hot', 'raw', 'nice', 'lovely',
   'und', 'mit', 'von', 'ein', 'eine', 'der', 'die', 'das', 'gestern', 'heute',
   'i', 'z', 'ze', 'na', 'do', 'oraz', 'jadlam', 'jadłam', 'zjadlam', 'wczoraj', 'dzisiaj',
+  // Whose food it was is not nutrition.
+  'mum', 'mums', 'mom', 'moms', 'dad', 'dads', 'grandma', 'grandmas',
+  'friends', 'work', 'canteen', 'restaurant', 'cafe', 'takeaway',
+  // Meal names — they mark a boundary but aren't foods.
+  'breakfast', 'lunch', 'dinner', 'supper', 'snack', 'brunch',
+  'fruhstuck', 'frühstück', 'mittagessen', 'abendessen',
+  'sniadanie', 'śniadanie', 'obiad', 'kolacja', 'przekaska', 'przekąska',
 ]);
 
 // Meal-name words that shouldn't be treated as foods but do mark a boundary.
