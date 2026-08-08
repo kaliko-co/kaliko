@@ -292,6 +292,10 @@ textarea.log::placeholder { color: var(--faint); }
   border-bottom: 1px solid var(--line);
   margin-bottom: 0.2rem;
 }
+.meter-note p { margin: 0; }
+.contrib-list { margin-top: 0.3rem; }
+.contrib-row { display: flex; justify-content: space-between; gap: 0.6rem; padding: 0.15rem 0; }
+.contrib-row span:last-child { font-variant-numeric: tabular-nums; color: var(--faint); white-space: nowrap; }
 
 /* ─── Suggestions ───────────────────────────────────────────────────────── */
 

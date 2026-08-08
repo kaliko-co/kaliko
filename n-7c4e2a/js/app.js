@@ -257,13 +257,23 @@ function renderItems() {
   </div>`;
 }
 
+/** Which of today's items actually contain this nutrient, most first. */
+function contributionsFor(key) {
+  const day = store.getDay();
+  const settings = store.getSettings();
+  return day.items
+    .filter((it) => !it.excluded)
+    .map((it) => ({ name: it.name, value: nutrientsOf(it.kind, it.foodId, it.grams, settings.customFoods)[key] || 0 }))
+    .filter((c) => c.value > 0)
+    .sort((a, b) => b.value - a.value);
+}
+
 function meterRow(key, a, { tappable = true } = {}) {
   const meta = NUTRIENTS[key];
   if (!meta) return '';
-  const note = NUTRIENT_NOTES[key];
   const suffix = meta.asSalt ? ` · ${saltFromSodium(a.value).toFixed(1)} g salt` : '';
-  return `<div class="meter${tappable && note ? ' tap' : ''}" data-status="${a.status}"
-      ${note ? `data-act="note" data-key="${key}"` : ''}>
+  return `<div class="meter${tappable ? ' tap' : ''}" data-status="${a.status}"
+      ${tappable ? `data-act="note" data-key="${key}"` : ''}>
     <span class="m-label">${esc(meta.label)}${a.weekly ? ' <span class="faint">·wk</span>' : ''}</span>
     <span class="track"><span class="fill" style="width:${pct(a.pct)}"></span></span>
     <span class="m-pct">${a.pct}%</span>
@@ -887,10 +897,22 @@ document.addEventListener('click', (e) => {
     case 'note': {
       const box = $('#meterNote');
       const key = t.dataset.key;
-      box.innerHTML = box.dataset.key === key
-        ? (box.dataset.key = '', '')
-        : `<div class="meter-note">${esc(NUTRIENT_NOTES[key])}</div>`;
-      box.dataset.key = box.innerHTML ? key : '';
+      if (box.dataset.key === key) {
+        box.innerHTML = '';
+        box.dataset.key = '';
+        break;
+      }
+      const note = NUTRIENT_NOTES[key];
+      const contributions = contributionsFor(key);
+      box.innerHTML = `<div class="meter-note">
+        ${note ? `<p>${esc(note)}</p>` : ''}
+        ${contributions.length
+    ? `<p class="small faint" style="margin-top:${note ? '.5rem' : '0'}">From today:</p>
+           <div class="contrib-list">${contributions.map((c) => `<div class="contrib-row">
+             <span>${esc(c.name)}</span><span>${formatAmount(key, c.value)}</span></div>`).join('')}</div>`
+    : `<p class="small faint" style="margin-top:${note ? '.5rem' : '0'}">Nothing logged today contains it.</p>`}
+      </div>`;
+      box.dataset.key = key;
       break;
     }
 
