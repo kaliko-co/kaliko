@@ -39,6 +39,14 @@ const find = (items, name) => items.find((i) => i.name.includes(name));
 }
 
 {
+  // A quantity with nothing after it to attach to ("...with strawberries
+  // 150g") used to be silently dropped rather than applied to anything.
+  const { items } = parse('kaszka manna z truskawkami 150g');
+  ok('trailing weight lands on the nearest item, not lost', find(items, 'strawberries')?.grams === 150);
+  ok('the earlier item keeps its own default', find(items, 'semolina porridge')?.grams === 300);
+}
+
+{
   // Regression: the second food used to be dropped entirely.
   const { items } = parse('half an avocado on sourdough');
   ok('both foods survive', items.length === 2, items.map((i) => i.name).join(','));

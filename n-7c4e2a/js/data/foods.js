@@ -23,6 +23,8 @@ export const FOODS = {
   // ─── Grains, bread, starch ────────────────────────────────────────────────
   oats_dry: { n: 'rolled oats (dry)', g: ['grain'], portion: 50, units: { tbsp: 9, cup: 90, handful: 25 },
     kcal: 379, pro: 13.2, carb: 67.7, sug: 1, fat: 6.5, sat: 1.1, fib: 10.1, fe: 4.7, ca: 52, mg: 138, zn: 4, k: 362, se: 28, ve: 0.4, b1: 0.46, b6: 0.1, fol: 32, ala: 0.11 },
+  semolina_dry: { n: 'semolina (dry)', g: ['grain'], portion: 40, units: { tbsp: 12, cup: 90 },
+    kcal: 360, pro: 12.7, carb: 72.8, sug: 3, fat: 1.1, sat: 0.2, fib: 3.9, fe: 1.2, ca: 17, mg: 47, zn: 1, k: 186, b1: 0.16, fol: 72 },
   bread_wholemeal: { n: 'wholemeal bread', g: ['grain'], portion: 70, units: { slice: 35, each: 35, roll: 60 },
     kcal: 247, pro: 10.7, carb: 41.3, sug: 4.3, fat: 3.4, sat: 0.7, fib: 6.8, na: 455, fe: 2.5, ca: 107, mg: 82, zn: 1.8, k: 254, se: 30, ve: 0.5, b1: 0.4, b2: 0.2, b6: 0.2, fol: 42, ala: 0.15 },
   bread_rye: { n: 'rye bread', g: ['grain'], portion: 70, units: { slice: 35, each: 35 },

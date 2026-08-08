@@ -23,6 +23,14 @@ export const DISHES = {
     a: ['porridge on water', 'water porridge', 'oats with water'],
     r: [['oats_dry', 50], ['water', 250]],
   },
+  semolina_porridge: {
+    n: 'semolina porridge', portion: 300, units: { bowl: 300, plate: 300, cup: 200 },
+    a: [
+      'semolina porridge', 'semolina pudding', 'cream of wheat', 'griessbrei', 'grießbrei',
+      'kaszka manna', 'kaszke manna', 'kasza manna', 'kaszka manna na mleku',
+    ],
+    r: [['semolina_dry', 40], ['milk_semi', 250]],
+  },
   overnight_oats: {
     n: 'overnight oats', portion: 320, units: { bowl: 320, jar: 320, pot: 320 },
     a: ['overnight oats', 'bircher muesli', 'bircher'],

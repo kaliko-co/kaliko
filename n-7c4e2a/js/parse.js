@@ -539,6 +539,21 @@ export function parse(text, opts = {}) {
       i++;
     }
     flushLeftover();
+
+    // A quantity with nothing after it to attach to ("...with strawberries
+    // 150g") would otherwise just vanish — it's collected, never emitted.
+    // Applying it to the item nearest it, rather than dropping it, means a
+    // wrong guess is at least visible and correctable, not silently lost.
+    if ((mods.qty !== null || mods.unit) && lastItem) {
+      const hostEntry = lookup(lastItem.kind, lastItem.foodId);
+      const { grams, assumed } = computeGrams({
+        entry: hostEntry, qty: mods.qty, unit: mods.unit, size: 1, dry: mods.dry, id: lastItem.foodId,
+      });
+      lastItem.grams = grams;
+      lastItem.qty = mods.qty;
+      lastItem.unit = mods.unit;
+      lastItem.estimated = assumed || mods.vague;
+    }
   }
 
   return { items, unknown };
