@@ -21,11 +21,13 @@ const blank = () => ({
     excludedGroups: [],
     dislikedFoods: [],
     suggestSupplements: true,
-    resolved: {},          // ambiguous name → chosen food id
+    resolved: {},          // taught phrase → 'kind:id', e.g. 'food:supp_iron'
     portionOverrides: {},  // 'foodId:unit' → grams
     customFoods: {},       // taught foods, same shape as FOODS entries
     feedback: {},          // foodId → {accepted, ignored}
     dismissedAutoExclude: [],
+    supplementsOn: [],     // supplement ids explicitly added to the Today list
+    supplementsOff: [],    // supplement ids explicitly hidden from it
     lastBackup: null,
   },
 });
@@ -142,10 +144,14 @@ export function setSettings(patch) {
   return state.settings;
 }
 
-/** Remember an answer to an ambiguous food name, so it's asked once ever. */
-export function resolveAmbiguity(name, foodId) {
+/**
+ * Remember an answer to an ambiguous or unrecognised name, so it's asked (or
+ * taught) once ever. `kind` matters — a taught phrase can resolve to a dish,
+ * not just a food, and losing that meant it looked up the wrong table forever.
+ */
+export function resolveAmbiguity(name, foodId, kind = 'food') {
   const state = read();
-  state.settings.resolved = { ...state.settings.resolved, [name]: foodId };
+  state.settings.resolved = { ...state.settings.resolved, [name]: `${kind}:${foodId}` };
   write();
 }
 

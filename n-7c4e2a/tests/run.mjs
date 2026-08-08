@@ -59,6 +59,35 @@ const find = (items, name) => items.find((i) => i.name.includes(name));
 }
 
 {
+  // Regression: teaching a genuinely novel phrase used to not persist — only
+  // the six fixed AMBIGUOUS_KEYS terms (cream, milk, cheese...) were ever
+  // consulted on a later parse. A supplement name is exactly this case.
+  const first = parse('zvornikian slop');
+  ok('novel phrase starts unknown', first.unknown.length === 1 && first.items.length === 0);
+
+  const second = parse('zvornikian slop', { resolved: { 'zvornikian slop': 'food:egg' } });
+  ok('taught phrase resolves next time', second.items.length === 1 && second.items[0].foodId === 'egg',
+    JSON.stringify(second));
+  ok('taught item reads as remembered, not fuzzy', second.items[0].taught === true && second.items[0].fuzzy === false);
+}
+
+{
+  // Regression: teaching a phrase to a *dish* used to always be stored (and
+  // read back) as kind 'food' regardless — the ternary that was supposed to
+  // preserve it was a no-op. That silently failed to resolve on replay.
+  const { items } = parse('zvornikian goop', { resolved: { 'zvornikian goop': 'dish:lentil_soup' } });
+  ok('taught dish keeps its kind', items.length === 1 && items[0].kind === 'dish' && items[0].foodId === 'lentil_soup',
+    JSON.stringify(items));
+}
+
+{
+  // Backward compatibility: settings saved before this fix stored a bare id
+  // with no kind prefix for the six fixed ambiguous terms — must keep working.
+  const { items } = parse('cream', { resolved: { cream: 'cream_single' } });
+  ok('pre-fix bare-id resolved format still works', items.length === 1 && items[0].foodId === 'cream_single' && !items[0].needs);
+}
+
+{
   // Regression: a dry weight must not select a composite dish.
   const { items } = parse('100g dry pasta with pesto');
   ok('dry weight → cooked food', near(find(items, 'pasta')?.grams, 240));
@@ -141,6 +170,16 @@ const find = (items, name) => items.find((i) => i.name.includes(name));
   ok('gap list is capped', gaps.length <= 6);
   ok('iron outranks vitamin E', gaps.findIndex((g) => g.key === 'fe') < gaps.findIndex((g) => g.key === 've')
     || !gaps.some((g) => g.key === 've'));
+}
+
+{
+  // The "add a supplement" form stores label dose × 100, following the same
+  // per-100g convention as every other food. Confirm it comes back out exact.
+  const label = { vd: 25, b12: 100, fe: 6, ca: 120 };
+  const stored = Object.fromEntries(Object.entries(label).map(([k, v]) => [k, v * 100]));
+  const t = nutrientsOf('food', 'x', 1, { x: { n: 'test supp', g: ['supplement'], portion: 1, ...stored } });
+  ok('custom supplement dose round-trips exactly', near(t.vd, 25) && near(t.b12, 100) && near(t.fe, 6) && near(t.ca, 120),
+    JSON.stringify(t));
 }
 
 // ─── Suggestions ────────────────────────────────────────────────────────────

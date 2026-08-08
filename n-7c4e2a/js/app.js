@@ -8,7 +8,7 @@ import { AMBIGUOUS } from './data/portions.js';
 import {
   NUTRIENTS, NUTRIENT_NOTES, ACTIVITY_LEVELS, WEEKLY_NUTRIENTS,
 } from './data/targets.js';
-import { parse, searchFoods } from './parse.js';
+import { parse, searchFoods, normalise } from './parse.js';
 import {
   totalsFor, assess, shortfalls, excesses, targetsFor, aggregate, shortDayCounts,
   lastNDays, dayKey, saltFromSodium, formatAmount, nutrientsOf,
@@ -106,11 +106,94 @@ function renderBanners() {
   $('#todayBanners').innerHTML = out.join('');
 }
 
+// ─── Supplements — a curated list you tap instead of typing ────────────────
+
+// A dose is one capsule/tablet/drop, so only vitamins, minerals and omega-3
+// make sense here — the same fields the "add a supplement" form fills in.
+const SUPP_FIELD_KEYS = [
+  'vd', 'b12', 'fe', 'ca', 'i', 'mg', 'zn', 'se', 'fol', 'va', 'vc', 've',
+  'b1', 'b2', 'b6', 'ala', 'epa',
+];
+
+function allSupplementFoods() {
+  const settings = store.getSettings();
+  const out = [];
+  for (const [id, food] of Object.entries(FOODS)) if (food.g?.includes('supplement')) out.push({ id, food });
+  for (const [id, food] of Object.entries(settings.customFoods)) {
+    if (food.g?.includes('supplement')) out.push({ id, food });
+  }
+  return out;
+}
+
+/** Every supplement id that's ever actually been logged, even once. */
+function everLoggedSupplementIds() {
+  const settings = store.getSettings();
+  const ids = new Set();
+  for (const day of Object.values(store.getDays())) {
+    for (const it of day.items || []) {
+      const food = FOODS[it.foodId] || settings.customFoods[it.foodId];
+      if (food?.g?.includes('supplement')) ids.add(it.foodId);
+    }
+  }
+  return ids;
+}
+
+/**
+ * On the Today list by default the moment you've logged it once — no setup
+ * required. `supplementsOn` is only for one you intend to start taking but
+ * haven't logged yet; `supplementsOff` always wins, so hiding one is final
+ * until you turn it back on.
+ */
+function isQuickSupplement(id, everLogged, settings) {
+  return (everLogged.has(id) || settings.supplementsOn.includes(id)) && !settings.supplementsOff.includes(id);
+}
+
+function quickSupplementList() {
+  const settings = store.getSettings();
+  const everLogged = everLoggedSupplementIds();
+  const counts = {};
+  for (const day of Object.values(store.getDays())) {
+    for (const it of day.items || []) counts[it.foodId] = (counts[it.foodId] || 0) + 1;
+  }
+  return allSupplementFoods()
+    .filter(({ id }) => isQuickSupplement(id, everLogged, settings))
+    .sort((a, b) => (counts[b.id] || 0) - (counts[a.id] || 0) || a.food.n.localeCompare(b.food.n));
+}
+
+function renderSupplementQuick() {
+  const list = quickSupplementList();
+  const box = $('#todaySupplements');
+  if (!box) return;
+
+  if (!list.length) {
+    box.innerHTML = `<div class="card quiet">
+      <span class="label">Your supplements</span>
+      <p class="small muted" style="margin-top:.3rem">Nothing set up yet — add
+        one with the doses off its label, and it shows up here as a button
+        from then on.</p>
+      <button class="btn small" data-act="add-supp" style="margin-top:.5rem">add a supplement</button>
+    </div>`;
+    return;
+  }
+
+  box.innerHTML = `<div class="card">
+    <div class="row between"><span class="label">Your supplements — tap to log</span>
+      <button class="btn small ghost" data-act="manage-supps">manage</button></div>
+    <div class="chips" style="margin-top:.55rem">
+      ${list.map(({ id, food }) => `<button class="chip log" data-act="log-supp"
+        data-food="${esc(id)}">${esc(food.n)}</button>`).join('')}
+    </div>
+    <p class="small faint" style="margin-top:.6rem">One tap logs one dose —
+      tap twice for two capsules.</p>
+  </div>`;
+}
+
 function itemRow(it, isSub) {
   const flags = [];
   if (it.needs) flags.push('<span class="flag ask" title="needs an answer">?</span>');
   if (it.estimated) flags.push('<span class="flag" title="an estimate — check it">~</span>');
-  if (it.fuzzy) flags.push('<span class="flag" title="closest match to what you wrote">≈</span>');
+  if (it.taught && !it.fuzzy) flags.push('<span class="flag ok" title="a food you taught me">✓</span>');
+  else if (it.fuzzy) flags.push('<span class="flag" title="closest match to what you wrote">≈</span>');
   if (it.dry) flags.push('<span class="flag ok" title="converted from dry to cooked weight">↑</span>');
 
   const notes = [];
@@ -543,6 +626,24 @@ function renderYou() {
 
   const taught = Object.entries(settings.customFoods);
   const size = (store.storageSize() / 1024).toFixed(0);
+  const dayCount = Object.keys(store.getDays()).length;
+
+  const everLoggedSupp = everLoggedSupplementIds();
+  const suppRows = allSupplementFoods().map(({ id, food }) => {
+    const on = isQuickSupplement(id, everLoggedSupp, settings);
+    const dose = SUPP_FIELD_KEYS
+      .filter((k) => food[k])
+      .slice(0, 3)
+      .map((k) => `${NUTRIENTS[k].label} ${(food[k] / 100).toFixed(NUTRIENTS[k].decimals ?? 1)}${NUTRIENTS[k].unit}`)
+      .join(' · ');
+    return `<div class="pref">
+      <span>${esc(food.n)}${dose ? `<span class="item-note">${esc(dose)}</span>` : ''}</span>
+      <span></span>
+      <button class="chip" data-act="toggle-supp" data-supp="${esc(id)}" aria-pressed="${on}">
+        ${on ? 'on Today' : 'hidden'}
+      </button>
+    </div>`;
+  }).join('');
 
   $('#youBody').innerHTML = `${profileCard}
     <div class="card">
@@ -562,11 +663,21 @@ function renderYou() {
         Turning a group off only stops suggestions — you can still log it.
       </p>
     </div>
+    <div class="card" id="suppManagerCard">
+      <span class="label">Your supplements</span>
+      ${suppRows || '<p class="small muted">None yet.</p>'}
+      <button class="btn small" data-act="add-supp" style="margin-top:.7rem">+ add a supplement</button>
+      <p class="small faint" style="margin-top:.6rem">
+        Anything you've logged even once — by typing it — turns on automatically.
+        Hiding one here just removes its button on Today; the food itself, and
+        anything already logged, is untouched.
+      </p>
+    </div>
     <div class="card">
       <span class="label">Your data</span>
       <p class="small muted">Everything lives in this browser on this device.
         Nothing is uploaded, there's no account, and none of it is in the
-        repository. ${size} kB so far, ${Object.keys(store.getDays()).length} days,
+        repository. ${size} kB so far, ${dayCount} day${dayCount === 1 ? '' : 's'},
         ${taught.length} food${taught.length === 1 ? '' : 's'} you taught me.</p>
       ${!storageWorks ? `<p class="small" style="color:var(--short);margin-top:.5rem">
         Saving isn't working right now on this device — see the banner on Today
@@ -632,6 +743,17 @@ function openBlood(marker) {
   $('#bloodValue').focus();
 }
 
+function openSupplementForm() {
+  $('#suppName').value = '';
+  $('#suppFields').innerHTML = SUPP_FIELD_KEYS.map((k) => {
+    const meta = NUTRIENTS[k];
+    return `<label class="field"><span class="label">${esc(meta.label)} (${esc(meta.unit)})</span>
+      <input class="text" type="number" step="any" inputmode="decimal" data-nutrient="${k}" placeholder="0"></label>`;
+  }).join('');
+  $('#suppDialog').showModal();
+  $('#suppName').focus();
+}
+
 let teaching = null;
 
 function openTeach(unknownText) {
@@ -666,6 +788,7 @@ function renderAll() {
     : 'nothing logged yet';
 
   renderBanners();
+  renderSupplementQuick();
   renderItems();
   renderTotals();
   renderCheckin();
@@ -781,8 +904,10 @@ document.addEventListener('click', (e) => {
         source: teaching,
         note: `you told me “${teaching}” means this`,
       }]);
-      // Remembering the word means it's recognised next time.
-      store.resolveAmbiguity(teaching, kind === 'food' ? id : id);
+      // Remembering the word means it's recognised next time. The kind has to
+      // be stored too — losing it made a taught dish look up the food table
+      // and quietly resolve to nothing.
+      store.resolveAmbiguity(teaching, id, kind);
       $('#teachDialog').close();
       renderAll();
       toast('Noted, and remembered.');
@@ -811,6 +936,52 @@ document.addEventListener('click', (e) => {
       store.recordFeedback(t.dataset.food, false);
       renderAll();
       toast('Noted — I\'ll lean on it less.');
+      break;
+
+    case 'log-supp': {
+      const id = t.dataset.food;
+      const settings = store.getSettings();
+      const food = FOODS[id] || settings.customFoods[id];
+      if (!food) break;
+      store.addItems([{
+        id: `it${Date.now().toString(36)}${Math.random().toString(36).slice(2, 5)}`,
+        kind: 'food',
+        foodId: id,
+        name: food.n,
+        grams: food.portion,
+        estimated: false,
+        source: 'tapped from your list',
+      }]);
+      renderAll();
+      toast(`Logged ${food.n}.`);
+      break;
+    }
+
+    case 'manage-supps':
+      switchView('you');
+      renderYou();
+      setTimeout(() => $('#suppManagerCard')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+      break;
+
+    case 'toggle-supp': {
+      const id = t.dataset.supp;
+      const settings = store.getSettings();
+      const on = isQuickSupplement(id, everLoggedSupplementIds(), settings);
+      store.setSettings(on
+        ? {
+          supplementsOff: [...new Set([...settings.supplementsOff, id])],
+          supplementsOn: settings.supplementsOn.filter((x) => x !== id),
+        }
+        : {
+          supplementsOn: [...new Set([...settings.supplementsOn, id])],
+          supplementsOff: settings.supplementsOff.filter((x) => x !== id),
+        });
+      renderAll();
+      break;
+    }
+
+    case 'add-supp':
+      openSupplementForm();
       break;
 
     case 'toggle-group': {
@@ -961,6 +1132,37 @@ $('#bloodSave').addEventListener('click', () => {
   $('#bloodDialog').close();
   renderAll();
   toast('Saved, on this device only.');
+});
+
+$('#suppCancel').addEventListener('click', () => $('#suppDialog').close());
+$('#suppSave').addEventListener('click', () => {
+  const name = $('#suppName').value.trim();
+  if (!name) { toast('Needs a name.'); return; }
+
+  // Stored the same way every other food is: value per 100 g. A dose is
+  // portion=1, so the actual per-capsule number × 100 gets it back out exactly
+  // when nutrientsOf() divides by 100 at grams=1.
+  const dose = {};
+  let any = false;
+  for (const input of document.querySelectorAll('#suppFields input')) {
+    const v = parseFloat(String(input.value).replace(',', '.'));
+    if (!v) continue;
+    dose[input.dataset.nutrient] = v * 100;
+    any = true;
+  }
+  if (!any) { toast('Add at least one amount from the label.'); return; }
+
+  const slug = normalise(name).replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+  const id = `supp_custom_${slug || 'item'}_${Date.now().toString(36).slice(-4)}`;
+  store.addCustomFood(id, {
+    n: name, g: ['supplement'], portion: 1,
+    units: { each: 1, tablet: 1, capsule: 1, drop: 1 },
+    ...dose,
+  });
+  store.setSettings({ supplementsOn: [...store.getSettings().supplementsOn, id] });
+  $('#suppDialog').close();
+  renderAll();
+  toast('Added — it’s on Today now.');
 });
 
 $('#askSkip').addEventListener('click', () => $('#askDialog').close());

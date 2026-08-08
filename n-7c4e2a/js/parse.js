@@ -139,6 +139,22 @@ function fuzzyMatch(phrase) {
   return bestScore >= bar ? { ...best, fuzzy: true, score: bestScore } : null;
 }
 
+/**
+ * A phrase you've taught before, looked up by its exact remembered text.
+ *
+ * Values are stored as `${kind}:${id}` (e.g. `food:supp_custom_iron_a1b2`).
+ * A value with no colon is a pre-fix entry — those were only ever written for
+ * AMBIGUOUS_KEYS terms, which are always foods, so default the kind to `food`
+ * rather than migrating old settings data.
+ */
+function resolveFromMap(phrase, resolvedMap) {
+  const raw = resolvedMap[phrase];
+  if (!raw) return null;
+  const sep = raw.indexOf(':');
+  if (sep === -1) return { kind: 'food', id: raw, name: phrase };
+  return { kind: raw.slice(0, sep), id: raw.slice(sep + 1), name: phrase };
+}
+
 // ─── Splitting ──────────────────────────────────────────────────────────────
 
 // Punctuation only. Connectives are deliberately *not* split on, so a dish name
@@ -309,15 +325,26 @@ export function parse(text, opts = {}) {
       leftover = [];
       if (!buf.length) return;
 
+      // A phrase you've taught before, in full, beats guessing at it again —
+      // checked before the windowed scan so a taught name longer than two
+      // words (most supplement and dish names you'd actually type) still
+      // resolves, not just short ones.
+      const wholePhrase = buf.join(' ');
+      const taught = resolveFromMap(wholePhrase, resolved);
+      if (taught) { emit({ ...taught, fuzzy: false, taught: true }, wholePhrase); return; }
+
       let j = 0;
       let stillUnknown = [];
       while (j < buf.length) {
         let hit = null;
+        let hitTaught = false;
         let used = 0;
         for (const len of [2, 1]) {
           if (j + len > buf.length) continue;
           const slice = buf.slice(j, j + len);
           for (const form of [slice.join(' '), slice.map(stemSlavic).join(' ')]) {
+            const t = resolveFromMap(form, resolved);
+            if (t) { hit = t; hitTaught = true; break; }
             hit = matchAt(form.split(' '), 0) || fuzzyMatch(form);
             if (hit) break;
           }
@@ -328,7 +355,8 @@ export function parse(text, opts = {}) {
             unknown.push({ id: nextId(), text: stillUnknown.join(' '), raw: chunk });
             stillUnknown = [];
           }
-          emit({ ...hit, fuzzy: true }, buf.slice(j, j + used).join(' '));
+          emit(hitTaught ? { ...hit, fuzzy: false, taught: true } : { ...hit, fuzzy: true },
+            buf.slice(j, j + used).join(' '));
           j += used;
         } else {
           stillUnknown.push(buf[j]);
@@ -347,7 +375,8 @@ export function parse(text, opts = {}) {
       let resolvedMatch = match;
       let needs = null;
       if (AMBIGUOUS_KEYS.has(match.name)) {
-        if (resolved[match.name]) resolvedMatch = { kind: 'food', id: resolved[match.name], name: match.name };
+        const r = resolveFromMap(match.name, resolved);
+        if (r) resolvedMatch = r;
         else needs = match.name;
       }
 
@@ -390,6 +419,7 @@ export function parse(text, opts = {}) {
         // Flags the UI renders as visible marks rather than hiding.
         estimated: assumed || mods.vague,
         fuzzy: !!match.fuzzy,
+        taught: !!match.taught,
         needs,
         sizeWord,
         sizeConflict: mods.sizeWords.length > 1 ? [...mods.sizeWords] : null,

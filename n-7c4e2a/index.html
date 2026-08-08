@@ -36,6 +36,7 @@
   <section class="view active" id="view-today" aria-labelledby="greeting">
     <div class="wrap">
       <div id="todayBanners"></div>
+      <div id="todaySupplements"></div>
 
       <div class="card">
         <span class="label">What have you eaten?</span>
@@ -122,6 +123,30 @@
   <div class="d-actions">
     <button class="btn small ghost" id="bloodCancel">cancel</button>
     <button class="btn small primary" id="bloodSave">save</button>
+  </div>
+</dialog>
+
+<dialog id="suppDialog">
+  <h3>Add a supplement</h3>
+  <p class="small muted">Type the numbers straight off the label, for one dose —
+    one capsule, tablet or drop. Leave anything not printed on your label blank.</p>
+  <label class="field" style="margin-top:.7rem">
+    <span class="label">name</span>
+    <input class="text" id="suppName" placeholder="e.g. my iron tablets">
+  </label>
+  <div class="field-row" id="suppFields" style="margin-top:.3rem;grid-template-columns:1fr 1fr"></div>
+  <p class="small faint" style="margin-top:.5rem">
+    If your label gives IU instead of µg or mg: for vitamin D, divide by 40;
+    for vitamin A, divide by about 3.3.
+  </p>
+  <p class="small faint" style="margin-top:.4rem">
+    A few things sometimes on a label have no home here yet and won't be saved:
+    niacin, pantothenic acid, biotin, vitamin K, and non-nutrient ingredients
+    like citicoline or herbal extracts.
+  </p>
+  <div class="d-actions">
+    <button class="btn small ghost" id="suppCancel">cancel</button>
+    <button class="btn small primary" id="suppSave">save</button>
   </div>
 </dialog>
 

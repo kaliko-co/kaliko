@@ -381,6 +381,8 @@ table.heat .cell[data-status='none'] { background: transparent; color: var(--fai
   font-size: 12px;
 }
 .chip[aria-pressed='true'] { background: var(--indigo); border-color: var(--indigo); color: var(--paper); }
+/* A primary tap-to-log action wants a comfortable target, not a settings toggle's. */
+.chip.log { padding: 0.6rem 1.05rem; font-size: 13px; }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) .chip[aria-pressed='true'] { color: #16140F; }
 }
@@ -452,6 +454,8 @@ dialog {
   padding: var(--pad);
   max-width: min(440px, calc(100vw - 2rem));
   width: 100%;
+  max-height: min(85vh, calc(100% - 3rem));
+  overflow-y: auto;
 }
 dialog::backdrop { background: rgba(20, 17, 13, 0.45); backdrop-filter: blur(2px); }
 dialog h3 { font-family: var(--serif); font-style: italic; font-weight: 300; font-size: 21px; margin-bottom: 0.6rem; color: var(--ink-strong); }
