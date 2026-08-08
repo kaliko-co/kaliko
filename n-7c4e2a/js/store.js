@@ -22,7 +22,7 @@ const blank = () => ({
     excludedGroups: [],
     dislikedFoods: [],
     suggestSupplements: true,
-    resolved: {},          // taught phrase → 'kind:id', e.g. 'food:supp_iron'
+    resolved: {},          // taught phrase → 'kind:id', e.g. 'food:supp_d3_k2'
     portionOverrides: {},  // 'foodId:unit' → grams
     customFoods: {},       // taught foods, same shape as FOODS entries
     feedback: {},          // foodId → {accepted, ignored}

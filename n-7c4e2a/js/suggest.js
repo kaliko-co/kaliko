@@ -105,7 +105,7 @@ const SOURCES = {
     { cat: 'oily fish', ids: ['herring', 'salmon', 'mackerel'], amount: 120 },
     { cat: 'eggs', ids: ['egg'], amount: 110 },
     { cat: 'a fortified plant milk', ids: ['oat_milk', 'soy_milk'], amount: 200 },
-    { cat: 'a supplement', ids: ['supp_vitamin_d'], amount: 1 },
+    { cat: 'a supplement', ids: ['supp_d3_k2'], amount: 1 },
   ],
   ve: [
     { cat: 'seeds and nuts', ids: ['sunflower_seeds', 'almonds', 'hazelnuts'], amount: 25 },
@@ -137,7 +137,7 @@ const SOURCES = {
     { cat: 'eggs', ids: ['egg'], amount: 110 },
     { cat: 'a fortified plant milk', ids: ['oat_milk', 'soy_milk'], amount: 200 },
     { cat: 'nutritional yeast', ids: ['nutritional_yeast'], amount: 8 },
-    { cat: 'a supplement', ids: ['supp_b12'], amount: 1 },
+    { cat: 'a supplement', ids: ['supp_bcomplex_citicoline'], amount: 1 },
   ],
   fol: [
     { cat: 'lentils, chickpeas or edamame', ids: ['lentils_cooked', 'chickpeas_cooked', 'edamame'], amount: 180 },
@@ -155,7 +155,7 @@ const SOURCES = {
   ],
   epa: [
     { cat: 'oily fish', ids: ['salmon', 'mackerel', 'herring', 'sardines'], amount: 110 },
-    { cat: 'an algae oil capsule', ids: ['supp_omega3'], amount: 1 },
+    { cat: 'an algae oil capsule', ids: ['supp_omega_complex'], amount: 1 },
   ],
 };
 

@@ -315,19 +315,18 @@ export const ALIASES = {
   'balsamic': 'vinegar_balsamic', 'balsamic vinegar': 'vinegar_balsamic', 'balsamico': 'vinegar_balsamic',
   'salt': 'salt', 'salz': 'salt', 'sol': 'salt', 'sól': 'salt',
 
-  // supplements
-  'vitamin d': 'supp_vitamin_d', 'vitamin d3': 'supp_vitamin_d', 'd3': 'supp_vitamin_d',
-  'vitamin b12': 'supp_b12', 'b12': 'supp_b12', 'b12 supplement': 'supp_b12',
-  'iron supplement': 'supp_iron', 'iron tablet': 'supp_iron', 'eisentablette': 'supp_iron',
-  'multivitamin': 'supp_multivitamin', 'multivitamins': 'supp_multivitamin',
-  'calcium supplement': 'supp_calcium',
-  // Real products with label doses — see foods.js for what's tracked from each.
+  // supplements — real products with label doses; see foods.js for what's tracked from each.
+  'vitamin d': 'supp_d3_k2', 'vitamin d3': 'supp_d3_k2', 'd3': 'supp_d3_k2',
+  'd3 k2': 'supp_d3_k2', 'vitamin d3 k2': 'supp_d3_k2',
+  'vitamin k2': 'supp_d3_k2', 'k2': 'supp_d3_k2', 'witamina d3': 'supp_d3_k2',
+  'witamina d': 'supp_d3_k2',
   'b complex': 'supp_bcomplex_citicoline', 'b-complex': 'supp_bcomplex_citicoline',
   'bcomplex': 'supp_bcomplex_citicoline', 'citicoline': 'supp_bcomplex_citicoline',
   'cytykolina': 'supp_bcomplex_citicoline', 'moje witaminy': 'supp_bcomplex_citicoline',
   'moja multiwitamina': 'supp_bcomplex_citicoline', 'witaminy b': 'supp_bcomplex_citicoline',
   'kompleks witamin b': 'supp_bcomplex_citicoline', 'bioaktiv': 'supp_bcomplex_citicoline',
-  'veganlife': 'supp_bcomplex_citicoline',
+  'veganlife': 'supp_bcomplex_citicoline', 'multivitamin': 'supp_bcomplex_citicoline',
+  'multivitamins': 'supp_bcomplex_citicoline',
   'omega 3': 'supp_omega_complex', 'omega-3': 'supp_omega_complex', 'omega complex': 'supp_omega_complex',
   'fish oil': 'supp_omega_complex', 'algae oil': 'supp_omega_complex', 'algenol': 'supp_omega_complex',
   'zinc': 'supp_zinc_bisglycinate', 'zinc supplement': 'supp_zinc_bisglycinate',

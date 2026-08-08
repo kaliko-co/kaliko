@@ -500,21 +500,14 @@ export const FOODS = {
   salt: { n: 'salt (iodised)', g: ['other'], portion: 1, units: { tsp: 6, tbsp: 18, pinch: 0.4 },
     kcal: 0, na: 38758, i: 2500, ca: 24, mg: 1, k: 8 },
 
-  // ─── Supplements — placeholders; edit doses from your own label ───────────
-  supp_vitamin_d: { n: 'vitamin D supplement', g: ['supplement'], portion: 1, units: { each: 1, tablet: 1, drop: 1, capsule: 1 },
-    vd: 2000 },
-  supp_b12: { n: 'B12 supplement', g: ['supplement'], portion: 1, units: { each: 1, tablet: 1, capsule: 1 },
-    b12: 50000 },
-  supp_iron: { n: 'iron supplement', g: ['supplement'], portion: 1, units: { each: 1, tablet: 1, capsule: 1 },
-    fe: 1400, vc: 4000 },
-  supp_omega3: { n: 'omega-3 capsule', g: ['supplement'], portion: 1, units: { each: 1, capsule: 1 },
-    epa: 50000, vd: 500 },
-  supp_multivitamin: { n: 'multivitamin', g: ['supplement'], portion: 1, units: { each: 1, tablet: 1, capsule: 1 },
-    fe: 1400, ca: 16000, mg: 5600, zn: 1000, i: 15000, se: 5500, va: 80000, vc: 8000, vd: 500, ve: 1200, b1: 110, b2: 140, b6: 140, b12: 250, fol: 20000 },
-  supp_magnesium: { n: 'magnesium supplement', g: ['supplement'], portion: 1, units: { each: 1, tablet: 1, capsule: 1 },
-    mg: 30000 },
-  supp_calcium: { n: 'calcium supplement', g: ['supplement'], portion: 1, units: { each: 1, tablet: 1 },
-    ca: 50000, vd: 1000 },
+  // ─── Supplements — real labels, edited to match your own bottles ──────────
+  // Real label, 1 drop/capsule. 2500 IU D3 converts to µg at 40 IU per µg.
+  // The K2 (100 µg) has no matching field here and is dropped, not guessed.
+  supp_d3_k2: {
+    n: 'vitamin D3 + K2 (2500 IU)', g: ['supplement'], portion: 1,
+    units: { each: 1, tablet: 1, drop: 1, capsule: 1 },
+    vd: 6250,
+  },
   // Real label, 1 capsule — added on request. Six things printed on the label
   // have no meter in this app and are dropped rather than guessed at: niacin
   // (16 mg), pantothenic acid (6 mg), biotin (50 µg), vitamin K2 (50 µg), and
@@ -559,9 +552,9 @@ export const FOODS = {
 };
 
 // Supplement doses are expressed per "100 g" like every other food so the same
-// maths applies — a 1 g portion of supp_vitamin_d yields 2000/100 = 20 µg.
-// You'll overwrite these from your own bottle in Settings; these are only
-// sensible starting values so an untouched entry isn't wildly wrong.
+// maths applies — a 1 g portion of supp_d3_k2 yields 6250/100 = 62.5 µg.
+// A new one you add from a label goes into settings.customFoods (see store.js)
+// rather than here.
 export const SUPPLEMENT_PREFIX = 'supp_';
 
 export const NUTRIENT_KEYS = [
