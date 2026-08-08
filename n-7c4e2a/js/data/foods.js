@@ -559,6 +559,14 @@ export const FOODS = {
     units: { each: 1, capsule: 1 },
     fib: 30,
   },
+  // Real label, 1 sachet. Only vitamin C has a matching field — fish collagen
+  // (5000 mg), MSM (1000 mg), sodium hyaluronate (40 mg) and biotin (2000 µg)
+  // have no home here and are dropped, not guessed at.
+  supp_beautyllagen: {
+    n: 'Beautyllagen (collagen + vitamin C)', g: ['supplement'], portion: 1,
+    units: { each: 1, sachet: 1 },
+    vc: 40000,
+  },
 };
 
 // Supplement doses are expressed per "100 g" like every other food so the same

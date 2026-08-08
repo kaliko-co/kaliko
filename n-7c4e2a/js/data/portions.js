@@ -339,6 +339,8 @@ export const ALIASES = {
   'zinc bisglycinate': 'supp_zinc_bisglycinate',
   'magnesium': 'supp_magnesium_daily', 'magnesium supplement': 'supp_magnesium_daily',
   'flora': 'supp_flora_probiotic', 'probiotic': 'supp_flora_probiotic', 'probiotics': 'supp_flora_probiotic',
+  'beautyllagen': 'supp_beautyllagen', 'kolagen': 'supp_beautyllagen', 'collagen': 'supp_beautyllagen',
+  'kolagen rybi': 'supp_beautyllagen',
 };
 
 // Ambiguous names — the app asks once, then remembers your answer.
