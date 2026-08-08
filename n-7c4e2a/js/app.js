@@ -183,12 +183,17 @@ function renderSupplementQuick() {
   if (!box) return;
 
   if (!list.length) {
+    const known = allSupplementFoods().length;
     box.innerHTML = `<div class="card quiet">
       <span class="label">Your supplements</span>
-      <p class="small muted" style="margin-top:.3rem">Nothing set up yet — add
-        one with the doses off its label, and it shows up here as a button
-        from then on.</p>
-      <button class="btn small" data-act="add-supp" style="margin-top:.5rem">add a supplement</button>
+      <p class="small muted" style="margin-top:.3rem">Nothing showing yet.
+        ${known ? 'If one\'s already set up, turn it on below — ' : ''}
+        add a new one with the doses off its label and it shows up here as
+        a button from then on.</p>
+      <div class="row" style="gap:.5rem;margin-top:.5rem;flex-wrap:wrap">
+        ${known ? '<button class="btn small ghost" data-act="manage-supps">turn one on</button>' : ''}
+        <button class="btn small" data-act="add-supp">add a supplement</button>
+      </div>
     </div>`;
     return;
   }
