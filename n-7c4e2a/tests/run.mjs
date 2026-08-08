@@ -258,6 +258,29 @@ const find = (items, name) => items.find((i) => i.name.includes(name));
   ok('correlation reports no cause', !JSON.stringify(corr).includes('caus'));
 }
 
+// ─── Storage — corrupted data is rescued, not silently destroyed ──────────────
+
+{
+  const backing = new Map();
+  globalThis.localStorage = {
+    getItem: (k) => (backing.has(k) ? backing.get(k) : null),
+    setItem: (k, v) => backing.set(k, String(v)),
+    removeItem: (k) => backing.delete(k),
+  };
+  const store = await import('../js/store.js');
+
+  backing.set('nourish.v1', 'not valid json{');
+  ok('unreadable save is flagged', store.hasReadError());
+  ok('the raw string is rescued', store.getRescuedData() === 'not valid json{');
+
+  store.setNote('logged something after the corruption');
+  ok('a later write does not touch the rescue copy', store.getRescuedData() === 'not valid json{');
+
+  store.clearRescuedData();
+  ok('rescue copy can be cleared', store.getRescuedData() === null);
+  ok('clearing drops the error flag', !store.hasReadError());
+}
+
 // ─── Result ─────────────────────────────────────────────────────────────────
 
 console.log(`${pass} passed, ${fails.length} failed`);

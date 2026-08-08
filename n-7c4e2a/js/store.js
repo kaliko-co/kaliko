@@ -9,6 +9,7 @@ import { DEFAULT_PROFILE } from './data/targets.js';
 import { dayKey } from './nutrition.js';
 
 const KEY = 'nourish.v1';
+const RESCUE_KEY = 'nourish.v1.rescue';
 const SCHEMA_VERSION = 1;
 
 const blank = () => ({
@@ -40,12 +41,45 @@ function read() {
     const raw = localStorage.getItem(KEY);
     cache = raw ? migrate(JSON.parse(raw)) : blank();
   } catch (err) {
-    // A corrupt blob shouldn't mean a blank app with no explanation.
+    // A corrupt blob shouldn't mean a blank app with no explanation, and the
+    // very next write() would otherwise overwrite it and destroy any chance
+    // of recovery. Move the unreadable string aside, under a key write()
+    // never touches, before falling back to a blank state.
     console.error('nourish: could not read saved data', err);
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (raw != null) localStorage.setItem(RESCUE_KEY, raw);
+    } catch (rescueErr) {
+      console.error('nourish: could not preserve unreadable data', rescueErr);
+    }
     cache = blank();
     cache.readError = true;
   }
   return cache;
+}
+
+/** Was the saved data unreadable (corrupt), rather than merely empty? */
+export function hasReadError() {
+  return !!read().readError;
+}
+
+/** The raw string that failed to parse, if one was rescued. */
+export function getRescuedData() {
+  try {
+    return localStorage.getItem(RESCUE_KEY);
+  } catch {
+    return null;
+  }
+}
+
+/** Once you've seen/exported the rescued data, clear it. */
+export function clearRescuedData() {
+  try {
+    localStorage.removeItem(RESCUE_KEY);
+  } catch (err) {
+    console.error('nourish: could not clear rescued data', err);
+  }
+  if (cache) cache.readError = false;
 }
 
 function write() {

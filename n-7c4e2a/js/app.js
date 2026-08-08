@@ -60,6 +60,18 @@ function renderBanners() {
   const prefs = currentPrefs();
   const out = [];
 
+  if (store.hasReadError()) {
+    out.push(`<div class="banner ask">
+      <b>What was saved here couldn't be read back.</b> That's a corrupted save,
+      not necessarily an empty one — it's not the same as the tab-close data loss.
+      The unreadable data has been set aside rather than erased.
+      <div class="b-actions">
+        <button class="btn small primary" data-act="download-rescue">download it as-is</button>
+        <button class="btn small ghost" data-act="dismiss-rescue">discard it</button>
+      </div>
+    </div>`);
+  }
+
   if (!storageWorks) {
     out.push(`<div class="banner ask">
       <b>Nothing you enter right now is being saved.</b> This usually means Safari's
@@ -1058,6 +1070,19 @@ document.addEventListener('click', (e) => {
       download(store.exportFilename(), store.exportJSON());
       renderAll();
       toast('Backup downloaded.');
+      break;
+
+    case 'download-rescue': {
+      const raw = store.getRescuedData();
+      if (raw) download(`nourish-corrupted-${dayKey(new Date())}.json`, raw);
+      renderAll();
+      toast('Downloaded — a developer may be able to make sense of it.');
+      break;
+    }
+
+    case 'dismiss-rescue':
+      store.clearRescuedData();
+      renderAll();
       break;
 
     case 'import':
