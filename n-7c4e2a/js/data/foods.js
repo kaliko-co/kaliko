@@ -33,6 +33,8 @@ export const FOODS = {
     kcal: 265, pro: 9, carb: 49, sug: 5, fat: 3.2, sat: 0.7, fib: 2.7, na: 490, fe: 3.6, ca: 144, mg: 23, zn: 0.8, k: 115, se: 22, b1: 0.5, fol: 90 },
   crispbread: { n: 'crispbread', g: ['grain'], portion: 20, units: { slice: 10, each: 10 },
     kcal: 334, pro: 9.2, carb: 66, sug: 1.5, fat: 1.5, sat: 0.2, fib: 16, na: 400, fe: 3, ca: 40, mg: 100, zn: 2.5, k: 400, se: 20, b1: 0.3, fol: 30 },
+  corn_cake: { n: 'corn cake', g: ['grain'], portion: 9, units: { each: 9, slice: 9 },
+    kcal: 386, pro: 8.2, carb: 80, sug: 1, fat: 2.8, sat: 0.4, fib: 4.5, na: 5, fe: 1.2, ca: 10, mg: 45, zn: 0.6, k: 160, se: 3, b1: 0.1, fol: 15 },
   pasta_cooked: { n: 'pasta', g: ['grain'], portion: 200, units: { plate: 220, bowl: 200, cup: 140 },
     kcal: 158, pro: 5.8, carb: 30.9, sug: 0.6, fat: 0.9, sat: 0.2, fib: 1.8, fe: 0.5, ca: 7, mg: 18, zn: 0.5, k: 44, se: 26, b1: 0.1, fol: 7 },
   pasta_wholemeal_cooked: { n: 'wholemeal pasta', g: ['grain'], portion: 200, units: { plate: 220, bowl: 200, cup: 140 },

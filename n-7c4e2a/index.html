@@ -150,6 +150,33 @@
   </div>
 </dialog>
 
+<dialog id="foodDialog">
+  <h3>Add a food</h3>
+  <p class="small muted">Type the numbers off a label's <b>per 100 g</b> column,
+    or your best web search. Leave anything you don't know blank — it's
+    counted as zero, same as a food already in the list with a gap.</p>
+  <div class="field-row" style="margin-top:.7rem">
+    <label class="field"><span class="label">name</span>
+      <input class="text" id="foodName" placeholder="e.g. maiswaffel"></label>
+    <label class="field"><span class="label">group</span>
+      <select class="text" id="foodGroup"></select></label>
+  </div>
+  <label class="field" style="margin-top:.3rem">
+    <span class="label">default amount when you don't say how much (g)</span>
+    <input class="text" type="number" step="any" inputmode="decimal" id="foodPortion" placeholder="100">
+  </label>
+  <p class="small faint" style="margin-top:.7rem">the basics, per 100 g</p>
+  <div class="field-row" id="foodMacroFields" style="margin-top:.3rem;grid-template-columns:1fr 1fr"></div>
+  <details style="margin-top:.5rem">
+    <summary class="small muted" style="cursor:pointer">vitamins &amp; minerals (optional)</summary>
+    <div class="field-row" id="foodMicroFields" style="margin-top:.5rem;grid-template-columns:1fr 1fr"></div>
+  </details>
+  <div class="d-actions">
+    <button class="btn small ghost" id="foodCancel">cancel</button>
+    <button class="btn small primary" id="foodSave">save</button>
+  </div>
+</dialog>
+
 <dialog id="teachDialog">
   <h3>Teach me this</h3>
   <p class="small muted" id="teachWhat"></p>
@@ -159,11 +186,12 @@
   </label>
   <div class="chips" id="teachResults"></div>
   <p class="small faint" style="margin-top:.8rem">
-    If it's nothing like these, skip it — the item is left out of today's totals
-    rather than guessed at.
+    Nothing like these? Add it with its own numbers, or skip it — either way
+    it's left out of today's totals until you do.
   </p>
   <div class="d-actions">
     <button class="btn small ghost" id="teachSkip">leave it out</button>
+    <button class="btn small" id="teachNew">add as a new food</button>
   </div>
 </dialog>
 

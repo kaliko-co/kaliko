@@ -33,6 +33,8 @@ export const ALIASES = {
   'platki gryczane': 'buckwheat_flakes',
   'millet': 'millet_cooked', 'kasza jaglana': 'millet_cooked', 'jaglana': 'millet_cooked',
   'polenta': 'polenta_cooked', 'cornmeal': 'polenta_cooked',
+  'maiswaffel': 'corn_cake', 'maiswaffeln': 'corn_cake', 'corn cake': 'corn_cake',
+  'corn cakes': 'corn_cake', 'corn waffle': 'corn_cake',
   'spelt': 'spelt_cooked', 'dinkel': 'spelt_cooked',
   'potato': 'potato_boiled', 'potatoes': 'potato_boiled', 'kartoffeln': 'potato_boiled',
   'ziemniaki': 'potato_boiled', 'boiled potato': 'potato_boiled', 'new potatoes': 'potato_boiled',
@@ -284,6 +286,7 @@ export const ALIASES = {
   'protein bar': 'protein_bar',
   'honey': 'honey', 'honig': 'honey', 'miod': 'honey', 'miód': 'honey',
   'jam': 'jam', 'marmalade': 'jam', 'marmelade': 'jam', 'dzem': 'jam', 'konfitura': 'jam',
+  'erdbeermarmelade': 'jam',
   'sugar': 'sugar', 'zucker': 'sugar', 'cukier': 'sugar',
   'maple syrup': 'maple_syrup', 'ahornsirup': 'maple_syrup',
 

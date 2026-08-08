@@ -2,7 +2,7 @@
 // on every change. The data is small enough that this is both simpler and
 // faster than anything cleverer.
 
-import { FOODS, PREFERENCE_GROUPS } from './data/foods.js';
+import { FOODS, PREFERENCE_GROUPS, GROUPS, NUTRIENT_KEYS } from './data/foods.js';
 import { DISHES } from './data/dishes.js';
 import { AMBIGUOUS } from './data/portions.js';
 import {
@@ -126,6 +126,21 @@ const SUPP_FIELD_KEYS = [
   'vd', 'b12', 'fe', 'ca', 'i', 'mg', 'zn', 'se', 'fol', 'va', 'vc', 've',
   'b1', 'b2', 'b6', 'ala', 'epa', 'fib',
 ];
+
+// The "add a food" form. Salt isn't a real nutrient field (na, sodium, is) —
+// most labels print salt, so it's converted to sodium on save instead of
+// asking for a unit nobody's label actually shows.
+const FOOD_MACRO_FIELDS = [
+  { key: 'kcal', label: 'calories', unit: 'kcal' },
+  { key: 'pro', label: 'protein', unit: 'g' },
+  { key: 'carb', label: 'carbs', unit: 'g' },
+  { key: 'sug', label: 'sugars', unit: 'g' },
+  { key: 'fat', label: 'fat', unit: 'g' },
+  { key: 'sat', label: 'saturated fat', unit: 'g' },
+  { key: 'fib', label: 'fibre', unit: 'g' },
+  { key: 'salt', label: 'salt', unit: 'g' },
+];
+const FOOD_MICRO_KEYS = NUTRIENT_KEYS.filter((k) => !FOOD_MACRO_FIELDS.some((f) => f.key === k) && k !== 'na');
 
 function allSupplementFoods() {
   const settings = store.getSettings();
@@ -708,6 +723,15 @@ function renderYou() {
       </p>
     </div>
     <div class="card">
+      <span class="label">Foods you've added</span>
+      ${taught.filter(([, f]) => !f.g?.includes('supplement')).length
+    ? taught.filter(([, f]) => !f.g?.includes('supplement')).map(([, f]) => `<div class="pref">
+        <span>${esc(f.n)}<span class="item-note">${esc(f.g?.[0] ?? 'other')}, ${f.kcal ?? 0} kcal/100g</span></span>
+      </div>`).join('')
+    : '<p class="small muted">None yet — anything the app doesn\'t recognise, you can add yourself.</p>'}
+      <button class="btn small" data-act="add-food" style="margin-top:.7rem">+ add a food</button>
+    </div>
+    <div class="card">
       <span class="label">Your data</span>
       <p class="small muted">Everything lives in this browser on this device.
         Nothing is uploaded, there's no account, and none of it is in the
@@ -786,6 +810,30 @@ function openSupplementForm() {
   }).join('');
   $('#suppDialog').showModal();
   $('#suppName').focus();
+}
+
+// Set only when this dialog is opened from "I don't know X" — separate from
+// `teaching` (which lingers indefinitely) so a later, unrelated "add a food"
+// can never mistakenly log an item against some earlier taught phrase.
+let foodFormTeachSource = null;
+
+function openFoodForm(prefillName = '', { teachSource = null } = {}) {
+  foodFormTeachSource = teachSource;
+  $('#foodName').value = prefillName;
+  $('#foodPortion').value = '';
+  $('#foodGroup').innerHTML = GROUPS.filter((g) => g !== 'supplement')
+    .map((g) => `<option value="${g}"${g === 'other' ? ' selected' : ''}>${esc(g.replace('_', ' '))}</option>`)
+    .join('');
+  $('#foodMacroFields').innerHTML = FOOD_MACRO_FIELDS.map(({ key, label, unit }) => `<label class="field">
+      <span class="label">${esc(label)} (${esc(unit)})</span>
+      <input class="text" type="number" step="any" inputmode="decimal" data-macro="${key}" placeholder="0"></label>`).join('');
+  $('#foodMicroFields').innerHTML = FOOD_MICRO_KEYS.map((k) => {
+    const meta = NUTRIENTS[k];
+    return `<label class="field"><span class="label">${esc(meta.label)} (${esc(meta.unit)})</span>
+      <input class="text" type="number" step="any" inputmode="decimal" data-nutrient="${k}" placeholder="0"></label>`;
+  }).join('');
+  $('#foodDialog').showModal();
+  $('#foodName').focus();
 }
 
 let teaching = null;
@@ -1036,6 +1084,10 @@ document.addEventListener('click', (e) => {
       openSupplementForm();
       break;
 
+    case 'add-food':
+      openFoodForm();
+      break;
+
     case 'toggle-group': {
       const g = t.dataset.group;
       const list = store.getSettings().excludedGroups;
@@ -1224,14 +1276,74 @@ $('#suppSave').addEventListener('click', () => {
     units: { each: 1, tablet: 1, capsule: 1, drop: 1 },
     ...dose,
   });
+  // Custom foods aren't in the parser's static name index, only the taught-
+  // phrase map — without this, typing the exact name you just gave it would
+  // fail to match at all.
+  store.resolveAmbiguity(normalise(name), id, 'food');
   store.setSettings({ supplementsOn: [...store.getSettings().supplementsOn, id] });
   $('#suppDialog').close();
   renderAll();
   toast('Added — it’s on Today now.');
 });
 
+$('#foodCancel').addEventListener('click', () => $('#foodDialog').close());
+$('#foodSave').addEventListener('click', () => {
+  const name = $('#foodName').value.trim();
+  if (!name) { toast('Needs a name.'); return; }
+  const portion = parseFloat(String($('#foodPortion').value).replace(',', '.')) || 100;
+  const group = $('#foodGroup').value || 'other';
+
+  const food = { n: name, g: [group], portion };
+  let any = false;
+  for (const input of document.querySelectorAll('#foodMacroFields input')) {
+    const v = parseFloat(String(input.value).replace(',', '.'));
+    if (!v) continue;
+    any = true;
+    // Salt isn't stored directly — na (sodium, mg) is what the rest of the
+    // app reads, at the standard salt = sodium × 2.5 conversion.
+    if (input.dataset.macro === 'salt') food.na = Math.round((v * 1000) / 2.5);
+    else food[input.dataset.macro] = v;
+  }
+  for (const input of document.querySelectorAll('#foodMicroFields input')) {
+    const v = parseFloat(String(input.value).replace(',', '.'));
+    if (!v) continue;
+    any = true;
+    food[input.dataset.nutrient] = v;
+  }
+  if (!any) { toast('Add at least the calories, or something.'); return; }
+
+  const slug = normalise(name).replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+  const id = `custom_${slug || 'item'}_${Date.now().toString(36).slice(-4)}`;
+  store.addCustomFood(id, food);
+  // Register both the name you gave it and, if this came from an unrecognised
+  // phrase, that exact phrase too — either one should work next time.
+  store.resolveAmbiguity(normalise(name), id, 'food');
+  if (foodFormTeachSource && foodFormTeachSource !== normalise(name)) {
+    store.resolveAmbiguity(foodFormTeachSource, id, 'food');
+  }
+
+  if (foodFormTeachSource) {
+    store.addItems([{
+      id: `it${Date.now().toString(36)}`,
+      kind: 'food', foodId: id, name: food.n, grams: food.portion,
+      estimated: true, source: foodFormTeachSource,
+      note: `you told me “${foodFormTeachSource}” means this`,
+    }]);
+  }
+  const wasTeach = !!foodFormTeachSource;
+  foodFormTeachSource = null;
+  $('#foodDialog').close();
+  renderAll();
+  toast(wasTeach ? 'Added and logged.' : 'Added — try logging it now.');
+});
+
 $('#askSkip').addEventListener('click', () => $('#askDialog').close());
 $('#teachSkip').addEventListener('click', () => $('#teachDialog').close());
+$('#teachNew').addEventListener('click', () => {
+  const source = teaching;
+  $('#teachDialog').close();
+  openFoodForm(source || '', { teachSource: source });
+});
 $('#teachSearch').addEventListener('input', (e) => renderTeachResults(e.target.value));
 
 renderAll();
