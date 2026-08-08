@@ -277,6 +277,8 @@ export const FOODS = {
     kcal: 18, pro: 0.9, carb: 3.9, sug: 2.6, fat: 0.2, fib: 1.2, na: 5, fe: 0.3, ca: 10, mg: 11, zn: 0.2, k: 237, i: 3, se: 0.1, va: 42, vc: 13.7, ve: 0.5, b6: 0.1, fol: 15 },
   tomato_tinned: { n: 'tinned tomatoes', g: ['veg'], portion: 200, units: { can: 400, tbsp: 20 },
     kcal: 32, pro: 1.6, carb: 7, sug: 4, fat: 0.3, fib: 1.9, na: 186, fe: 1.3, ca: 34, mg: 16, zn: 0.2, k: 293, se: 0.6, va: 24, vc: 14, ve: 1.4, b6: 0.1, fol: 13 },
+  tomato_paste: { n: 'tomato paste', g: ['veg'], portion: 17, units: { tsp: 6, tbsp: 17 },
+    kcal: 82, pro: 4.3, carb: 18.9, sug: 12.2, fat: 0.5, fib: 4.1, na: 60, fe: 3, ca: 36, mg: 46, zn: 0.3, k: 1014, va: 42, vc: 15, ve: 4.3 },
   cucumber: { n: 'cucumber', g: ['veg'], portion: 120, units: { each: 300, slice: 8, handful: 60 },
     kcal: 15, pro: 0.7, carb: 3.6, sug: 1.7, fat: 0.1, fib: 0.5, na: 2, fe: 0.3, ca: 16, mg: 13, zn: 0.2, k: 147, se: 0.3, va: 5, vc: 2.8, ve: 0.03, b6: 0.04, fol: 7 },
   bell_pepper: { n: 'bell pepper', g: ['veg'], portion: 100, units: { each: 150, handful: 50 }, cook: 3,
