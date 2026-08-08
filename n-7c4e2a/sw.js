@@ -1,6 +1,6 @@
-// Offline cache. Bump CACHE when any file below changes, or an installed copy
-// will keep serving the old one.
-const CACHE = 'nourish-v1';
+// Offline cache. CACHE only needs bumping if a file is added to or removed
+// from ASSETS — everyday edits self-heal, see the fetch handler below.
+const CACHE = 'nourish-v2';
 
 const ASSETS = [
   '.',
@@ -42,26 +42,25 @@ self.addEventListener('fetch', (e) => {
   const { request } = e;
   if (request.method !== 'GET') return;
 
-  // Cache first: the app must open with no network at all. Nothing here is
-  // time-sensitive, and a stale build is better than a blank screen.
+  const url = new URL(request.url);
+  const cacheable = url.origin === self.location.origin
+    || url.hostname.endsWith('gstatic.com') || url.hostname.endsWith('googleapis.com');
+
+  // Stale-while-revalidate: answer instantly from cache so the app opens with
+  // no network at all, but refetch in the background and update the cache
+  // every time — otherwise a code change never reaches an installed copy
+  // until CACHE is bumped by hand, which is exactly the bug this replaced.
+  const network = fetch(request).then((res) => {
+    if (res.ok && cacheable) caches.open(CACHE).then((c) => c.put(request, res.clone()));
+    return res;
+  }).catch(() => null);
+
+  // Keep the background refetch alive even after respondWith answers — the
+  // browser is free to kill the worker the moment the response is sent otherwise.
+  e.waitUntil(network);
+
   e.respondWith(
-    caches.match(request, { ignoreSearch: true }).then((hit) => {
-      if (hit) return hit;
-      return fetch(request)
-        .then((res) => {
-          // Cache same-origin successes plus the web fonts, so an installed copy
-          // keeps its typography offline.
-          const url = new URL(request.url);
-          const cacheable = res.ok && (url.origin === self.location.origin
-            || url.hostname.endsWith('gstatic.com')
-            || url.hostname.endsWith('googleapis.com'));
-          if (cacheable) {
-            const copy = res.clone();
-            caches.open(CACHE).then((c) => c.put(request, copy));
-          }
-          return res;
-        })
-        .catch(() => (request.mode === 'navigate' ? caches.match('index.html') : Response.error()));
-    }),
+    caches.match(request, { ignoreSearch: true }).then((hit) => hit
+      || network.then((res) => res || (request.mode === 'navigate' ? caches.match('index.html') : Response.error()))),
   );
 });

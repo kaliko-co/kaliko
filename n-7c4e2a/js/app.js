@@ -1211,6 +1211,19 @@ renderAll();
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js').catch(() => { /* offline is a bonus, not a requirement */ });
+    navigator.serviceWorker.register('sw.js').then((reg) => {
+      // Browsers only refetch sw.js occasionally on their own — ask now, so a
+      // just-pushed update is picked up on this load rather than some future one.
+      reg.update().catch(() => {});
+    }).catch(() => { /* offline is a bonus, not a requirement */ });
+
+    // A new worker taking control means new code is in charge but the page
+    // still has the old code loaded — reload once so what's on screen matches.
+    let reloaded = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (reloaded) return;
+      reloaded = true;
+      window.location.reload();
+    });
   });
 }
