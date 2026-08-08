@@ -316,6 +316,27 @@ export function daysSinceBackup() {
   return Math.floor((Date.now() - new Date(last).getTime()) / 86400000);
 }
 
+/**
+ * Does a write actually survive a read-back, right now? This catches Safari's
+ * "Block All Cookies" (which blocks localStorage too, and fails silently) and
+ * any other setting that turns every save into a no-op.
+ *
+ * It cannot catch — because nothing running in the page can — private/
+ * incognito tabs or in-app browsers that wipe storage only once the tab
+ * closes. Those look fine on this test and fail only on the next visit.
+ */
+export function checkPersistence() {
+  const probe = '__nourish_probe__';
+  try {
+    localStorage.setItem(probe, '1');
+    const ok = localStorage.getItem(probe) === '1';
+    localStorage.removeItem(probe);
+    return ok;
+  } catch {
+    return false;
+  }
+}
+
 export function clearAll() {
   cache = blank();
   write();

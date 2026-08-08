@@ -49,11 +49,24 @@ let editingProfile = false;
 
 // ─── Today ──────────────────────────────────────────────────────────────────
 
+// Checked once per load — a live page can't detect storage that will be wiped
+// only once the tab closes (private tabs, most in-app browsers); it can only
+// catch saves that are being silently blocked right now.
+const storageWorks = store.checkPersistence();
+
 function renderBanners() {
   const profile = store.getProfile();
   const settings = store.getSettings();
   const prefs = currentPrefs();
   const out = [];
+
+  if (!storageWorks) {
+    out.push(`<div class="banner ask">
+      <b>Nothing you enter right now is being saved.</b> This usually means Safari's
+      <i>Block All Cookies</i> setting is on for this site, which blocks storage too —
+      Settings → Safari → Advanced → turn it off for kaliko.co, then reload.
+    </div>`);
+  }
 
   if (!profile.onboarded) {
     out.push(`<div class="banner ask">
@@ -555,6 +568,19 @@ function renderYou() {
         Nothing is uploaded, there's no account, and none of it is in the
         repository. ${size} kB so far, ${Object.keys(store.getDays()).length} days,
         ${taught.length} food${taught.length === 1 ? '' : 's'} you taught me.</p>
+      ${!storageWorks ? `<p class="small" style="color:var(--short);margin-top:.5rem">
+        Saving isn't working right now on this device — see the banner on Today
+        for how to fix it. Nothing you enter will survive a reload until it's fixed.</p>` : ''}
+      <p class="small faint" style="margin-top:.6rem">
+        Three things wipe this even when saving works fine: a private/incognito
+        tab (storage is deliberately destroyed when it closes — by design, not a
+        bug); a link opened inside another app's built-in browser (Messages,
+        WhatsApp, Notes, Instagram) rather than real Safari, which often uses
+        temporary storage; and switching between the installed icon and a Safari
+        tab — iOS keeps those as two separate storage areas that don't share
+        data. Add to Home Screen once and always open it from there, in normal
+        (non-private) Safari, and this stays put.
+      </p>
       <div class="row wrap-row" style="margin-top:.8rem">
         <button class="btn small" data-act="export">export a backup</button>
         <button class="btn small" data-act="import">import</button>
