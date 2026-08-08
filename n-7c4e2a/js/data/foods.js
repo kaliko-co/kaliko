@@ -505,6 +505,18 @@ export const FOODS = {
     mg: 30000 },
   supp_calcium: { n: 'calcium supplement', g: ['supplement'], portion: 1, units: { each: 1, tablet: 1 },
     ca: 50000, vd: 1000 },
+  // Real label, 1 capsule — added on request. Six things printed on the label
+  // have no meter in this app and are dropped rather than guessed at: niacin
+  // (16 mg), pantothenic acid (6 mg), biotin (50 µg), vitamin K2 (50 µg), and
+  // citicoline (100 mg) have no matching NUTRIENT_KEYS entry; beta-carotene
+  // (0.6 mg) is folded into "witamina A całkowita" already, so isn't counted
+  // twice. Everything else on the label is here exactly as printed.
+  supp_bcomplex_citicoline: {
+    n: 'B-complex + citicoline multivitamin', g: ['supplement'], portion: 1,
+    units: { each: 1, tablet: 1, capsule: 1 },
+    b1: 110, b2: 140, b6: 140, fol: 20000, b12: 10000,
+    va: 50000, vd: 2500, zn: 640, se: 5000, fe: 600, i: 15000, ca: 12000,
+  },
 };
 
 // Supplement doses are expressed per "100 g" like every other food so the same

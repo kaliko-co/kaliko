@@ -316,6 +316,12 @@ export const ALIASES = {
   'multivitamin': 'supp_multivitamin', 'multivitamins': 'supp_multivitamin',
   'magnesium': 'supp_magnesium', 'magnesium supplement': 'supp_magnesium',
   'calcium supplement': 'supp_calcium',
+  // A specific product with real label doses — see foods.js for what's tracked.
+  'b complex': 'supp_bcomplex_citicoline', 'b-complex': 'supp_bcomplex_citicoline',
+  'bcomplex': 'supp_bcomplex_citicoline', 'citicoline': 'supp_bcomplex_citicoline',
+  'cytykolina': 'supp_bcomplex_citicoline', 'moje witaminy': 'supp_bcomplex_citicoline',
+  'moja multiwitamina': 'supp_bcomplex_citicoline', 'witaminy b': 'supp_bcomplex_citicoline',
+  'kompleks witamin b': 'supp_bcomplex_citicoline',
 };
 
 // Ambiguous names — the app asks once, then remembers your answer.
