@@ -77,7 +77,7 @@ const SOURCES = {
     { cat: 'tinned or dried tomatoes', ids: ['tomato_tinned', 'sundried_tomato'], amount: 150 },
   ],
   i: [
-    { cat: 'iodised salt, in cooking', ids: ['salt'], amount: 2 },
+    { cat: 'iodised salt, in cooking', ids: ['salt_iodised'], amount: 2 },
     { cat: 'dairy', ids: ['milk_semi', 'yoghurt_natural'], amount: 200 },
     { cat: 'white sea fish', ids: ['cod', 'pollock'], amount: 130 },
     { cat: 'a little seaweed', ids: ['nori'], amount: 3 },

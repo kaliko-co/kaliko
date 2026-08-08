@@ -317,6 +317,7 @@ export const ALIASES = {
   'ketchup': 'ketchup', 'keczup': 'ketchup',
   'balsamic': 'vinegar_balsamic', 'balsamic vinegar': 'vinegar_balsamic', 'balsamico': 'vinegar_balsamic',
   'salt': 'salt', 'salz': 'salt', 'sol': 'salt', 'sól': 'salt',
+  'iodised salt': 'salt_iodised', 'iodized salt': 'salt_iodised', 'jodowana sol': 'salt_iodised',
 
   // supplements — real products with label doses; see foods.js for what's tracked from each.
   'vitamin d': 'supp_d3_k2', 'vitamin d3': 'supp_d3_k2', 'd3': 'supp_d3_k2',

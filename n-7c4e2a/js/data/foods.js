@@ -499,7 +499,11 @@ export const FOODS = {
     kcal: 101, pro: 1.3, carb: 25.8, sug: 21.8, fat: 0.1, fib: 0.3, na: 907, fe: 0.4, ca: 15, mg: 13, zn: 0.2, k: 281, se: 0.5, va: 21, vc: 4.1, ve: 1.5, b6: 0.2, fol: 9 },
   vinegar_balsamic: { n: 'balsamic vinegar', g: ['other'], portion: 10, units: { tbsp: 16, tsp: 5.3, splash: 8, drizzle: 8 },
     kcal: 88, pro: 0.5, carb: 17, sug: 15, na: 23, fe: 0.7, ca: 27, mg: 12, k: 112, se: 0.1 },
-  salt: { n: 'salt (iodised)', g: ['other'], portion: 1, units: { tsp: 6, tbsp: 18, pinch: 0.4 },
+  salt: { n: 'salt', g: ['other'], portion: 1, units: { tsp: 6, tbsp: 18, pinch: 0.4 },
+    kcal: 0, na: 38758, ca: 24, mg: 1, k: 8 },
+  // A distinct entry, not the default — kept for the iodine suggestion below,
+  // which recommends switching, rather than assuming any salt already has it.
+  salt_iodised: { n: 'iodised salt', g: ['other'], portion: 1, units: { tsp: 6, tbsp: 18, pinch: 0.4 },
     kcal: 0, na: 38758, i: 2500, ca: 24, mg: 1, k: 8 },
 
   // ─── Supplements — real labels, edited to match your own bottles ──────────
