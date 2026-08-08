@@ -29,6 +29,8 @@ export const ALIASES = {
   'bulgur': 'bulgur_cooked', 'bulghur': 'bulgur_cooked', 'kasza bulgur': 'bulgur_cooked',
   'couscous': 'couscous_cooked', 'kuskus': 'couscous_cooked',
   'buckwheat': 'buckwheat_cooked', 'kasza gryczana': 'buckwheat_cooked', 'gryka': 'buckwheat_cooked',
+  'buckwheat flakes': 'buckwheat_flakes', 'buckwheat groats': 'buckwheat_flakes',
+  'platki gryczane': 'buckwheat_flakes',
   'millet': 'millet_cooked', 'kasza jaglana': 'millet_cooked', 'jaglana': 'millet_cooked',
   'polenta': 'polenta_cooked', 'cornmeal': 'polenta_cooked',
   'spelt': 'spelt_cooked', 'dinkel': 'spelt_cooked',
@@ -88,6 +90,8 @@ export const ALIASES = {
   'chia': 'chia_seeds', 'chia seeds': 'chia_seeds',
   'flaxseed': 'flaxseed_ground', 'flax': 'flaxseed_ground', 'linseed': 'flaxseed_ground',
   'ground flaxseed': 'flaxseed_ground', 'leinsamen': 'flaxseed_ground', 'siemie lniane': 'flaxseed_ground',
+  'flax seeds': 'flaxseed_ground', 'flaxseeds': 'flaxseed_ground', 'linseeds': 'flaxseed_ground',
+  'whole flaxseed': 'flaxseed_ground',
   'hemp seeds': 'hemp_seeds', 'hanfsamen': 'hemp_seeds',
   'pine nuts': 'pine_nuts', 'pinienkerne': 'pine_nuts',
   'coconut flakes': 'coconut_flakes', 'desiccated coconut': 'coconut_flakes', 'coconut': 'coconut_flakes',
@@ -245,6 +249,8 @@ export const ALIASES = {
   'dried apricots': 'apricots_dried', 'trockenaprikosen': 'apricots_dried',
   'prunes': 'prunes', 'dried plums': 'prunes', 'backpflaumen': 'prunes',
   'dried figs': 'figs_dried',
+  'goji berries': 'goji_berries', 'goji': 'goji_berries', 'goji berry': 'goji_berries',
+  'jagody goji': 'goji_berries',
 
   // fats
   'olive oil': 'olive_oil', 'olivenol': 'olive_oil', 'olivenöl': 'olive_oil',

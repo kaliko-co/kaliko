@@ -49,6 +49,8 @@ export const FOODS = {
     kcal: 112, pro: 3.8, carb: 23.2, sug: 0.1, fat: 0.2, fib: 1.4, fe: 0.4, ca: 8, mg: 8, zn: 0.3, k: 58, se: 27, fol: 15 },
   buckwheat_cooked: { n: 'buckwheat', g: ['grain'], portion: 180, units: { bowl: 200, cup: 168 },
     kcal: 92, pro: 3.4, carb: 19.9, sug: 0.9, fat: 0.6, sat: 0.1, fib: 2.7, fe: 0.8, ca: 7, mg: 51, zn: 0.6, k: 88, se: 2.2, b6: 0.1, fol: 14 },
+  buckwheat_flakes: { n: 'buckwheat flakes', g: ['grain'], portion: 50, units: { tbsp: 9, cup: 90, handful: 25 },
+    kcal: 343, pro: 13.3, carb: 71.5, sug: 1.5, fat: 3.4, sat: 0.7, fib: 10, fe: 2.2, ca: 18, mg: 231, zn: 2.4, k: 460, se: 8.3, b1: 0.1, b6: 0.2, fol: 30 },
   millet_cooked: { n: 'millet', g: ['grain'], portion: 180, units: { bowl: 200, cup: 174 },
     kcal: 119, pro: 3.5, carb: 23.7, sug: 0.1, fat: 1, sat: 0.2, fib: 1.3, fe: 0.6, ca: 3, mg: 44, zn: 0.9, k: 62, se: 0.9, b1: 0.1, b6: 0.1, fol: 19 },
   polenta_cooked: { n: 'polenta', g: ['grain'], portion: 200, units: { plate: 220, bowl: 200 },
@@ -393,6 +395,10 @@ export const FOODS = {
     kcal: 240, pro: 2.2, carb: 63.9, sug: 38.1, fat: 0.4, sat: 0.03, fib: 7.1, na: 2, fe: 0.9, ca: 43, mg: 41, zn: 0.4, k: 732, se: 0.3, va: 39, vc: 0.6, ve: 0.4, b2: 0.2, b6: 0.2, fol: 4 },
   figs_dried: { n: 'dried figs', g: ['fruit'], portion: 40, units: { each: 8, handful: 40 },
     kcal: 249, pro: 3.3, carb: 63.9, sug: 47.9, fat: 0.9, sat: 0.1, fib: 9.8, na: 10, fe: 2, ca: 162, mg: 68, zn: 0.5, k: 680, se: 0.6, va: 0, vc: 1.2, ve: 0.4, b1: 0.1, b6: 0.1, fol: 9 },
+  goji_berries: { n: 'goji berries', g: ['fruit'], portion: 20, units: { handful: 20, tbsp: 9 },
+    // Dried, as sold. Sodium and vitamin A vary more than most fruit here
+    // between growers — treat both as rougher than the usual ±20-25%.
+    kcal: 349, pro: 14.3, carb: 77.1, sug: 45.6, fat: 0.4, fib: 13, na: 298, fe: 6.8, ca: 190, k: 1132, va: 1300, vc: 48.4, b2: 0.3 },
 
   // ─── Fats and oils ────────────────────────────────────────────────────────
   olive_oil: { n: 'olive oil', g: ['fat'], portion: 12, units: { tbsp: 13.5, tsp: 4.5, glug: 12, drizzle: 8, splash: 10, ml: 0.91 },
