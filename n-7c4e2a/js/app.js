@@ -1211,7 +1211,10 @@ renderAll();
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js').then((reg) => {
+    // updateViaCache: 'none' means the browser's own HTTP cache is never
+    // consulted for sw.js — without it, a short Cache-Control from GitHub
+    // Pages could make "check for updates" keep re-serving yesterday's worker.
+    navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then((reg) => {
       // Browsers only refetch sw.js occasionally on their own — ask now, so a
       // just-pushed update is picked up on this load rather than some future one.
       reg.update().catch(() => {});
