@@ -95,6 +95,8 @@ export const ALIASES = {
   'hemp seeds': 'hemp_seeds', 'hanfsamen': 'hemp_seeds',
   'pine nuts': 'pine_nuts', 'pinienkerne': 'pine_nuts',
   'coconut flakes': 'coconut_flakes', 'desiccated coconut': 'coconut_flakes', 'coconut': 'coconut_flakes',
+  'protein powder': 'protein_powder', 'protein shake': 'protein_powder', 'whey': 'protein_powder',
+  'scoop of protein': 'protein_powder', 'bialko w proszku': 'protein_powder',
   'nuts': 'almonds', 'mixed nuts': 'almonds',
 
   // dairy & alternatives
@@ -317,17 +319,21 @@ export const ALIASES = {
   'vitamin d': 'supp_vitamin_d', 'vitamin d3': 'supp_vitamin_d', 'd3': 'supp_vitamin_d',
   'vitamin b12': 'supp_b12', 'b12': 'supp_b12', 'b12 supplement': 'supp_b12',
   'iron supplement': 'supp_iron', 'iron tablet': 'supp_iron', 'eisentablette': 'supp_iron',
-  'omega 3': 'supp_omega3', 'omega-3': 'supp_omega3', 'fish oil': 'supp_omega3',
-  'algae oil': 'supp_omega3', 'algenol': 'supp_omega3',
   'multivitamin': 'supp_multivitamin', 'multivitamins': 'supp_multivitamin',
-  'magnesium': 'supp_magnesium', 'magnesium supplement': 'supp_magnesium',
   'calcium supplement': 'supp_calcium',
-  // A specific product with real label doses — see foods.js for what's tracked.
+  // Real products with label doses — see foods.js for what's tracked from each.
   'b complex': 'supp_bcomplex_citicoline', 'b-complex': 'supp_bcomplex_citicoline',
   'bcomplex': 'supp_bcomplex_citicoline', 'citicoline': 'supp_bcomplex_citicoline',
   'cytykolina': 'supp_bcomplex_citicoline', 'moje witaminy': 'supp_bcomplex_citicoline',
   'moja multiwitamina': 'supp_bcomplex_citicoline', 'witaminy b': 'supp_bcomplex_citicoline',
-  'kompleks witamin b': 'supp_bcomplex_citicoline',
+  'kompleks witamin b': 'supp_bcomplex_citicoline', 'bioaktiv': 'supp_bcomplex_citicoline',
+  'veganlife': 'supp_bcomplex_citicoline',
+  'omega 3': 'supp_omega_complex', 'omega-3': 'supp_omega_complex', 'omega complex': 'supp_omega_complex',
+  'fish oil': 'supp_omega_complex', 'algae oil': 'supp_omega_complex', 'algenol': 'supp_omega_complex',
+  'zinc': 'supp_zinc_bisglycinate', 'zinc supplement': 'supp_zinc_bisglycinate',
+  'zinc bisglycinate': 'supp_zinc_bisglycinate',
+  'magnesium': 'supp_magnesium_daily', 'magnesium supplement': 'supp_magnesium_daily',
+  'flora': 'supp_flora_probiotic', 'probiotic': 'supp_flora_probiotic', 'probiotics': 'supp_flora_probiotic',
 };
 
 // Ambiguous names — the app asks once, then remembers your answer.

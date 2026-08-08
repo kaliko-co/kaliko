@@ -149,6 +149,10 @@ export const FOODS = {
     kcal: 673, pro: 13.7, carb: 13.1, sug: 3.6, fat: 68.4, sat: 4.9, fib: 3.7, fe: 5.5, ca: 16, mg: 251, zn: 6.4, k: 597, se: 0.7, ve: 9.3, b1: 0.4, b6: 0.1, fol: 34, ala: 0.16 },
   coconut_flakes: { n: 'coconut flakes', g: ['nut'], portion: 20, units: { tbsp: 7, handful: 20 },
     kcal: 660, pro: 6.9, carb: 23.7, sug: 7.4, fat: 64.5, sat: 57.2, fib: 16.3, na: 37, fe: 3.3, ca: 26, mg: 90, zn: 2, k: 543, se: 18.5, vc: 1.5, ve: 0.4, fol: 9 },
+  // Real label. Its full amino acid breakdown has no matching field here and
+  // is dropped — protein and the usual macros are what's tracked.
+  protein_powder: { n: 'protein powder', g: ['other'], portion: 30, units: { scoop: 30, tbsp: 10 },
+    kcal: 399, pro: 80, carb: 4.8, sug: 0.4, fat: 5.8, sat: 1.1, fib: 3.7, na: 684 },
 
   // ─── Dairy and plant alternatives ─────────────────────────────────────────
   milk_whole: { n: 'whole milk', g: ['dairy'], portion: 200, units: { glass: 250, cup: 240, splash: 30, ml: 1.03 },
@@ -518,10 +522,39 @@ export const FOODS = {
   // (0.6 mg) is folded into "witamina A całkowita" already, so isn't counted
   // twice. Everything else on the label is here exactly as printed.
   supp_bcomplex_citicoline: {
-    n: 'B-complex + citicoline multivitamin', g: ['supplement'], portion: 1,
+    n: 'BioAktiv VeganLife multivitamin', g: ['supplement'], portion: 1,
     units: { each: 1, tablet: 1, capsule: 1 },
     b1: 110, b2: 140, b6: 140, fol: 20000, b12: 10000,
     va: 50000, vd: 2500, zn: 640, se: 5000, fe: 600, i: 15000, ca: 12000,
+  },
+  // Real label, 1 capsule = the full daily dose printed on it. The blend of
+  // chia, flaxseed, sea buckthorn, moringa and borage oils (plus its GLA) and
+  // MCT oil have no matching nutrient here and are dropped rather than guessed.
+  supp_omega_complex: {
+    n: 'Omega Complex (algae/plant oils)', g: ['supplement'], portion: 1,
+    units: { each: 1, capsule: 1 },
+    ala: 0.5, epa: 53000,
+  },
+  // Real label, 1 capsule. Zinc is the elemental amount (25 mg), not the
+  // 100 mg bisglycinate compound weight the label also prints.
+  supp_zinc_bisglycinate: {
+    n: 'zinc bisglycinate + vitamin C', g: ['supplement'], portion: 1,
+    units: { each: 1, capsule: 1 },
+    zn: 2500, vc: 12500,
+  },
+  // Real label — dosed as 2 capsules/day, so "1 dose" here is that full pair,
+  // not a single capsule. Don't type this one as "1 capsule"; tap it instead.
+  supp_magnesium_daily: {
+    n: 'magnesium (2 capsules/day)', g: ['supplement'], portion: 1,
+    units: { each: 1 },
+    mg: 15000,
+  },
+  // Real label, 1 capsule. Its biotin (400 µg) and 6 billion CFU of bacterial
+  // cultures have no matching field and are dropped; the guar bean fibre does.
+  supp_flora_probiotic: {
+    n: 'Flora probiotic', g: ['supplement'], portion: 1,
+    units: { each: 1, capsule: 1 },
+    fib: 30,
   },
 };
 

@@ -120,11 +120,11 @@ function renderBanners() {
 
 // ─── Supplements — a curated list you tap instead of typing ────────────────
 
-// A dose is one capsule/tablet/drop, so only vitamins, minerals and omega-3
-// make sense here — the same fields the "add a supplement" form fills in.
+// A dose is one capsule/tablet/drop, so only vitamins, minerals, fibre and
+// omega-3 make sense here — the same fields the "add a supplement" form fills in.
 const SUPP_FIELD_KEYS = [
   'vd', 'b12', 'fe', 'ca', 'i', 'mg', 'zn', 'se', 'fol', 'va', 'vc', 've',
-  'b1', 'b2', 'b6', 'ala', 'epa',
+  'b1', 'b2', 'b6', 'ala', 'epa', 'fib',
 ];
 
 function allSupplementFoods() {
@@ -172,6 +172,11 @@ function quickSupplementList() {
     .sort((a, b) => (counts[b.id] || 0) - (counts[a.id] || 0) || a.food.n.localeCompare(b.food.n));
 }
 
+/** Foods from today's log that a supplement's dose would need to match to count as "taken". */
+function takenSupplementIds(day) {
+  return new Set(day.items.filter((it) => !it.cookingFatFor).map((it) => it.foodId));
+}
+
 function renderSupplementQuick() {
   const list = quickSupplementList();
   const box = $('#todaySupplements');
@@ -188,15 +193,17 @@ function renderSupplementQuick() {
     return;
   }
 
+  const taken = takenSupplementIds(store.getDay());
+
   box.innerHTML = `<div class="card">
-    <div class="row between"><span class="label">Your supplements — tap to log</span>
+    <div class="row between"><span class="label">Your supplements — took it today?</span>
       <button class="btn small ghost" data-act="manage-supps">manage</button></div>
     <div class="chips" style="margin-top:.55rem">
       ${list.map(({ id, food }) => `<button class="chip log" data-act="log-supp"
-        data-food="${esc(id)}">${esc(food.n)}</button>`).join('')}
+        data-food="${esc(id)}" aria-pressed="${taken.has(id)}">${esc(food.n)}</button>`).join('')}
     </div>
-    <p class="small faint" style="margin-top:.6rem">One tap logs one dose —
-      tap twice for two capsules.</p>
+    <p class="small faint" style="margin-top:.6rem">One tap marks today's dose taken.
+      Tap again if that was a mistake.</p>
   </div>`;
 }
 
@@ -955,17 +962,23 @@ document.addEventListener('click', (e) => {
       const settings = store.getSettings();
       const food = FOODS[id] || settings.customFoods[id];
       if (!food) break;
-      store.addItems([{
-        id: `it${Date.now().toString(36)}${Math.random().toString(36).slice(2, 5)}`,
-        kind: 'food',
-        foodId: id,
-        name: food.n,
-        grams: food.portion,
-        estimated: false,
-        source: 'tapped from your list',
-      }]);
+      const already = store.getDay().items.filter((it) => it.foodId === id && !it.cookingFatFor);
+      if (already.length) {
+        for (const it of already) store.removeItem(it.id);
+        toast(`Marked as not taken today.`);
+      } else {
+        store.addItems([{
+          id: `it${Date.now().toString(36)}${Math.random().toString(36).slice(2, 5)}`,
+          kind: 'food',
+          foodId: id,
+          name: food.n,
+          grams: food.portion,
+          estimated: false,
+          source: 'tapped from your list',
+        }]);
+        toast(`Marked as taken today.`);
+      }
       renderAll();
-      toast(`Logged ${food.n}.`);
       break;
     }
 
