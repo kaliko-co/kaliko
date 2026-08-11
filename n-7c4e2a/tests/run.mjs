@@ -148,12 +148,12 @@ const find = (items, name) => items.find((i) => i.name.includes(name));
   // Mifflin-St Jeor: 10·64 + 6.25·170 − 5·38 − 161 = 1351; × 1.7 PAL ≈ 2300
   ok('energy from Mifflin-St Jeor × PAL', near(t.kcal, 2300, 0.01), String(t.kcal));
   ok('protein 1.2 g/kg for moderate activity', t.goals.pro === 77);
-  ok('iron 15 mg for a menstruating adult', t.goals.fe === 15);
+  ok('iron 16 mg for a menstruating adult', t.goals.fe === 16);
 
   const low = referenceIntakes({
     sex: 'female', age: 38, weight: 64, height: 170, activity: 'moderate', lowMeat: true,
   });
-  ok('low-meat raises iron 40%', low.goals.fe === 21);
+  ok('low-meat raises iron 40%', low.goals.fe === 22);
 
   // Protein scales with activity (sports-nutrition guidance, not just D-A-CH's
   // sufficiency-minimum 0.8 g/kg) but shouldn't stack with the age-65 bump.
@@ -167,12 +167,12 @@ const find = (items, name) => items.find((i) => i.name.includes(name));
   const older = referenceIntakes({
     sex: 'female', age: 55, weight: 64, height: 170, activity: 'moderate',
   });
-  ok('iron drops after 51', older.goals.fe === 10);
+  ok('iron drops after 51', older.goals.fe === 14);
 
   const preg = referenceIntakes({
     sex: 'female', age: 32, weight: 64, height: 170, activity: 'light', pregnant: true,
   });
-  ok('pregnancy raises folate and iron', preg.goals.fol === 550 && preg.goals.fe === 30);
+  ok('pregnancy raises folate and iron', preg.goals.fol === 550 && preg.goals.fe === 27);
 }
 
 {

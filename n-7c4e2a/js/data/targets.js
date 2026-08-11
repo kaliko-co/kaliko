@@ -3,6 +3,12 @@
 // These are the European numbers, which differ from US RDAs — the right ones
 // for someone eating in Berlin.
 //
+// D-A-CH revises individual nutrients on its own schedule, not all at once —
+// iron, phosphorus and fluoride were redone in March 2024, iodine and vitamin
+// E in 2025 (both dropping, and no longer split by sex). Checked against
+// dge.de current as of August 2026; re-check there before trusting an old
+// number if this file hasn't been touched in a while.
+//
 // Energy comes from Mifflin-St Jeor times a PAL activity factor.
 //
 // Two kinds of entry:
@@ -72,16 +78,19 @@ export const NUTRIENT_NOTES = {
   na: 'Shown as salt too, since that\'s what\'s on labels. Most of it arrives in bread, cheese and anything cured — rarely from the salt cellar.',
 };
 
-// Per-sex adult reference intakes (D-A-CH, ages 19-65).
+// Per-sex adult reference intakes (D-A-CH/ÖGE, current as of the 2024-2025
+// revisions to iron, iodine and vitamin E — all three dropped or split by sex
+// differently than the older figures many summaries still quote). Iodine and
+// vitamin E are no longer sex-differentiated at all as of 2025.
 const BASE = {
   female: {
-    fib: 30, fe: 15, ca: 1000, mg: 300, zn: 8, k: 4000, i: 200, se: 60,
-    va: 700, vc: 95, vd: 20, ve: 12, b1: 1, b2: 1.1, b6: 1.4, b12: 4, fol: 300,
+    fib: 30, fe: 16, ca: 1000, mg: 300, zn: 8, k: 4000, i: 150, se: 60,
+    va: 700, vc: 95, vd: 20, ve: 8, b1: 1, b2: 1.1, b6: 1.4, b12: 4, fol: 300,
     epa: 250,
   },
   male: {
-    fib: 30, fe: 10, ca: 1000, mg: 350, zn: 14, k: 4000, i: 200, se: 70,
-    va: 850, vc: 110, vd: 20, ve: 14, b1: 1.2, b2: 1.4, b6: 1.6, b12: 4, fol: 300,
+    fib: 30, fe: 11, ca: 1000, mg: 350, zn: 14, k: 4000, i: 150, se: 70,
+    va: 850, vc: 110, vd: 20, ve: 8, b1: 1.2, b2: 1.4, b6: 1.6, b12: 4, fol: 300,
     epa: 250,
   },
 };
@@ -121,17 +130,19 @@ export function referenceIntakes(p) {
   );
 
   // Age adjustments.
-  if (p.age >= 51 && sex === 'female') goals.fe = 10;   // post-menopausal
+  if (p.age >= 51 && sex === 'female') goals.fe = 14;   // post-menopausal
   if (p.age >= 65) { goals.vd = 20; goals.ca = 1000; }
 
   if (p.pregnant) {
     kcal += 250;
     proPerKg = Math.max(proPerKg, 1.0);
-    Object.assign(goals, { fe: 30, fol: 550, i: 230, vc: 105, b6: 1.9, b12: 4.5, zn: 9, va: 800 });
+    Object.assign(goals, { fe: 27, fol: 550, i: 220, vc: 105, b6: 1.9, b12: 4.5, zn: 9, va: 800 });
   } else if (p.breastfeeding) {
     kcal += 500;
     proPerKg = Math.max(proPerKg, 1.2);
-    Object.assign(goals, { fe: 20, fol: 450, i: 260, vc: 125, b6: 1.9, b12: 5.5, zn: 11, va: 1300, ca: 1000 });
+    // Iron here is the current postpartum figure, not specific to lactation —
+    // D-A-CH now recommends the same 16 mg regardless of feeding choice.
+    Object.assign(goals, { fe: 16, fol: 450, i: 230, vc: 125, b6: 1.9, b12: 5.5, zn: 11, va: 1300, ca: 1000, ve: 13 });
   }
 
   // A low-meat diet doesn't change how much iron you need in your body, but it
