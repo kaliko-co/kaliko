@@ -43,6 +43,17 @@ self.addEventListener('fetch', (e) => {
   if (request.method !== 'GET') return;
 
   const url = new URL(request.url);
+
+  // version.json is how the page notices it's stale even if this worker
+  // itself never changes and never gets a chance to re-check anything —
+  // never cached, always a real network round-trip. Its "v" string needs
+  // bumping by hand on every deploy that touches app behaviour, same as
+  // CACHE used to — nothing recomputes it automatically.
+  if (url.pathname.endsWith('/version.json')) {
+    e.respondWith(fetch(request));
+    return;
+  }
+
   const cacheable = url.origin === self.location.origin
     || url.hostname.endsWith('gstatic.com') || url.hostname.endsWith('googleapis.com');
 

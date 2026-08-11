@@ -1367,5 +1367,27 @@ if ('serviceWorker' in navigator) {
       reloaded = true;
       window.location.reload();
     });
+
+    // A second, independent staleness check that doesn't depend on this
+    // worker ever noticing a new one exists — only on this page's own JS
+    // running at all, which is enough on its own to detect version.json.
+    fetch('version.json', { cache: 'no-store' }).then((r) => r.json()).then(({ v }) => {
+      const seen = localStorage.getItem('nourish.appVersion');
+      if (seen && seen !== v) {
+        // Behind, and the usual update dance may never finish on its own.
+        // Emptying the cache (but leaving the worker registered — unregistering
+        // it too made this reload race its own controllerchange handler above,
+        // sometimes leaving no worker registered at all afterwards) means every
+        // request on the very next load is a guaranteed miss, so this worker's
+        // own fetch handler pulls everything fresh from network and re-caches
+        // it as it goes — no need to wait for some future check to catch up.
+        caches.keys().then((keys) => Promise.all(keys.map((k) => caches.delete(k)))).finally(() => {
+          localStorage.setItem('nourish.appVersion', v);
+          window.location.reload();
+        });
+      } else {
+        localStorage.setItem('nourish.appVersion', v);
+      }
+    }).catch(() => { /* offline, or version.json itself didn't load — nothing to compare against */ });
   });
 }
