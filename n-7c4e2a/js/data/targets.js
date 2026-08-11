@@ -20,6 +20,14 @@ export const ACTIVITY_LEVELS = [
   { id: 'active', label: 'very active', pal: 1.85, note: 'physical work, or daily hard training' },
 ];
 
+// D-A-CH's 0.8 g/kg is a general-population sufficiency minimum, not a
+// target for someone who trains regularly — ACSM/ISSN sports-nutrition
+// guidance puts active people closer to 1.2-1.6 g/kg. Not an official D-A-CH
+// figure, same spirit as the low-meat iron adjustment below.
+const PROTEIN_PER_KG_BY_ACTIVITY = {
+  sedentary: 0.8, light: 1.0, moderate: 1.2, active: 1.4,
+};
+
 // Display metadata for every tracked nutrient.
 export const NUTRIENTS = {
   kcal: { label: 'energy', unit: 'kcal', decimals: 0, kind: 'energy' },
@@ -104,8 +112,13 @@ export function referenceIntakes(p) {
   let kcal = Math.round((bmr * pal) / 10) * 10;
 
   // Protein: 0.8 g/kg to 65, 1.0 g/kg after — D-A-CH raises it with age
-  // because older muscle uses dietary protein less efficiently.
-  let proPerKg = p.age >= 65 ? 1.0 : 0.8;
+  // because older muscle uses dietary protein less efficiently. Activity
+  // takes the higher of the two rather than stacking with age, since neither
+  // guideline is about compounding with the other.
+  let proPerKg = Math.max(
+    p.age >= 65 ? 1.0 : 0.8,
+    PROTEIN_PER_KG_BY_ACTIVITY[p.activity] ?? PROTEIN_PER_KG_BY_ACTIVITY.light,
+  );
 
   // Age adjustments.
   if (p.age >= 51 && sex === 'female') goals.fe = 10;   // post-menopausal
@@ -113,11 +126,11 @@ export function referenceIntakes(p) {
 
   if (p.pregnant) {
     kcal += 250;
-    proPerKg = 1.0;
+    proPerKg = Math.max(proPerKg, 1.0);
     Object.assign(goals, { fe: 30, fol: 550, i: 230, vc: 105, b6: 1.9, b12: 4.5, zn: 9, va: 800 });
   } else if (p.breastfeeding) {
     kcal += 500;
-    proPerKg = 1.2;
+    proPerKg = Math.max(proPerKg, 1.2);
     Object.assign(goals, { fe: 20, fol: 450, i: 260, vc: 125, b6: 1.9, b12: 5.5, zn: 11, va: 1300, ca: 1000 });
   }
 

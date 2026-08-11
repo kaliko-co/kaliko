@@ -147,13 +147,22 @@ const find = (items, name) => items.find((i) => i.name.includes(name));
   });
   // Mifflin-St Jeor: 10·64 + 6.25·170 − 5·38 − 161 = 1351; × 1.7 PAL ≈ 2300
   ok('energy from Mifflin-St Jeor × PAL', near(t.kcal, 2300, 0.01), String(t.kcal));
-  ok('protein 0.8 g/kg', t.goals.pro === 51);
+  ok('protein 1.2 g/kg for moderate activity', t.goals.pro === 77);
   ok('iron 15 mg for a menstruating adult', t.goals.fe === 15);
 
   const low = referenceIntakes({
     sex: 'female', age: 38, weight: 64, height: 170, activity: 'moderate', lowMeat: true,
   });
   ok('low-meat raises iron 40%', low.goals.fe === 21);
+
+  // Protein scales with activity (sports-nutrition guidance, not just D-A-CH's
+  // sufficiency-minimum 0.8 g/kg) but shouldn't stack with the age-65 bump.
+  const sedentary = referenceIntakes({ sex: 'female', age: 38, weight: 64, height: 170, activity: 'sedentary' });
+  const active = referenceIntakes({ sex: 'female', age: 38, weight: 64, height: 170, activity: 'active' });
+  ok('sedentary protein stays at 0.8 g/kg', sedentary.goals.pro === 51);
+  ok('active protein rises to 1.4 g/kg', active.goals.pro === 90);
+  const oldSedentary = referenceIntakes({ sex: 'female', age: 70, weight: 64, height: 170, activity: 'sedentary' });
+  ok('age-65 bump and activity take the higher, not both', oldSedentary.goals.pro === 64);
 
   const older = referenceIntakes({
     sex: 'female', age: 55, weight: 64, height: 170, activity: 'moderate',
