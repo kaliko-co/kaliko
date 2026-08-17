@@ -453,6 +453,10 @@ export const FOODS = {
     kcal: 470, pro: 10, carb: 45, sug: 28, fat: 26, sat: 3.5, fib: 5, na: 60, fe: 2, ca: 70, mg: 90, zn: 1.5, k: 400, se: 5, ve: 5, b1: 0.2, b6: 0.1, fol: 25 },
   protein_bar: { n: 'protein bar', g: ['sweet'], portion: 50, units: { each: 50 },
     kcal: 350, pro: 30, carb: 33, sug: 6, fat: 11, sat: 4, fib: 8, na: 250, fe: 3, ca: 250, mg: 80, zn: 3, k: 300, se: 15, va: 100, vc: 15, vd: 1.5, ve: 3, b1: 0.4, b2: 0.5, b6: 0.5, b12: 1.2, fol: 60 },
+  // Real label (a packaged bar, 30% banana purée, spelt flour, cocoa mass,
+  // hazelnuts/walnuts) — only the macro table is printed, no vitamins/minerals.
+  banana_bread_bar: { n: 'banana bread', g: ['sweet', 'grain'], portion: 70, units: { each: 70, bar: 70 },
+    kcal: 369, pro: 4.6, carb: 52, sug: 16, fat: 18, sat: 2.5, fib: 2.9, na: 172 },
   honey: { n: 'honey', g: ['sweet'], portion: 15, units: { tbsp: 21, tsp: 7, spoon: 21, drizzle: 10 },
     kcal: 304, pro: 0.3, carb: 82.4, sug: 82.1, fat: 0, fib: 0.2, na: 4, fe: 0.4, ca: 6, mg: 2, zn: 0.2, k: 52, se: 0.8, vc: 0.5, b6: 0.02, fol: 2 },
   jam: { n: 'jam', g: ['sweet'], portion: 20, units: { tbsp: 20, tsp: 7, spoon: 20 },

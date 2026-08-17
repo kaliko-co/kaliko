@@ -286,6 +286,7 @@ export const ALIASES = {
   'pretzel': 'pretzel', 'brezel': 'pretzel', 'laugenbrezel': 'pretzel',
   'nut bar': 'nut_bar', 'granola bar': 'nut_bar', 'muesli bar': 'nut_bar',
   'protein bar': 'protein_bar',
+  'banana bread': 'banana_bread_bar', 'bananenbrot': 'banana_bread_bar',
   'honey': 'honey', 'honig': 'honey', 'miod': 'honey', 'miód': 'honey',
   'jam': 'jam', 'marmalade': 'jam', 'marmelade': 'jam', 'dzem': 'jam', 'konfitura': 'jam',
   'erdbeermarmelade': 'jam',
