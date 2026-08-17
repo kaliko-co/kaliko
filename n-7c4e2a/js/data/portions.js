@@ -20,6 +20,8 @@ export const ALIASES = {
   'wasa': 'crispbread', 'ryvita': 'crispbread',
   'pasta': 'pasta_cooked', 'spaghetti': 'pasta_cooked', 'penne': 'pasta_cooked',
   'fusilli': 'pasta_cooked', 'tagliatelle': 'pasta_cooked', 'nudeln': 'pasta_cooked',
+  'mie': 'mie_noodles_cooked', 'mie noodles': 'mie_noodles_cooked', 'mienoedels': 'mie_noodles_cooked',
+  'egg noodles': 'mie_noodles_cooked', 'wheat noodles': 'mie_noodles_cooked', 'chinese noodles': 'mie_noodles_cooked',
   'makaron': 'pasta_cooked', 'noodles': 'pasta_cooked', 'egg noodles': 'pasta_cooked',
   'wholemeal pasta': 'pasta_wholemeal_cooked', 'wholewheat pasta': 'pasta_wholemeal_cooked',
   'rice': 'rice_white_cooked', 'white rice': 'rice_white_cooked', 'reis': 'rice_white_cooked',
@@ -569,7 +571,7 @@ export const DRY_MULTIPLIERS = {
   couscous_cooked: 2.7, buckwheat_cooked: 2.6, millet_cooked: 3,
   spelt_cooked: 2.6, lentils_cooked: 2.4, lentils_red_cooked: 2.4,
   chickpeas_cooked: 2.4, black_beans_cooked: 2.4, kidney_beans_cooked: 2.4,
-  white_beans_cooked: 2.4, polenta_cooked: 4,
+  white_beans_cooked: 2.4, polenta_cooked: 4, mie_noodles_cooked: 2.4,
 };
 
 export const DRY_WORDS = ['dry', 'dried', 'uncooked', 'raw weight', 'trocken', 'suchy'];
