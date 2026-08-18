@@ -46,6 +46,10 @@ export const FOODS = {
   // you put in the pot, not an assumed cooked-weight serving.
   rice_pasta_dry: { n: 'rice pasta', g: ['grain'], portion: 100,
     kcal: 350, pro: 7.5, carb: 72, sug: 0.8, fat: 2.8, sat: 0.7, fib: 3.2 },
+  // Real label, per 100g — 360 kcal is dry, same convention as rice_pasta_dry.
+  // (Its own "20g" column is a regulatory %RI reference, not a real portion.)
+  rice_noodles_dry: { n: 'rice noodles', g: ['grain'], portion: 100,
+    kcal: 360, pro: 8, carb: 79, sug: 0, fat: 1, sat: 0.2, fib: 5 },
   pasta_wholemeal_cooked: { n: 'wholemeal pasta', g: ['grain'], portion: 200, units: { plate: 220, bowl: 200, cup: 140 },
     kcal: 124, pro: 5.3, carb: 26.5, sug: 1.1, fat: 0.5, sat: 0.1, fib: 4.5, fe: 1.1, ca: 15, mg: 43, zn: 1.1, k: 62, se: 24, b1: 0.1, b6: 0.1, fol: 5 },
   rice_white_cooked: { n: 'white rice', g: ['grain'], portion: 180, units: { bowl: 200, cup: 160, plate: 200 },
