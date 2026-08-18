@@ -39,8 +39,11 @@ export const FOODS = {
     kcal: 386, pro: 8.2, carb: 80, sug: 1, fat: 2.8, sat: 0.4, fib: 4.5, na: 5, fe: 1.2, ca: 10, mg: 45, zn: 0.6, k: 160, se: 3, b1: 0.1, fol: 15 },
   pasta_cooked: { n: 'pasta', g: ['grain'], portion: 200, units: { plate: 220, bowl: 200, cup: 140 },
     kcal: 158, pro: 5.8, carb: 30.9, sug: 0.6, fat: 0.9, sat: 0.2, fib: 1.8, fe: 0.5, ca: 7, mg: 18, zn: 0.5, k: 44, se: 26, b1: 0.1, fol: 7 },
-  mie_noodles_cooked: { n: 'mie noodles', g: ['grain'], portion: 200, units: { plate: 220, bowl: 220, portion: 200 },
-    kcal: 138, pro: 4.5, carb: 25, sug: 0.5, fat: 2.1, sat: 0.4, fib: 1.2, na: 5, fe: 1, ca: 8, mg: 12, zn: 0.4, k: 40, b1: 0.05, fol: 8 },
+  // Real label ("Mister Mie" Dinkel Bio Mienudeln) — replaces an earlier
+  // guessed cooked-basis entry. 337 kcal/100g is dry, same dry-basis
+  // convention as rice_pasta_dry below.
+  mie_noodles_dry: { n: 'mie noodles', g: ['grain'], portion: 100,
+    kcal: 337, pro: 11.9, carb: 67.4, sug: 0.6, fat: 1.4, sat: 0.3, fib: 3.5, na: 480 },
   // Real label — 350 kcal/100g is dry pasta, not cooked, so this is entered
   // (and defaults to logging) on a dry basis, same as oats_dry: weigh what
   // you put in the pot, not an assumed cooked-weight serving.
@@ -50,6 +53,11 @@ export const FOODS = {
   // (Its own "20g" column is a regulatory %RI reference, not a real portion.)
   rice_noodles_dry: { n: 'rice noodles', g: ['grain'], portion: 100,
     kcal: 360, pro: 8, carb: 79, sug: 0, fat: 1, sat: 0.2, fib: 5 },
+  // Real label. Almost pure starch (mung bean/potato), unlike wheat or rice
+  // noodles — negligible protein and fat. Sold as 4× 50g nests, so that's
+  // the natural single-portion default rather than a full 100g.
+  glass_noodles_dry: { n: 'glass noodles', g: ['starch'], portion: 50, units: { nest: 50 },
+    kcal: 349, pro: 0.4, carb: 88, sug: 0.4, fat: 0.4, sat: 0.05, na: 16 },
   pasta_wholemeal_cooked: { n: 'wholemeal pasta', g: ['grain'], portion: 200, units: { plate: 220, bowl: 200, cup: 140 },
     kcal: 124, pro: 5.3, carb: 26.5, sug: 1.1, fat: 0.5, sat: 0.1, fib: 4.5, fe: 1.1, ca: 15, mg: 43, zn: 1.1, k: 62, se: 24, b1: 0.1, b6: 0.1, fol: 5 },
   rice_white_cooked: { n: 'white rice', g: ['grain'], portion: 180, units: { bowl: 200, cup: 160, plate: 200 },
