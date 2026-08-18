@@ -222,6 +222,10 @@ export const FOODS = {
     kcal: 22, pro: 0.6, carb: 1.5, sug: 1.4, fat: 1.5, sat: 0.1, fib: 0.3, na: 60, fe: 0.2, ca: 120, mg: 7, zn: 0.1, k: 60, i: 22.5, va: 30, vd: 1.5, ve: 4.5, b2: 0.2, b12: 0.4, fol: 5 },
   coconut_milk_tin: { n: 'coconut milk (tin)', g: ['dairy_alt', 'fat'], portion: 80, units: { tbsp: 15, can: 400, cup: 240, ml: 0.97 },
     kcal: 197, pro: 2.0, carb: 2.8, sug: 2.8, fat: 21.3, sat: 18.9, fib: 0.2, na: 15, fe: 1.6, ca: 16, mg: 37, zn: 0.6, k: 220, se: 6.2, vc: 2.8, ve: 0.2, b1: 0.02, fol: 14 },
+  // Real label — unlike the plant milks above, not fortified: no added
+  // calcium, iodine or vitamins listed, so only the printed macros are here.
+  coconut_almond_drink: { n: 'coconut-almond drink', g: ['dairy_alt'], portion: 200, units: { glass: 250, cup: 240, splash: 30, ml: 1 },
+    kcal: 36, pro: 0.7, carb: 2.4, sug: 2.3, fat: 2.5, sat: 1, na: 44 },
   yoghurt_vegan: { n: 'vegan yoghurt', g: ['dairy_alt'], portion: 150, units: { pot: 150, bowl: 180, tbsp: 18 },
     kcal: 70, pro: 3.5, carb: 5, sug: 3.5, fat: 3.5, sat: 0.5, fib: 0.7, na: 30, fe: 0.4, ca: 120, mg: 15, zn: 0.3, k: 130, vd: 1.5, ve: 0.8, b2: 0.2, b12: 0.4, fol: 12, ala: 0.15 },
 

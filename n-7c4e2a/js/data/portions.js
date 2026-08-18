@@ -139,6 +139,8 @@ export const ALIASES = {
   'soy milk': 'soy_milk', 'soya milk': 'soy_milk', 'sojamilch': 'soy_milk',
   'almond milk': 'almond_milk', 'mandelmilch': 'almond_milk',
   'coconut milk': 'coconut_milk_tin', 'kokosmilch': 'coconut_milk_tin',
+  'kokosmandel': 'coconut_almond_drink', 'kokosmandel drink': 'coconut_almond_drink',
+  'coconut almond drink': 'coconut_almond_drink', 'coconut-almond drink': 'coconut_almond_drink',
   'vegan yoghurt': 'yoghurt_vegan', 'coconut yoghurt': 'yoghurt_vegan', 'soy yoghurt': 'yoghurt_vegan',
 
   // eggs
