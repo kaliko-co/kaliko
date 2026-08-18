@@ -134,6 +134,8 @@ export const FOODS = {
     kcal: 200, pro: 17, carb: 8, sug: 1, fat: 11, sat: 4.5, fib: 3, na: 400, fe: 3.6, ca: 50, mg: 40, zn: 4, k: 300, se: 10, b2: 0.2, b6: 0.3, b12: 1.2, fol: 30, ala: 0.2 },
   nutritional_yeast: { n: 'nutritional yeast', g: ['other'], portion: 8, units: { tbsp: 5, tsp: 2 },
     kcal: 325, pro: 45, carb: 30, sug: 3, fat: 5, sat: 0.8, fib: 20, na: 30, fe: 5, ca: 30, mg: 180, zn: 8, k: 1900, se: 10, b1: 10, b2: 10, b6: 12, b12: 40, fol: 1000 },
+  cocoa_powder: { n: 'cocoa powder (unsweetened)', g: ['other'], portion: 10, units: { tbsp: 8, tsp: 2.7 },
+    kcal: 228, pro: 19.6, carb: 57.9, sug: 1.8, fat: 13.7, sat: 8.1, fib: 37, na: 21, fe: 13.9, ca: 128, mg: 499, zn: 6.8, k: 1524, se: 14.3, fol: 32 },
 
   // ─── Nuts and seeds ───────────────────────────────────────────────────────
   almonds: { n: 'almonds', g: ['nut'], portion: 30, units: { handful: 30, each: 1.2, tbsp: 9, cup: 143 },
