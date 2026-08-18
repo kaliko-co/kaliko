@@ -32,7 +32,7 @@ export const ALIASES = {
   'couscous': 'couscous_cooked', 'kuskus': 'couscous_cooked',
   'buckwheat': 'buckwheat_cooked', 'kasza gryczana': 'buckwheat_cooked', 'gryka': 'buckwheat_cooked',
   'buckwheat flakes': 'buckwheat_flakes', 'buckwheat groats': 'buckwheat_flakes',
-  'platki gryczane': 'buckwheat_flakes',
+  'platki gryczane': 'buckwheat_flakes', 'buchweizenflocken': 'buckwheat_flakes',
   'millet': 'millet_cooked', 'kasza jaglana': 'millet_cooked', 'jaglana': 'millet_cooked',
   'polenta': 'polenta_cooked', 'cornmeal': 'polenta_cooked',
   'maiswaffel': 'corn_cake', 'maiswaffeln': 'corn_cake', 'corn cake': 'corn_cake',
