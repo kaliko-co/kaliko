@@ -41,6 +41,11 @@ export const FOODS = {
     kcal: 158, pro: 5.8, carb: 30.9, sug: 0.6, fat: 0.9, sat: 0.2, fib: 1.8, fe: 0.5, ca: 7, mg: 18, zn: 0.5, k: 44, se: 26, b1: 0.1, fol: 7 },
   mie_noodles_cooked: { n: 'mie noodles', g: ['grain'], portion: 200, units: { plate: 220, bowl: 220, portion: 200 },
     kcal: 138, pro: 4.5, carb: 25, sug: 0.5, fat: 2.1, sat: 0.4, fib: 1.2, na: 5, fe: 1, ca: 8, mg: 12, zn: 0.4, k: 40, b1: 0.05, fol: 8 },
+  // Real label — 350 kcal/100g is dry pasta, not cooked, so this is entered
+  // (and defaults to logging) on a dry basis, same as oats_dry: weigh what
+  // you put in the pot, not an assumed cooked-weight serving.
+  rice_pasta_dry: { n: 'rice pasta', g: ['grain'], portion: 100,
+    kcal: 350, pro: 7.5, carb: 72, sug: 0.8, fat: 2.8, sat: 0.7, fib: 3.2 },
   pasta_wholemeal_cooked: { n: 'wholemeal pasta', g: ['grain'], portion: 200, units: { plate: 220, bowl: 200, cup: 140 },
     kcal: 124, pro: 5.3, carb: 26.5, sug: 1.1, fat: 0.5, sat: 0.1, fib: 4.5, fe: 1.1, ca: 15, mg: 43, zn: 1.1, k: 62, se: 24, b1: 0.1, b6: 0.1, fol: 5 },
   rice_white_cooked: { n: 'white rice', g: ['grain'], portion: 180, units: { bowl: 200, cup: 160, plate: 200 },
