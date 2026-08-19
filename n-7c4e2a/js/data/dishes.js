@@ -93,6 +93,12 @@ export const DISHES = {
     a: ['falafel wrap', 'falafel roll', 'falafel durum', 'falafel sandwich'],
     r: [['tortilla_wrap', 60], ['falafel', 90], ['hummus', 30], ['mixed_salad', 40], ['tomato', 30]],
   },
+  banh_mi_aubergine: {
+    n: 'banh mi (eggplant)', portion: 283, units: { each: 283 },
+    a: ['banh mi', 'banh mi eggplant', 'banh mi aubergine', 'banh mi z oberzyna', 'banh mi z baklazanem',
+      'vietnamese sandwich'],
+    r: [['bread_white', 100], ['aubergine', 100], ['olive_oil', 8], ['carrot', 30], ['cucumber', 30], ['mayonnaise', 15]],
+  },
   doner: {
     n: 'döner kebab', portion: 320, units: { each: 320 },
     a: ['doner', 'döner', 'kebab', 'donner', 'doner kebab', 'durum'],

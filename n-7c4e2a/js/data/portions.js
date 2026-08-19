@@ -200,7 +200,7 @@ export const ALIASES = {
   'paprika': 'bell_pepper', 'red pepper': 'bell_pepper', 'papryka': 'bell_pepper',
   'courgette': 'courgette', 'zucchini': 'courgette', 'cukinia': 'courgette',
   'aubergine': 'aubergine', 'eggplant': 'aubergine', 'aubergine slices': 'aubergine',
-  'bakłażan': 'aubergine', 'baklazan': 'aubergine',
+  'bakłażan': 'aubergine', 'baklazan': 'aubergine', 'oberżyna': 'aubergine', 'oberzyna': 'aubergine',
   'mushroom': 'mushroom', 'mushrooms': 'mushroom', 'champignons': 'mushroom',
   'pilze': 'mushroom', 'pieczarki': 'mushroom', 'grzyby': 'mushroom',
   'onion': 'onion', 'onions': 'onion', 'zwiebel': 'onion', 'cebula': 'onion',
