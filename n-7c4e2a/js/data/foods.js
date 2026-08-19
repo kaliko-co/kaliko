@@ -494,6 +494,8 @@ export const FOODS = {
   // ─── Drinks ───────────────────────────────────────────────────────────────
   coffee: { n: 'coffee', g: ['drink'], portion: 200, units: { cup: 200, mug: 250, glass: 200, ml: 1 },
     kcal: 2, pro: 0.1, carb: 0, mg: 3, k: 49, b2: 0.01 },
+  chicory_coffee: { n: 'chicory coffee', g: ['drink'], portion: 200, units: { cup: 200, mug: 250, glass: 200, ml: 1 },
+    kcal: 5, carb: 1, fib: 0.3, k: 60 },
   espresso: { n: 'espresso', g: ['drink'], portion: 30, units: { each: 30, shot: 30, cup: 30 },
     kcal: 9, pro: 0.1, carb: 1.7, mg: 80, k: 115, b2: 0.1 },
   tea: { n: 'tea', g: ['drink'], portion: 250, units: { cup: 200, mug: 250, glass: 200, ml: 1 },

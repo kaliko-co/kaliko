@@ -140,6 +140,7 @@ export const ALIASES = {
   'almond milk': 'almond_milk', 'mandelmilch': 'almond_milk',
   'coconut milk': 'coconut_milk_tin', 'kokosmilch': 'coconut_milk_tin',
   'kokosmandel': 'coconut_almond_drink', 'kokosmandel drink': 'coconut_almond_drink',
+  'kokosmandelmilch': 'coconut_almond_drink', 'kokos-mandel-milch': 'coconut_almond_drink',
   'coconut almond drink': 'coconut_almond_drink', 'coconut-almond drink': 'coconut_almond_drink',
   'cocoa powder': 'cocoa_powder', 'cacao powder': 'cocoa_powder', 'kakaopulver': 'cocoa_powder',
   'unsweetened cocoa powder': 'cocoa_powder', 'kakao': 'cocoa_powder',
@@ -309,6 +310,8 @@ export const ALIASES = {
   // drinks
   'coffee': 'coffee', 'kaffee': 'coffee', 'kawa': 'coffee', 'filter coffee': 'coffee',
   'americano': 'coffee', 'black coffee': 'coffee',
+  'chicory coffee': 'chicory_coffee', 'kawa z cykorii': 'chicory_coffee', 'kawa cykoriowa': 'chicory_coffee',
+  'cykoria': 'chicory_coffee', 'zichorienkaffee': 'chicory_coffee',
   'espresso': 'espresso', 'shot of espresso': 'espresso',
   'tea': 'tea', 'black tea': 'tea', 'tee': 'tea', 'herbata': 'tea',
   'green tea': 'green_tea', 'matcha': 'green_tea', 'grüner tee': 'green_tea',
@@ -559,6 +562,7 @@ export const STOPWORDS = new Set([
   'diced', 'grated', 'crumbled', 'warm', 'cold', 'hot', 'raw', 'nice', 'lovely',
   'und', 'mit', 'von', 'ein', 'eine', 'der', 'die', 'das', 'gestern', 'heute',
   'i', 'z', 'ze', 'na', 'do', 'oraz', 'jadlam', 'jadłam', 'zjadlam', 'wczoraj', 'dzisiaj',
+  'dodaj', 'dodalam', 'dodałam', 'dodalem', 'dodałem',
   // Whose food it was is not nutrition.
   'mum', 'mums', 'mom', 'moms', 'dad', 'dads', 'grandma', 'grandmas',
   'friends', 'work', 'canteen', 'restaurant', 'cafe', 'takeaway',
