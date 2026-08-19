@@ -563,6 +563,7 @@ export const STOPWORDS = new Set([
   'und', 'mit', 'von', 'ein', 'eine', 'der', 'die', 'das', 'gestern', 'heute',
   'i', 'z', 'ze', 'na', 'do', 'oraz', 'jadlam', 'jadłam', 'zjadlam', 'wczoraj', 'dzisiaj',
   'dodaj', 'dodalam', 'dodałam', 'dodalem', 'dodałem', 'zaloguj', 'prosze', 'proszę', 'mi',
+  'jeszcze', 'bio',
   // Whose food it was is not nutrition.
   'mum', 'mums', 'mom', 'moms', 'dad', 'dads', 'grandma', 'grandmas',
   'friends', 'work', 'canteen', 'restaurant', 'cafe', 'takeaway',
