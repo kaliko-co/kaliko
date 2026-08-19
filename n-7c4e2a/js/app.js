@@ -60,11 +60,21 @@ function describeDay(key) {
   return fmtDate(new Date(`${key}T12:00:00`));
 }
 
+const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+
+function viewTitle(v) {
+  const titles = { today: capitalize(describeDay(logDay)), missing: 'Missing', week: 'Week', you: 'You' };
+  return titles[v];
+}
+
 function updateLogForLabel() {
   const input = $('#logDate');
   if (!input) return;
   logDay = input.value || dayKey(new Date());
   $('#logForLabel').textContent = `logging for ${describeDay(logDay)}`;
+  // Picking a day is also how you view and edit it — not just where new
+  // text gets added — so everything on Today has to refresh right away.
+  renderAll();
 }
 
 // ─── Today ──────────────────────────────────────────────────────────────────
@@ -233,10 +243,11 @@ function renderSupplementQuick() {
     return;
   }
 
-  const taken = takenSupplementIds(store.getDay());
+  const taken = takenSupplementIds(store.getDay(logDay));
+  const dayWord = describeDay(logDay);
 
   box.innerHTML = `<div class="card">
-    <div class="row between"><span class="label">Your supplements — took it today?</span>
+    <div class="row between"><span class="label">Your supplements — took it ${dayWord}?</span>
       <button class="btn small ghost" data-act="manage-supps">manage</button></div>
     <div class="chips" style="margin-top:.55rem">
       ${list.map(({ id, food }) => `<button class="chip log" data-act="log-supp"
@@ -270,7 +281,7 @@ function itemRow(it, isSub) {
 }
 
 function renderItems() {
-  const day = store.getDay();
+  const day = store.getDay(logDay);
   const box = $('#todayItems');
   if (!day.items.length) {
     box.innerHTML = '';
@@ -283,7 +294,7 @@ function renderItems() {
     for (const sub of day.items.filter((s) => s.cookingFatFor === it.id)) rows.push(itemRow(sub, true));
   }
   box.innerHTML = `<div class="card">
-    <span class="label">Today's items — tap a number to correct it</span>
+    <span class="label">${capitalize(describeDay(logDay))}'s items — tap a number to correct it</span>
     <div class="items">${rows.join('')}</div>
     <p class="small faint" style="margin-top:.6rem">
       ~ is a guess, ≈ is the nearest name I knew, ? still needs an answer.
@@ -292,9 +303,9 @@ function renderItems() {
   </div>`;
 }
 
-/** Which of today's items actually contain this nutrient, most first. */
+/** Which of the viewed day's items actually contain this nutrient, most first. */
 function contributionsFor(key) {
-  const day = store.getDay();
+  const day = store.getDay(logDay);
   const settings = store.getSettings();
   return day.items
     .filter((it) => !it.excluded)
@@ -317,11 +328,11 @@ function meterRow(key, a, { tappable = true } = {}) {
 }
 
 function renderTotals() {
-  const day = store.getDay();
+  const day = store.getDay(logDay);
   const box = $('#todayTotals');
   if (!day.items.length) {
     box.innerHTML = `<div class="empty">
-      <div class="display">Nothing logged yet today.</div>
+      <div class="display">Nothing logged yet ${describeDay(logDay)}.</div>
       <div class="small">Write a sentence up there — it doesn't have to be tidy.</div>
     </div>`;
     return;
@@ -372,7 +383,7 @@ const CHECKIN_ROWS = [
 ];
 
 function renderCheckin() {
-  const day = store.getDay();
+  const day = store.getDay(logDay);
   const rows = CHECKIN_ROWS.map(([key, label]) => {
     const value = day.checkin?.[key];
     const dots = [1, 2, 3, 4, 5].map((n) => `<button class="dot" data-act="checkin"
@@ -382,7 +393,7 @@ function renderCheckin() {
   }).join('');
 
   $('#todayCheckin').innerHTML = `<div class="card quiet">
-    <span class="label">How's today been? — optional, four taps</span>
+    <span class="label">How's ${describeDay(logDay)} been? — optional, four taps</span>
     <div class="checkin">${rows}</div>
     <p class="small faint" style="margin-top:.7rem">
       Skipping is fine and leaves no gap to fill in. After a fortnight I can line
@@ -395,14 +406,15 @@ function renderCheckin() {
 // ─── Missing ────────────────────────────────────────────────────────────────
 
 function renderMissing() {
-  const day = store.getDay();
+  const day = store.getDay(logDay);
   const settings = store.getSettings();
   const box = $('#missingBody');
+  const dayWord = describeDay(logDay);
 
   if (!day.items.length) {
     box.innerHTML = `<div class="empty">
       <div class="display">Nothing to go on yet.</div>
-      <div class="small">Log something today and I'll tell you what's left.</div>
+      <div class="small">Log something ${dayWord} and I'll tell you what's left.</div>
     </div>`;
     return;
   }
@@ -415,7 +427,7 @@ function renderMissing() {
   const prefs = currentPrefs();
 
   if (!gaps.length) {
-    box.innerHTML = `<div class="card"><span class="label">Still missing today</span>
+    box.innerHTML = `<div class="card"><span class="label">Still missing ${dayWord}</span>
       <p>Nothing worth chasing. Everything tracked daily is at or near its target.</p>
       <p class="small muted" style="margin-top:.5rem">
         ${remainingKcal > 200 ? `You've ${remainingKcal} kcal left if you're hungry.` : ''}
@@ -460,7 +472,7 @@ function renderMissing() {
 
   box.innerHTML = `
     <div class="card">
-      <span class="label">Still missing today</span>
+      <span class="label">Still missing ${dayWord}</span>
       ${gapLines}
     </div>
     <div class="card">
@@ -790,7 +802,7 @@ function renderYou() {
 // ─── Ambiguity + teaching dialogs ───────────────────────────────────────────
 
 function askNext() {
-  const day = store.getDay();
+  const day = store.getDay(logDay);
   const pending = day.items.find((it) => it.needs);
   if (!pending) return;
   const spec = AMBIGUOUS[pending.needs];
@@ -882,12 +894,12 @@ function currentPrefs() {
 }
 
 function renderAll() {
-  const d = new Date();
-  $('#dateLabel').textContent = fmtDate(d);
-  const day = store.getDay();
+  $('#dateLabel').textContent = fmtDate(new Date(`${logDay}T12:00:00`));
+  const day = store.getDay(logDay);
   $('#loggedLabel').textContent = day.items.length
     ? `${day.items.length} item${day.items.length === 1 ? '' : 's'} logged`
     : 'nothing logged yet';
+  $('#greeting').textContent = viewTitle(view);
 
   renderBanners();
   renderSupplementQuick();
@@ -906,8 +918,7 @@ function switchView(next) {
   for (const b of document.querySelectorAll('nav.tabs button')) {
     b.setAttribute('aria-current', String(b.dataset.view === next));
   }
-  const titles = { today: 'Today', missing: 'Missing', week: 'Week', you: 'You' };
-  $('#greeting').textContent = titles[next];
+  $('#greeting').textContent = viewTitle(next);
   window.scrollTo({ top: 0, behavior: 'instant' });
 }
 
@@ -954,7 +965,7 @@ document.addEventListener('click', (e) => {
 
   switch (act) {
     case 'remove':
-      store.removeItem(t.closest('.item').dataset.id);
+      store.removeItem(t.closest('.item').dataset.id, logDay);
       renderAll();
       break;
 
@@ -973,13 +984,14 @@ document.addEventListener('click', (e) => {
       }
       const note = NUTRIENT_NOTES[key];
       const contributions = contributionsFor(key);
+      const dayWord = describeDay(logDay);
       box.innerHTML = `<div class="meter-note">
         ${note ? `<p>${esc(note)}</p>` : ''}
         ${contributions.length
-    ? `<p class="small faint" style="margin-top:${note ? '.5rem' : '0'}">From today:</p>
+    ? `<p class="small faint" style="margin-top:${note ? '.5rem' : '0'}">From ${dayWord}:</p>
            <div class="contrib-list">${contributions.map((c) => `<div class="contrib-row">
              <span>${esc(c.name)}</span><span>${formatAmount(key, c.value)}</span></div>`).join('')}</div>`
-    : `<p class="small faint" style="margin-top:${note ? '.5rem' : '0'}">Nothing logged today contains it.</p>`}
+    : `<p class="small faint" style="margin-top:${note ? '.5rem' : '0'}">Nothing logged ${dayWord} contains it.</p>`}
       </div>`;
       box.dataset.key = key;
       break;
@@ -988,8 +1000,8 @@ document.addEventListener('click', (e) => {
     case 'checkin': {
       const key = t.dataset.key;
       const value = Number(t.dataset.value);
-      const current = store.getDay().checkin?.[key];
-      store.setCheckin({ [key]: current === value ? undefined : value });
+      const current = store.getDay(logDay).checkin?.[key];
+      store.setCheckin({ [key]: current === value ? undefined : value }, logDay);
       renderAll();
       break;
     }
@@ -1040,7 +1052,7 @@ document.addEventListener('click', (e) => {
         grams,
         estimated: true,
         source: 'from a suggestion',
-      }]);
+      }], logDay);
       store.recordFeedback(id, true);
       renderAll();
       toast('Added, and I\'ll suggest it more readily.');
@@ -1058,10 +1070,11 @@ document.addEventListener('click', (e) => {
       const settings = store.getSettings();
       const food = FOODS[id] || settings.customFoods[id];
       if (!food) break;
-      const already = store.getDay().items.filter((it) => it.foodId === id && !it.cookingFatFor);
+      const already = store.getDay(logDay).items.filter((it) => it.foodId === id && !it.cookingFatFor);
+      const dayWord = describeDay(logDay);
       if (already.length) {
-        for (const it of already) store.removeItem(it.id);
-        toast(`Marked as not taken today.`);
+        for (const it of already) store.removeItem(it.id, logDay);
+        toast(`Marked as not taken ${dayWord}.`);
       } else {
         store.addItems([{
           id: `it${Date.now().toString(36)}${Math.random().toString(36).slice(2, 5)}`,
@@ -1071,8 +1084,8 @@ document.addEventListener('click', (e) => {
           grams: food.portion,
           estimated: false,
           source: 'tapped from your list',
-        }]);
-        toast(`Marked as taken today.`);
+        }], logDay);
+        toast(`Marked as taken ${dayWord}.`);
       }
       renderAll();
       break;
@@ -1219,10 +1232,10 @@ document.addEventListener('change', (e) => {
   if (e.target.matches('.item-grams input')) {
     const row = e.target.closest('.item');
     const grams = Math.max(0, Number(e.target.value) || 0);
-    const day = store.getDay();
+    const day = store.getDay(logDay);
     const item = day.items.find((it) => it.id === row.dataset.id);
     if (item) {
-      store.updateItem(item.id, { grams, estimated: false, corrected: true });
+      store.updateItem(item.id, { grams, estimated: false, corrected: true }, logDay);
       // Your correction becomes your portion for next time.
       if (item.foodId && !item.cookingFatFor) {
         store.setPortionOverride(item.foodId, item.unit, grams);
