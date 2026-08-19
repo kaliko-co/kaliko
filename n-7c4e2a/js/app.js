@@ -47,6 +47,26 @@ let view = 'today';
 let showAllMeters = false;
 let editingProfile = false;
 
+// Which day new entries go to — 'today' unless the log-for-a-different-day
+// picker is set to something else. Kept sticky across submissions rather
+// than snapping back to today, so backfilling several sentences for the
+// same past day doesn't mean reselecting it each time.
+let logDay = dayKey(new Date());
+
+/** "today" / "yesterday" / a formatted date, for whichever day is selected. */
+function describeDay(key) {
+  if (key === dayKey(new Date())) return 'today';
+  if (key === dayKey(new Date(Date.now() - 86400000))) return 'yesterday';
+  return fmtDate(new Date(`${key}T12:00:00`));
+}
+
+function updateLogForLabel() {
+  const input = $('#logDate');
+  if (!input) return;
+  logDay = input.value || dayKey(new Date());
+  $('#logForLabel').textContent = `logging for ${describeDay(logDay)}`;
+}
+
 // ─── Today ──────────────────────────────────────────────────────────────────
 
 // Checked once per load — a live page can't detect storage that will be wiped
@@ -906,13 +926,14 @@ function doRead() {
     return;
   }
 
-  if (items.length) store.addItems(items);
+  if (items.length) store.addItems(items, logDay);
   $('#logInput').value = '';
   renderAll();
 
   if (items.some((it) => it.needs)) { askNext(); return; }
   if (unknown.length) { openTeach(unknown[0].text); return; }
-  toast(`Added ${items.length} item${items.length === 1 ? '' : 's'}.`);
+  const forToday = logDay === dayKey(new Date());
+  toast(`Added ${items.length} item${items.length === 1 ? '' : 's'}${forToday ? '' : ` to ${describeDay(logDay)}`}.`);
 }
 
 function download(name, text, type = 'application/json') {
@@ -979,7 +1000,7 @@ document.addEventListener('click', (e) => {
         foodId: t.dataset.food,
         name: FOODS[t.dataset.food]?.n ?? t.dataset.food,
         needs: null,
-      });
+      }, logDay);
       $('#askDialog').close();
       renderAll();
       askNext();
@@ -997,7 +1018,7 @@ document.addEventListener('click', (e) => {
         estimated: true,
         source: teaching,
         note: `you told me “${teaching}” means this`,
-      }]);
+      }], logDay);
       // Remembering the word means it's recognised next time. The kind has to
       // be stored too — losing it made a taught dish look up the food table
       // and quietly resolve to nothing.
@@ -1328,7 +1349,7 @@ $('#foodSave').addEventListener('click', () => {
       kind: 'food', foodId: id, name: food.n, grams: food.portion,
       estimated: true, source: foodFormTeachSource,
       note: `you told me “${foodFormTeachSource}” means this`,
-    }]);
+    }], logDay);
   }
   const wasTeach = !!foodFormTeachSource;
   foodFormTeachSource = null;
@@ -1345,6 +1366,15 @@ $('#teachNew').addEventListener('click', () => {
   openFoodForm(source || '', { teachSource: source });
 });
 $('#teachSearch').addEventListener('input', (e) => renderTeachResults(e.target.value));
+
+$('#logDate').value = logDay;
+$('#logDate').max = dayKey(new Date());
+updateLogForLabel();
+$('#logDate').addEventListener('change', updateLogForLabel);
+$('#logYesterday').addEventListener('click', () => {
+  $('#logDate').value = dayKey(new Date(Date.now() - 86400000));
+  updateLogForLabel();
+});
 
 renderAll();
 
