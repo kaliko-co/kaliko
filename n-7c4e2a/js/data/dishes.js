@@ -100,7 +100,11 @@ export const DISHES = {
     r: [['bread_white', 100], ['aubergine', 100], ['olive_oil', 8], ['carrot', 30], ['cucumber', 30], ['mayonnaise', 15]],
   },
   summer_rolls_tofu: {
-    n: 'summer rolls with tofu and peanut sauce', portion: 240, units: { portion: 240, roll: 60 },
+    // each (not "roll" — that's already a food alias for a bread roll, and
+    // food-matching wins over unit-matching, so "1 roll of X" was quietly
+    // logging a bread roll instead) is what makes a bare count ("2 summer
+    // rolls") scale by one roll's weight instead of the whole 4-roll portion.
+    n: 'summer rolls with tofu and peanut sauce', portion: 240, units: { portion: 240, each: 60 },
     a: ['summer rolls', 'summer rolls with tofu', 'sommerrollen', 'sommerrollen mit tofu',
       'sommerrollen mit tofu und erdnusssosse', 'vietnamese summer rolls', 'fresh spring rolls'],
     r: [
