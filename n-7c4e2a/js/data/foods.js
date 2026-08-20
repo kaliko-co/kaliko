@@ -510,8 +510,13 @@ export const FOODS = {
     kcal: 62, pro: 0.9, carb: 14.5, sug: 12, fat: 0.3, fib: 1.5, na: 5, fe: 0.3, ca: 15, mg: 12, zn: 0.1, k: 220, se: 0.3, va: 20, vc: 30, ve: 0.3, b6: 0.1, fol: 20 },
   cola: { n: 'cola', g: ['drink', 'sweet'], portion: 330, units: { glass: 250, can: 330, bottle: 500, ml: 1.04 },
     kcal: 42, carb: 10.6, sug: 10.6, na: 4, k: 2 },
+  // Berlin tap water (Berliner Wasserbetriebe published ranges), not a generic
+  // placeholder — hard water here contributes real calcium at this volume.
+  // Midpoints of: Ca 90-145, Mg 4.6-12.2, Na 55-99, K 3.5-6.6 mg/L. Chloride,
+  // sulfate, nitrate and fluoride are also published but have no matching
+  // field here and are dropped, not guessed at.
   water: { n: 'water', g: ['drink'], portion: 250, units: { glass: 250, cup: 240, bottle: 500, ml: 1 },
-    kcal: 0, ca: 3, mg: 1, k: 1 },
+    kcal: 0, ca: 11.8, mg: 0.8, na: 7.7, k: 0.5 },
   sparkling_water: { n: 'sparkling water', g: ['drink'], portion: 250, units: { glass: 250, bottle: 500, ml: 1 },
     kcal: 0, na: 4, ca: 10, mg: 4, k: 1 },
   kombucha: { n: 'kombucha', g: ['drink'], portion: 250, units: { glass: 250, bottle: 330, ml: 1.01 },
