@@ -99,6 +99,15 @@ export const DISHES = {
       'vietnamese sandwich'],
     r: [['bread_white', 100], ['aubergine', 100], ['olive_oil', 8], ['carrot', 30], ['cucumber', 30], ['mayonnaise', 15]],
   },
+  summer_rolls_tofu: {
+    n: 'summer rolls with tofu and peanut sauce', portion: 240, units: { portion: 240, roll: 60 },
+    a: ['summer rolls', 'summer rolls with tofu', 'sommerrollen', 'sommerrollen mit tofu',
+      'sommerrollen mit tofu und erdnusssosse', 'vietnamese summer rolls', 'fresh spring rolls'],
+    r: [
+      ['rice_paper', 27], ['tofu_firm', 80], ['rice_noodles_dry', 20], ['carrot', 30],
+      ['cucumber', 30], ['lettuce', 20], ['peanut_butter', 20], ['soy_sauce', 8], ['honey', 5],
+    ],
+  },
   doner: {
     n: 'döner kebab', portion: 320, units: { each: 320 },
     a: ['doner', 'döner', 'kebab', 'donner', 'doner kebab', 'durum'],

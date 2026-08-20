@@ -53,6 +53,8 @@ export const FOODS = {
   // (Its own "20g" column is a regulatory %RI reference, not a real portion.)
   rice_noodles_dry: { n: 'rice noodles', g: ['grain'], portion: 100,
     kcal: 360, pro: 8, carb: 79, sug: 0, fat: 1, sat: 0.2, fib: 5 },
+  rice_paper: { n: 'rice paper wrapper', g: ['grain'], portion: 27, units: { sheet: 9 },
+    kcal: 330, pro: 0.5, carb: 83, sug: 1, fat: 0.2, na: 200 },
   // Real label. Almost pure starch (mung bean/potato), unlike wheat or rice
   // noodles — negligible protein and fat. Sold as 4× 50g nests, so that's
   // the natural single-portion default rather than a full 100g.
