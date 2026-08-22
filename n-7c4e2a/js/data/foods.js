@@ -150,6 +150,8 @@ export const FOODS = {
     kcal: 628, pro: 15, carb: 16.7, sug: 4.3, fat: 60.8, sat: 4.5, fib: 9.7, fe: 4.7, ca: 114, mg: 163, zn: 2.5, k: 680, se: 2.4, ve: 15, b1: 0.6, b6: 0.6, fol: 113, ala: 0.09 },
   pistachios: { n: 'pistachios', g: ['nut'], portion: 30, units: { handful: 30, tbsp: 8, cup: 123 },
     kcal: 560, pro: 20.2, carb: 27.2, sug: 7.7, fat: 45.3, sat: 5.9, fib: 10.6, na: 1, fe: 3.9, ca: 105, mg: 121, zn: 2.2, k: 1025, se: 7, va: 26, vc: 5.6, ve: 2.3, b1: 0.9, b6: 1.7, fol: 51, ala: 0.25 },
+  macadamia_nuts: { n: 'macadamia nuts', g: ['nut'], portion: 30, units: { handful: 30, each: 2, tbsp: 9 },
+    kcal: 718, pro: 7.9, carb: 13.8, sug: 4.6, fat: 75.8, sat: 12, fib: 8.6, fe: 3.7, ca: 85, mg: 130, zn: 1.3, k: 368, se: 3.6, ve: 0.5, b1: 1.2, b6: 0.3, fol: 11 },
   brazil_nuts: { n: 'brazil nuts', g: ['nut'], portion: 15, units: { each: 5, handful: 25, tbsp: 9 },
     kcal: 659, pro: 14.3, carb: 11.7, sug: 2.3, fat: 67.1, sat: 16.1, fib: 7.5, fe: 2.4, ca: 160, mg: 376, zn: 4.1, k: 659, se: 1917, ve: 5.7, b1: 0.6, b6: 0.1, fol: 22, ala: 0.02 },
   peanuts: { n: 'peanuts', g: ['nut'], portion: 30, units: { handful: 30, tbsp: 9, cup: 146 },

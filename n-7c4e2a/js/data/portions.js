@@ -89,6 +89,8 @@ export const ALIASES = {
   'hazelnuts': 'hazelnuts', 'haselnusse': 'hazelnuts', 'orzechy laskowe': 'hazelnuts',
   'pistachios': 'pistachios', 'pistazien': 'pistachios',
   'brazil nuts': 'brazil_nuts', 'brazil nut': 'brazil_nuts', 'paranusse': 'brazil_nuts',
+  'macadamia': 'macadamia_nuts', 'macadamia nuts': 'macadamia_nuts', 'macadamia nut': 'macadamia_nuts',
+  'macadamianusse': 'macadamia_nuts', 'orzechy makadamia': 'macadamia_nuts',
   'peanuts': 'peanuts', 'erdnusse': 'peanuts', 'orzeszki ziemne': 'peanuts',
   'peanut butter': 'peanut_butter', 'erdnussbutter': 'peanut_butter',
   'maslo orzechowe': 'peanut_butter', 'masło orzechowe': 'peanut_butter',
