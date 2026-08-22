@@ -529,6 +529,11 @@ export const FOODS = {
     kcal: 77, pro: 3.2, carb: 10.7, sug: 9.7, fat: 2.3, sat: 1.4, fib: 0.8, na: 44, fe: 0.4, ca: 114, mg: 23, zn: 0.6, k: 197, i: 12, se: 3, va: 30, vd: 0.1, ve: 0.1, b2: 0.2, b12: 0.4, fol: 6 },
   beer: { n: 'beer', g: ['alcohol', 'drink'], portion: 330, units: { glass: 300, bottle: 330, can: 500, pint: 500, ml: 1.01 },
     kcal: 43, pro: 0.5, carb: 3.6, sug: 0, na: 4, mg: 6, zn: 0.01, k: 27, se: 0.6, b2: 0.03, b6: 0.05, b12: 0.02, fol: 6 },
+  // Not tagged 'alcohol' — under 0.5% ABV, no meaningful alcohol content.
+  // Often has slightly more residual carbs/sugar than regular beer, less
+  // fully fermented.
+  beer_alcohol_free: { n: 'alcohol-free beer', g: ['drink'], portion: 330, units: { glass: 300, bottle: 330, can: 500, ml: 1 },
+    kcal: 25, pro: 0.3, carb: 5.6, sug: 0.5, na: 5, mg: 5, k: 25, b2: 0.02, b6: 0.03, fol: 5 },
   wine_white: { n: 'white wine', g: ['alcohol', 'drink'], portion: 150, units: { glass: 150, bottle: 750, ml: 0.99 },
     kcal: 82, pro: 0.1, carb: 2.6, sug: 1, na: 5, fe: 0.3, ca: 9, mg: 10, zn: 0.1, k: 71, se: 0.1, b2: 0.02, b6: 0.05, fol: 1 },
   wine_red: { n: 'red wine', g: ['alcohol', 'drink'], portion: 150, units: { glass: 150, bottle: 750, ml: 0.99 },
