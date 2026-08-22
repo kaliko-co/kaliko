@@ -271,6 +271,8 @@ export const ALIASES = {
   'dried apricots': 'apricots_dried', 'trockenaprikosen': 'apricots_dried',
   'prunes': 'prunes', 'dried plums': 'prunes', 'backpflaumen': 'prunes',
   'dried figs': 'figs_dried',
+  'dried pineapple': 'pineapple_dried', 'pineapple fruit balls': 'pineapple_dried',
+  'getrocknete ananas': 'pineapple_dried',
   'goji berries': 'goji_berries', 'goji': 'goji_berries', 'goji berry': 'goji_berries',
   'jagody goji': 'goji_berries',
 

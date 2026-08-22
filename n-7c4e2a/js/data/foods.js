@@ -434,6 +434,9 @@ export const FOODS = {
     kcal: 240, pro: 2.2, carb: 63.9, sug: 38.1, fat: 0.4, sat: 0.03, fib: 7.1, na: 2, fe: 0.9, ca: 43, mg: 41, zn: 0.4, k: 732, se: 0.3, va: 39, vc: 0.6, ve: 0.4, b2: 0.2, b6: 0.2, fol: 4 },
   figs_dried: { n: 'dried figs', g: ['fruit'], portion: 40, units: { each: 8, handful: 40 },
     kcal: 249, pro: 3.3, carb: 63.9, sug: 47.9, fat: 0.9, sat: 0.1, fib: 9.8, na: 10, fe: 2, ca: 162, mg: 68, zn: 0.5, k: 680, se: 0.6, va: 0, vc: 1.2, ve: 0.4, b1: 0.1, b6: 0.1, fol: 9 },
+  // Real label ("fruit balls", 100% dried pineapple, nothing added).
+  pineapple_dried: { n: 'dried pineapple', g: ['fruit'], portion: 30, units: { handful: 30, each: 8 },
+    kcal: 337, pro: 2.9, carb: 79, sug: 67, fat: 0.4, sat: 0.2, fib: 7.6, na: 8 },
   goji_berries: { n: 'goji berries', g: ['fruit'], portion: 20, units: { handful: 20, tbsp: 9 },
     // Dried, as sold. Sodium and vitamin A vary more than most fruit here
     // between growers — treat both as rougher than the usual ±20-25%.
