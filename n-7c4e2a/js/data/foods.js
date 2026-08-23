@@ -44,6 +44,12 @@ export const FOODS = {
   // convention as rice_pasta_dry below.
   mie_noodles_dry: { n: 'mie noodles', g: ['grain'], portion: 100,
     kcal: 337, pro: 11.9, carb: 67.4, sug: 0.6, fat: 1.4, sat: 0.3, fib: 3.5, na: 480 },
+  // Standard published values (USDA), not a specific label — pre-cooked
+  // (ready-to-eat pouch), so this is on a cooked basis like pasta_cooked,
+  // not dry. Tell me if your actual label's sodium differs; pre-cooked
+  // pouches often add more salt for shelf stability than this assumes.
+  soba_noodles_cooked: { n: 'soba noodles', g: ['grain'], portion: 200, units: { bowl: 200, plate: 220, portion: 200 },
+    kcal: 99, pro: 5.1, carb: 21.4, sug: 0.5, fat: 0.1, fib: 2.9, na: 68, fe: 0.6, mg: 13 },
   // Real label — 350 kcal/100g is dry pasta, not cooked, so this is entered
   // (and defaults to logging) on a dry basis, same as oats_dry: weigh what
   // you put in the pot, not an assumed cooked-weight serving.
