@@ -555,6 +555,9 @@ export const FOODS = {
   // ─── Condiments and pantry ────────────────────────────────────────────────
   soy_sauce: { n: 'soy sauce', g: ['other'], portion: 10, units: { tbsp: 16, tsp: 5.3, splash: 8 },
     kcal: 53, pro: 8.1, carb: 4.9, sug: 0.4, fat: 0.6, fib: 0.8, na: 5493, fe: 1.9, ca: 33, mg: 74, zn: 0.5, k: 435, se: 0.8, b2: 0.2, b6: 0.2, b12: 0.1, fol: 18 },
+  // Standard published values (USDA), fermented soybean paste.
+  miso_paste: { n: 'miso paste', g: ['other'], portion: 15, units: { tbsp: 18, tsp: 6 },
+    kcal: 199, pro: 12.8, carb: 25.4, sug: 6.2, fat: 6, sat: 0.9, fib: 5.4, na: 3728, fe: 2.5, ca: 57, mg: 48, zn: 2.6, k: 210, se: 7.4, b2: 0.2, b6: 0.2, fol: 19 },
   mustard: { n: 'mustard', g: ['other'], portion: 10, units: { tbsp: 15, tsp: 5 },
     kcal: 66, pro: 4.4, carb: 5.8, sug: 1.1, fat: 3.3, sat: 0.2, fib: 4, na: 1135, fe: 1.5, ca: 63, mg: 48, zn: 0.6, k: 152, se: 25, vc: 1.5, ve: 0.4, fol: 8 },
   ketchup: { n: 'ketchup', g: ['other'], portion: 15, units: { tbsp: 17, tsp: 5.7, dollop: 15 },

@@ -345,6 +345,7 @@ export const ALIASES = {
 
   // condiments
   'soy sauce': 'soy_sauce', 'sojasauce': 'soy_sauce', 'tamari': 'soy_sauce',
+  'miso paste': 'miso_paste', 'miso': 'miso_paste', 'miso sauce': 'miso_paste',
   'mustard': 'mustard', 'senf': 'mustard', 'musztarda': 'mustard',
   'ketchup': 'ketchup', 'keczup': 'ketchup',
   'balsamic': 'vinegar_balsamic', 'balsamic vinegar': 'vinegar_balsamic', 'balsamico': 'vinegar_balsamic',
