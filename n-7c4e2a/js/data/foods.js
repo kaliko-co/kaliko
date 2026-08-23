@@ -558,6 +558,11 @@ export const FOODS = {
   // Standard published values (USDA), fermented soybean paste.
   miso_paste: { n: 'miso paste', g: ['other'], portion: 15, units: { tbsp: 18, tsp: 6 },
     kcal: 199, pro: 12.8, carb: 25.4, sug: 6.2, fat: 6, sat: 0.9, fib: 5.4, na: 3728, fe: 2.5, ca: 57, mg: 48, zn: 2.6, k: 210, se: 7.4, b2: 0.2, b6: 0.2, fol: 19 },
+  // Typical bottled "aji-mirin" seasoning as commonly sold outside Japan (e.g.
+  // Kikkoman) — lower alcohol and salted, unlike traditional unsalted hon-mirin.
+  // Tell me if yours is the real, unsalted, alcoholic version instead.
+  mirin: { n: 'mirin', g: ['other'], portion: 15, units: { tbsp: 17, tsp: 5.7, splash: 10, ml: 1.05 },
+    kcal: 172, pro: 0.4, carb: 40, sug: 37, fat: 0, na: 920 },
   mustard: { n: 'mustard', g: ['other'], portion: 10, units: { tbsp: 15, tsp: 5 },
     kcal: 66, pro: 4.4, carb: 5.8, sug: 1.1, fat: 3.3, sat: 0.2, fib: 4, na: 1135, fe: 1.5, ca: 63, mg: 48, zn: 0.6, k: 152, se: 25, vc: 1.5, ve: 0.4, fol: 8 },
   ketchup: { n: 'ketchup', g: ['other'], portion: 15, units: { tbsp: 17, tsp: 5.7, dollop: 15 },
