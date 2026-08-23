@@ -473,6 +473,10 @@ export const FOODS = {
     kcal: 598, pro: 7.8, carb: 45.9, sug: 24, fat: 42.6, sat: 24.5, fib: 10.9, na: 20, fe: 11.9, ca: 73, mg: 228, zn: 3.3, k: 715, se: 6.8, va: 2, ve: 0.6, b2: 0.1, b6: 0.04, fol: 12 },
   milk_chocolate: { n: 'milk chocolate', g: ['sweet'], portion: 25, units: { square: 8, each: 8, bar: 100, row: 25 },
     kcal: 535, pro: 7.7, carb: 59.4, sug: 51.5, fat: 29.7, sat: 18.5, fib: 3.4, na: 79, fe: 2.4, ca: 189, mg: 63, zn: 2.3, k: 372, i: 15, se: 4.5, va: 69, vd: 0.2, ve: 0.5, b2: 0.3, b6: 0.04, b12: 0.7, fol: 11 },
+  // Typical published values for this product (milk chocolate, yogurt
+  // filling), not a photographed label — tell me if your pack's numbers differ.
+  yogurette: { n: 'yogurette', g: ['sweet', 'dairy'], portion: 12.5, units: { each: 12.5, piece: 12.5, bar: 12.5 },
+    kcal: 519, pro: 5.5, carb: 54, sug: 53, fat: 30, sat: 19, na: 60 },
   biscuit: { n: 'biscuit', g: ['sweet'], portion: 30, units: { each: 15 },
     kcal: 480, pro: 6, carb: 65, sug: 25, fat: 21, sat: 11, fib: 2, na: 350, fe: 1.8, ca: 40, mg: 20, zn: 0.6, k: 120, se: 8, va: 40, ve: 1, b1: 0.2, fol: 20 },
   cake: { n: 'cake', g: ['sweet'], portion: 80, units: { slice: 80, piece: 80 },
