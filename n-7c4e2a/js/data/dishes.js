@@ -256,6 +256,15 @@ export const DISHES = {
     a: ['chicken curry', 'hahnchencurry', 'curry z kurczakiem'],
     r: [['chicken_thigh', 130], ['tomato_tinned', 100], ['coconut_milk_tin', 80], ['onion', 40], ['bell_pepper', 40], ['sunflower_oil', 10]],
   },
+  veg_korma_rice: {
+    n: 'vegetable korma with rice', portion: 605, units: { bowl: 605, plate: 605, portion: 605 },
+    a: ['vegetable korma with rice', 'vegetable korma', 'veg korma', 'korma', 'gemuse korma'],
+    r: [
+      ['carrot', 60], ['potato_boiled', 100], ['peas_cooked', 50], ['cauliflower', 60],
+      ['coconut_milk_tin', 100], ['cashews', 15], ['onion', 30], ['ghee', 10],
+      ['rice_white_cooked', 180],
+    ],
+  },
   chili_sin_carne: {
     n: 'chilli sin carne', portion: 420, units: { bowl: 420, plate: 420, portion: 420 },
     a: ['chilli sin carne', 'chili sin carne', 'veggie chilli', 'vegan chilli', 'bean chilli'],
