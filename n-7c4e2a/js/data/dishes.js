@@ -386,4 +386,9 @@ export const DISHES = {
     a: ['berry smoothie', 'fruit smoothie', 'banana smoothie', 'green smoothie'],
     r: [['banana', 100], ['blueberries', 60], ['yoghurt_natural', 100], ['oat_milk', 90]],
   },
+  mango_lassi: {
+    n: 'mango lassi', portion: 365, units: { glass: 365, each: 365 },
+    a: ['mango lassi', 'lassi'],
+    r: [['yoghurt_natural', 150], ['mango', 120], ['milk_whole', 80], ['honey', 15]],
+  },
 };
