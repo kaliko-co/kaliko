@@ -495,6 +495,12 @@ export const FOODS = {
     kcal: 470, pro: 10, carb: 45, sug: 28, fat: 26, sat: 3.5, fib: 5, na: 60, fe: 2, ca: 70, mg: 90, zn: 1.5, k: 400, se: 5, ve: 5, b1: 0.2, b6: 0.1, fol: 25 },
   protein_bar: { n: 'protein bar', g: ['sweet'], portion: 50, units: { each: 50 },
     kcal: 350, pro: 30, carb: 33, sug: 6, fat: 11, sat: 4, fib: 8, na: 250, fe: 3, ca: 250, mg: 80, zn: 3, k: 300, se: 15, va: 100, vc: 15, vd: 1.5, ve: 3, b1: 0.4, b2: 0.5, b6: 0.5, b12: 1.2, fol: 60 },
+  // Real label (SMART Organic, dates/hazelnuts/chocolate drops, 40g bar).
+  // Only the macro table is printed, no vitamins/minerals. Despite the name
+  // it's not high-protein (6.1g/100g) — a date-and-nut bar with a chocolate
+  // coating, not a whey-style bar.
+  protein_bar_smart_organic: { n: 'protein bar (date & hazelnut)', g: ['sweet', 'nut'], portion: 40, units: { each: 40, bar: 40 },
+    kcal: 428, pro: 6.1, carb: 48, sug: 35, fat: 22, sat: 11, fib: 9.8, na: 16 },
   // Real label (a packaged bar, 30% banana purée, spelt flour, cocoa mass,
   // hazelnuts/walnuts) — only the macro table is printed, no vitamins/minerals.
   banana_bread_bar: { n: 'banana bread', g: ['sweet', 'grain'], portion: 70, units: { each: 70, bar: 70 },
